@@ -16,11 +16,15 @@ formal source -> verified proof transition -> CanonicalMathState
 The language is a dependent variable. This repository does not presume that previous HML
 syntax, Lean syntax, a graph encoding, or natural language is optimal.
 
-## Current milestone
+## Foundation result
 
-`LEAN_PIPELINE_V1`: pin a real Lean/Mathlib source, preserve proof-state transitions,
-adapt them into a representation-independent IR, and test information preservation across
-multiple deterministic renderers. No model training or GPU work belongs in this milestone.
+`LEAN_PIPELINE_V1` is implemented on 1,000 unique Mathlib theorems: exact theorem source,
+before/action/after observations, 1,353 official annotated premise references, a canonical
+adapter, and ten deterministic renderer candidates. Declared-observation losslessness and
+semantic parity both pass on all 1,000 rows. Only 32 transitions carry fresh exact-replay
+certificates; the other 968 retain the calibrated `FORMAL_TRACE_ACCEPTED` label.
+
+No renderer is selected as the final language. No model training or GPU work was performed.
 
 ## Scientific rules
 
@@ -35,3 +39,11 @@ multiple deterministic renderers. No model training or GPU work belongs in this 
 
 See [ROADMAP.md](ROADMAP.md), [DECISIONS.md](DECISIONS.md), and
 [data/README.md](data/README.md).
+
+Reproduce the foundation gates with:
+
+```sh
+PYTHONPATH=src python3 scripts/verify/audit_losslessness.py
+PYTHONPATH=src python3 scripts/verify/audit_renderer_parity.py
+PYTHONPATH=src python3 -m unittest discover -s tests -v
+```

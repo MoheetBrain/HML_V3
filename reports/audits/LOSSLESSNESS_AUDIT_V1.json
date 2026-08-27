@@ -1,0 +1,29 @@
+{
+  "claim": "Lossless for declared source observations: exact raw states, exact tactic, all displayed goal/context decomposition, premise references, recorded effect, identity, and provenance hashes.",
+  "counts": {
+    "actions": 1000,
+    "formal_source_enrichments": 1000,
+    "premise_references": 1353,
+    "rows": 1000,
+    "semantic_deltas": 1000,
+    "states": 2000
+  },
+  "explicit_nonclaims": [
+    "Lean pretty-printed expressions are not reconstructed as elaborated Lean Expr trees.",
+    "BinderInfo, universe constraints, metavariable assignments, and namespace resolution are not recoverable from these trace rows.",
+    "FORMAL_TRACE_ACCEPTED is not relabeled as fresh runtime replay; only 32 rows have FRESH_REPLAY_PASS certificates.",
+    "The prior source record's structured hypothesis/target projection is known to truncate some multiline observations; disagreements are recorded, while exact raw states remain authoritative."
+  ],
+  "failures": [],
+  "manifest_hash_checks": {
+    "canonical_gzip": true,
+    "source_gzip": true
+  },
+  "schema_version": "hml-v3-losslessness-audit-1.0.0",
+  "source_structured_projection_disagreements": 659,
+  "status": "PASS",
+  "verifier_statuses": {
+    "FORMAL_TRACE_ACCEPTED": 968,
+    "FRESH_REPLAY_PASS": 32
+  }
+}
