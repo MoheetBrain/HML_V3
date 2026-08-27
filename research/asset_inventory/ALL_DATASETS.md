@@ -11,8 +11,12 @@ Generated from the canonical registry and read-only filesystem inspection. Missi
 | Gold-25 | /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/gold25 | 25 | 729088 | TIER_E:HISTORICAL_ADJUDICATED_NOT_FORMAL_PROOF | REFERENCE |
 | Gold-125 | /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/gold125 | 125 | 7909376 | TIER_E:HISTORICAL_ADJUDICATED_NOT_FORMAL_PROOF | REFERENCE |
 | LeanDojo Benchmark 4 | /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4 | 122517 | 833863680 | TIER_A:FORMAL_TRACE_SOURCE; NOT_FRESHLY_REPLAYED_PER_ROW | REFERENCE |
+| Lean Workbook and Lean Workbook Plus | external/checkouts/Lean-Workbook | 140124 | 180224 | TIER_B:DATASET_CARD_COUNTS; PROOFS_NOT_REPLAYED_IN_V3 | REFERENCE |
+| miniF2F Lean 4 benchmark | external/checkouts/miniF2F | 500 | 409600 | TIER_B:PINNED_BENCHMARK_STATEMENTS; 498_SORRY_OR_ADMIT_OCCURRENCES | REFERENCE |
+| ProofNet community Lean 4 port | external/checkouts/proofnet-lean4 | 371 | 577536 | TIER_B:PINNED_PORT_STATEMENTS; THEOREM_BODIES_REMAIN_SORRY | REFERENCE |
 | Prior Lean canonical transition records | /Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/lean_domino_v2/lean_canonical_records.jsonl | 241265 | 755808347 | TIER_A:FORMAL_TRACE; 32_OF_SEPARATE_STAGE100_FRESHLY_REPLAY_CERTIFIED | REFERENCE |
 | Lean runtime attestation Stage100 | /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus-lean-attestation/synthetic_factory/lean_attestation/data/stage100/certificates_run1.jsonl | 100 | 278027 | TIER_A:32_REPLAY_PASS; 68_NONPASS; STAGE1K_BLOCKED | REFERENCE |
+| HML V3 Lean Pipeline V1 | data/samples/lean_pipeline_v1.source.jsonl.gz | 1000 | 616838 | TIER_A:1000_FORMAL_TRACE_ACCEPTED; 32_FRESH_EXACT_REPLAY_PASS; 968_NOT_FRESHLY_REPLAYED | REFERENCE |
 | HML50K paired teaching corpus | /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/data/hml_50k_final | 56000 | 417845248 | TIER_E:FORMAL_TRACE; REPRESENTATION_INFERENCE_INVALIDATED | REFERENCE |
 | Semantic Firewall acceptance fixtures | /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/experiments/semantic_firewall/acceptance/fixtures.json | 30 | 182516 | TIER_E:FROZEN_EXTERNAL_ACCEPTANCE_FIXTURES_WITH_KNOWN_BLIND_SPOT | REFERENCE |
 | Semantic Firewall FX2 fixtures | /Users/moheet/Documents/ChatGPT/hmlt-reasoning-corpus/experiments/semantic_firewall_v2/fixtures_v2.json | 40 | 138787 | TIER_E:FROZEN_INTEGRATOR_FIXTURES; 13_INTENTIONAL_REFERENCE_DIVERGENCES | REFERENCE |

@@ -1,0 +1,69 @@
+{
+  "schema_version": "hml-v3-formal-source-manifest-1.0.0",
+  "pinned_at": "2026-08-27T00:00:00+01:00",
+  "primary_pipeline": "leandojo_benchmark4_mathlib_29dcec0",
+  "sources": [
+    {
+      "source_id": "mathlib_leandojo_benchmark4",
+      "source_url": "https://github.com/leanprover-community/mathlib4",
+      "source_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+      "lean_version": "v4.10.0-rc1",
+      "toolchain_build_commit": "3b58e0649156",
+      "license": "Apache-2.0 for Mathlib; dependency licenses preserved by Benchmark 4",
+      "acquisition_script": "scripts/acquire/acquire_mathlib.sh",
+      "payload_status": "ACQUIRED_PINNED_CLEAN; LOCAL_BENCHMARK_AND_DERIVED_TRACE_PRESENT",
+      "local_checkout": "external/checkouts/mathlib4-29dcec0",
+      "local_evidence": "/Users/moheet/Projects/Hamiltonian-Labs/hml_research_artifacts/leandojo_raw/leandojo_benchmark_4",
+      "archive_sha256": "19b9a31968229d5bae4b959be9351d92740643d16a58c7f58f6d82795b8a98a4",
+      "evaluation_protection": "Preserve official random/novel-premise splits and theorem identities."
+    },
+    {
+      "source_id": "leandojo_v2",
+      "source_url": "https://github.com/lean-dojo/LeanDojo-v2",
+      "source_commit": "baed5eae6e87a65a446d9f54af07aab2154e7599",
+      "lean_version": "See pinned source dependencies",
+      "tool_version": "1.0.9",
+      "license": "MIT",
+      "acquisition_script": "scripts/acquire/acquire_leandojo.py",
+      "payload_status": "ACQUIRED_PINNED_CLEAN_FOR_TOOLING_VIABILITY_AUDIT",
+      "local_checkout": "external/checkouts/LeanDojo-v2",
+      "notes": "The existing Benchmark 4 and replay certificates were produced with legacy package 2.0.0; V2 is not silently substituted into those results."
+    },
+    {
+      "source_id": "lean_workbook",
+      "source_url": "https://huggingface.co/datasets/internlm/Lean-Workbook",
+      "source_commit": "2e066e310b2c6d2c27616927ae131f82901c8f1c",
+      "lean_version": "v4.8.0-rc1",
+      "mathlib_version": "v4.8.0-rc1",
+      "license": "Apache-2.0",
+      "acquisition_script": "scripts/acquire/acquire_lean_workbook.py",
+      "payload_status": "ACQUIRED_PINNED_CLEAN_METADATA_ONLY; LFS_PAYLOAD_SKIPPED",
+      "local_checkout": "external/checkouts/Lean-Workbook",
+      "evaluation_protection": "Rows with sorry or absent proofs are Tier B until replayed; never infer verification from a proof-shaped field."
+    },
+    {
+      "source_id": "minif2f_lean4",
+      "source_url": "https://github.com/google-deepmind/miniF2F",
+      "source_commit": "f0a20e14c1eeccd859d51bb4c2b3ee487889c303",
+      "lean_version": "v4.27.0",
+      "mathlib_version": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "license": "Apache-2.0",
+      "acquisition_script": "scripts/acquire/acquire_minif2f.sh",
+      "payload_status": "ACQUIRED_PINNED_CLEAN_SOURCE",
+      "local_checkout": "external/checkouts/miniF2F",
+      "evaluation_protection": "All test theorems are evaluation-only; never train on them while claiming miniF2F benchmark validity."
+    },
+    {
+      "source_id": "proofnet_lean4",
+      "source_url": "https://github.com/kripner/proofnet",
+      "source_commit": "5da820b6510cd2a1d4237036d8227357cb9944d9",
+      "lean_version": "v4.27.0",
+      "mathlib_version": "a3a10db0e9d66acbebf76c5e6a135066525ac900",
+      "license": "MIT",
+      "acquisition_script": "scripts/acquire/acquire_proofnet_lean4.sh",
+      "payload_status": "ACQUIRED_PINNED_CLEAN_COMMUNITY_LEAN4_PORT",
+      "local_checkout": "external/checkouts/proofnet-lean4",
+      "evaluation_protection": "Benchmark test rows are evaluation-only; original ProofNet is Lean 3 and must not be mixed without an adapter."
+    }
+  ]
+}
