@@ -1,0 +1,345 @@
+{
+  "corpus": "LEAN_PIPELINE_V1",
+  "failures": [],
+  "interpretation": {
+    "previous_hml": "Uses native frozen HML claims/goals/action fields plus a visible source compatibility block only for semantics absent from the old schema.",
+    "roundtrip": "Exact equality of the shared model-facing semantic projection after render and parse.",
+    "token_metric": "Whitespace token counts are descriptive only; no model tokenizer or learning claim is made."
+  },
+  "renderers": [
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 8336.092,
+          "median": 7228.0,
+          "p95": 17359
+        },
+        "lines": {
+          "mean": 5,
+          "median": 5.0,
+          "p95": 5
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "50e852ebb897090f39939196eedd16a7d26b6f09ad68d051341e913df4dc98b7",
+        "utf8_bytes": {
+          "mean": 8457.399,
+          "median": 7317.5,
+          "p95": 17611
+        },
+        "whitespace_tokens": {
+          "mean": 136.723,
+          "median": 103.0,
+          "p95": 354
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "lean_like",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 11534.904,
+          "median": 10061.5,
+          "p95": 23890
+        },
+        "lines": {
+          "mean": 138.474,
+          "median": 123.0,
+          "p95": 292
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "a16a109023fa1d0fede5a7346a1131c4485168a93b68e24a45351625249ca674",
+        "utf8_bytes": {
+          "mean": 11656.456,
+          "median": 10196.0,
+          "p95": 24142
+        },
+        "whitespace_tokens": {
+          "mean": 643.389,
+          "median": 571.5,
+          "p95": 1303
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "previous_hml",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 20944.135,
+          "median": 18463.0,
+          "p95": 41808
+        },
+        "lines": {
+          "mean": 1,
+          "median": 1.0,
+          "p95": 1
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "33200018c7d9053b480c482b8a6a5b9c0106adca5af27b3eab54d47e18e3e3e8",
+        "utf8_bytes": {
+          "mean": 21065.442,
+          "median": 18548.0,
+          "p95": 41984
+        },
+        "whitespace_tokens": {
+          "mean": 1380.421,
+          "median": 1225.0,
+          "p95": 2744
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "typed_ast",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 8383.092,
+          "median": 7275.0,
+          "p95": 17406
+        },
+        "lines": {
+          "mean": 4,
+          "median": 4.0,
+          "p95": 4
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "baed82bbba1212ed0d9dc793dbcb22a7e39b9d8189289bb3c24945112db879df",
+        "utf8_bytes": {
+          "mean": 8504.399,
+          "median": 7364.5,
+          "p95": 17658
+        },
+        "whitespace_tokens": {
+          "mean": 145.723,
+          "median": 112.0,
+          "p95": 363
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "structured_english",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 8312.092,
+          "median": 7204.0,
+          "p95": 17335
+        },
+        "lines": {
+          "mean": 6,
+          "median": 6.0,
+          "p95": 6
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "65a3c0ab5602e6084447f1047f0fb9d882440f6c53af88e7f70ce8b74e2409b3",
+        "utf8_bytes": {
+          "mean": 8433.399,
+          "median": 7293.5,
+          "p95": 17587
+        },
+        "whitespace_tokens": {
+          "mean": 128.723,
+          "median": 95.0,
+          "p95": 346
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "canonical_sexpr",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 8661.092,
+          "median": 7553.0,
+          "p95": 17684
+        },
+        "lines": {
+          "mean": 1,
+          "median": 1.0,
+          "p95": 1
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "c86ec3a6c3f2f9e0fdd2fa74f473b6858eccce7d174f51ba5790787b2aa1312a",
+        "utf8_bytes": {
+          "mean": 8782.399,
+          "median": 7642.5,
+          "p95": 17936
+        },
+        "whitespace_tokens": {
+          "mean": 119.723,
+          "median": 86.0,
+          "p95": 337
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "graph_edges",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 9373.701,
+          "median": 8097.5,
+          "p95": 20044
+        },
+        "lines": {
+          "mean": 1,
+          "median": 1.0,
+          "p95": 1
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "f77f6c44ca9082a2528a295f9d92053876171982d5cf2bf1c8164ada7c28e78c",
+        "utf8_bytes": {
+          "mean": 9495.825,
+          "median": 8205.0,
+          "p95": 20296
+        },
+        "whitespace_tokens": {
+          "mean": 120.19,
+          "median": 86.0,
+          "p95": 337
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "goal_local",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 10148.666,
+          "median": 8782.5,
+          "p95": 21595
+        },
+        "lines": {
+          "mean": 1,
+          "median": 1.0,
+          "p95": 1
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "2f6a21fb940ee687be4c6270bffce73223d28bac2be1f963c48ffe2f52a629ce",
+        "utf8_bytes": {
+          "mean": 10269.973,
+          "median": 8886.5,
+          "p95": 21847
+        },
+        "whitespace_tokens": {
+          "mean": 119.723,
+          "median": 86.0,
+          "p95": 337
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "dependency_topological",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 8702.77,
+          "median": 7636.5,
+          "p95": 17985
+        },
+        "lines": {
+          "mean": 1,
+          "median": 1.0,
+          "p95": 1
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "90af04de6706f620ce2f9f969ac78f1c5520ebca54d0e96f43b0ef9317eaa9c2",
+        "utf8_bytes": {
+          "mean": 8845.787,
+          "median": 7718.5,
+          "p95": 18253
+        },
+        "whitespace_tokens": {
+          "mean": 158.908,
+          "median": 119.0,
+          "p95": 424
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "explicit_redundant_state",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    },
+    {
+      "deterministic_bytes": true,
+      "exact_semantic_roundtrips": 1000,
+      "measurements": {
+        "characters": {
+          "mean": 6191.144,
+          "median": 5296.0,
+          "p95": 13729
+        },
+        "lines": {
+          "mean": 1,
+          "median": 1.0,
+          "p95": 1
+        },
+        "literal_unicode_escape_sequences": 0,
+        "rendered_batch_sha256": "d8b1100ca90dc6c3584be84e6438c0c3c81fbddc90ac001aa31ccca918a18cfb",
+        "utf8_bytes": {
+          "mean": 6312.451,
+          "median": 5374.0,
+          "p95": 13987
+        },
+        "whitespace_tokens": {
+          "mean": 119.723,
+          "median": 86.0,
+          "p95": 337
+        }
+      },
+      "mismatches": 0,
+      "renderer_id": "minimal_machine_code",
+      "renderer_version": "1.0.0",
+      "rows": 1000,
+      "status": "PASS"
+    }
+  ],
+  "rows": 1000,
+  "schema_version": "hml-v3-semantic-parity-report-1.0.0",
+  "semantic_projection": "src/hml_v3/canonical/projection.py",
+  "status": "PASS"
+}
