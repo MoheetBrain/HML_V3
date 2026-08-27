@@ -16,3 +16,13 @@ Trust tiers:
 An external source is not copied into this repository unless its license, size, provenance,
 and scientific need justify redistribution.
 
+## Committed sample
+
+`data/samples/lean_pipeline_v1.source.jsonl.gz` and
+`data/samples/lean_pipeline_v1.canonical.jsonl.gz` are the small, provenance-complete
+foundation sample. They are deterministic gzip streams (`mtime=0`) whose compressed and
+uncompressed hashes live in `data/manifests/lean_pipeline_v1.json`.
+
+The source rows preserve the original derived trace record plus a V3 enrichment joined to
+official LeanDojo Benchmark 4 theorem/tactic records. The original record hash deliberately
+excludes that namespaced enrichment so existing replay certificates remain verifiable.

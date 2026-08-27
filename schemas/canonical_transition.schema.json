@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MoheetBrain/HML_V3/schemas/canonical_transition.schema.json",
+  "title": "HML V3 CanonicalTransition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "transition_id",
+    "schema_version",
+    "state_before",
+    "action",
+    "state_delta",
+    "state_after",
+    "verifier_result",
+    "provenance"
+  ],
+  "properties": {
+    "transition_id": {"type": "string", "minLength": 1},
+    "schema_version": {"const": "canonical-transition-0.1.0"},
+    "state_before": {"$ref": "#/$defs/state"},
+    "action": {"$ref": "#/$defs/action"},
+    "state_delta": {"$ref": "#/$defs/delta"},
+    "state_after": {"$ref": "#/$defs/state"},
+    "verifier_result": {"$ref": "#/$defs/verifier"},
+    "provenance": {"type": "object"}
+  },
+  "$defs": {
+    "expression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expression_id", "language", "surface", "role", "source_sha256", "ast_status"],
+      "properties": {
+        "expression_id": {"type": "string"},
+        "language": {"type": "string"},
+        "surface": {"type": "string"},
+        "role": {"type": "string"},
+        "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "ast_status": {"type": "string"}
+      }
+    },
+    "declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["declaration_id", "name", "type_expression", "value_expression", "binder_info", "scope_id"],
+      "properties": {
+        "declaration_id": {"type": "string"},
+        "name": {"type": "string"},
+        "type_expression": {"$ref": "#/$defs/expression"},
+        "value_expression": {"oneOf": [{"$ref": "#/$defs/expression"}, {"type": "null"}]},
+        "binder_info": {"type": "string"},
+        "scope_id": {"type": "string"}
+      }
+    },
+    "goal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["goal_id", "target", "status", "local_context_ids", "source_label"],
+      "properties": {
+        "goal_id": {"type": "string"},
+        "target": {"$ref": "#/$defs/expression"},
+        "status": {"enum": ["OPEN", "SOLVED"]},
+        "local_context_ids": {"type": "array", "items": {"type": "string"}},
+        "source_label": {"type": ["string", "null"]}
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state_id", "source_system", "declarations", "goals", "metavariables",
+        "constraints", "obligations", "dependencies", "premise_refs", "scopes",
+        "namespace_environment_refs", "evidence", "provenance", "source_specific",
+        "information_accounting"
+      ],
+      "properties": {
+        "state_id": {"type": "string"},
+        "source_system": {"type": "string"},
+        "declarations": {"type": "array", "items": {"$ref": "#/$defs/declaration"}},
+        "goals": {"type": "array", "items": {"$ref": "#/$defs/goal"}},
+        "metavariables": {"type": "array", "items": {"type": "string"}},
+        "constraints": {"type": "array", "items": {"type": "object"}},
+        "obligations": {"type": "array", "items": {"type": "object"}},
+        "dependencies": {"type": "array", "items": {"type": "string"}},
+        "premise_refs": {"type": "array", "items": {"type": "string"}},
+        "scopes": {"type": "array", "items": {"type": "string"}},
+        "namespace_environment_refs": {"type": "object"},
+        "evidence": {"type": "array", "items": {"type": "object"}},
+        "provenance": {"type": "object"},
+        "source_specific": {"type": "object"},
+        "information_accounting": {"type": "object", "additionalProperties": {"type": "string"}}
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action_id", "action_kind", "target_goal_ids", "arguments", "substitutions",
+        "referenced_premises", "expected_effect", "source_syntax", "source_syntax_sha256"
+      ],
+      "properties": {
+        "action_id": {"type": "string"},
+        "action_kind": {"type": "string"},
+        "target_goal_ids": {"type": "array", "items": {"type": "string"}},
+        "arguments": {"type": "array", "items": {"type": "object"}},
+        "substitutions": {"type": "array", "items": {"type": "object"}},
+        "referenced_premises": {"type": "array", "items": {"type": "string"}},
+        "expected_effect": {"type": "object"},
+        "source_syntax": {"type": "string"},
+        "source_syntax_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "delta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declarations_added", "declarations_removed", "declarations_rebound", "goals_before",
+        "goals_after", "goals_generated", "goals_solved", "focused_target_changed",
+        "recorded_effect_class"
+      ],
+      "properties": {
+        "declarations_added": {"type": "array", "items": {"type": "string"}},
+        "declarations_removed": {"type": "array", "items": {"type": "string"}},
+        "declarations_rebound": {"type": "array", "items": {"type": "string"}},
+        "goals_before": {"type": "integer", "minimum": 0},
+        "goals_after": {"type": "integer", "minimum": 0},
+        "goals_generated": {"type": "integer", "minimum": 0},
+        "goals_solved": {"type": "integer", "minimum": 0},
+        "focused_target_changed": {"type": "boolean"},
+        "recorded_effect_class": {"type": "string"}
+      }
+    },
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority", "status", "accepted", "fresh_replay_status", "source_record_sha256",
+        "certificate_id", "certificate_content_sha256"
+      ],
+      "properties": {
+        "authority": {"type": "string"},
+        "status": {"enum": ["FORMAL_TRACE_ACCEPTED", "FRESH_REPLAY_PASS"]},
+        "accepted": {"type": ["boolean", "null"]},
+        "fresh_replay_status": {"type": ["string", "null"]},
+        "source_record_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "certificate_id": {"type": ["string", "null"]},
+        "certificate_content_sha256": {"type": ["string", "null"]}
+      }
+    }
+  }
+}
