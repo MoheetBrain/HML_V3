@@ -1988,6 +1988,388 @@
   ],
   "generations_completed": 12,
   "genome_axes": 42,
+  "measured_effects": [
+    {
+      "axis": "action_position",
+      "from": "BETWEEN_STATES",
+      "improves": false,
+      "mean_relative_change": 1.9888,
+      "metric": "premise_to_action_distance_tokens",
+      "observations": 3,
+      "sign_agreement": 1.0,
+      "to": "TRAILER"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "from": "DUPLICATE",
+      "improves": false,
+      "mean_relative_change": 1.3644,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "HOISTED_DAG_LETS"
+    },
+    {
+      "axis": "action_position",
+      "from": "BETWEEN_STATES",
+      "improves": true,
+      "mean_relative_change": -0.8559,
+      "metric": "premise_to_action_distance_tokens",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "HEADER"
+    },
+    {
+      "axis": "syntax_family",
+      "from": "TAGGED_LINE",
+      "improves": true,
+      "mean_relative_change": 0.4348,
+      "metric": "detect_swap_records",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "INDENTED_TREE"
+    },
+    {
+      "axis": "block_delimiter",
+      "from": "INDENT",
+      "improves": false,
+      "mean_relative_change": -0.2745,
+      "metric": "detect_drop_line",
+      "observations": 3,
+      "sign_agreement": 1.0,
+      "to": "KEYWORD_END"
+    },
+    {
+      "axis": "count_assertions",
+      "from": "NONE",
+      "improves": false,
+      "mean_relative_change": -0.2221,
+      "metric": "detect_drop_line",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "PER_BLOCK"
+    },
+    {
+      "axis": "expression_notation",
+      "from": "SEXPR_PREFIX",
+      "improves": true,
+      "mean_relative_change": -0.1948,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "POSTFIX_RPN"
+    },
+    {
+      "axis": "redundancy_level",
+      "from": "LOW",
+      "improves": false,
+      "mean_relative_change": -0.0682,
+      "metric": "detect_drop_field",
+      "observations": 2,
+      "sign_agreement": 0.5,
+      "to": "EXPLICIT"
+    },
+    {
+      "axis": "syntax_family",
+      "from": "BLOCK",
+      "improves": false,
+      "mean_relative_change": -0.058,
+      "metric": "detect_swap_records",
+      "observations": 3,
+      "sign_agreement": 1.0,
+      "to": "SEXPR"
+    },
+    {
+      "axis": "alpha_normalization",
+      "from": "NORMALIZED",
+      "improves": false,
+      "mean_relative_change": 0.0448,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 3,
+      "sign_agreement": 1.0,
+      "to": "BOTH"
+    },
+    {
+      "axis": "application_style",
+      "from": "CURRIED_BINARY",
+      "improves": true,
+      "mean_relative_change": -0.0443,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 3,
+      "sign_agreement": 0.667,
+      "to": "FLATTENED_SPINE"
+    },
+    {
+      "axis": "context_order",
+      "from": "DEPENDENCY_TOPOLOGICAL",
+      "improves": false,
+      "mean_relative_change": 0.0383,
+      "metric": "binder_use_distance_tokens",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "GOAL_CENTRED"
+    },
+    {
+      "axis": "binder_encoding",
+      "from": "DE_BRUIJN",
+      "improves": false,
+      "mean_relative_change": 0.016,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 4,
+      "sign_agreement": 1.0,
+      "to": "NAMED_PLUS_DE_BRUIJN"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "from": "TREE_NESTED",
+      "improves": false,
+      "mean_relative_change": 0.0123,
+      "metric": "max_reference_span_tokens",
+      "observations": 6,
+      "sign_agreement": 0.5,
+      "to": "HYBRID_NESTED_WITH_EDGES"
+    },
+    {
+      "axis": "lexicon_register",
+      "from": "COMPACT_MNEMONIC",
+      "improves": false,
+      "mean_relative_change": 0.0108,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "HUMAN_WORDS"
+    },
+    {
+      "axis": "context_order",
+      "from": "DECLARATION_INDEX",
+      "improves": true,
+      "mean_relative_change": -0.0093,
+      "metric": "binder_use_distance_tokens",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "REVERSE_INDEX"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "from": "TREE_NESTED",
+      "improves": false,
+      "mean_relative_change": 0.0091,
+      "metric": "max_reference_span_tokens",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "GRAPH_EDGE_LIST"
+    },
+    {
+      "axis": "lexicon_register",
+      "from": "COMPACT_MNEMONIC",
+      "improves": true,
+      "mean_relative_change": -0.0066,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "SYMBOLIC_ROLE"
+    },
+    {
+      "axis": "lexicon_register",
+      "from": "HUMAN_WORDS",
+      "improves": true,
+      "mean_relative_change": -0.0062,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "COMPACT_MNEMONIC"
+    },
+    {
+      "axis": "binder_use_reminder",
+      "from": "NONE",
+      "improves": true,
+      "mean_relative_change": -0.0055,
+      "metric": "binder_use_distance_tokens",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "TYPE_AT_USE"
+    },
+    {
+      "axis": "lexicon_register",
+      "from": "HUMAN_WORDS",
+      "improves": true,
+      "mean_relative_change": -0.0041,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "MATH_NOTATION"
+    },
+    {
+      "axis": "binder_encoding",
+      "from": "DE_BRUIJN",
+      "improves": false,
+      "mean_relative_change": 0.0034,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 3,
+      "sign_agreement": 0.333,
+      "to": "NAMED"
+    },
+    {
+      "axis": "action_encoding",
+      "from": "SOURCE_PLUS_STRUCTURED",
+      "improves": true,
+      "mean_relative_change": -0.0022,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "STRUCTURED_ARGS"
+    },
+    {
+      "axis": "list_syntax",
+      "from": "BRACKET_COMMA",
+      "improves": true,
+      "mean_relative_change": -0.0001,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "SPACE_SEPARATED"
+    },
+    {
+      "axis": "local_instance_visibility",
+      "from": "MERGED_INTO_CONTEXT",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "EXPLICIT"
+    },
+    {
+      "axis": "goal_position",
+      "from": "AFTER_CONTEXT",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "premise_to_action_distance_tokens",
+      "observations": 4,
+      "sign_agreement": 1.0,
+      "to": "INLINE_WITH_CONTEXT"
+    },
+    {
+      "axis": "graph_serialization",
+      "from": "DFS_PREORDER",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "max_reference_span_tokens",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "TOPOLOGICAL"
+    },
+    {
+      "axis": "premise_locality",
+      "from": "ADJACENT_TO_ACTION",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "premise_to_action_distance_tokens",
+      "observations": 4,
+      "sign_agreement": 1.0,
+      "to": "TRAILING_BLOCK"
+    },
+    {
+      "axis": "checksum_policy",
+      "from": "NONE",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "detect_corrupt_identity",
+      "observations": 3,
+      "sign_agreement": 1.0,
+      "to": "PER_STATE"
+    },
+    {
+      "axis": "graph_serialization",
+      "from": "DFS_PREORDER",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "max_reference_span_tokens",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "EDGE_LIST"
+    },
+    {
+      "axis": "graph_serialization",
+      "from": "DFS_PREORDER",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "max_reference_span_tokens",
+      "observations": 3,
+      "sign_agreement": 1.0,
+      "to": "NODE_LIST_THEN_EDGES"
+    },
+    {
+      "axis": "redundancy_level",
+      "from": "LOW",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "detect_drop_field",
+      "observations": 3,
+      "sign_agreement": 1.0,
+      "to": "SELECTIVE"
+    },
+    {
+      "axis": "identity_sigil",
+      "from": "NONE",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "identifier_fragmentation",
+      "observations": 3,
+      "sign_agreement": 1.0,
+      "to": "PREFIX_SIGIL"
+    },
+    {
+      "axis": "identity_sigil",
+      "from": "NONE",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "identifier_fragmentation",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "BRACKETED"
+    },
+    {
+      "axis": "const_name_form",
+      "from": "FULL_NAME",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "identifier_fragmentation",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "FULL_NAME_WITH_ALIAS_TABLE"
+    },
+    {
+      "axis": "role_word_length",
+      "from": "FULL",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "bpe_tokens_per_transition",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "SINGLE_CHAR"
+    },
+    {
+      "axis": "syntax_family",
+      "from": "BLOCK",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "detect_swap_records",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "INDENTED_TREE"
+    },
+    {
+      "axis": "graph_serialization",
+      "from": "DFS_PREORDER",
+      "improves": false,
+      "mean_relative_change": 0.0,
+      "metric": "max_reference_span_tokens",
+      "observations": 2,
+      "sign_agreement": 1.0,
+      "to": "DEPENDENCY_LOCAL"
+    }
+  ],
   "metric_equivalence_classes": 120,
   "name": "PRETRAINING_REPRESENTATION_FRONTIER_V1",
   "no_effect_groups": [

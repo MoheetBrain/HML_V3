@@ -51,6 +51,11 @@ class SearchConfig:
     validation_sample: int = 32
     max_generations: int = 30
     stall_limit: int = 5
+    #: A generation counts as having moved the frontier only when some Pareto axis improves
+    #: by at least this relative amount. Without a threshold the rule never fires: in a
+    #: growing population some axis always improves by a rounding error, and "the frontier
+    #: moved" would then mean nothing.
+    material_improvement: float = 0.005
     seed: int = 20260828
     #: Phase order: expose structure before architecture before grammar before lexicon.
     #: Optimising words while the architecture is still moving wastes generations.
@@ -342,8 +347,10 @@ class SearchController:
             novelty_slots=self.config.novelty_slots,
         )
         signature = frontier_signature(population)
+        threshold = self.config.material_improvement
         moved = self.last_signature is None or any(
-            new < old - 1e-9 for new, old in zip(signature, self.last_signature)
+            old - new > max(1e-9, threshold * abs(old))
+            for new, old in zip(signature, self.last_signature)
         )
         self.stall_count = 0 if moved else self.stall_count + 1
         self.last_signature = signature

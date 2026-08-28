@@ -41,6 +41,39 @@ from the pretty goal view. The CPU-only workflow is:
 The runtime and canonical contracts are documented under `research/canonical_ir/`.
 Representation benchmarking remains gated; V2 does not select a language.
 
+## Representation architecture search
+
+The language is a dependent variable, and since `REPRESENTATION_SEARCH_V1` it is also *data*.
+A candidate representation is a `RepresentationGenome` — a point in a 42-axis discrete space
+of 4.095e19 points — consumed by **one** generic compiler. No candidate has renderer code of
+its own, so two candidates cannot differ by an implementation accident and any candidate is
+reproducible from `(genome_sha256, compiler_version, canonical_state_version)`.
+
+```text
+CanonicalMathTransition V2  ->  projection  ->  Document  ->  surface  ->  text
+                            <-              <-            <-
+```
+
+Parsing runs the same pipeline backwards from the same genome, so losslessness is a property
+of the codec rather than a per-candidate promise. A candidate that hides declared-contract
+content fails the round-trip gate and is never scored — it cannot buy a smaller token count
+with a semantic loss.
+
+```sh
+PYTHONPATH=src python3 scripts/audit/stream_runtime_v2_corpus.py \
+    --campaign-dir external/runtime_probe/campaign500
+PYTHONPATH=src python3 scripts/search/run_representation_search.py --generations 12
+PYTHONPATH=src python3 scripts/search/build_search_report.py
+```
+
+The search is resumable: state lives in `data/representation_search/` and re-invoking the
+driver continues from the exact next generation. It never reads the sealed split.
+
+Start with [`research/representation_search/OBJECTIVES.md`](research/representation_search/OBJECTIVES.md)
+for what the search can and cannot establish, and
+[`research/representation_search/HML_FAILURE_MEMORY.md`](research/representation_search/HML_FAILURE_MEMORY.md)
+for the recorded negatives that constrain it.
+
 ## Scientific rules
 
 - Verifiers certify truth; model and human outputs are proposals until checked.
@@ -51,6 +84,12 @@ Representation benchmarking remains gated; V2 does not select a language.
   into Git.
 - A renderer may lose presentation detail only when the loss is documented and excluded
   from the declared semantic parity contract.
+- A measurement that cannot discriminate is reported as non-discriminative, never as
+  agreement.
+- Token counts name their vocabulary; byte counts and tokenizer-free pre-token counts are
+  reported beside them.
+- No representation is claimed optimal for neural reasoning without model evidence, and none
+  has been gathered.
 
 See [ROADMAP.md](ROADMAP.md), [DECISIONS.md](DECISIONS.md), and
 [data/README.md](data/README.md).

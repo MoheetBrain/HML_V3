@@ -230,6 +230,119 @@ was actually reached matched its exact before/after state.
 
 ---
 
+---
+
+# Lessons measured by this search
+
+Everything above was carried in from prior repositories. Everything below was measured here,
+and each entry names the run that produced it.
+
+---
+
+## FM-018 — Glyph token cost is a property of the vocabulary, not of the representation
+
+**Measured by.** The pinned GPT-2 byte-level BPE, against the prior audit's Qwen3-8B figures.
+
+| glyph | Qwen3-8B (prior audit) | GPT-2 (this search) | escaped, GPT-2 |
+|---|---:|---:|---:|
+| `⊢` | 1 | 3 | 7 |
+| `∀` | 1 | 2 | — |
+| `ℝ` | 1 | 3 | — |
+| `𝕜` | 1 | 3 | 8 |
+| `✝` | 1 | 2 | — |
+| `inst✝⁵` | 4 | 5 | 12 |
+
+**Two readings, and they point in different directions.** `FM-004`'s escaping penalty
+**reproduces** under a second, independent vocabulary: escaping costs 2.3x–2.7x under GPT-2,
+so the UTF-8 hard gate is not an artifact of one tokenizer. The absolute counts do **not**
+reproduce: every glyph the corpus needs is one token under Qwen3-8B and two or three under
+GPT-2.
+
+**Disposition:** `EXPERIMENT_DESIGN_CONSTRAINT`. Every token claim names its vocabulary, and
+byte counts plus tokenizer-free pre-tokens are reported beside every token count.
+
+---
+
+## FM-019 — Identifier-corruption detection saturates across every candidate
+
+**Measured by.** All sixteen generation-zero seeds, 24 real V2 transitions.
+
+`detect_corrupt_identity` read **1.000 for every seed**. An altered identifier either fails to
+resolve or resolves to a different declaration, so every representation over an
+identity-carrying canonical state catches it. For contrast, `detect_drop_field` spread
+0.000–0.792 and `detect_truncate_tail` 0.000–0.833 over the same seeds.
+
+**Disposition:** `INSTRUMENT_SATURATED`. Following `FM-010`, the axis was removed from Pareto
+selection **before the search began** and `detect_drop_field` took its place. It is still
+measured and still reported.
+
+`detect_truncate_tail` reads 0.000 for fifteen of sixteen seeds for a different and benign
+reason: the trailing block is usually the structured delta, which is outside the declared
+semantic contract. The one exception drops the delta entirely, which makes its tail contract
+content.
+
+---
+
+## FM-020 — Goal linearization is unmeasurable on a corpus of single-goal states
+
+**Measured by.** The pilot run over the 317-transition V2 corpus.
+
+`graph_serialization` was mutated 11 times as a single-axis change. It changed the
+measurement **0 times**. The corpus averages **1.01 goals per state** with a maximum of 2, so
+every linearization strategy renders identically. Five other axes also measured at 0%:
+`const_name_form`, `keyword_case`, `local_instance_visibility`, `role_word_length`,
+`type_attachment`.
+
+This is `FM-014`'s problem in a new place and now quantified per axis. The same corpus is
+richly structured in the *other* direction — mean 13.4 local declarations and 63.4
+intra-context references — so `context_order` moved the measurement 90% of the time.
+
+**Disposition:** `EXPERIMENT_DESIGN_CONSTRAINT`. The share of single-axis mutations that
+changed the measurement is reported per axis beside any claim about that axis. An axis at 0%
+is reported as unmeasurable on this corpus, never as tied.
+
+---
+
+## FM-021 — Goal-centred ordering loses again, now with real dependencies present
+
+**Measured by.** The pilot run. `FM-005` granted exactly one retry on a named changed
+condition: the V2 corpus carries real local-context dependency structure where the prior
+corpus averaged 1.00 claims and zero dependencies. The retry was taken.
+
+`context_order: DEPENDENCY_TOPOLOGICAL -> GOAL_CENTRED` changed
+`binder_use_distance_tokens` by **+3.8%** across 2 parents with 100% sign agreement — worse,
+in the same direction as before. `SEED_GOAL_LOCAL` finished 119th of 165 on token cost.
+
+The mechanism `FM-005` named — relevance and dependency proximity are different relations —
+now has support from a corpus that actually has dependencies to separate.
+
+**Disposition:** `DO_NOT_RETRY_UNCHANGED`, retry budget now **0**. `SEED_GOAL_LOCAL` remains
+in the population as a seed so the baseline stays visible; only new mutations toward
+goal-centred ordering are blocked.
+
+---
+
+## FM-022 — Hoisting shared subterms into a DAG more than doubles token cost
+
+**Measured by.** The pilot run.
+
+`shared_subterm_handling: DUPLICATE -> HOISTED_DAG_LETS` changed
+`bpe_tokens_per_transition` by **+136.4%** across 2 parents with 100% sign agreement.
+`SEED_HYBRID_LOCAL_DAG` measured 20,625 tokens against 7,013 for the cheapest seed, and its
+record-order corruption detection fell to **0.375**.
+
+**Mechanism.** The intuition is that a subterm repeated n times should be written once.
+Measured on real elaborated Lean expression trees, the alias table plus the reference
+machinery costs far more than the sharing saves: subterms that repeat are mostly small, and
+the ones large enough to be worth hoisting are rarely repeated. Detection falls because an
+alias section separates a record from the content that identifies it.
+
+**Disposition:** `DO_NOT_RETRY_UNCHANGED`, with one retry available on a named changed
+condition: a corpus whose expression trees repeat *large* maximal subterms. Measure the
+repeat-size distribution before spending that retry.
+
+---
+
 ## Open lessons this search is expected to add
 
 The mission brief lists two further beliefs that this repository has **no local artifact

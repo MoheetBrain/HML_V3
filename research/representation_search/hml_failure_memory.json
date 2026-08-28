@@ -365,6 +365,51 @@
       "note": "This is FM-014's problem in a new place and now quantified per axis. The V2 corpus is structurally rich in local context (mean 13.4 declarations, 63.4 intra-context references) so context_order moves the measurement 90% of the time, but it averages 1.01 goals per state, so every goal-linearization strategy renders identically. A ranking over graph_serialization from this corpus would be selection on noise.",
       "requirement": "report the share of single-axis mutations that changed the measurement, per axis, beside any claim about that axis; an axis at 0% is reported as unmeasurable on this corpus rather than as tied",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-021",
+      "title": "Goal-centred ordering loses again, now on a corpus that has real dependencies",
+      "disposition": "DO_NOT_RETRY_UNCHANGED",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 representation search, pilot run, 317-transition V2 corpus",
+      "numbers": {
+        "context_order_DEPENDENCY_TOPOLOGICAL_to_GOAL_CENTRED": {
+          "metric": "binder_use_distance_tokens",
+          "mean_relative_change": 0.038,
+          "observations": 2,
+          "sign_agreement": 1.0
+        },
+        "seed_goal_local_token_rank": "119 of 165"
+      },
+      "note": "FM-005 allowed exactly one retry on the stated changed condition that the V2 corpus carries real local-context dependency structure, unlike the prior corpus with 1.00 claims and zero dependencies. The retry was taken and the result reproduced: grouping declarations by relevance to the goal made binder-use distance worse, not better. The mechanism FM-005 named -- relevance and dependency proximity are different relations -- now has support from a corpus averaging 13.4 local declarations and 63.4 intra-context references.",
+      "blocked_traits": [
+        "context_order=GOAL_CENTRED",
+        "graph_serialization=GOAL_CENTRED"
+      ],
+      "retry_budget": 0
+    },
+    {
+      "id": "FM-022",
+      "title": "Hoisting shared subterms into a DAG more than doubles token cost",
+      "disposition": "DO_NOT_RETRY_UNCHANGED",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 representation search, pilot run, 317-transition V2 corpus",
+      "numbers": {
+        "shared_subterm_handling_DUPLICATE_to_HOISTED_DAG_LETS": {
+          "metric": "bpe_tokens_per_transition",
+          "mean_relative_change": 1.364,
+          "observations": 2,
+          "sign_agreement": 1.0
+        },
+        "seed_hybrid_local_dag_tokens": 20625,
+        "seed_hybrid_local_dag_swap_detection": 0.375
+      },
+      "note": "The intuition is that a subterm repeated n times should be written once. Measured, the alias table plus the reference machinery costs far more than the sharing saves on real Lean expression trees: elaborated subterms that repeat are mostly small, and the ones large enough to be worth hoisting are rarely repeated. It also halved record-order corruption detection, because an alias section separates a record from the content that identifies it.",
+      "blocked_traits": [
+        "shared_subterm_handling=HOISTED_DAG_LETS"
+      ],
+      "retry_budget": 1,
+      "changed_condition_permitting_one_retry": "a corpus whose expression trees repeat large maximal subterms -- measure the repeat-size distribution before retrying"
     }
   ]
 }

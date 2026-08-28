@@ -62,6 +62,49 @@ def derivation(record, registry) -> tuple[str, list[str]]:
     return "unknown", []
 
 
+def measured_effects(registry) -> list[dict]:
+    """Aggregate every single-axis mutation into a per-transition effect size.
+
+    One parent-child pair is an anecdote. The same axis transition applied to several
+    different parents, agreeing in sign, is a mechanism. This aggregates all of them and
+    reports the relative change in the axis's own target metric, so a reader can see which
+    structural decisions actually cost or bought something on this corpus.
+    """
+
+    buckets: dict[tuple[str, str, str, str], list[float]] = {}
+    for record in registry.accepted():
+        if record.origin != "SINGLE_AXIS" or not record.parents or not record.hypothesis:
+            continue
+        parent = registry.get(record.parents[0])
+        if parent is None or not parent.metrics or not record.metrics:
+            continue
+        axis = record.hypothesis.get("axis")
+        metric = record.hypothesis.get("target_metric")
+        if not axis or not metric:
+            continue
+        before = parent.metrics.get(metric)
+        after = record.metrics.get(metric)
+        if before is None or after is None or abs(before) < 1e-9:
+            continue
+        key = (axis, record.hypothesis.get("from_value"), record.hypothesis.get("to_value"),
+               metric)
+        buckets.setdefault(key, []).append((after - before) / abs(before))
+    rows = []
+    for (axis, from_value, to_value, metric), deltas in buckets.items():
+        if len(deltas) < 2:
+            continue
+        mean = sum(deltas) / len(deltas)
+        agree = sum(1 for delta in deltas if (delta > 0) == (mean > 0))
+        rows.append({
+            "axis": axis, "from": from_value, "to": to_value, "metric": metric,
+            "observations": len(deltas),
+            "mean_relative_change": round(mean, 4),
+            "sign_agreement": round(agree / len(deltas), 3),
+            "improves": (mean < 0) if metric not in MAXIMISED else (mean > 0),
+        })
+    return sorted(rows, key=lambda row: -abs(row["mean_relative_change"]))
+
+
 def axis_effect_table(registry) -> list[dict]:
     """For each axis, how often a single-axis mutation changed the Pareto vector at all.
 
@@ -154,6 +197,7 @@ def main() -> None:
         "metric_equivalence_classes": len(classes),
         "shortlist_reasons": reasons,
         "axis_effects": axis_effect_table(registry),
+        "measured_effects": measured_effects(registry),
         "no_effect_groups": sorted(
             (sorted(members) for members in classes.values() if len(members) > 1),
             key=lambda members: (-len(members), members[0]),
@@ -313,14 +357,21 @@ def render_markdown(payload: dict, registry: CandidateRegistry) -> str:
         )
     lines += ["", "## Controls", "",
               "Every seeded baseline, whether or not it survived. `FM-002` and `FM-006` "
-              "require the recorded baselines to remain visible for the whole search.",
+              "require the recorded baselines to remain visible for the whole search. "
+              "Token rank is out of the whole evaluated population, lower is cheaper.",
               "",
-              "| Baseline | Status | On front | Token rank | Rejection |", "|---|---|---|---|---|"]
+              "| Baseline | Status | Strict front | Finalist | Token rank | BPE tokens | "
+              "Binder distance | Rejection |",
+              "|---|---|---|---|---:|---:|---:|---|"]
     for control in payload["controls"]:
+        metrics = control.get("metrics") or {}
         lines.append(
             f"| `{control['label']}` | {control['status']} | "
-            f"{'yes' if control['on_front'] else 'no'} | "
+            f"{'yes' if control.get('on_strict_front') else 'no'} | "
+            f"{'**yes**' if control['on_front'] else 'no'} | "
             f"{control['token_rank'] if control['token_rank'] else '—'} | "
+            + (f"{metrics['bpe_tokens_per_transition']:.0f}" if metrics else "—") + " | "
+            + (f"{metrics['binder_use_distance_tokens']:.0f}" if metrics else "—") + " | "
             f"{control['rejection_reason'] or '—'} |"
         )
     lines += ["", "## Generations", "",
@@ -394,6 +445,24 @@ def render_markdown(payload: dict, registry: CandidateRegistry) -> str:
         for axis, value in sorted(item["genome"].items()):
             lines.append(f"| `{axis}` | `{value}` |")
         lines += ["", "</details>", ""]
+
+    effects = [row for row in payload["measured_effects"] if row["sign_agreement"] >= 0.75]
+    lines += ["", "## Measured structural effects", "",
+              "One parent-child pair is an anecdote. The table below aggregates every "
+              "single-axis mutation applied to two or more different parents and reports the "
+              "mean relative change in the metric that axis was predicted to move, with the "
+              "fraction of observations agreeing in sign. Only transitions with at least 75% "
+              "sign agreement are shown.",
+              "",
+              "| Axis | From | To | Metric | Mean change | n | Agreement | Verdict |",
+              "|---|---|---|---|---:|---:|---:|---|"]
+    for row in effects[:24]:
+        lines.append(
+            f"| `{row['axis']}` | `{row['from']}` | `{row['to']}` | `{row['metric']}` | "
+            f"{row['mean_relative_change']:+.1%} | {row['observations']} | "
+            f"{row['sign_agreement']:.0%} | "
+            f"{'improves' if row['improves'] else '**costs**'} |"
+        )
 
     lines += ["", "## Which axes this corpus can speak to", "",
               "Every single-axis mutation whose child measured identically to its parent is "

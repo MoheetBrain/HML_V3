@@ -78,9 +78,15 @@ reports/representation_search/PRETRAINING_FRONTIER_V1.{md,json}
    records every defect instead of aborting.
 3. **Corpus.** 317 canonical transitions over 26 Mathlib domains, mean 13.4 local
    declarations and 63.4 intra-context references per transition.
-4. **Failure memory.** 19 lessons, 17 from prior repositories and 2 measured here.
+4. **Failure memory.** 22 lessons: 17 carried in from prior repositories and 5 measured
+   here (`FM-018` to `FM-022`).
 5. **Search engine.** Built and tested; 38 dedicated tests, 58 in the suite.
-6. **Search run.** Recursive generations over the dev split, checkpointed and resumable.
+6. **Pilot search run.** 12 generations over the 317-transition corpus: 208 candidates
+   registered, 165 evaluated, 27 hard-rejected, 182 hypotheses refuted. It measured five new
+   negatives, all now in the failure memory: goal-centred ordering loses again with real
+   dependencies present; DAG hoisting costs +136% tokens; identifier-corruption detection
+   saturates; goal linearization is unmeasurable at 1.01 goals per state; and the glyph
+   escaping penalty reproduces under a second vocabulary while absolute token counts do not.
 7. **Second campaign.** A complementary 500-target campaign over the untouched half of the
    V1 sample is running to extend the corpus.
 

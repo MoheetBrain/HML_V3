@@ -35,6 +35,21 @@ empirical gaps are recorded without extending the IR speculatively.
 - Record the smallest empirical counterexample for each information loss.
 - Extend the IR only when real verified mathematics demonstrates the need.
 
+## M2.5 — Representation architecture search
+
+**Status: ENGINE COMPLETE; SEARCH RUN.** The language became data: a 42-axis
+`RepresentationGenome` over 4.095e19 points, one generic compiler, six hard semantic gates, a
+21-metric evaluator, Pareto selection with pinned baselines, a hypothesis-carrying mutation
+library, an enforced failure memory, a synthetic adversarial generator, family-level corpus
+sealing, and a checkpointing controller.
+
+- Certify the Lean V2 runtime substrate and build a canonical corpus with every exclusion
+  counted.
+- Make every candidate reproducible from a genome hash rather than from renderer code.
+- Reject on semantics before scoring on cost.
+- Record every measured negative into the failure memory so it is never re-derived.
+- Report the frontier without claiming optimality.
+
 ## M3 — Representation benchmark V3
 
 - Build premise-selection, next-action, transition-validity, and state-delta tasks from
@@ -49,3 +64,5 @@ empirical gaps are recorded without extending the IR speculatively.
 - Free-running proof search.
 - Additional formal-system adapters.
 - Search over representation genomes only after the substrate and tasks are trusted.
+- A matched, control-gated model experiment on the pretraining frontier's finalists — frozen
+  inference first, then a tiny probe, and only then any adaptation.

@@ -48,26 +48,26 @@ The finalists below follow a rule that states why each one is present: **the bes
 
 ## Controls
 
-Every seeded baseline, whether or not it survived. `FM-002` and `FM-006` require the recorded baselines to remain visible for the whole search.
+Every seeded baseline, whether or not it survived. `FM-002` and `FM-006` require the recorded baselines to remain visible for the whole search. Token rank is out of the whole evaluated population, lower is cheaper.
 
-| Baseline | Status | On front | Token rank | Rejection |
-|---|---|---|---|---|
-| `SEED_CANONICAL_SEXPR` | EVALUATED | no | 77 | — |
-| `SEED_DELTA_FIRST` | EVALUATED | yes | 100 | — |
-| `SEED_DEPENDENCY_TOPOLOGICAL` | EVALUATED | no | 102 | — |
-| `SEED_EXPLICIT_REDUNDANT` | EVALUATED | no | 136 | — |
-| `SEED_GOAL_LOCAL` | EVALUATED | no | 119 | — |
-| `SEED_GRAPH_EDGE` | EVALUATED | no | 132 | — |
-| `SEED_HEADER_PREMISE` | EVALUATED | no | 113 | — |
-| `SEED_HYBRID_COMPACT_BLOCK` | EVALUATED | no | 55 | — |
-| `SEED_HYBRID_LOCAL_DAG` | EVALUATED | no | 165 | — |
-| `SEED_HYBRID_RPN_MACHINE` | EVALUATED | no | 14 | — |
-| `SEED_JSON_BASELINE` | EVALUATED | no | 89 | — |
-| `SEED_LEAN_LIKE` | EVALUATED | no | 151 | — |
-| `SEED_MINIMAL_MACHINE` | EVALUATED | no | 29 | — |
-| `SEED_PRIOR_HML` | EVALUATED | no | 101 | — |
-| `SEED_STRUCTURED_ENGLISH` | EVALUATED | no | 150 | — |
-| `SEED_TYPED_AST` | EVALUATED | no | 144 | — |
+| Baseline | Status | Strict front | Finalist | Token rank | BPE tokens | Binder distance | Rejection |
+|---|---|---|---|---:|---:|---:|---|
+| `SEED_CANONICAL_SEXPR` | EVALUATED | yes | no | 77 | 9041 | 248 | — |
+| `SEED_DELTA_FIRST` | EVALUATED | no | **yes** | 100 | 9467 | 247 | — |
+| `SEED_DEPENDENCY_TOPOLOGICAL` | EVALUATED | no | no | 102 | 9467 | 262 | — |
+| `SEED_EXPLICIT_REDUNDANT` | EVALUATED | no | no | 136 | 10307 | 293 | — |
+| `SEED_GOAL_LOCAL` | EVALUATED | no | no | 119 | 9721 | 268 | — |
+| `SEED_GRAPH_EDGE` | EVALUATED | no | no | 132 | 9986 | 239 | — |
+| `SEED_HEADER_PREMISE` | EVALUATED | no | no | 113 | 9470 | 256 | — |
+| `SEED_HYBRID_COMPACT_BLOCK` | EVALUATED | yes | no | 55 | 8701 | 241 | — |
+| `SEED_HYBRID_LOCAL_DAG` | EVALUATED | no | no | 165 | 23840 | 176 | — |
+| `SEED_HYBRID_RPN_MACHINE` | EVALUATED | yes | no | 14 | 7667 | 212 | — |
+| `SEED_JSON_BASELINE` | EVALUATED | no | no | 89 | 9262 | 257 | — |
+| `SEED_LEAN_LIKE` | EVALUATED | no | no | 151 | 11925 | 395 | — |
+| `SEED_MINIMAL_MACHINE` | EVALUATED | yes | no | 29 | 7977 | 225 | — |
+| `SEED_PRIOR_HML` | EVALUATED | no | no | 101 | 9467 | 262 | — |
+| `SEED_STRUCTURED_ENGLISH` | EVALUATED | no | no | 150 | 11666 | 385 | — |
+| `SEED_TYPED_AST` | EVALUATED | yes | no | 144 | 10997 | 305 | — |
 
 ## Generations
 
@@ -576,6 +576,37 @@ Rejections are evidence, not waste: they are what demonstrates that the hard gat
 
 </details>
 
+
+## Measured structural effects
+
+One parent-child pair is an anecdote. The table below aggregates every single-axis mutation applied to two or more different parents and reports the mean relative change in the metric that axis was predicted to move, with the fraction of observations agreeing in sign. Only transitions with at least 75% sign agreement are shown.
+
+| Axis | From | To | Metric | Mean change | n | Agreement | Verdict |
+|---|---|---|---|---:|---:|---:|---|
+| `action_position` | `BETWEEN_STATES` | `TRAILER` | `premise_to_action_distance_tokens` | +198.9% | 3 | 100% | **costs** |
+| `shared_subterm_handling` | `DUPLICATE` | `HOISTED_DAG_LETS` | `bpe_tokens_per_transition` | +136.4% | 2 | 100% | **costs** |
+| `action_position` | `BETWEEN_STATES` | `HEADER` | `premise_to_action_distance_tokens` | -85.6% | 2 | 100% | improves |
+| `syntax_family` | `TAGGED_LINE` | `INDENTED_TREE` | `detect_swap_records` | +43.5% | 2 | 100% | improves |
+| `block_delimiter` | `INDENT` | `KEYWORD_END` | `detect_drop_line` | -27.5% | 3 | 100% | **costs** |
+| `count_assertions` | `NONE` | `PER_BLOCK` | `detect_drop_line` | -22.2% | 2 | 100% | **costs** |
+| `expression_notation` | `SEXPR_PREFIX` | `POSTFIX_RPN` | `bpe_tokens_per_transition` | -19.5% | 2 | 100% | improves |
+| `syntax_family` | `BLOCK` | `SEXPR` | `detect_swap_records` | -5.8% | 3 | 100% | **costs** |
+| `alpha_normalization` | `NORMALIZED` | `BOTH` | `bpe_tokens_per_transition` | +4.5% | 3 | 100% | **costs** |
+| `context_order` | `DEPENDENCY_TOPOLOGICAL` | `GOAL_CENTRED` | `binder_use_distance_tokens` | +3.8% | 2 | 100% | **costs** |
+| `binder_encoding` | `DE_BRUIJN` | `NAMED_PLUS_DE_BRUIJN` | `bpe_tokens_per_transition` | +1.6% | 4 | 100% | **costs** |
+| `lexicon_register` | `COMPACT_MNEMONIC` | `HUMAN_WORDS` | `bpe_tokens_per_transition` | +1.1% | 2 | 100% | **costs** |
+| `context_order` | `DECLARATION_INDEX` | `REVERSE_INDEX` | `binder_use_distance_tokens` | -0.9% | 2 | 100% | improves |
+| `tree_vs_graph_projection` | `TREE_NESTED` | `GRAPH_EDGE_LIST` | `max_reference_span_tokens` | +0.9% | 2 | 100% | **costs** |
+| `lexicon_register` | `COMPACT_MNEMONIC` | `SYMBOLIC_ROLE` | `bpe_tokens_per_transition` | -0.7% | 2 | 100% | improves |
+| `lexicon_register` | `HUMAN_WORDS` | `COMPACT_MNEMONIC` | `bpe_tokens_per_transition` | -0.6% | 2 | 100% | improves |
+| `binder_use_reminder` | `NONE` | `TYPE_AT_USE` | `binder_use_distance_tokens` | -0.5% | 2 | 100% | improves |
+| `lexicon_register` | `HUMAN_WORDS` | `MATH_NOTATION` | `bpe_tokens_per_transition` | -0.4% | 2 | 100% | improves |
+| `action_encoding` | `SOURCE_PLUS_STRUCTURED` | `STRUCTURED_ARGS` | `bpe_tokens_per_transition` | -0.2% | 2 | 100% | improves |
+| `list_syntax` | `BRACKET_COMMA` | `SPACE_SEPARATED` | `bpe_tokens_per_transition` | -0.0% | 2 | 100% | improves |
+| `local_instance_visibility` | `MERGED_INTO_CONTEXT` | `EXPLICIT` | `bpe_tokens_per_transition` | +0.0% | 2 | 100% | **costs** |
+| `goal_position` | `AFTER_CONTEXT` | `INLINE_WITH_CONTEXT` | `premise_to_action_distance_tokens` | +0.0% | 4 | 100% | **costs** |
+| `graph_serialization` | `DFS_PREORDER` | `TOPOLOGICAL` | `max_reference_span_tokens` | +0.0% | 2 | 100% | **costs** |
+| `premise_locality` | `ADJACENT_TO_ACTION` | `TRAILING_BLOCK` | `premise_to_action_distance_tokens` | +0.0% | 4 | 100% | **costs** |
 
 ## Which axes this corpus can speak to
 

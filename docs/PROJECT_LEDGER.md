@@ -158,3 +158,49 @@ is a proof-search acquisition problem and out of scope for this mission.
 
 **Next intended step.** Finish the second campaign, rebuild the corpus, and run the search to
 convergence on the extended corpus.
+
+## 2026-08-28 — pilot search run and its five measured negatives
+
+**Branch:** `codex/lean-runtime-semantic-capture-v2`
+**Stage:** REPRESENTATION_SEARCH_V1
+
+**Objective.** Exercise the engine end to end on the real corpus and see whether it produces
+mechanism-level results rather than a leaderboard.
+
+**What ran.** 12 generations across the phase schedule (exposure, then architecture, then
+grammar, then lexicon): 208 candidates registered, 165 evaluated, 27 hard-rejected, 182
+hypotheses refuted.
+
+**Measured negatives, all appended to the failure memory.**
+
+- `FM-021` — goal-centred context ordering changed `binder_use_distance_tokens` by **+3.8%**
+  across two parents with 100% sign agreement. `FM-005` had granted exactly one retry on the
+  stated changed condition that the V2 corpus carries real dependency structure. The retry
+  was taken, the result reproduced, and the budget is now spent.
+- `FM-022` — hoisting shared subterms into a DAG changed `bpe_tokens_per_transition` by
+  **+136.4%** and dropped record-order corruption detection to 0.375. The alias table costs
+  more than the sharing saves on real elaborated Lean trees.
+- `FM-019` — `detect_corrupt_identity` read **1.000 for all sixteen seeds**. Following
+  `FM-010` it was removed from the Pareto axes before the search began.
+- `FM-020` — `graph_serialization` was mutated 11 times and changed the measurement **0
+  times**, because the corpus averages 1.01 goals per state. Five further axes measured at 0%.
+- `FM-018` — `FM-004`'s escaping penalty reproduces under GPT-2 (2.3x–2.7x), but the absolute
+  glyph costs do not: 1 token under Qwen3-8B, 2–3 under GPT-2.
+
+**Decisions made.** Reporting a shortlist by extreme points plus the knee rather than by an
+epsilon-front: at eps=0.02 the epsilon-front still held 147 of 165 candidates, so it was not a
+shortlist. Selection continued to use the strict front, so the reporting rule could not steer
+the search. A material-improvement threshold of 0.5% was added to the convergence test,
+because without one "the frontier moved" fires on rounding error in a growing population.
+
+**Tests actually executed.** `PYTHONPATH=src python3 -m unittest discover -s tests` — 58
+tests, all passing, after each change above. The sealed-evaluation CLI path was exercised end
+to end against a synthetic corpus so the real sealed split stayed untouched.
+
+**Failures and unresolved uncertainty.** The strict Pareto front holds 85 of 165 candidates;
+seven axes is enough dimensionality that most candidates are best at something. The pilot ran
+on 317 transitions and did not reach structural convergence — the frontier was still moving
+at generation 11.
+
+**Next intended step.** Merge the second campaign into the corpus, re-run the search to
+convergence, perform the single sealed evaluation.

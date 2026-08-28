@@ -23,6 +23,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from hml_v3.representation_search.compiler import build  # noqa: E402
 from hml_v3.representation_search.controller import SearchConfig, SearchController  # noqa: E402
 from hml_v3.representation_search.failure_memory import FailureMemory  # noqa: E402
+from hml_v3.representation_search.pareto import shortlist  # noqa: E402
 from hml_v3.representation_search.sealing import SealedEvaluator, split_corpus  # noqa: E402
 
 DEFAULT_CORPUS = ROOT / "data/corpus/lean_runtime_v2.canonical.jsonl.gz"
@@ -104,12 +105,14 @@ def main() -> None:
     if args.seal_final:
         evaluator = SealedEvaluator(split.sealed, args.workspace / "sealed_access_log.jsonl")
         front = controller.history[-1] if controller.history else {}
-        latest = sorted(
-            (args.workspace / "generations").glob("generation_*.json"),
-        )
-        front_ids: list[str] = []
-        if latest:
-            front_ids = json.loads(latest[-1].read_text())["front"]
+        # Seal only the reported finalists. The strict front can hold most of a grown
+        # population, and every extra sealed evaluation is another read of a split that is
+        # supposed to be touched once.
+        population = [
+            (record.candidate_id, record.metrics or {})
+            for record in controller.registry.accepted()
+        ]
+        front_ids, shortlist_reasons = shortlist(population)
         results = []
         for candidate_id in front_ids:
             record = controller.registry.get(candidate_id)
@@ -121,6 +124,7 @@ def main() -> None:
         output.write_text(json.dumps({
             "sealed_transitions": evaluator.size,
             "front_size": len(front_ids),
+            "shortlist_reasons": shortlist_reasons,
             "results": results,
             "generation_history_tail": front,
         }, indent=2, sort_keys=True) + "\n")
