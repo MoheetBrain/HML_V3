@@ -18,12 +18,31 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 import json
 from pathlib import Path
-from typing import Any, Callable
+from typing import Any, Callable, Sequence
 
 from hml_v3.representation_search.document import Document, Record, Section
 
 #: A hook transforms a Document given the axis value and the proposal's parameters.
 ProjectionHook = Callable[[Document, str, dict[str, Any]], Document]
+
+
+def variant(value: str, values: Sequence[str]) -> int:
+    """Which behaviour an axis value selects, by position rather than by name.
+
+    An earlier version matched value names literally (``GOAL_LOCAL``, ``BEFORE``), so an
+    invented axis whose values were ``WIDE``/``NARROW`` silently did nothing: it took the
+    fallback branch, which happened to reproduce the existing layout. Three axes were
+    accepted that way and all nine of their axis-value combinations rendered identically.
+
+    Hooks now index behaviour by the value's position among the non-``NONE`` values, so any
+    naming an inventor chooses is functional.
+    """
+
+    active = [item for item in values if item != "NONE"]
+    try:
+        return active.index(value)
+    except ValueError:
+        return 0
 
 REGISTRY_VERSION = "primitive-registry-v1.0.0"
 
@@ -80,7 +99,7 @@ def hook_neighbourhood_capsule(
             ]
             for record in capsule:
                 placed.add(record.identity or "")
-            if value in ("GOAL_LOCAL", "GOAL_AND_ACTION"):
+            if variant(value, params.get("values", ())) == 0:
                 rebuilt.extend(capsule)
                 rebuilt.append(goal)
             else:
@@ -146,7 +165,7 @@ def hook_section_partition(
         if not matching:
             sections.append(section)
             continue
-        if value == "BEFORE":
+        if variant(value, params.get("values", ())) == 0:
             sections.append(Section(section.kind, matching + rest))
         else:
             sections.append(Section(section.kind, rest + matching))
@@ -167,10 +186,12 @@ def hook_record_reorder(
         matching = [record for record in section.records if record.kind == kind]
         if len(matching) < 2:
             continue
-        if value == "REVERSE":
+        position = variant(value, params.get("values", ()))
+        if position == 0:
             ordered = list(reversed(matching))
-        elif value == "BY_FIELD_COUNT":
-            ordered = sorted(matching, key=lambda record: (len(record.fields), record.identity or ""))
+        elif position == 1:
+            ordered = sorted(
+                matching, key=lambda record: (len(record.fields), record.identity or ""))
         else:
             ordered = sorted(matching, key=lambda record: record.identity or "")
         iterator = iter(ordered)
@@ -341,6 +362,51 @@ class PrimitiveRegistry:
     def register(self, primitive: RegisteredPrimitive) -> None:
         self.primitives[primitive.axis_name] = primitive
 
+    def has_observable_effect(
+        self, primitive: RegisteredPrimitive, compiler_factory, transitions,
+    ) -> tuple[bool, dict[str, Any]]:
+        """Does at least one value of this axis change the rendering?
+
+        Acceptance condition 6 in the spec, now enforced rather than merely stated. Three
+        axes were accepted before this check existed whose nine axis-value combinations all
+        rendered identically: the meta-designer had proposed real-sounding mechanisms that
+        the projection algebra turned into no-ops. An inert axis is worse than no axis --
+        it consumes search budget and inflates the apparent size of the space.
+        """
+
+        if not transitions:
+            return False, {"reason": "no transitions to test against"}
+        renderings: dict[str, str] = {}
+        for value in primitive.values:
+            invented = {primitive.axis_name: value}
+            try:
+                compiler = compiler_factory(invented)
+                renderings[value] = "\n@@\n".join(
+                    compiler.render_text(transition) for transition in transitions)
+            except Exception as error:  # noqa: BLE001
+                return False, {"reason": f"render failed for {value}: {type(error).__name__}"}
+        distinct = len({text for text in renderings.values()})
+        return distinct > 1, {
+            "values_tested": list(primitive.values),
+            "distinct_renderings": distinct,
+            "transitions_tested": len(transitions),
+        }
+
+    def reject_inert(self, primitive: RegisteredPrimitive, evidence: dict[str, Any]) -> None:
+        """Record an accepted-then-inert axis instead of leaving it in the genome."""
+
+        self.primitives.pop(primitive.axis_name, None)
+        self.unimplementable.append({
+            "status": "ACCEPTED_UNIMPLEMENTABLE",
+            "axis_name": primitive.axis_name,
+            "proposal_id": primitive.proposal_id,
+            "generation": primitive.generation,
+            "proposer": primitive.proposer,
+            "reason": "NO_OBSERVABLE_EFFECT: every value rendered identically on the sample",
+            "evidence": evidence,
+            "payload": {"hypothesis": primitive.hypothesis, "mechanism": primitive.mechanism},
+        })
+
     def flush(self) -> None:
         self.path.parent.mkdir(parents=True, exist_ok=True)
         lines = [
@@ -375,5 +441,7 @@ def apply_primitives(
         value = genome_values.get(primitive.axis_name, "NONE")
         if value == "NONE":
             continue
-        result = HOOKS[primitive.hook](result, value, primitive.params)
+        params = dict(primitive.params)
+        params.setdefault("values", list(primitive.values))
+        result = HOOKS[primitive.hook](result, value, params)
     return result

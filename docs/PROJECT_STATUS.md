@@ -94,6 +94,10 @@ finding it. V2 replaces that with a proposal channel.
 - Ten canonical-level semantic mutation families with an applicability report.
 - Nine structural-access microtest suites whose ground truth is the canonical state.
 - Targeted corpus acquisition that selects for the strata a measured gap says are missing.
+- Inference-only neural microprobes with matched counterfactuals, dumb-control vetoes and a
+  preregistered sequential stopping rule.
+- An observable-effect gate: a newly invented axis is rendered at every value and kept only if
+  at least two differ, so the search cannot inflate its own space with inert dimensions.
 
 ## Work Completed to Date
 

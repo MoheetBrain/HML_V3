@@ -459,6 +459,37 @@
       "note": "Two independent checks agree. Across a held-out split selection never read, the cost and locality axes rank the finalists almost identically (rho 0.93-1.00) while record-swap detection nearly loses its ordering (rho 0.357). Across Mathlib domains, the same three axes have one leader in 100% of domains while the detection axes have a modal leader in only 56-69%. Cost and locality are properties of the representation; corruption detection depends on what the state happens to contain.",
       "requirement": "a corruption-detection claim names its sample and is reported with its cross-split rank correlation; a cost or locality claim may be stated for the representation",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-025",
+      "title": "A colon heuristic made four of nine microtest suites read 100% unanswerable",
+      "disposition": "INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search V2, while building the structural-access suites",
+      "numbers": {
+        "suites_affected": 4,
+        "suites_total": 9,
+        "apparent_unanswerable_rate": 1.0,
+        "true_unanswerable_rate": 0.0
+      },
+      "note": "The suites decided whether to route an identity through the candidate's identity codec by testing whether the identity contained a colon. That was a guess about the shape of canonical identities, and it was wrong: the committed corpus uses short identities such as m9 and f17, so the test was false and the suite searched a rendering containing 'bm9' for the string 'm9'. Every identity now routes through the codec unconditionally, which returns unknown names unchanged and is therefore correct for both canonical identities and global constants like Nat.add. A second defect in the same family: the delta suite counted a goal identity found anywhere in the rendering as answering 'which goals did this step solve?', so a representation that omits the delta scored as if it stated it; relational queries are now scoped to the section that states the relation.",
+      "requirement": "an instrument is checked against a real rendering before any number it produces is reported; a rate over zero queries is reported as zero queries, never as agreement",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-026",
+      "title": "An invented axis can be accepted, registered, and completely inert",
+      "disposition": "SEARCH_SPACE_LIMITATION",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search V2, first live generation",
+      "numbers": {
+        "axes_accepted": 3,
+        "axis_value_combinations": 9,
+        "distinct_renderings": 1
+      },
+      "note": "In the first live generation the model-driven meta-designer proposed three new axes with plausible mechanisms -- goal_refinement, context_signature, context_range -- and all three were accepted, registered, and bumped the genome schema to v2.3.0. All nine of their axis-value combinations then rendered IDENTICALLY. Two causes, both mine. First, the projection hooks matched value names literally ('GOAL_LOCAL', 'BEFORE'), so an axis whose inventor chose WIDE/NARROW took a fallback branch that happened to reproduce the existing layout; hooks now index behaviour by the value's position among the non-NONE values, so any naming works. Second, acceptance condition 6 -- 'at least one value differs observably on the corpus' -- was written in the spec and never enforced; registration now renders every value on a sample and rejects the axis as NO_OBSERVABLE_EFFECT if they all agree.",
+      "requirement": "an invented axis is provisionally registered, then rendered at every value on a sample, and kept only if at least two values differ; an inert axis is worse than no axis because it consumes search budget and inflates the apparent size of the space",
+      "blocked_traits": []
     }
   ]
 }

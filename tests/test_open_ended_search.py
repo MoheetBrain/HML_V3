@@ -246,6 +246,57 @@ class PrimitiveRegistryTests(unittest.TestCase):
         primitive, _ = self.registry.consider(payload, "P_3", 1, "test", AXIS_NAMES)
         self.assertIn("NONE", primitive.values)
 
+    def test_an_inert_axis_is_rejected_not_kept(self) -> None:
+        """An axis whose values all render identically consumes budget and inflates the space."""
+
+        primitive, _ = self.registry.consider(_valid_new_axis(), "P_9", 1, "t", AXIS_NAMES)
+        self.registry.register(primitive)
+        genome = default_genome()
+
+        # A factory that ignores the invented axis entirely, so nothing can differ.
+        observable, evidence = self.registry.has_observable_effect(
+            primitive, lambda invented: build(genome), FIXTURES[:3])
+        self.assertFalse(observable)
+        self.assertEqual(evidence["distinct_renderings"], 1)
+
+        self.registry.reject_inert(primitive, evidence)
+        self.assertNotIn("dependency_capsule", self.registry.primitives)
+        self.assertTrue(self.registry.unimplementable)
+
+    def test_an_effective_axis_passes_the_observable_effect_check(self) -> None:
+        primitive, _ = self.registry.consider(_valid_new_axis(), "P_10", 1, "t", AXIS_NAMES)
+        self.registry.register(primitive)
+        genome = default_genome(goal_position="FIRST")
+        observable, evidence = self.registry.has_observable_effect(
+            primitive,
+            lambda invented: build(genome, invented, self.registry),
+            FIXTURES[:4],
+        )
+        self.assertTrue(observable, evidence)
+        self.assertGreater(evidence["distinct_renderings"], 1)
+
+    def test_hook_behaviour_is_indexed_by_position_not_by_value_name(self) -> None:
+        """An invented axis must work whatever its inventor called the values."""
+
+        from hml_v3.representation_search.primitive_registry import variant
+
+        self.assertEqual(variant("WIDE", ["NONE", "WIDE", "NARROW"]), 0)
+        self.assertEqual(variant("NARROW", ["NONE", "WIDE", "NARROW"]), 1)
+        self.assertEqual(variant("GOAL_LOCAL", ["NONE", "GOAL_LOCAL", "ACTION_LOCAL"]), 0)
+
+    def test_an_axis_with_unusual_value_names_still_renders_differently(self) -> None:
+        payload = _valid_new_axis(name="context_range")
+        payload["values"] = ["NONE", "WIDE", "NARROW"]
+        primitive, _ = self.registry.consider(payload, "P_11", 1, "t", AXIS_NAMES)
+        self.registry.register(primitive)
+        genome = default_genome(goal_position="FIRST")
+        observable, evidence = self.registry.has_observable_effect(
+            primitive,
+            lambda invented: build(genome, invented, self.registry),
+            FIXTURES[:4],
+        )
+        self.assertTrue(observable, f"WIDE/NARROW axis was inert: {evidence}")
+
     def test_registry_round_trips_through_disk(self) -> None:
         primitive, _ = self.registry.consider(_valid_new_axis(), "P_4", 1, "test", AXIS_NAMES)
         self.registry.register(primitive)

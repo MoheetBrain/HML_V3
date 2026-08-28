@@ -392,3 +392,55 @@ campaign is still elaborating, so the enlarged corpus is not yet in the search.
 
 **Next intended step.** Finish the campaign, rebuild the corpus, freeze `SEALED_FINAL_V2`, add
 inference-only neural microprobes, and run the open-ended search.
+
+## 2026-08-28 — the loop invents three axes, and three of them are inert
+
+**Branch:** `codex/open-ended-search-v2`
+**Stage:** OPEN_ENDED_SEARCH_V2
+
+**Objective.** Run the open-ended loop for real and see what it actually does.
+
+**What happened.** In the first live generation the model-driven meta-designer proposed three
+new axes with plausible mechanisms — `goal_refinement`, `context_signature`, `context_range` —
+and the system accepted all three, registering them and bumping the genome schema to
+`v2.3.0`. Checking them rather than trusting them showed that **all nine of their axis-value
+combinations rendered identically**. The search had grown its own space by three dimensions of
+nothing.
+
+**Two causes, both mine.**
+
+1. The projection hooks matched value names literally (`GOAL_LOCAL`, `BEFORE`, `REVERSE`). An
+   axis whose inventor chose `WIDE`/`NARROW` fell through to a branch that happened to
+   reproduce the existing layout. Hooks now index behaviour by the value's *position* among
+   the non-`NONE` values, so any naming an inventor picks is functional.
+2. Acceptance condition 6 — "at least one value differs observably on the corpus" — was
+   written in the spec and never enforced. Registration now renders every value of a new axis
+   on a sample and rejects it as `NO_OBSERVABLE_EFFECT` if they all agree.
+
+An inert axis is worse than no axis: it consumes search budget and inflates the apparent size
+of the space, which would have made the frontier report overstate what the search explored.
+
+**Verification actually executed.**
+- `PYTHONPATH=src python3 -m unittest discover -s tests` — **114 tests, all passing**, with four
+  new regression tests covering positional hook dispatch, an axis named `WIDE`/`NARROW`
+  rendering differently, an inert axis being rejected, and an effective axis passing.
+- Re-run after the fix: three axes accepted (`goal_context_fragment`, `meta_cache_probe`,
+  `binder_context_depth`), each producing 2/3 or 3/3 distinct renderings with round-trip
+  preserved, and one (`variable_type_signature`) correctly rejected as inert.
+- Recorded as `FM-026`, typed `SEARCH_SPACE_LIMITATION`.
+
+**Neural microprobes.** A first checkpoint ran at 20 matched items against a frozen local
+`gemma3:4b`, inference only. Dumb controls first: the best cheap heuristic reached 0.325
+against a 0.25 chance level, under the 15pp veto threshold, so the benchmark is usable.
+Accuracies were prior HML 0.450, Structured English 0.474, minimal machine 0.350 — all well
+above chance, so the model is reading structure rather than guessing. The preregistered
+sequential rule returned `CONTINUE` for both comparisons, which is the correct answer at
+n=20 and is reported as such rather than as a ranking.
+
+**Failures and unresolved uncertainty.** The open-endedness envelope is real and now
+demonstrated in both directions: the loop can invent an axis that works, and it can invent one
+that does nothing. `gemma3:4b` is small and roughly a third of its proposals are still
+malformed. The targeted Lean campaign is still elaborating.
+
+**Next intended step.** Finish the campaign, rebuild the corpus with the multi-goal states,
+freeze `SEALED_FINAL_V2`, and run the search to convergence or budget.

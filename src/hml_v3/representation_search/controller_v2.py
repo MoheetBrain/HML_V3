@@ -548,6 +548,21 @@ class OpenEndedController:
                 if primitive is None:
                     continue
                 self.primitives.register(primitive)
+                # Enforce acceptance condition 6: an axis that changes nothing is not an
+                # axis. Registering first and checking after is deliberate -- the check
+                # needs the axis present so the compiler can run its hook.
+                parent_for_test = self.registry.get(
+                    self.population[0]) if self.population else None
+                base_genome = (
+                    parent_for_test.genome if parent_for_test else RepresentationGenome({}))
+                observable, evidence = self.primitives.has_observable_effect(
+                    primitive,
+                    lambda invented: build(base_genome, invented, self.primitives),
+                    self.microtest_sample[:3],
+                )
+                if not observable:
+                    self.primitives.reject_inert(primitive, evidence)
+                    continue
                 known.add(primitive.axis_name)
                 new_axes.append(primitive.axis_name)
                 # Immediately create a candidate that exercises the new axis against the
