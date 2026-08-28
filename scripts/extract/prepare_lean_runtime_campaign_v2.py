@@ -275,16 +275,32 @@ def main() -> None:
     for record in records:
         records_by_file[record["source_file"]].append(record)
     joined_rows: list[dict[str, Any]] = []
+    unjoined: list[dict[str, str]] = []
     for file_records in records_by_file.values():
         trace_cache: dict[str, dict[str, Any]] = {}
         source_cache: dict[str, bytes] = {}
-        joined_rows.extend(
-            compact_row(
-                record,
-                source_location_join(record, args.runtime_root, trace_cache, source_cache),
-            )
-            for record in file_records
+        for record in file_records:
+            # A record that does not join to an exact source byte range is dropped and
+            # counted, never approximated. Batch acquisition from a large trace will always
+            # contain some records whose tactic text differs from the source spelling
+            # (indentation, comments, elaborated sugar); aborting the whole campaign on the
+            # first one would make targeted acquisition impossible.
+            try:
+                joined = source_location_join(
+                    record, args.runtime_root, trace_cache, source_cache)
+            except Exception as error:  # noqa: BLE001 - the outcome is recorded, not raised
+                unjoined.append({
+                    "record_id": record["example_id"],
+                    "reason": f"{type(error).__name__}: {str(error)[:160]}",
+                })
+                continue
+            joined_rows.append(compact_row(record, joined))
+    if not joined_rows:
+        raise SystemExit(
+            f"no record joined to an exact source location ({len(unjoined)} failures)"
         )
+    requested = args.count
+    args.count = min(args.count, len(joined_rows))
     selected = select_files(joined_rows, args.runtime_root, args.count)
     args.output_dir.mkdir(parents=True, exist_ok=True)
     write_jsonl(args.output_dir / "selection.jsonl", selected)
@@ -318,6 +334,10 @@ def main() -> None:
         "selected": len(selected),
         "files": len(file_jobs),
         "selection_sha256": digest(selected),
+        "requested": requested,
+        "joined_exactly": len(joined_rows),
+        "unjoined": len(unjoined),
+        "unjoined_examples": unjoined[:10],
         "all_historical_location_joins_exact": all(
             row["join_evidence"]["historical_state_pair_exact"]
             and row["join_evidence"]["historical_action_exact"]

@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass
 import hashlib
+import json
 from typing import Any
 
 from hml_v3.representation_search.document import (
@@ -52,8 +53,16 @@ class RenderResult:
 
 
 class RepresentationCompiler:
-    def __init__(self, genome: RepresentationGenome) -> None:
+    def __init__(
+        self, genome: RepresentationGenome, invented: dict[str, str] | None = None,
+        registry: Any | None = None,
+    ) -> None:
         self.genome = genome
+        # Invented axes run as extra projection passes after the base projection. A candidate
+        # with no invented values renders byte-identically to one compiled before the axis
+        # existed, which is what keeps cross-generation comparisons legitimate.
+        self.invented = dict(invented or {})
+        self.registry = registry
         self.projection = Projection(genome)
         lexicon = Lexicon(
             genome.get("lexicon_register"),
@@ -86,19 +95,30 @@ class RepresentationCompiler:
         )
 
     # ------------------------------------------------------------------------- identity
-    @property
-    def candidate_id(self) -> str:
-        return self.genome.candidate_id()
-
     def fingerprint(self) -> str:
         payload = "|".join([
             self.genome.sha256(), COMPILER_VERSION, CANONICAL_STATE_VERSION,
+            json.dumps(dict(sorted(self.invented.items())), separators=(",", ":")),
         ])
         return hashlib.sha256(payload.encode()).hexdigest()
+
+    @property
+    def candidate_id(self) -> str:  # type: ignore[override]
+        if not self.invented:
+            return self.genome.candidate_id()
+        payload = json.dumps(
+            {"base": self.genome.sha256(), "invented": dict(sorted(self.invented.items()))},
+            sort_keys=True, separators=(",", ":"),
+        )
+        return f"R_{hashlib.sha256(payload.encode()).hexdigest()[:12]}"
 
     # --------------------------------------------------------------------------- render
     def render(self, transition: dict[str, Any]) -> RenderResult:
         document, codec = self.projection.to_document(transition)
+        if self.registry is not None and self.invented:
+            from hml_v3.representation_search.primitive_registry import apply_primitives
+
+            document = apply_primitives(document, self.invented, self.registry)
         document = map_expression_identities(document, codec.encode)
         aliases: dict[str, Any] = {}
         if self.genome.get("shared_subterm_handling") == "HOISTED_DAG_LETS":
@@ -293,5 +313,8 @@ def _first_difference(expected: Any, actual: Any, path: str = "") -> dict[str, A
     return {"path": path or "/", "expected": str(expected)[:120], "actual": str(actual)[:120]}
 
 
-def build(genome: RepresentationGenome) -> RepresentationCompiler:
-    return RepresentationCompiler(genome)
+def build(
+    genome: RepresentationGenome, invented: dict[str, str] | None = None,
+    registry: Any | None = None,
+) -> RepresentationCompiler:
+    return RepresentationCompiler(genome, invented, registry)

@@ -9,13 +9,12 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`REPRESENTATION_SEARCH_V1`. The Lean runtime truth substrate is certified, a canonical
-transition corpus is built and split, and a recursive architecture search over a 42-axis
-representation genome has been implemented and run.
+`OPEN_ENDED_SEARCH_V2`. The closed 42-axis search is frozen and preserved; the loop has been
+rebuilt so a model-driven meta-designer sits inside it and can widen the search space itself.
 
 ## Current Branch
 
-`codex/lean-runtime-semantic-capture-v2`
+`codex/open-ended-search-v2` (V1 frozen at tag `hml-v3-closed-search-v1-2026-08-28`)
 
 ## Current System Architecture
 
@@ -49,6 +48,23 @@ data/representation_search/   search_state.json, candidate_registry.jsonl, gener
 reports/representation_search/PRETRAINING_FRONTIER_V1.{md,json}
 ```
 
+## What Changed in V2
+
+V1's controller called `targeted_proposals`, `local_neighbourhood` and `random_walk` against a
+hard-coded `AXIS_MECHANISM` table. That made it a recombination engine: if the best
+representation needed an idea absent from the 42 axes, the search had zero probability of
+finding it. V2 replaces that with a proposal channel.
+
+| Defect in V1 | What V2 does |
+|---|---|
+| Claude built the engine but was not in the loop | `MetaDesignerBackend` with a deterministic control and an `LLMMetaDesigner` running a local frozen model |
+| Search confined to 42 human-chosen axes | `NEW_AXIS`/`NEW_PRIMITIVE` proposals bind to executable projection hooks and grow the genome |
+| Corruption applied to rendered *text*, biasing syntax families | `semantic_mutations` corrupts the canonical state once, upstream of every candidate |
+| Validation received but not enforced | a child enters the elite population only if its dev gain reproduces on validation |
+| Sealed split isolated by discipline | isolated by construction: separate process, aggregates only, child-side access log |
+| One tokenizer (GPT-2) | four exact byte-level BPE vocabularies |
+| No mechanism-specific instruments | nine CPU query suites measuring structural access cost |
+
 ## Capabilities Implemented
 
 - Fresh Lean elaboration capturing exact `Expr` trees, stable `FVarId`/`MVarId` identity,
@@ -68,6 +84,16 @@ reports/representation_search/PRETRAINING_FRONTIER_V1.{md,json}
 - A synthetic adversarial generator for structures real traces under-represent.
 - Family-level corpus splitting with an aggregates-only, access-logged sealed evaluator.
 - A recursive controller that checkpoints every generation and resumes exactly.
+- A typed, schema-validated, statically safety-checked proposal channel; free-form model text
+  never reaches a file, a genome or the compiler.
+- A projection algebra (`neighbourhood_capsule`, `duplicate_adjacent`, `section_partition`,
+  `record_reorder`) that invented axes bind to, with unbindable proposals recorded as
+  `ACCEPTED_UNIMPLEMENTABLE` rather than silently dropped.
+- Genome migration: an axis added at schema v2.N is absent-means-`NONE` in every older
+  genome, so a candidate evaluated before the axis existed re-renders byte-identically.
+- Ten canonical-level semantic mutation families with an applicability report.
+- Nine structural-access microtest suites whose ground truth is the canonical state.
+- Targeted corpus acquisition that selects for the strata a measured gap says are missing.
 
 ## Work Completed to Date
 

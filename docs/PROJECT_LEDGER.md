@@ -319,3 +319,76 @@ unchanged: it stopped on its generation budget, not on structural convergence.
 
 **Next intended step.** Resume the search for further generations; design the matched,
 control-gated model experiment on the six finalists.
+
+## 2026-08-28 — rebuild the loop so the search can widen its own space
+
+**Branch:** `codex/open-ended-search-v2` (V1 preserved at tag
+`hml-v3-closed-search-v1-2026-08-28`)
+**Stage:** REPRESENTATION_SEARCH_V1 -> OPEN_ENDED_SEARCH_V2
+
+**Objective.** The V1 search could only recombine 42 human-chosen axes. Its controller called
+fixed proposal functions against a hard-coded causal table, so an idea outside the genome had
+zero probability of being found. This entry records rebuilding that loop.
+
+**What was built.**
+
+- `meta_designer/`: a typed proposal channel. `schemas.py` defines eight proposal types and
+  validates every one; `static_safety` refuses anything naming the canonical layer, the
+  verifier, the sealed split or the host. `DeterministicMetaDesigner` reproduces V1's
+  behaviour as a control. `LLMMetaDesigner` runs a local frozen model through a pluggable
+  transport.
+- `primitive_registry.py`: a projection algebra of four executable hooks. An invented axis is
+  accepted only when its stated behaviour binds to one; anything else is recorded as
+  `ACCEPTED_UNIMPLEMENTABLE`. This is a real envelope and it is stated rather than hidden.
+- `genome_migrations.py`: absent-means-`NONE`, so a candidate evaluated before an axis existed
+  re-renders byte-identically after it exists.
+- `semantic_mutations.py`: ten corruption families applied to the *canonical state*.
+- `microtests/`: nine structural-access suites with canonical ground truth.
+- `validation.py`: a preregistered rule making eliteness conditional on reproduction.
+- `sealed_service.py`: the sealed split in a separate process, aggregates only.
+- `tokenizers.py`: four exact byte-level BPE vocabularies.
+- `active_corpus.py`: acquisition targeted at measured gaps.
+- `controller_v2.py`: the ladder, wiring all of the above.
+
+**Two defects found in my own instruments, both fixed and recorded.**
+
+1. The microtest suites initially read 100% unanswerable on four of nine suites. The cause was
+   a heuristic of mine: I decided whether to route an identity through the codec by testing
+   for a colon in it. The committed corpus uses short identities (`m9`, `f17`), so the test was
+   false and the suite searched for `m9` in a rendering containing `bm9`. Every identity now
+   routes through the codec, which returns unknown names unchanged. Recorded as FM-025.
+2. The delta suite reported a hidden relation as answered, because it found the goal id
+   anywhere in the rendering rather than inside a stated delta. Relational queries are now
+   scoped to their section.
+
+**Verification actually executed.**
+- `PYTHONPATH=src python3 -m unittest discover -s tests` — **114 tests, all passing**, including
+  all 64 inherited V1 tests unchanged.
+- End-to-end invented axis: a `NEW_PRIMITIVE` proposal validated, bound to
+  `neighbourhood_capsule`, registered, grew the genome 42 -> 43 axes
+  (4.095e19 -> 1.228e20 points), produced a distinct candidate id, passed every hard gate, and
+  under `goal_position=FIRST` moved binder-query distance **176.9 -> 104.7 tokens (-41%)** with
+  round-trip intact. Under `goal_position=AFTER_CONTEXT` it is a no-op and renders identically,
+  which is the correct behaviour and a genuine axis interaction the closed search could not
+  have found.
+- LLM backend against local `gemma3:4b`: proposes valid `AXIS_MUTATION` and `NEW_AXIS`
+  proposals. Its first attempts used synonym field names and were all rejected; after adding
+  worked examples and the executable-hook list to the brief, it proposed three implementable
+  new axes in direct response to the measured weakness that scope queries cost ~2,400 tokens.
+- Tokenizers: GPT-2, Qwen2.5, GPT-NeoX and StarCoder2 load as exact byte-level BPE. Gemma is
+  gated on HuggingFace (HTTP 401) and is reported unavailable rather than skipped silently.
+  FM-018 reproduces exactly: `⊢` costs 1 token under Qwen2.5 and 2-4 under the others.
+
+**Corpus acquisition.** 250,814 LeanDojo transitions were scanned and 1,134 selected against
+the strata the measured gaps name — 565 multi-goal states against a current corpus averaging
+1.01 goals per state, 487 with 31+ hypotheses, 215 with 6+ premises. 1,125 joined to an exact
+source byte range; the 9 that did not are counted. The prepare step no longer aborts the whole
+campaign when one record fails to join.
+
+**Failures and unresolved uncertainty.** The open-endedness has a stated envelope: a proposal
+whose behaviour does not bind to one of four projection hooks cannot be executed. `gemma3:4b`
+is a small model and roughly a third of its proposals are still malformed. The targeted Lean
+campaign is still elaborating, so the enlarged corpus is not yet in the search.
+
+**Next intended step.** Finish the campaign, rebuild the corpus, freeze `SEALED_FINAL_V2`, add
+inference-only neural microprobes, and run the open-ended search.

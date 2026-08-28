@@ -1,0 +1,14 @@
+{
+  "purpose": "multi-vocabulary token accounting; FM-018 recorded that absolute token counts are vocabulary-specific while the escaping penalty is not",
+  "acquired": "2026-08-28",
+  "storage": "gzipped: Qwen2.5's tokenizer.json is 6.7 MB raw, over the repository's tracked-file limit",
+  "implementation": "exact byte-level BPE replayed from each model's own merge table, not a proxy",
+  "vocabularies": {
+    "gpt2": {"source": "https://openaipublic.blob.core.windows.net/gpt-2/models/117M/", "available": true},
+    "qwen25": {"source": "https://huggingface.co/Qwen/Qwen2.5-0.5B/resolve/main/tokenizer.json", "vocab": 151643, "merges": 151387, "available": true},
+    "gptneox": {"source": "https://huggingface.co/EleutherAI/gpt-neox-20b/resolve/main/tokenizer.json", "vocab": 50254, "merges": 50009, "available": true},
+    "starcoder2": {"source": "https://huggingface.co/bigcode/starcoder2-3b/resolve/main/tokenizer.json", "vocab": 49152, "merges": 48872, "available": true},
+    "gemma": {"source": "https://huggingface.co/google/gemma-2-2b/resolve/main/tokenizer.json", "available": false, "reason": "gated on HuggingFace; returned HTTP 401. Reported unavailable rather than silently skipped."}
+  },
+  "no_training_performed": true
+}
