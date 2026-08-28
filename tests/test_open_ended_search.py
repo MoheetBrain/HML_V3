@@ -518,6 +518,35 @@ class ValidationTests(unittest.TestCase):
         self.assertTrue(quarantine.is_quarantined("R_bad"))
         self.assertFalse(quarantine.is_quarantined("R_good"))
 
+    def test_a_consistently_worse_child_is_not_called_non_generalizing(self) -> None:
+        """Worse on both splits is a failed hypothesis, not a generalization failure.
+
+        Quarantining it would let this gate override Pareto selection: the candidate may
+        still be the best thing available on a different axis.
+        """
+
+        from hml_v3.representation_search.validation import FAILED_ON_BOTH
+
+        verdict = assess(
+            "R_child", "binder_use_distance_tokens",
+            {"binder_use_distance_tokens": 100.0}, {"binder_use_distance_tokens": 102.2},
+            {"binder_use_distance_tokens": 100.0}, {"binder_use_distance_tokens": 102.1},
+        )
+        self.assertEqual(verdict.verdict, FAILED_ON_BOTH)
+        self.assertTrue(verdict.elite_eligible)
+
+    def test_only_a_dev_only_gain_blocks_eliteness(self) -> None:
+        reproduced = assess(
+            "R_a", "bpe_tokens_per_transition",
+            {"bpe_tokens_per_transition": 100.0}, {"bpe_tokens_per_transition": 80.0},
+            {"bpe_tokens_per_transition": 100.0}, {"bpe_tokens_per_transition": 81.0})
+        dev_only = assess(
+            "R_b", "bpe_tokens_per_transition",
+            {"bpe_tokens_per_transition": 100.0}, {"bpe_tokens_per_transition": 80.0},
+            {"bpe_tokens_per_transition": 100.0}, {"bpe_tokens_per_transition": 99.0})
+        self.assertTrue(reproduced.elite_eligible)
+        self.assertFalse(dev_only.elite_eligible)
+
     def test_the_policy_is_preregistered(self) -> None:
         self.assertTrue(Quarantine().policy.to_dict()["preregistered"])
 

@@ -1,0 +1,97 @@
+{
+  "arms": [
+    {
+      "accuracy": 0.3684,
+      "answered": 38,
+      "arm": "SEED_PRIOR_HML",
+      "candidate_id": "R_7943f3bad185",
+      "correct": 14,
+      "items": 40
+    },
+    {
+      "accuracy": 0.3784,
+      "answered": 37,
+      "arm": "SEED_STRUCTURED_ENGLISH",
+      "candidate_id": "R_699a25a6ae96",
+      "correct": 14,
+      "items": 40
+    },
+    {
+      "accuracy": 0.3243,
+      "answered": 37,
+      "arm": "SEED_HYBRID_RPN_MACHINE",
+      "candidate_id": "R_355c420a748e",
+      "correct": 12,
+      "items": 40
+    },
+    {
+      "accuracy": 0.4211,
+      "answered": 38,
+      "arm": "SEED_GRAPH_EDGE",
+      "candidate_id": "R_9584b246a125",
+      "correct": 16,
+      "items": 40
+    }
+  ],
+  "benchmark_usable": true,
+  "checkpoint": 40,
+  "comparisons": [
+    {
+      "arm": "SEED_STRUCTURED_ENGLISH",
+      "mean_difference": 0.0,
+      "n": 40,
+      "reference": "SEED_PRIOR_HML",
+      "standard_error": 0.06202,
+      "verdict": "CONTINUE",
+      "z": 0.0
+    },
+    {
+      "arm": "SEED_HYBRID_RPN_MACHINE",
+      "mean_difference": -0.05,
+      "n": 40,
+      "reference": "SEED_PRIOR_HML",
+      "standard_error": 0.05,
+      "verdict": "CONTINUE",
+      "z": -1.0
+    },
+    {
+      "arm": "SEED_GRAPH_EDGE",
+      "mean_difference": 0.05,
+      "n": 40,
+      "reference": "SEED_PRIOR_HML",
+      "standard_error": 0.07966,
+      "verdict": "CONTINUE",
+      "z": 0.628
+    }
+  ],
+  "dumb_controls": {
+    "alphabetical_first": 0.25,
+    "class_prior": 0.25,
+    "first_option": 0.15,
+    "longest_option": 0.3,
+    "shortest_option": 0.225
+  },
+  "gpu_training": false,
+  "items": 40,
+  "mechanisms": [
+    "binder",
+    "premise"
+  ],
+  "model": "gemma3:4b",
+  "reference": "SEED_PRIOR_HML",
+  "stopping_rule": {
+    "checkpoints": [
+      20,
+      40,
+      80,
+      160
+    ],
+    "elimination_z": 1.64,
+    "method": "paired difference, normal approximation, fixed checkpoints",
+    "minimum_effect": 0.05,
+    "preregistered": true,
+    "rule": "at each checkpoint compute the paired difference between the candidate and the reference; eliminate when the candidate is worse by more than elimination_z standard errors; declare superiority only at superiority_z with an effect of at least minimum_effect; otherwise continue to the next checkpoint and stop at the last one",
+    "superiority_z": 1.96
+  },
+  "training_performed": false
+}

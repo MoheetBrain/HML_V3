@@ -41,7 +41,39 @@ from the pretty goal view. The CPU-only workflow is:
 The runtime and canonical contracts are documented under `research/canonical_ir/`.
 Representation benchmarking remains gated; V2 does not select a language.
 
-## Representation architecture search
+## Open-ended representation discovery
+
+Since `OPEN_ENDED_SEARCH_V2` the search can widen its own space. V1 could only recombine 42
+human-chosen axes, so an idea outside the genome had zero probability of being found. V2 puts a
+model-driven meta-designer inside the loop, behind a typed channel:
+
+```text
+    meta-designer  ->  JSON proposal  ->  schema validation  ->  static safety check
+                                                              ->  projection-hook binding
+                                                              ->  genome v2.N+1  ->  candidate
+```
+
+It can propose eight things, and the five that are not representation mutations matter most: it
+can say the **corpus** cannot answer a question, that an **instrument** is measuring the wrong
+thing, or that a **microtest** is missing. Three of this project's measured results were of
+exactly that kind — goal linearization was unmeasurable at 1.01 goals per state, a detection
+metric had saturated, and two locality instruments were wrong.
+
+Free-form model text never reaches a file, a genome or the compiler. An invented axis is
+accepted only when its stated behaviour binds to an executable projection hook **and** at least
+two of its values render differently; the loop has produced axes that pass both checks and axes
+that fail the second, and both outcomes are recorded.
+
+```sh
+PYTHONPATH=src python3 scripts/search/run_open_ended_search.py --generations 14
+PYTHONPATH=src python3 scripts/search/run_neural_probe.py --arms A B --checkpoint 20
+PYTHONPATH=src python3 scripts/search/build_frontier_v2.py
+```
+
+Start with
+[`research/representation_search_v2/OPEN_ENDED_SEARCH_SPEC.md`](research/representation_search_v2/OPEN_ENDED_SEARCH_SPEC.md).
+
+## Representation architecture search (V1, frozen)
 
 The language is a dependent variable, and since `REPRESENTATION_SEARCH_V1` it is also *data*.
 A candidate representation is a `RepresentationGenome` — a point in a 42-axis discrete space
@@ -88,8 +120,12 @@ for the recorded negatives that constrain it.
   agreement.
 - Token counts name their vocabulary; byte counts and tokenizer-free pre-token counts are
   reported beside them.
-- No representation is claimed optimal for neural reasoning without model evidence, and none
-  has been gathered.
+- No representation is claimed optimal for neural reasoning without model evidence. What
+  exists is inference-only microprobe evidence at a preregistered sample size, reported with
+  the rule that produced it and with its dumb-control veto.
+- Corruption tests are applied to the canonical state, upstream of every candidate, so no
+  syntax family is asked an easier question than another.
+- An instrument is checked against a real rendering before any number it produces is reported.
 
 See [ROADMAP.md](ROADMAP.md), [DECISIONS.md](DECISIONS.md), and
 [data/README.md](data/README.md).

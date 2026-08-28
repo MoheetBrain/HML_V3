@@ -490,6 +490,22 @@
       "note": "In the first live generation the model-driven meta-designer proposed three new axes with plausible mechanisms -- goal_refinement, context_signature, context_range -- and all three were accepted, registered, and bumped the genome schema to v2.3.0. All nine of their axis-value combinations then rendered IDENTICALLY. Two causes, both mine. First, the projection hooks matched value names literally ('GOAL_LOCAL', 'BEFORE'), so an axis whose inventor chose WIDE/NARROW took a fallback branch that happened to reproduce the existing layout; hooks now index behaviour by the value's position among the non-NONE values, so any naming works. Second, acceptance condition 6 -- 'at least one value differs observably on the corpus' -- was written in the spec and never enforced; registration now renders every value on a sample and rejects the axis as NO_OBSERVABLE_EFFECT if they all agree.",
       "requirement": "an invented axis is provisionally registered, then rendered at every value on a sample, and kept only if at least two values differ; an inert axis is worse than no axis because it consumes search budget and inflates the apparent size of the space",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-027",
+      "title": "The validation gate mislabelled consistently-worse candidates as non-generalizing",
+      "disposition": "INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search V2, generation 1, seen in the live verdict stream",
+      "numbers": {
+        "example_dev_change": -0.022,
+        "example_validation_change": -0.021,
+        "assigned_verdict": "NON_GENERALIZING_MUTATION",
+        "correct_verdict": "HYPOTHESIS_FAILED_CONSISTENTLY"
+      },
+      "note": "A child whose target metric got 2.2% worse on dev and 2.1% worse on validation was labelled NON_GENERALIZING_MUTATION and blocked from the elite population. Dev and validation agreed almost exactly; there was no dev-set claim for validation to fail to reproduce. The gate's job is specifically to catch improvements that exist only on dev, so a candidate that failed on both is a failed hypothesis and belongs to Pareto selection, which may still keep it for being best on a different axis. Blocking it let the validation gate silently override the selector.",
+      "requirement": "the validation gate blocks eliteness only when a positive dev gain fails to reproduce; a hypothesis that failed on both splits is recorded as HYPOTHESIS_FAILED_CONSISTENTLY and left to the Pareto selector",
+      "blocked_traits": []
     }
   ]
 }

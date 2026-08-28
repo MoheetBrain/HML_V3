@@ -164,9 +164,32 @@ genome-as-data architecture, the declared semantic contract, layout versus order
 corruption reporting, saturated-instrument handling, the sealed split, vocabulary-named token
 claims, and the size-bounded corpus.
 
+## Open-Ended Search Results (live)
+
+| Field | Value |
+|---|---|
+| Genome axes | 42 -> 50 (schema `representation-genome-v2.8.0`) |
+| Search space | 4.095e19 -> 3.582e23 points |
+| Invented axes accepted | 8 |
+| Invented axes rejected as inert | recorded, `FM-026` |
+| Candidates killed at compile / semantics | 2 / 4 |
+| Proposal types the model produced | `AXIS_MUTATION`, `ARCHITECTURAL_HYPOTHESIS`, `NEW_AXIS`, `NEW_PRIMITIVE`, `CORPUS_ACQUISITION` |
+| Structural convergence | **NO** — running against a generation budget |
+
+Three defects were found in this project's own instruments, each by checking the instrument
+against a real rendering rather than trusting the number it produced:
+
+| Lesson | Defect |
+|---|---|
+| `FM-023` | a substring scan overcounted identity mentions by 25% |
+| `FM-025` | a colon heuristic made four of nine microtest suites read 100% unanswerable |
+| `FM-026` | three invented axes were accepted whose nine value combinations rendered identically |
+| `FM-027` | the validation gate blocked candidates that failed consistently rather than divergently |
+
 ## Verification and Test Results
 
-- `PYTHONPATH=src python3 -m unittest discover -s tests` — 58 tests, all passing.
+- `PYTHONPATH=src python3 -m unittest discover -s tests` — **120 tests, all passing**, of
+  which 64 are the inherited V1 tests, unchanged.
 - Expression codec: every lossless configuration round-trips (192 configurations).
 - Document codec: 7,776 grammar/lexicon/notation configurations round-trip.
 - Every single-axis genome change either round-trips or is declared lossy, and every declared

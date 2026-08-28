@@ -28,6 +28,10 @@ QUARANTINED = "NON_GENERALIZING_MUTATION"
 REPRODUCED = "REPRODUCED_ON_VALIDATION"
 NEUTRAL = "NO_CLAIM_TO_REPRODUCE"
 REGRESSED = "VALIDATION_CONTRADICTS_DEV"
+#: The hypothesis simply failed, on both splits, consistently. That is not a generalization
+#: problem and must not be treated as one: the candidate may still be Pareto-useful on another
+#: axis, and that is the selector's decision to make, not this gate's.
+FAILED_ON_BOTH = "HYPOTHESIS_FAILED_CONSISTENTLY"
 
 
 @dataclass
@@ -42,7 +46,14 @@ class DivergenceVerdict:
 
     @property
     def elite_eligible(self) -> bool:
-        return self.verdict in (REPRODUCED, NEUTRAL)
+        """Only a dev-set claim that failed to replicate blocks eliteness.
+
+        A candidate whose target metric got worse on both splits is not quarantined here: it
+        is simply a worse candidate on that axis, and Pareto selection is what should decide
+        whether it survives on the others.
+        """
+
+        return self.verdict in (REPRODUCED, NEUTRAL, FAILED_ON_BOTH)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -94,8 +105,10 @@ def assess(
     elif dev_gain > 0:
         verdict = QUARANTINED
     else:
-        # The child claimed an improvement and did not get one on dev either.
-        verdict = NEUTRAL if abs(validation_gain) < noise_floor else QUARANTINED
+        # dev_gain is negative: the child claimed an improvement and did not get one on dev
+        # either. There is no dev-set claim for validation to fail to reproduce, so this is
+        # a failed hypothesis, not a generalization failure.
+        verdict = FAILED_ON_BOTH
 
     return DivergenceVerdict(
         candidate_id=candidate_id, metric=metric,

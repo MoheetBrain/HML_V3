@@ -444,3 +444,51 @@ malformed. The targeted Lean campaign is still elaborating.
 
 **Next intended step.** Finish the campaign, rebuild the corpus with the multi-goal states,
 freeze `SEALED_FINAL_V2`, and run the search to convergence or budget.
+
+## 2026-08-28 — a third instrument defect, and the loop running on real mathematics
+
+**Branch:** `codex/open-ended-search-v2`
+**Stage:** OPEN_ENDED_SEARCH_V2
+
+**Objective.** Run the open-ended loop to a reportable state and acquire the corpus that makes
+the unmeasurable axes measurable.
+
+**A third defect in my own instruments.** Watching the live verdict stream, a child whose
+target metric got 2.2% worse on dev and 2.1% worse on validation was labelled
+`NON_GENERALIZING_MUTATION` and blocked from the elite population. Dev and validation agreed
+almost exactly — there was no dev-set claim for validation to fail to reproduce. The gate's
+job is specifically to catch improvements that exist only on dev; a candidate that failed on
+both is a failed hypothesis and belongs to Pareto selection, which may still keep it for being
+best on a different axis. Blocking it let the validation gate silently override the selector.
+Fixed with a distinct `HYPOTHESIS_FAILED_CONSISTENTLY` verdict that is elite-eligible, with two
+regression tests. Recorded as `FM-027`.
+
+**The loop running.** Over its first four generations on the 608-transition corpus the search
+accepted **eight invented axes**, taking the genome from 42 to 50 dimensions and the space from
+4.095e19 to 3.582e23 points. It killed six candidates — two at compile, four at semantics —
+and the model-driven backend proposed four distinct proposal types including
+`CORPUS_ACQUISITION`, which is the loop noticing that the problem is the data rather than the
+language.
+
+**Corpus.** The targeted campaign elaborated 655 Lean files, 652 passing, covering 1,125
+transitions selected for the strata the measured gaps named. Merging is in progress.
+
+**Neural microprobes.** A second checkpoint at 40 matched items, frozen local `gemma3:4b`,
+inference only: prior HML 0.368, Structured English 0.378, hybrid RPN 0.324, against a 0.25
+chance level. The preregistered sequential rule has not eliminated any arm, which at this
+sample size is the correct and uninteresting answer.
+
+**Verification actually executed.**
+- `PYTHONPATH=src python3 -m unittest discover -s tests` — **120 tests, all passing**.
+- `scripts/search/build_frontier_v2.py` produces the frontier report from the live workspace.
+- `scripts/search/emit_side_by_side_examples.py` renders 20 transitions across 9 arms for
+  human audit.
+
+**Failures and unresolved uncertainty.** `STRUCTURAL_CONVERGENCE = NO`: the search is running
+against a generation budget, not to a stalled frontier. The strict front holds 28 of 62
+evaluated candidates, so selection pressure at this stage is weak. Three instrument defects
+have now been found by checking instruments against real renderings rather than trusting them;
+that rate suggests more remain.
+
+**Next intended step.** Finish the merge, freeze `SEALED_FINAL_V2`, and continue the search on
+the enlarged corpus.

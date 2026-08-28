@@ -1,5 +1,5 @@
 {
-  "elapsed_seconds": 59.269,
+  "elapsed_seconds": 62.329,
   "evaluated": [
     "R_02a757cf3ef8",
     "R_0eaf36f22de1",
@@ -37,7 +37,7 @@
     1.855487
   ],
   "generation": 0,
-  "genome_schema": "representation-genome-v2.3.0",
+  "genome_schema": "representation-genome-v2.4.0",
   "killed": [],
   "ladder": {
     "compile": 0,
@@ -865,9 +865,10 @@
     }
   },
   "new_axes": [
-    "goal_context_fragment",
-    "meta_cache_probe",
-    "binder_context_depth"
+    "context_signature",
+    "dependency_weight",
+    "record_reorder",
+    "goal_context_depth"
   ],
   "population_after": [
     "R_699a25a6ae96",
@@ -902,11 +903,11 @@
     "R_f9041d48927f",
     "R_7d1afc4dc7a4",
     "R_e993725d35ad",
-    "R_6eb21ff6b74c",
-    "R_765836146c82"
+    "R_c012fae39ee8",
+    "R_1e34e94d02e4"
   ],
   "proposals": {
-    "accepted": 29,
+    "accepted": 25,
     "by_backend": {
       "deterministic": {
         "accepted": 21,
@@ -917,24 +918,23 @@
         ]
       },
       "llm/ollama:gemma3:4b": {
-        "accepted": 8,
-        "rejected": 4,
+        "accepted": 4,
+        "rejected": 7,
         "rejection_reasons": [
+          "axis 'context_signature' is not in the genome; propose NEW_AXIS instead",
           "missing required fields: ['desired_per_value', 'reason', 'stratum', 'values']",
-          "missing required fields: ['correction', 'defect', 'instrument']",
-          "missing required fields: ['failure_type']",
-          "missing required fields: ['correction', 'defect', 'instrument']"
+          "axis 'dependency_weight' is not in the genome; propose NEW_AXIS instead",
+          "missing required fields: ['failure_type', 'reason']"
         ],
         "types": [
-          "AXIS_MUTATION",
           "NEW_AXIS",
           "NEW_PRIMITIVE"
         ]
       }
     },
-    "rejected": 4
+    "rejected": 7
   },
-  "space_size": "1.106e+21",
+  "space_size": "3.317e+21",
   "survivors": [
     "R_699a25a6ae96",
     "R_7943f3bad185",
