@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+dist/
+build/
+*.egg-info/
+
+# Large/local source caches are manifest-governed and never committed.
+data/cache/
+external/cache/
+external/checkouts/
+
+# Generated audit scratch data.
+data/derived/*
+!data/derived/.gitkeep
+

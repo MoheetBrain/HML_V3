@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MoheetBrain/HML_V3/schemas/lean_source_transition.schema.json",
+  "title": "LEAN_PIPELINE_V1 source transition",
+  "type": "object",
+  "required": [
+    "example_id", "theorem_id", "source_file", "transition_index", "state_before",
+    "observed_action", "state_after", "lean", "lean_official_split",
+    "v3_formal_source_enrichment"
+  ],
+  "properties": {
+    "example_id": {"type": "string", "minLength": 1},
+    "theorem_id": {"type": "string", "minLength": 1},
+    "source_file": {"type": "string", "minLength": 1},
+    "transition_index": {"type": "integer", "minimum": 0},
+    "lean_official_split": {"enum": ["train", "val", "test"]},
+    "state_before": {"$ref": "#/$defs/observedState"},
+    "state_after": {"$ref": "#/$defs/observedState"},
+    "observed_action": {
+      "type": "object",
+      "required": ["effect_class", "delta_goals", "target_changed", "premises_used"]
+    },
+    "lean": {
+      "type": "object",
+      "required": ["raw_state_before", "raw_tactic", "raw_state_after"],
+      "properties": {
+        "raw_state_before": {"type": "string"},
+        "raw_tactic": {"type": "string"},
+        "raw_state_after": {"type": "string"}
+      }
+    },
+    "v3_formal_source_enrichment": {
+      "type": "object",
+      "required": [
+        "schema_version", "source_repository", "source_commit", "theorem_start", "theorem_end",
+        "theorem_declaration_and_proof", "theorem_declaration_and_proof_sha256",
+        "annotated_tactic", "premises", "premise_full_names", "exact_source_join"
+      ]
+    }
+  },
+  "$defs": {
+    "observedState": {
+      "type": "object",
+      "required": ["hypotheses", "target", "n_goals"],
+      "properties": {
+        "hypotheses": {"type": "array", "items": {"type": "object", "required": ["name", "type"]}},
+        "target": {"type": "string"},
+        "n_goals": {"type": "integer", "minimum": 0}
+      }
+    }
+  }
+}

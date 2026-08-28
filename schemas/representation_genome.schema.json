@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/MoheetBrain/HML_V3/schemas/representation_genome.schema.json",
+  "title": "HML V3 RepresentationGenome",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "renderer_id", "syntax_family", "role_markers", "binder_scheme", "ordering_policy",
+    "redundancy_policy", "dependency_policy", "goal_position", "action_encoding",
+    "identifier_policy", "delimiters", "status"
+  ],
+  "properties": {
+    "renderer_id": {"type": "string"},
+    "syntax_family": {"type": "string"},
+    "role_markers": {"type": "string"},
+    "binder_scheme": {"type": "string"},
+    "ordering_policy": {"type": "string"},
+    "redundancy_policy": {"type": "string"},
+    "dependency_policy": {"type": "string"},
+    "goal_position": {"type": "string"},
+    "action_encoding": {"type": "string"},
+    "identifier_policy": {"type": "string"},
+    "delimiters": {"type": "string"},
+    "status": {"enum": ["IMPLEMENTED_CANDIDATE", "FUTURE_CANDIDATE", "REJECTED"]}
+  }
+}
