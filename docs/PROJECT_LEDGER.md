@@ -492,3 +492,59 @@ that rate suggests more remain.
 
 **Next intended step.** Finish the merge, freeze `SEALED_FINAL_V2`, and continue the search on
 the enlarged corpus.
+
+## 2026-08-28 — fourteen generations, the corpus gap closed, and two results that did not go my way
+
+**Branch:** `codex/open-ended-search-v2`
+**Stage:** OPEN_ENDED_SEARCH_V2
+
+**The search.** 14 generations, 255 candidates registered, 201 evaluated, 14 killed. The
+model-driven meta-designer proposed axes the genome did not have; thirteen bound to executable
+projection hooks, passed the observable-effect gate, and grew the genome from 42 to 55 axes and
+the space from 4.095e19 to 1.548e26 points.
+
+**The corpus gap is closed.** `FM-020` recorded eleven `graph_serialization` mutations changing
+the measurement zero times, because the corpus averaged 1.01 goals per state. Scanning 250,814
+LeanDojo transitions and elaborating 1,125 targeted ones raised the multi-goal share from 1.2%
+to 18.1% and the maximum from 2 goals to 12. On multi-goal states `graph_serialization` now
+separates into three distinct rendering groups, and `REORDER_GOAL_FOCUS`, `SWAP_GOAL_IDENTITY`
+and `CHANGE_SCOPE_PARENT` went from 3% applicable to 100%. The axis was never uninformative;
+the corpus could not ask the question. Recorded as `FM-028`.
+
+**`SEALED_FINAL_V2` frozen and unread.** 232 transitions across 126 families, all acquired
+after the V1 search, so none influenced the V1 frontier. It lives in its own file behind the
+isolated evaluator process. V1's split is retired as `HISTORICAL_SEALED_V1`.
+
+**Two results that did not go my way, both recorded.**
+
+`FM-029` — the semantic corruption metric I built to replace V1's biased text-level suite is
+itself **saturated**: it read exactly 1.000 for all 201 evaluated candidates and contributed
+nothing to selection. The architecture is right — corrupt the canonical state once, upstream of
+every candidate — but the predicate was "does the rendering change", and every representation
+of a changed state renders differently. Fixing the bias produced a saturated instrument, which
+is the `FM-010`/`FM-019` pattern for a third time. The predicate needs to be
+recoverability-based: does the candidate's own reader detect a violated invariant from the
+rendering alone.
+
+`FM-030` — thirteen invented axes were accepted, five were exercised by a candidate that
+survived to evaluation, sixteen candidates carried one, and **none of the six finalists uses
+one**. The open-ended machinery demonstrably works; on these selection axes and this corpus it
+has not yet paid. Three untested explanations are recorded rather than one asserted.
+
+**Verification actually executed.**
+- `PYTHONPATH=src python3 -m unittest discover -s tests` — **120 tests, all passing**.
+- Corpus merge: base 608 + targeted 542 = 1,150 transitions, content SHA-256
+  `950cb040af8c14da…`; mean goals 1.369, max 12, multi-goal 22.4%.
+- `create_sealed_v2.py`: 232 sealed / 918 search transitions, 126 sealed families all from
+  post-V1 acquisition.
+- `build_frontier_v2.py` and `emit_side_by_side_examples.py`: 6 finalists, 20 transitions
+  rendered across 9 arms.
+
+**Failures and unresolved uncertainty.** `STRUCTURAL_CONVERGENCE = NO`: the run stopped on its
+generation budget. The strict front holds 49 of 201 candidates, so selection pressure is still
+weak. Three selection-adjacent metrics are saturated and must be removed before the next run.
+The 14-generation search ran on the 608-transition corpus; the enlarged 1,150-transition corpus
+and `SEALED_FINAL_V2` are built but a search has not yet been run on them.
+
+**Next intended step.** Remove the saturated axes, re-run on the enlarged corpus where goal
+ordering is measurable, and only then consider reading `SEALED_FINAL_V2`.

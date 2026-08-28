@@ -17,8 +17,8 @@
     "stall_limit": 5,
     "validation_sample": 20
   },
-  "generation": 5,
-  "genome_schema": "representation-genome-v2.8.0",
+  "generation": 14,
+  "genome_schema": "representation-genome-v2.13.0",
   "history": [
     {
       "evaluated": 16,
@@ -76,14 +76,118 @@
       "moved": true,
       "new_axes": [],
       "stall": 0
+    },
+    {
+      "evaluated": 36,
+      "front": 24,
+      "generation": 5,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1
+    },
+    {
+      "evaluated": 39,
+      "front": 18,
+      "generation": 6,
+      "killed": 2,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2
+    },
+    {
+      "evaluated": 35,
+      "front": 22,
+      "generation": 7,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 3
+    },
+    {
+      "evaluated": 38,
+      "front": 19,
+      "generation": 8,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0
+    },
+    {
+      "evaluated": 38,
+      "front": 22,
+      "generation": 9,
+      "killed": 2,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0
+    },
+    {
+      "evaluated": 35,
+      "front": 21,
+      "generation": 10,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [
+        "lexical_cache",
+        "dependency_signature"
+      ],
+      "stall": 1
+    },
+    {
+      "evaluated": 40,
+      "front": 21,
+      "generation": 11,
+      "killed": 2,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0
+    },
+    {
+      "evaluated": 36,
+      "front": 15,
+      "generation": 12,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [
+        "action_signature"
+      ],
+      "stall": 1
+    },
+    {
+      "evaluated": 42,
+      "front": 25,
+      "generation": 13,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [
+        "semantic_graph",
+        "precedence_ordering"
+      ],
+      "stall": 2
     }
   ],
   "invented": {
     "R_0b6d1cbab3f7": {
       "dependency_weight": "NEGATIVE"
     },
+    "R_10b08a2857cc": {
+      "semantic_graph": "CONSTRUCT"
+    },
+    "R_146ee6c883bf": {
+      "action_signature": "SEMANTIC_ID"
+    },
+    "R_1b5e2ff7efe1": {
+      "lexical_cache": "TERM_KEY"
+    },
     "R_1e34e94d02e4": {
       "context_signature": "TOPOLOGICAL_PATH"
+    },
+    "R_2465cd18f4a4": {
+      "precedence_ordering": "LINEAR"
+    },
+    "R_2517d49ac3e5": {
+      "action_signature": "FULL_NAME"
     },
     "R_2ac8e391100b": {
       "goal_context_depth": "TWO"
@@ -94,11 +198,21 @@
     "R_2cf84ad10fe6": {
       "metavariable_grouping": "GOAL_LOCAL"
     },
+    "R_3052beaa42d2": {
+      "context_signature": "TOPOLOGICAL_PATH",
+      "dependency_capsule": "NONE"
+    },
     "R_384a4e874754": {
       "goal_context_signature": "TOPOLOGICAL_PATH"
     },
+    "R_38eae4feb635": {
+      "dependency_signature": "TOPOLOGICAL_PATH"
+    },
     "R_4a81d8059773": {
       "dependency_weight": "POSITIVE"
+    },
+    "R_4ee0c01f5a74": {
+      "action_signature": "SHORT_ID"
     },
     "R_53782a1bff7e": {
       "record_reorder": "BY_DEPENDENCY"
@@ -106,17 +220,35 @@
     "R_581e7121138f": {
       "goal_context_depth": "ONE"
     },
+    "R_786b592cb42a": {
+      "context_signature": "TOPOLOGICAL_PATH"
+    },
+    "R_7969c61aa691": {
+      "lexical_cache": "FULL_WORD"
+    },
     "R_7ed62d0b6d32": {
       "dependency_capsule": "GOAL_LOCAL"
     },
+    "R_94b236636a3d": {
+      "dependency_signature": "GOAL_ID"
+    },
     "R_96b54ee02750": {
       "goal_signature": "SOURCE"
+    },
+    "R_97d5657942ac": {
+      "semantic_graph": "DECORATE"
     },
     "R_9ba9c4dc56a5": {
       "context_signature": "TOPOLOGICAL_PATH"
     },
     "R_a756194f34bc": {
       "metavariable_grouping": "ACTION_LOCAL"
+    },
+    "R_ac4447800fd8": {
+      "context_signature": "TOPOLOGICAL_PATH"
+    },
+    "R_b85b17a0aed1": {
+      "precedence_ordering": "SOURCE_ORDER"
     },
     "R_bf43ccfd183c": {
       "goal_context_signature": "GOAL_ID"
@@ -126,6 +258,9 @@
     },
     "R_c83185e47c17": {
       "context_signature": "TOPOLOGICAL_PATH"
+    },
+    "R_ce65d5270617": {
+      "precedence_ordering": "RECURSIVE"
     },
     "R_d4c11adce9ca": {
       "record_reorder": "BY_ORDER"
@@ -144,11 +279,11 @@
     }
   },
   "last_signature": [
-    6092.928571428572,
-    195.72414240264763,
+    5658.142857142857,
+    193.40808025159114,
     1.0,
     16.3067,
-    14.9333,
+    14.4778,
     1.8218006065526713
   ],
   "pinned": [
@@ -165,52 +300,62 @@
     "R_ca96225a3105",
     "R_d1accb194ad0",
     "R_4ca0cdaf5d9a",
-    "R_96be6fff1867",
-    "R_c62e7380ee50",
-    "R_f5d8e89eb43a",
-    "R_bc3c01531125",
-    "R_c9a0866b31fb",
-    "R_9ba9c4dc56a5",
-    "R_af41def64410",
-    "R_960ebdc17650",
-    "R_d09cd51502c4",
-    "R_355c420a748e",
-    "R_0bf0f2f63649",
-    "R_bcda0720adb3",
-    "R_f4237b853a47",
-    "R_877513b3f7fa",
-    "R_e01eaed23c27",
-    "R_d12344c1234a",
-    "R_247cdb108a50",
+    "R_5b2eb732ac8b",
+    "R_6c7d83089dd4",
+    "R_6ee23af2c775",
+    "R_c6def88b7128",
+    "R_db693e659db4",
+    "R_767743825d20",
+    "R_bad3f6a43963",
+    "R_786b592cb42a",
+    "R_e672320373b8",
+    "R_6562eac6618e",
+    "R_0e7e92b007c8",
+    "R_000441b08de4",
+    "R_8f54b4095197",
+    "R_b7a06641e63c",
+    "R_4d8e302e5bbd",
+    "R_fc454b8751ae",
+    "R_e28dde94edac",
     "R_939e2a4d43f8",
-    "R_98b54eec84f6",
-    "R_646c2d5c17d3",
-    "R_2df3bbc6b9c4",
-    "R_f6da4a080015",
-    "R_c83185e47c17",
-    "R_ff46d9bca293",
-    "R_18b5678b64b0",
-    "R_9df5454aec9e",
-    "R_1efa08bce85b",
-    "R_956d4c71393b",
-    "R_9b31f584fdf0",
-    "R_631c06f2b0bd",
-    "R_679d4d96861b"
+    "R_4baa017608fb",
+    "R_c683410e334d",
+    "R_84155a567ea9",
+    "R_e7f47905d3ab",
+    "R_ff8e124d1353",
+    "R_67e9a59574c3",
+    "R_fcbc08c700df",
+    "R_8e7e2f648cbe",
+    "R_16e1ed471794",
+    "R_4a88edf8d010",
+    "R_778f2ce4a877",
+    "R_fcb9fe3cf1c6",
+    "R_ca78e9c0c7f1",
+    "R_97d5657942ac",
+    "R_10b08a2857cc",
+    "R_ce65d5270617",
+    "R_2465cd18f4a4",
+    "R_b85b17a0aed1"
   ],
   "primitives": {
-    "accepted": 8,
-    "active": 8,
+    "accepted": 13,
+    "active": 13,
     "axes": [
+      "action_signature",
       "context_signature",
       "dependency_capsule",
+      "dependency_signature",
       "dependency_weight",
       "goal_context_depth",
       "goal_context_signature",
       "goal_signature",
+      "lexical_cache",
       "metavariable_grouping",
-      "record_reorder"
+      "precedence_ordering",
+      "record_reorder",
+      "semantic_graph"
     ],
-    "genome_schema_version": "representation-genome-v2.8.0",
+    "genome_schema_version": "representation-genome-v2.13.0",
     "hooks_available": [
       "duplicate_adjacent",
       "neighbourhood_capsule",
@@ -218,7 +363,7 @@
       "section_partition"
     ],
     "registry_version": "primitive-registry-v1.0.0",
-    "unimplementable": 0
+    "unimplementable": 2
   },
   "quarantine": {
     "by_verdict": {},
@@ -872,5 +1017,5 @@
     "dependency_query_token_distance",
     "identifier_fragmentation"
   ],
-  "stall_count": 0
+  "stall_count": 2
 }

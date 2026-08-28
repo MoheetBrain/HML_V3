@@ -8,14 +8,14 @@
 |---|---|
 | Compiler | `representation-compiler-v1.0.0` |
 | Canonical state | `canonical-math-transition-v2.0.0` |
-| Genome schema | `representation-genome-v2.8.0` |
-| Axes before / after | 42 / 50 |
-| Search space | 3.582e+23 points |
-| Generations | 4 |
-| Candidates registered | 96 |
-| Candidates evaluated | 62 |
-| Candidates killed | 6 |
-| Strict Pareto front | 28 |
+| Genome schema | `representation-genome-v2.13.0` |
+| Axes before / after | 42 / 55 |
+| Search space | 1.548e+26 points |
+| Generations | 14 |
+| Candidates registered | 255 |
+| Candidates evaluated | 201 |
+| Candidates killed | 14 |
+| Strict Pareto front | 49 |
 | Reported finalists | 6 |
 | Structural convergence | NO |
 
@@ -26,38 +26,38 @@ The ladder exists so a candidate is killed at the cheapest level that can kill i
 | Level | Killed |
 |---|---:|
 | `compile` | 2 |
-| `semantics` | 4 |
+| `semantics` | 12 |
 
 ## The meta-designer
 
 | Backend | Proposals accepted | Rejected |
 |---|---:|---:|
-| `deterministic` | 85 | 0 |
-| `llm/ollama:gemma3:4b` | 21 | 25 |
+| `deterministic` | 315 | 0 |
+| `llm/ollama:gemma3:4b` | 69 | 85 |
 
 Proposal types seen: `AXIS_MUTATION`, `CORPUS_ACQUISITION`, `NEW_AXIS`, `NEW_PRIMITIVE`
 
-Invented axes accepted: **8**. Proposals recorded as unimplementable: **0** — kept as evidence about what the meta-designer wanted and what the projection algebra could not express.
+Invented axes accepted: **13**. Proposals recorded as unimplementable: **2** — kept as evidence about what the meta-designer wanted and what the projection algebra could not express.
 
 ## The frontier
 
 | # | Candidate | Shortlisted because | Origin | Invented axes |
 |---|---|---|---|---|
-| 1 | `SEED_CANONICAL_SEXPR` | best_on:semantic_detect_rate, best_on:binder_query_token_distance | SEED | — |
-| 2 | `R_623a343174ec` | knee | AXIS_MUTATION | — |
-| 3 | `R_8f1e3d8b7028` | best_on:dependency_query_token_distance | AXIS_MUTATION | — |
-| 4 | `R_c62e7380ee50` | best_on:bpe_tokens_per_transition | AXIS_MUTATION | — |
-| 5 | `R_f5d8e89eb43a` | best_on:identifier_fragmentation | AXIS_MUTATION | — |
-| 6 | `R_f9041d48927f` | best_on:binder_use_distance_tokens | AXIS_MUTATION | — |
+| 1 | `R_5b2eb732ac8b` | best_on:dependency_query_token_distance, knee | AXIS_MUTATION | — |
+| 2 | `R_000441b08de4` | best_on:semantic_detect_rate | AXIS_MUTATION | — |
+| 3 | `R_01d4e489af53` | best_on:binder_query_token_distance | AXIS_MUTATION | — |
+| 4 | `R_101e806690b0` | best_on:identifier_fragmentation | AXIS_MUTATION | — |
+| 5 | `R_28b291b5ebe6` | best_on:binder_use_distance_tokens | AXIS_MUTATION | — |
+| 6 | `R_54183872d1bd` | best_on:bpe_tokens_per_transition | AXIS_MUTATION | — |
 
 | Candidate | `bpe_tokens_per_transition` | `binder_use_distance_tokens` | `semantic_detect_rate` | `binder_query_token_distance` | `dependency_query_token_distance` | `identifier_fragmentation` |
 |---|---|---|---|---|---|---|
-| `SEED_CANONICAL_SEXPR` | 7417.786 | 264.876 | 1.000 | 16.320 | 45.033 | 1.890 |
-| `R_623a343174ec` | 6785.000 | 207.338 | 1.000 | 17.400 | 39.967 | 1.883 |
-| `R_8f1e3d8b7028` | 8193.464 | 293.753 | 1.000 | 160.787 | 14.933 | 1.933 |
-| `R_c62e7380ee50` | 6092.929 | 218.453 | 1.000 | 21.760 | 44.167 | 2.079 |
-| `R_f5d8e89eb43a` | 18523.857 | 204.320 | 1.000 | 20.107 | 93.456 | 1.822 |
-| `R_f9041d48927f` | 17369.750 | 196.996 | 1.000 | 19.880 | 98.744 | 1.953 |
+| `R_5b2eb732ac8b` | 6420.536 | 215.232 | 1.000 | 116.493 | 14.478 | 1.896 |
+| `R_000441b08de4` | 5915.321 | 211.210 | 1.000 | 18.280 | 37.822 | 1.885 |
+| `R_01d4e489af53` | 7144.536 | 254.462 | 1.000 | 16.307 | 43.611 | 1.893 |
+| `R_101e806690b0` | 18552.464 | 205.133 | 1.000 | 20.107 | 95.167 | 1.822 |
+| `R_28b291b5ebe6` | 6440.786 | 193.408 | 1.000 | 17.520 | 38.633 | 1.883 |
+| `R_54183872d1bd` | 5658.143 | 201.218 | 1.000 | 17.053 | 37.011 | 1.893 |
 
 ## Controls
 
@@ -65,16 +65,16 @@ Invented axes accepted: **8**. Proposals recorded as unimplementable: **0** — 
 
 | Baseline | Status | Strict front | Finalist |
 |---|---|---|---|
-| `SEED_CANONICAL_SEXPR` | EVALUATED | no | **yes** |
+| `SEED_CANONICAL_SEXPR` | EVALUATED | no | no |
 | `SEED_DELTA_FIRST` | EVALUATED | no | no |
 | `SEED_DEPENDENCY_TOPOLOGICAL` | EVALUATED | no | no |
 | `SEED_EXPLICIT_REDUNDANT` | EVALUATED | no | no |
-| `SEED_GOAL_LOCAL` | EVALUATED | yes | no |
+| `SEED_GOAL_LOCAL` | EVALUATED | no | no |
 | `SEED_GRAPH_EDGE` | EVALUATED | no | no |
 | `SEED_HEADER_PREMISE` | EVALUATED | no | no |
 | `SEED_HYBRID_COMPACT_BLOCK` | EVALUATED | no | no |
 | `SEED_HYBRID_LOCAL_DAG` | EVALUATED | no | no |
-| `SEED_HYBRID_RPN_MACHINE` | EVALUATED | yes | no |
+| `SEED_HYBRID_RPN_MACHINE` | EVALUATED | no | no |
 | `SEED_JSON_BASELINE` | EVALUATED | no | no |
 | `SEED_LEAN_LIKE` | EVALUATED | no | no |
 | `SEED_MINIMAL_MACHINE` | EVALUATED | no | no |
@@ -84,14 +84,14 @@ Invented axes accepted: **8**. Proposals recorded as unimplementable: **0** — 
 
 ## Multi-tokenizer audit
 
-Vocabularies compared: **4**. Same cheapest candidate under every vocabulary: **yes**.
+Vocabularies compared: **4**. Same cheapest candidate under every vocabulary: **no**.
 
 | Vocabulary | Cheapest finalist |
 |---|---|
-| `gpt2` | `R_c62e7380ee50` |
-| `gptneox` | `R_c62e7380ee50` |
-| `qwen25` | `R_c62e7380ee50` |
-| `starcoder2` | `R_c62e7380ee50` |
+| `gpt2` | `R_54183872d1bd` |
+| `gptneox` | `R_54183872d1bd` |
+| `qwen25` | `R_000441b08de4` |
+| `starcoder2` | `R_000441b08de4` |
 
 `FM-018` binds the reading: the escaping penalty reproduces across vocabularies, the absolute counts do not. A ranking that flips between vocabularies is a vocabulary effect and is not a property of the representation.
 
@@ -108,10 +108,20 @@ Quarantined as non-generalising: **0**.
 | 1 | 29 | 5 | 15 | yes | ['goal_context_signature', 'dependency_capsule'] | 84 |
 | 2 | 41 | 1 | 25 | yes | ['metavariable_grouping'] | 111 |
 | 3 | 40 | 0 | 24 | no | ['goal_signature'] | 99 |
+| 4 | 40 | 0 | 22 | yes | — | 101 |
+| 5 | 36 | 1 | 24 | no | — | 69 |
+| 6 | 39 | 2 | 18 | no | — | 59 |
+| 7 | 35 | 1 | 22 | no | — | 50 |
+| 8 | 38 | 0 | 19 | yes | — | 61 |
+| 9 | 38 | 2 | 22 | yes | — | 60 |
+| 10 | 35 | 0 | 21 | no | ['lexical_cache', 'dependency_signature'] | 76 |
+| 11 | 40 | 2 | 21 | yes | — | 58 |
+| 12 | 36 | 0 | 15 | no | ['action_signature'] | 49 |
+| 13 | 42 | 0 | 25 | no | ['semantic_graph', 'precedence_ordering'] | 97 |
 
 ## What this does not establish
 
 - That any of these makes mathematical reasoning easier for a model. The neural probes here are inference-only, tiny, and reported with their sequential rule.
-- That the frontier is global. The space has 3.582e+23 points and this search evaluated 62.
+- That the frontier is global. The space has 1.548e+26 points and this search evaluated 201.
 - That the search converged. `STRUCTURAL_CONVERGENCE = NO`.
 - That open-endedness is unbounded. An invented axis must bind to one of four projection hooks; proposals outside that algebra are recorded, not run.

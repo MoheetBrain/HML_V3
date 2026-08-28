@@ -164,17 +164,31 @@ genome-as-data architecture, the declared semantic contract, layout versus order
 corruption reporting, saturated-instrument handling, the sealed split, vocabulary-named token
 claims, and the size-bounded corpus.
 
-## Open-Ended Search Results (live)
+## Open-Ended Search Results
+
+14 generations on the 608-transition corpus.
 
 | Field | Value |
 |---|---|
-| Genome axes | 42 -> 50 (schema `representation-genome-v2.8.0`) |
-| Search space | 4.095e19 -> 3.582e23 points |
-| Invented axes accepted | 8 |
-| Invented axes rejected as inert | recorded, `FM-026` |
-| Candidates killed at compile / semantics | 2 / 4 |
+| Genome axes | 42 -> 55 (schema `representation-genome-v2.13.0`) |
+| Search space | 4.095e19 -> 1.548e26 points |
+| Candidates registered / evaluated / killed | 255 / 201 / 14 |
+| Strict Pareto front | 49 |
+| Reported finalists | 6 |
+| Invented axes accepted | 13 |
+| Invented axes reaching the frontier | **0** (`FM-030`) |
 | Proposal types the model produced | `AXIS_MUTATION`, `ARCHITECTURAL_HYPOTHESIS`, `NEW_AXIS`, `NEW_PRIMITIVE`, `CORPUS_ACQUISITION` |
-| Structural convergence | **NO** — running against a generation budget |
+| Structural convergence | **NO** — stopped on generation budget |
+
+**The corpus gap FM-020 named is closed.** Scanning 250,814 LeanDojo transitions and acquiring
+1,125 targeted ones raised the multi-goal share from 1.2% to 18.1% and the maximum from 2 goals
+to 12. On multi-goal states `graph_serialization` now separates into three distinct rendering
+groups where eleven earlier mutations had changed nothing, and three goal-related semantic
+mutation families went from 3% applicable to 100% (`FM-028`).
+
+**`SEALED_FINAL_V2` is frozen and unread**: 232 transitions from 126 families, every one
+acquired after the V1 search, so none influenced the V1 frontier. V1's split is retired as
+`HISTORICAL_SEALED_V1`.
 
 Three defects were found in this project's own instruments, each by checking the instrument
 against a real rendering rather than trusting the number it produced:
@@ -185,6 +199,7 @@ against a real rendering rather than trusting the number it produced:
 | `FM-025` | a colon heuristic made four of nine microtest suites read 100% unanswerable |
 | `FM-026` | three invented axes were accepted whose nine value combinations rendered identically |
 | `FM-027` | the validation gate blocked candidates that failed consistently rather than divergently |
+| `FM-029` | the semantic corruption metric replaced text-level bias with saturation at 1.000 |
 
 ## Verification and Test Results
 

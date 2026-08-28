@@ -1,0 +1,17 @@
+{
+  "families_from_post_v1_acquisition": 126,
+  "families_sha256": "aec98934718f4fd33eea842e415d0cc7a783deb8a8d0c54040e3151d5754fe38",
+  "historical_sealed_v1": {
+    "reason": "evaluated once during the V1 search, exactly as its policy allowed; it is therefore no longer pristine for a new architecture search",
+    "status": "RETIRED"
+  },
+  "name": "SEALED_FINAL_V2",
+  "policy": "read once, after convergence, on the reported finalists only, through the isolated sealed evaluator process",
+  "sealed_families": 126,
+  "sealed_sha256": "98e1bd3000b5c2b428081dad679fd21dce62782747598d4532d26bd4e3d690b5",
+  "sealed_transitions": 232,
+  "search_sha256": "32912afe5fbb3256baf3022233e8fbfdb2412e69dffb8296e4b52374fe2c1ec1",
+  "search_transitions": 918,
+  "split_key": "hml-v3-sealed-final-v2",
+  "unit": "MATHLIB_SOURCE_FILE"
+}

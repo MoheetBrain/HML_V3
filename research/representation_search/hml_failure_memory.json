@@ -506,6 +506,72 @@
       "note": "A child whose target metric got 2.2% worse on dev and 2.1% worse on validation was labelled NON_GENERALIZING_MUTATION and blocked from the elite population. Dev and validation agreed almost exactly; there was no dev-set claim for validation to fail to reproduce. The gate's job is specifically to catch improvements that exist only on dev, so a candidate that failed on both is a failed hypothesis and belongs to Pareto selection, which may still keep it for being best on a different axis. Blocking it let the validation gate silently override the selector.",
       "requirement": "the validation gate blocks eliteness only when a positive dev gain fails to reproduce; a hypothesis that failed on both splits is recorded as HYPOTHESIS_FAILED_CONSISTENTLY and left to the Pareto selector",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-028",
+      "title": "Targeted acquisition closed the goal-ordering measurability gap FM-020 recorded",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search V2, after acquiring 1,125 structurally targeted transitions",
+      "numbers": {
+        "v1_corpus": {
+          "transitions": 608,
+          "mean_goals": 1.012,
+          "multi_goal_share": 0.012,
+          "max_goals": 2
+        },
+        "v2_search_pool": {
+          "transitions": 918,
+          "mean_goals": 1.306,
+          "multi_goal_share": 0.181,
+          "max_goals": 12
+        },
+        "graph_serialization_distinct_rendering_groups": 3,
+        "graph_serialization_values": 7,
+        "goal_mutation_applicability_before": 0.03,
+        "goal_mutation_applicability_after": 1.0
+      },
+      "note": "FM-020 recorded that graph_serialization was mutated 11 times and changed the measurement zero times, because the corpus averaged 1.01 goals per state. The correct response was CORPUS_ACQUISITION, not another mutation. Scanning 250,814 LeanDojo transitions and selecting 1,125 for the strata the gap named raised the multi-goal share from 1.2% to 18.1% and the maximum from 2 goals to 12. On multi-goal states graph_serialization now separates into three distinct rendering groups -- BFS alone, GOAL_CENTRED alone, and the remaining five together -- and REORDER_GOAL_FOCUS, SWAP_GOAL_IDENTITY and CHANGE_SCOPE_PARENT went from 3% applicable to 100%. The axis was never uninformative; the corpus was unable to ask the question.",
+      "requirement": "when an axis does not move the measurement, distinguish 'the axis does nothing' from 'this corpus cannot ask the question' before recording either, and prefer acquisition over further mutation when it is the second",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-029",
+      "title": "The semantic corruption metric replaced bias with saturation",
+      "disposition": "INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search V2, 201 evaluated candidates over 14 generations",
+      "numbers": {
+        "semantic_detect_rate_min": 1.0,
+        "semantic_detect_rate_max": 1.0,
+        "distinct_values": 1,
+        "candidates": 201,
+        "binder_query_unanswerable_distinct": 1,
+        "dependency_query_unanswerable_distinct": 1
+      },
+      "note": "V1's corruption suite mutated rendered text, which measured syntax family as much as representation; V2 replaced it with mutation of the canonical state upstream of every candidate, which is the right architecture. But the detection PREDICATE was 'does the rendering change when the state is corrupted', and every representation of a changed state renders differently, so the metric read exactly 1.000 for all 201 evaluated candidates and contributed nothing to selection. Fixing the bias produced a saturated instrument, which is the FM-010 and FM-019 pattern for a third time. The predicate needs to be recoverability-based instead: does the candidate's own reader, given only the rendering, detect that a canonical well-formedness invariant is violated -- a context id that resolves to nothing, a focus order naming a goal that is not stated, an action citing a premise that is absent. binder_query_unanswerable and dependency_query_unanswerable are saturated at 0.000 for the same kind of reason and should be reported, not selected on.",
+      "requirement": "before an instrument enters the selection axes, its spread across the current population is checked; an axis with one distinct value is reported as non-discriminative and excluded, exactly as FM-019 required for detect_corrupt_identity",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-030",
+      "title": "The loop invented thirteen axes and none of them reached the frontier",
+      "disposition": "SEARCH_SPACE_LIMITATION",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search V2, 14 generations on the 608-transition corpus",
+      "numbers": {
+        "axes_registered": 13,
+        "axes_exercised_by_an_evaluated_candidate": 5,
+        "candidates_carrying_an_invented_axis": 16,
+        "finalists_using_an_invented_axis": 0,
+        "genome_axes_before": 42,
+        "genome_axes_after": 55,
+        "space_before": "4.095e19",
+        "space_after": "1.548e26"
+      },
+      "note": "The open-ended machinery works: a model-driven meta-designer proposed axes the genome did not have, thirteen bound to executable projection hooks and passed the observable-effect gate, and the space grew from 4.095e19 to 1.548e26 points. But only five were exercised by a candidate that survived to evaluation, sixteen candidates carried one, and none of the six finalists uses one. The honest reading is that the capability is demonstrated and the payoff is not: on these selection axes, on this corpus, recombining existing axes still beat every invented one. Three plausible causes, untested: the invented axes were all layout transformations bound to two of four hooks and so explore a narrow region; new candidates get one generation to prove themselves against elites that have had many; and the corpus averaged 1.01 goals per state during this run, which is the condition FM-020 and FM-028 identify as hiding structural effects.",
+      "requirement": "report invented axes by how many reached the frontier, not by how many were accepted; an accepted axis that no surviving candidate uses is machinery working and science not yet paying",
+      "blocked_traits": []
     }
   ]
 }
