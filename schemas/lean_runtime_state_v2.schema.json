@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hml-v3.local/schemas/lean_runtime_state_v2.schema.json",
+  "title": "LeanRuntimeState V2 extraction payload",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "extractor", "source_file", "direct_imports", "requested_targets", "captured_targets", "captures"],
+  "properties": {
+    "schema_version": {"const": "lean-runtime-state-v2.0.0"},
+    "extractor": {"const": "HMLV3.RuntimeV2.LeanRuntimeExtractV2"},
+    "source_file": {"type": "string"},
+    "direct_imports": {"type": "array", "items": {"type": "object"}},
+    "requested_targets": {"type": "integer", "minimum": 0},
+    "captured_targets": {"type": "integer", "minimum": 0},
+    "captures": {"type": "array", "items": {"$ref": "#/$defs/capture"}}
+  },
+  "$defs": {
+    "sourcePosition": {
+      "type": "object",
+      "required": ["raw", "line", "column"],
+      "properties": {
+        "raw": {"type": "integer", "minimum": 0},
+        "line": {"type": "integer", "minimum": 0},
+        "column": {"type": "integer", "minimum": 0}
+      }
+    },
+    "level": {
+      "type": "object",
+      "required": ["constructor"],
+      "properties": {
+        "constructor": {"enum": ["zero", "succ", "max", "imax", "param", "mvar"]},
+        "of": {"$ref": "#/$defs/level"},
+        "left": {"$ref": "#/$defs/level"},
+        "right": {"$ref": "#/$defs/level"},
+        "name": {"type": "string"},
+        "lmvar_id": {"type": "string"}
+      }
+    },
+    "expr": {
+      "type": "object",
+      "required": ["constructor"],
+      "properties": {
+        "constructor": {"enum": ["bvar", "fvar", "mvar", "sort", "const", "app", "lam", "forallE", "letE", "lit", "mdata", "proj"]},
+        "debruijn_index": {"type": "integer", "minimum": 0},
+        "fvar_id": {"type": "string"},
+        "mvar_id": {"type": "string"},
+        "level": {"$ref": "#/$defs/level"},
+        "decl_name": {"type": "string"},
+        "universe_args": {"type": "array", "items": {"$ref": "#/$defs/level"}},
+        "function": {"$ref": "#/$defs/expr"},
+        "argument": {"$ref": "#/$defs/expr"},
+        "binder_name": {"type": "string"},
+        "binder_info": {"enum": ["EXPLICIT", "IMPLICIT", "STRICT_IMPLICIT", "INSTANCE_IMPLICIT"]},
+        "binder_type": {"$ref": "#/$defs/expr"},
+        "body": {"$ref": "#/$defs/expr"},
+        "type": {"$ref": "#/$defs/expr"},
+        "value": {},
+        "expr": {"$ref": "#/$defs/expr"},
+        "struct": {"$ref": "#/$defs/expr"},
+        "type_name": {"type": "string"},
+        "field_index": {"type": "integer", "minimum": 0},
+        "literal_kind": {"enum": ["NAT", "STRING"]},
+        "metadata": {"type": "array"}
+      }
+    },
+    "localDeclaration": {
+      "type": "object",
+      "required": ["declaration_kind", "index", "fvar_id", "user_name", "binder_info", "local_decl_kind", "type", "value"],
+      "properties": {
+        "declaration_kind": {"enum": ["cdecl", "ldecl"]},
+        "index": {"type": "integer", "minimum": 0},
+        "fvar_id": {"type": "string"},
+        "user_name": {"type": "string"},
+        "binder_info": {"type": "string"},
+        "local_decl_kind": {"type": "string"},
+        "type": {"$ref": "#/$defs/expr"},
+        "value": {"oneOf": [{"type": "null"}, {"$ref": "#/$defs/expr"}]},
+        "non_dependent_hint": {"type": ["boolean", "null"]}
+      }
+    },
+    "goal": {
+      "type": "object",
+      "required": ["mvar_id", "ordinal", "focused", "declaration_available"],
+      "properties": {
+        "mvar_id": {"type": "string"},
+        "ordinal": {"type": "integer", "minimum": 0},
+        "focused": {"type": "boolean"},
+        "declaration_available": {"type": "boolean"},
+        "target": {"$ref": "#/$defs/expr"},
+        "local_context": {"type": "array", "items": {"$ref": "#/$defs/localDeclaration"}},
+        "local_instances": {"type": "array"},
+        "user_name": {"type": "string"},
+        "kind": {"type": "string"}
+      }
+    },
+    "state": {
+      "type": "object",
+      "required": ["goal_order", "focused_goal_id", "goals", "metavariable_context"],
+      "properties": {
+        "goal_order": {"type": "array", "items": {"type": "string"}},
+        "focused_goal_id": {"type": ["string", "null"]},
+        "goals": {"type": "array", "items": {"$ref": "#/$defs/goal"}},
+        "metavariable_context": {
+          "type": "object",
+          "required": ["declaration_count", "declaration_inventory", "relevant_declarations", "level_assignments", "delayed_assignments"],
+          "properties": {
+            "declaration_count": {"type": "integer", "minimum": 0},
+            "declaration_inventory": {"type": "array"},
+            "relevant_declarations": {"type": "array"},
+            "level_assignments": {"type": "array"},
+            "delayed_assignments": {"type": "array"}
+          }
+        }
+      }
+    },
+    "capture": {
+      "type": "object",
+      "required": ["record_id", "theorem_id", "transition_index", "fresh_trace_ordinal", "source_start", "source_end", "info_tree_path", "state_before", "state_after", "metavariable_delta", "local_context_refs", "external_constant_refs", "environment"],
+      "properties": {
+        "record_id": {"type": "string"},
+        "theorem_id": {"type": "string"},
+        "transition_index": {"type": "integer", "minimum": 0},
+        "fresh_trace_ordinal": {"type": "integer", "minimum": 0},
+        "source_start": {"$ref": "#/$defs/sourcePosition"},
+        "source_end": {"$ref": "#/$defs/sourcePosition"},
+        "info_tree_path": {"type": "array", "items": {"type": "integer", "minimum": 0}},
+        "state_before": {"$ref": "#/$defs/state"},
+        "state_after": {"$ref": "#/$defs/state"},
+        "metavariable_delta": {
+          "type": "object",
+          "required": ["source", "declarations_created", "expression_metavariables_newly_assigned", "expression_assignments_changed", "universe_metavariables_newly_assigned", "universe_assignments_changed"]
+        },
+        "local_context_refs": {"type": "array", "items": {"type": "string"}},
+        "external_constant_refs": {"type": "array", "items": {"type": "string"}},
+        "environment": {"type": "object"}
+      }
+    }
+  }
+}

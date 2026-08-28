@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://hml-v3.local/schemas/canonical_math_state_v2.schema.json",
+  "title": "CanonicalMathTransition V2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "transition_id", "state_before", "action", "state_delta", "state_after", "provenance", "source_specific_reference"],
+  "properties": {
+    "schema_version": {"const": "canonical-math-transition-v2.0.0"},
+    "transition_id": {"type": "string"},
+    "state_before": {"$ref": "#/$defs/state"},
+    "action": {
+      "type": "object",
+      "required": ["kind", "source_location", "external_premise_refs", "local_context_refs", "reference_mechanism", "reference_completeness"],
+      "properties": {
+        "kind": {"const": "LEAN_ELABORATED_TACTIC_OCCURRENCE"},
+        "source_location": {"type": "object"},
+        "external_premise_refs": {"type": "array", "items": {"type": "string"}},
+        "local_context_refs": {"type": "array", "items": {"type": "object"}},
+        "reference_mechanism": {"type": "string"},
+        "reference_completeness": {"type": "string"}
+      }
+    },
+    "state_delta": {"$ref": "#/$defs/delta"},
+    "state_after": {"$ref": "#/$defs/state"},
+    "provenance": {"type": "object"},
+    "source_specific_reference": {"type": "object"}
+  },
+  "$defs": {
+    "expression": {
+      "type": "object",
+      "required": ["node"],
+      "properties": {
+        "node": {"enum": ["bound_variable", "local_reference", "metavariable_reference", "sort", "symbol", "application", "lambda", "dependent_function", "let", "literal", "annotated", "projection"]}
+      }
+    },
+    "state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state_id", "source_system", "goals", "focus_order", "metavariables", "universe_assignments", "source_reference", "information_accounting"],
+      "properties": {
+        "state_id": {"type": "string"},
+        "source_system": {"const": "LEAN4"},
+        "goals": {"type": "array", "items": {"type": "object"}},
+        "focus_order": {"type": "array", "items": {"type": "string"}},
+        "metavariables": {"type": "array", "items": {"type": "object"}},
+        "universe_assignments": {"type": "array"},
+        "source_reference": {"type": "object"},
+        "information_accounting": {"type": "object", "additionalProperties": {"type": "string"}}
+      }
+    },
+    "delta": {
+      "type": "object",
+      "required": ["delta_source", "goals_created", "goals_solved", "goals_preserved", "goals_reordered", "goals_modified", "local_declarations_added", "local_declarations_removed", "local_declarations_changed", "metavariables_created", "metavariables_assigned", "external_premises_used", "local_context_refs_used", "focus_changed", "expression_changes"],
+      "properties": {
+        "delta_source": {"const": "ELABORATED_STABLE_IDENTITIES"},
+        "goals_created": {"type": "array", "items": {"type": "string"}},
+        "goals_solved": {"type": "array", "items": {"type": "string"}},
+        "goals_preserved": {"type": "array", "items": {"type": "string"}},
+        "goals_reordered": {"type": "boolean"},
+        "goals_modified": {"type": "array", "items": {"type": "string"}},
+        "focus_before": {"type": ["string", "null"]},
+        "focus_after": {"type": ["string", "null"]},
+        "focus_changed": {"type": "boolean"},
+        "local_declarations_added": {"type": "array", "items": {"type": "string"}},
+        "local_declarations_removed": {"type": "array", "items": {"type": "string"}},
+        "local_declarations_changed": {"type": "array", "items": {"type": "string"}},
+        "metavariables_created": {"type": "array", "items": {"type": "string"}},
+        "metavariables_removed_from_inventory": {"type": "array", "items": {"type": "string"}},
+        "metavariables_assigned": {"type": "array", "items": {"type": "string"}},
+        "metavariables_changed": {"type": "array", "items": {"type": "string"}},
+        "external_premises_used": {"type": "array", "items": {"type": "string"}},
+        "local_context_refs_used": {"type": "array", "items": {"type": "string"}},
+        "expression_changes": {"type": "object"}
+      }
+    }
+  }
+}

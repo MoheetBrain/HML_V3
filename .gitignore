@@ -10,8 +10,10 @@ build/
 data/cache/
 external/cache/
 external/checkouts/
+external/runtime_cache/
+external/runtime_probe/
+external/runtime_work/
 
 # Generated audit scratch data.
 data/derived/*
 !data/derived/.gitkeep
-
