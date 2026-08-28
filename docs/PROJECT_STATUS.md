@@ -108,7 +108,7 @@ reports/representation_search/PRETRAINING_FRONTIER_V1.{md,json}
 
 | Path | What it is |
 |---|---|
-| `data/corpus/lean_runtime_v2.canonical.part-*.jsonl.gz` | the canonical transition corpus, in size-capped shards |
+| `data/corpus/lean_runtime_v2.canonical.part-*.jsonl.gz` | the canonical transition corpus, in three size-capped shards; content SHA-256 `125f8add19741df9...78d6`, recorded with the shard layout in the corpus audit |
 | `reports/audits/LEAN_RUNTIME_V2_CORPUS.md` | corpus accounting, every exclusion counted |
 | `research/representation_search/HML_FAILURE_MEMORY.md` | the persistent failure memory |
 | `research/representation_search/SEARCH_SPACE.md` | the 42 axes and what they mean |
@@ -121,7 +121,9 @@ reports/representation_search/PRETRAINING_FRONTIER_V1.{md,json}
 ## Data Sources and Provenance
 
 Lean 4.10.0-rc1 (`3b58e0649156`) over Mathlib `29dcec074de168ac2bf835a77ef68bbe069194c5`,
-joined to the pinned LeanDojo Benchmark 4 trace. The GPT-2 tokenizer is pinned by SHA-256
+joined to the pinned LeanDojo Benchmark 4 trace. The committed corpus carries a content hash
+over its concatenated rows that is independent of how they are sharded, so the corpus every
+result was measured on is identifiable from the repository alone. The GPT-2 tokenizer is pinned by SHA-256
 with a reproducible acquisition script. Raw campaign captures (54 GB and growing) remain
 external and ignored; only the canonical corpus and audits are committed.
 

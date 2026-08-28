@@ -9,7 +9,23 @@
     "<=64KiB": 63,
     ">1MiB": 142
   },
+  "corpus_content_sha256": "125f8add19741df90858c7976bc7c10bfce50853ff09aa09688ad802a4de78d6",
+  "corpus_content_sha256_note": "SHA-256 over the concatenated canonical rows as read back, in shard-name order. Independent of the shard size chosen, so it verifies that sharding changed nothing.",
   "corpus_sha256": "c1bf79c68bccc27aa1274b29cc351ee0126632121d0f1a9323af1bcfeed774cb",
+  "corpus_shards": [
+    {
+      "bytes": 4212415,
+      "name": "lean_runtime_v2.canonical.part-000.jsonl.gz"
+    },
+    {
+      "bytes": 4196355,
+      "name": "lean_runtime_v2.canonical.part-001.jsonl.gz"
+    },
+    {
+      "bytes": 272587,
+      "name": "lean_runtime_v2.canonical.part-002.jsonl.gz"
+    }
+  ],
   "corpus_transitions": 608,
   "counters": {
     "captures_duplicate_record_id": 9,

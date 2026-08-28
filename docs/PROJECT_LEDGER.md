@@ -274,8 +274,48 @@ object every result here is measured on, and it is not reproducible from the rep
 because the 63 GB of raw captures stay external. Leaving it out of Git would make the results
 uncheckable. It is therefore written as size-capped shards, with a shared reader that
 concatenates them in name order. Verified: 608 rows in and 608 rows out, list-equal, and the
-content hash `125f8add19741df9` is identical to the single-file form and independent of the
-shard size chosen.
+content hash `125f8add19741df90858c7976bc7c10bfce50853ff09aa09688ad802a4de78d6` is identical
+to the single-file form and independent of the shard size chosen. That hash and the shard
+layout are recorded in `reports/audits/LEAN_RUNTIME_V2_CORPUS.json`.
+
+*Correction, applied 2026-08-28 in the following commit:* this paragraph originally quoted
+the content hash as `125f8add19741df9`, a 16-character prefix presented as if it were the
+digest. The full SHA-256 is above. The corpus itself was not affected; only this record was.
+
+**Next intended step.** Resume the search for further generations; design the matched,
+control-gated model experiment on the six finalists.
+
+## 2026-08-28 — record the shard layout and the full corpus content hash
+
+**Branch:** `codex/lean-runtime-semantic-capture-v2`
+**Stage:** REPRESENTATION_SEARCH_V1
+
+**Objective.** Make the corpus sharding verifiable from the committed audit rather than from
+a claim in a commit message.
+
+**What changed.** `reports/audits/LEAN_RUNTIME_V2_CORPUS.json` now carries the shard layout
+with per-shard byte counts, and `corpus_content_sha256` — a SHA-256 over the concatenated
+canonical rows *as read back*, in shard-name order. That is a different quantity from the
+builder's existing `corpus_sha256`, which hashes the list of per-row canonical hashes. The
+new field is the one that verifies sharding changed nothing, because it is independent of how
+many shards the rows were split across.
+
+The previous ledger entry quoted a 16-character prefix as if it were the digest. That was a
+factual error; it is corrected in place and the correction is noted inside that entry, as the
+protocol requires.
+
+**Verification actually executed.**
+- `corpus_sha256(base)` over the three committed shards:
+  `125f8add19741df90858c7976bc7c10bfce50853ff09aa09688ad802a4de78d6`.
+- Shard sizes 4,212,415 / 4,196,355 / 272,587 bytes — each below the 5 MiB tracked-file cap.
+- `python3 -m unittest discover -s tests` — 64 tests, all passing, including the sharding
+  tests that assert the content hash is independent of shard size.
+- `audit_gates_on_holdout.py` re-run against the sharded corpus: 489 evaluated and 107
+  hard-rejected candidates, **0 verdict disagreements** — confirming the readers see the same
+  corpus after sharding as before.
+
+**Failures and unresolved uncertainty.** None introduced. The search's own limitation is
+unchanged: it stopped on its generation budget, not on structural convergence.
 
 **Next intended step.** Resume the search for further generations; design the matched,
 control-gated model experiment on the six finalists.
