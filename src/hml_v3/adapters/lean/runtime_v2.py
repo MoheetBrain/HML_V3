@@ -272,7 +272,7 @@ def canonicalize_runtime_state(state: dict[str, Any], state_id: str) -> dict[str
             "binder_and_local_identity": "PRESERVED_WITH_CROSS_RUN_NORMALIZATION",
             "goal_identity_and_order": "PRESERVED_WITH_CROSS_RUN_NORMALIZATION",
             "relevant_metavariables": "PRESERVED",
-            "full_lean_metavariable_inventory": "DELEGATED_BY_HASHED_SOURCE_REFERENCE",
+            "full_lean_metavariable_inventory": "DELEGATED_BY_SOURCE_COUNTS_AND_CHANGE_RECORDS",
             "lean_metadata_payload": "SOURCE_SPECIFIC_BY_DESIGN",
             "standalone_constraint_table": "UNEXPOSED_BY_LEAN_4_10",
         },

@@ -13,6 +13,7 @@ sys.path.insert(0, str(ROOT / "src"))
 from hml_v3.adapters.lean.runtime_v2 import (
     EXPR_CONSTRUCTORS,
     canonicalize_capture,
+    digest,
     iter_expression_nodes,
     lean_state_equivalent,
     normalize_expr,
@@ -176,6 +177,38 @@ class LeanRuntimeV2Tests(unittest.TestCase):
         broken["captures"][0]["state_before"]["goal_order"] = ["other"]
         with self.assertRaises(ValueError):
             validate_runtime_payload(broken)
+
+    def test_environment_provenance_is_retained_and_fingerprinted_structurally(self) -> None:
+        before = state([goal("g", const("P"))], [inventory("g", 0)])
+        capture = {
+            "record_id": "r",
+            "theorem_id": "N.T",
+            "transition_index": 0,
+            "fresh_trace_ordinal": 0,
+            "source_start": {"raw": 1, "line": 1, "column": 1},
+            "source_end": {"raw": 2, "line": 1, "column": 2},
+            "info_tree_path": [0, 2],
+            "state_before": before,
+            "state_after": state([]),
+            "local_context_refs": [],
+            "external_constant_refs": [],
+            "reference_mechanism": "DIRECT_TRAVERSAL_OF_ELABORATED_TERMINFO_EXPRS",
+            "reference_completeness": "PARTIAL_TACTICS_WITHOUT_TERMINFO_MAY_HIDE_INTERNAL_USE",
+            "environment": {
+                "lean_version": "v4.10.0-rc1",
+                "mathlib_commit": "29dcec074de168ac2bf835a77ef68bbe069194c5",
+                "source_file": "Mathlib/N.lean",
+                "imports": ["Mathlib.A"],
+                "current_namespace": "N",
+                "options": [{"name": "pp.universes", "value": "false"}],
+                "local_instances": [],
+            },
+        }
+        canonical = canonicalize_capture(capture, structured_delta(before, state([])))
+        self.assertEqual(canonical["provenance"], capture["environment"])
+        changed = deepcopy(capture["environment"])
+        changed["options"][0]["value"] = "true"
+        self.assertNotEqual(digest(capture["environment"]), digest(changed))
 
     def test_v2_schemas_are_versioned_json(self) -> None:
         lean_schema = json.loads((ROOT / "schemas/lean_runtime_state_v2.schema.json").read_text())

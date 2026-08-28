@@ -253,9 +253,24 @@ def main() -> None:
     parser.add_argument("--runtime-root", type=Path, required=True)
     parser.add_argument("--output-dir", type=Path, required=True)
     parser.add_argument("--count", type=int, default=500)
+    parser.add_argument(
+        "--exclude-selection", type=Path, action="append", default=[],
+        help="a prior campaign's selection.jsonl; its record_ids are removed before "
+             "stratified selection, so a second campaign extends the corpus instead of "
+             "re-elaborating transitions that are already captured",
+    )
     args = parser.parse_args()
 
-    records = read_jsonl_gz(args.source)
+    excluded: set[str] = set()
+    for path in args.exclude_selection:
+        for line in path.open(encoding="utf-8"):
+            if line.strip():
+                excluded.add(json.loads(line)["record_id"])
+
+    records = [
+        record for record in read_jsonl_gz(args.source)
+        if record["example_id"] not in excluded
+    ]
     records_by_file: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
     for record in records:
         records_by_file[record["source_file"]].append(record)

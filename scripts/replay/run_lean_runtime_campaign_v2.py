@@ -190,7 +190,7 @@ def constructor_counts(value: Any, counter: collections.Counter[str]) -> None:
 
 def audit_capture(
     capture: dict[str, Any], selection: dict[str, Any], source_record: dict[str, Any],
-    raw_file: Path,
+    raw_file: Path, raw_file_sha256: str, environment_provenance: dict[str, Any],
 ) -> dict[str, Any]:
     before_exact = capture["pretty_before_diagnostic"] == source_record["lean"]["raw_state_before"]
     after_exact = capture["pretty_after_diagnostic"] == source_record["lean"]["raw_state_after"]
@@ -243,7 +243,8 @@ def audit_capture(
         "fresh_trace_ordinal": capture["fresh_trace_ordinal"],
         "state_before_runtime_sha256": digest(capture["state_before"]),
         "state_after_runtime_sha256": digest(capture["state_after"]),
-        "environment_fingerprint_sha256": digest(capture["environment"]),
+        "environment_fingerprint_sha256": digest(environment_provenance),
+        "environment_provenance": environment_provenance,
         "expr_constructor_counts": dict(sorted(counts.items())),
         "local_context_refs": resolved_refs,
         "local_reference_mechanism": capture["reference_mechanism"],
@@ -252,7 +253,7 @@ def audit_capture(
         "elaborated_external_constant_refs": capture["external_constant_refs"],
         "structured_delta": delta,
         "raw_capture_file": str(raw_file),
-        "raw_capture_file_sha256": hashlib.sha256(raw_file.read_bytes()).hexdigest(),
+        "raw_capture_file_sha256": raw_file_sha256,
     }
 
 
@@ -285,6 +286,10 @@ def main() -> None:
     parser.add_argument("--source", type=Path, required=True)
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--timeout", type=int, default=600)
+    parser.add_argument(
+        "--audit-only", action="store_true",
+        help="reuse completed raw files and job_results.json without re-elaborating",
+    )
     args = parser.parse_args()
     args.extractor = args.extractor.resolve()
     args.runtime_root = args.runtime_root.resolve()
@@ -299,50 +304,82 @@ def main() -> None:
     }
     source_records = load_source_records(args.source)
     started = time.monotonic()
-    with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
-        job_results = list(pool.map(
-            lambda job: run_job(job, args.runtime_root, args.extractor, args.timeout), jobs
-        ))
-    write_json(args.campaign_dir / "job_results.json", job_results)
+    previous_summary = None
+    if (args.campaign_dir / "campaign_summary.json").exists():
+        previous_summary = json.loads((args.campaign_dir / "campaign_summary.json").read_text())
+    if args.audit_only:
+        job_results = json.loads((args.campaign_dir / "job_results.json").read_text())
+    else:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=args.workers) as pool:
+            job_results = list(pool.map(
+                lambda job: run_job(job, args.runtime_root, args.extractor, args.timeout), jobs
+            ))
+        write_json(args.campaign_dir / "job_results.json", job_results)
 
     audits: list[dict[str, Any]] = []
     failures: list[dict[str, Any]] = []
-    captured_ids: set[str] = set()
+    selections_by_file: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
+    for selection in selections.values():
+        selections_by_file[selection["source_file"]].append(selection)
     for job in job_results:
+        expected = selections_by_file[job["source_file"]]
         if job["process_status"] != "PROCESS_PASS":
             failures.append({
                 "source_file": job["source_file"],
-                "targets": job["targets"],
+                "record_ids": sorted(row["record_id"] for row in expected),
+                "targets": len(expected),
                 "status": "ENVIRONMENT_MISMATCH" if "object file" in job["stderr"] else "UNSUPPORTED_PATH",
                 "diagnostic": (job["stderr"] or job["error"] or "")[-4000:],
             })
             continue
         raw_file = Path(job["output_file"])
-        payload = json.loads(raw_file.read_text())
+        raw_bytes = raw_file.read_bytes()
+        payload = json.loads(raw_bytes)
+        raw_file_sha256 = hashlib.sha256(raw_bytes).hexdigest()
+        captures_by_id: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
         for capture in payload["captures"]:
-            record_id = capture["record_id"]
-            captured_ids.add(record_id)
-            audits.append(audit_capture(
-                capture, selections[record_id], source_records[record_id], raw_file
-            ))
-        if payload["captured_targets"] != payload["requested_targets"]:
+            captures_by_id[capture["record_id"]].append(capture)
+        for selection in expected:
+            record_id = selection["record_id"]
+            candidates = captures_by_id.get(record_id, [])
+            candidate_audits = [
+                audit_capture(
+                    capture, selection, source_records[record_id], raw_file,
+                    raw_file_sha256, {
+                        "runtime_pin_fingerprint_sha256": environment["fingerprint_sha256"],
+                        "source_file": job["source_file"],
+                        "direct_imports": payload["direct_imports"],
+                        "lean_snapshot_sha256": digest(capture["environment"]),
+                        "parent_declaration": capture["environment"]["parent_declaration"],
+                        "environment_main_module": capture["environment"]["environment_main_module"],
+                        "current_namespace": capture["environment"]["current_namespace"],
+                        "transitive_import_count": len(capture["environment"]["transitive_import_modules"]),
+                    },
+                )
+                for capture in candidates
+            ]
+            exact = [row for row in candidate_audits if row["replay_status"] == "EXACT_REPLAY_PASS"]
+            selectable = exact or candidate_audits
+            if selectable:
+                chosen = min(selectable, key=lambda row: row["fresh_trace_ordinal"])
+                chosen["runtime_occurrences_at_source_range"] = len(candidates)
+                chosen["exact_matching_occurrences"] = len(exact)
+                chosen["selected_occurrence_policy"] = (
+                    "LOWEST_FRESH_TRACE_ORDINAL_AMONG_EXACT_STATE_MATCHES"
+                    if exact else "LOWEST_FRESH_TRACE_ORDINAL_NO_EXACT_STATE_MATCH"
+                )
+                audits.append(chosen)
+                continue
             failures.append({
                 "source_file": job["source_file"],
-                "targets": job["targets"] - payload["captured_targets"],
-                "status": "UNSUPPORTED_PATH",
-                "diagnostic": (
-                    f"captured {payload['captured_targets']} of {payload['requested_targets']} "
-                    "exact source targets"
-                ),
-            })
-    for record_id in selections.keys() - captured_ids:
-        if not any(f["source_file"] == selections[record_id]["source_file"] for f in failures):
-            failures.append({
-                "source_file": selections[record_id]["source_file"],
                 "record_id": record_id,
                 "targets": 1,
                 "status": "UNSUPPORTED_PATH",
-                "diagnostic": "exact TacticInfo source location was not captured",
+                "diagnostic": (
+                    "exact TacticInfo source range was not captured; "
+                    f"file emitted {payload['captured_targets']} occurrences for "
+                    f"{payload['requested_targets']} requested targets"
+                ),
             })
     audits.sort(key=lambda row: row["record_id"])
     write_jsonl(args.campaign_dir / "audit_rows.jsonl", audits)
@@ -352,6 +389,14 @@ def main() -> None:
     environment_mismatch = sum(
         f["targets"] for f in failures if f["status"] == "ENVIRONMENT_MISMATCH"
     )
+    if len({row["record_id"] for row in audits}) != len(audits):
+        raise RuntimeError("campaign audit emitted duplicate record identities")
+    classified_total = len(audits) + unsupported + environment_mismatch
+    if classified_total != len(selections):
+        raise RuntimeError(
+            f"campaign denominator mismatch: classified {classified_total}, "
+            f"selected {len(selections)}"
+        )
     constructor_totals: collections.Counter[str] = collections.Counter()
     for row in audits:
         constructor_totals.update(row["expr_constructor_counts"])
@@ -363,10 +408,14 @@ def main() -> None:
         "exact_fail": exact_fail,
         "unsupported": unsupported,
         "environment_mismatch": environment_mismatch,
+        "classification_complete": True,
         "primary_exact_pass_rate": exact_pass / len(selections),
         "conditional_exact_pass_rate": exact_pass / len(audits) if audits else 0.0,
-        "elapsed_seconds": time.monotonic() - started,
-        "workers": args.workers,
+        "elapsed_seconds": (
+            previous_summary["elapsed_seconds"]
+            if args.audit_only and previous_summary else time.monotonic() - started
+        ),
+        "workers": previous_summary.get("workers", args.workers) if previous_summary else args.workers,
         "environment": environment,
         "process_status_counts": dict(sorted(collections.Counter(
             job["process_status"] for job in job_results

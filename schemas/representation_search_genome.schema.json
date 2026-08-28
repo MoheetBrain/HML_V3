@@ -1,0 +1,511 @@
+{
+  "$id": "https://github.com/MoheetBrain/HML_V3/schemas/representation_search_genome.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "description": "One point in the representation architecture search space. A candidate language is fully determined by these axes together with the compiler version and the canonical state version; there is no per-candidate renderer code. The space has 4.095e+19 points across 42 axes.",
+  "properties": {
+    "axes": {
+      "additionalProperties": false,
+      "properties": {
+        "action_encoding": {
+          "default": "SOURCE_PLUS_STRUCTURED",
+          "description": "What the action record states.  Values expected to fail a hard gate: GENERIC_SEMANTIC",
+          "enum": [
+            "SOURCE_TACTIC",
+            "GENERIC_SEMANTIC",
+            "STRUCTURED_ARGS",
+            "SOURCE_PLUS_STRUCTURED"
+          ],
+          "title": "ACTIONS / search phase A"
+        },
+        "action_position": {
+          "default": "BETWEEN_STATES",
+          "description": "Where the action record sits in the document.",
+          "enum": [
+            "BETWEEN_STATES",
+            "HEADER",
+            "TRAILER"
+          ],
+          "title": "ACTIONS / search phase A"
+        },
+        "alpha_normalization": {
+          "default": "NORMALIZED",
+          "description": "Whether Lean's display spelling is retained beside the identity.",
+          "enum": [
+            "NORMALIZED",
+            "PRESERVE_DISPLAY",
+            "BOTH"
+          ],
+          "title": "IDENTITY / search phase A"
+        },
+        "application_style": {
+          "default": "CURRIED_BINARY",
+          "description": "Whether nested applications are flattened to a head and args.",
+          "enum": [
+            "CURRIED_BINARY",
+            "FLATTENED_SPINE"
+          ],
+          "title": "EXPRESSIONS / search phase C"
+        },
+        "binder_encoding": {
+          "default": "DE_BRUIJN",
+          "description": "How bound variables and their binders are written.",
+          "enum": [
+            "DE_BRUIJN",
+            "NAMED",
+            "NAMED_PLUS_DE_BRUIJN"
+          ],
+          "title": "EXPRESSIONS / search phase C"
+        },
+        "binder_metadata": {
+          "default": "FULL",
+          "description": "BinderInfo plus Lean's LocalDeclKind, binder role only, or neither. ROLE_ONLY drops the declaration kind, which also distinguishes implementation-detail and auxiliary declarations and is therefore not recoverable from the value field.  Values expected to fail a hard gate: NONE, ROLE_ONLY",
+          "enum": [
+            "FULL",
+            "ROLE_ONLY",
+            "NONE"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "binder_use_reminder": {
+          "default": "NONE",
+          "description": "Whether a local reference restates something about its binder.",
+          "enum": [
+            "NONE",
+            "TYPE_AT_USE",
+            "SHORT_TAG_AT_USE"
+          ],
+          "title": "REDUNDANCY / search phase B"
+        },
+        "block_delimiter": {
+          "default": "INDENT",
+          "description": "How a record's extent is marked.",
+          "enum": [
+            "INDENT",
+            "BRACE",
+            "KEYWORD_END"
+          ],
+          "title": "GRAMMAR / search phase C"
+        },
+        "checksum_policy": {
+          "default": "NONE",
+          "description": "Whether a short content digest is emitted for corruption detection.",
+          "enum": [
+            "NONE",
+            "PER_STATE"
+          ],
+          "title": "REDUNDANCY / search phase B"
+        },
+        "const_name_form": {
+          "default": "FULL_NAME",
+          "description": "How a global constant is spelled.  Values expected to fail a hard gate: LAST_COMPONENT",
+          "enum": [
+            "FULL_NAME",
+            "LAST_COMPONENT",
+            "FULL_NAME_WITH_ALIAS_TABLE"
+          ],
+          "title": "EXPRESSIONS / search phase D"
+        },
+        "context_order": {
+          "default": "DECLARATION_INDEX",
+          "description": "Order of local declarations inside a goal.",
+          "enum": [
+            "DECLARATION_INDEX",
+            "DEPENDENCY_TOPOLOGICAL",
+            "GOAL_CENTRED",
+            "REVERSE_INDEX",
+            "TYPE_GROUPED"
+          ],
+          "title": "STRUCTURE / search phase B"
+        },
+        "count_assertions": {
+          "default": "NONE",
+          "description": "Whether block cardinalities are asserted in the text.",
+          "enum": [
+            "NONE",
+            "PER_BLOCK"
+          ],
+          "title": "REDUNDANCY / search phase B"
+        },
+        "delta_visibility": {
+          "default": "EXPLICIT_DELTA_BLOCK",
+          "description": "Whether the structured delta is stated or left derivable.",
+          "enum": [
+            "EXPLICIT_DELTA_BLOCK",
+            "DERIVABLE_ONLY"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "dependency_visibility": {
+          "default": "INLINE_REFS",
+          "description": "How the action's local-context references are stated.  Values expected to fail a hard gate: NONE",
+          "enum": [
+            "EXPLICIT_EDGES",
+            "INLINE_REFS",
+            "NONE"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "expression_notation": {
+          "default": "SEXPR_PREFIX",
+          "description": "Surface encoding of an elaborated expression tree.",
+          "enum": [
+            "SEXPR_PREFIX",
+            "FUNCTIONAL_APPLICATION",
+            "TAGGED_NESTED",
+            "POSTFIX_RPN"
+          ],
+          "title": "EXPRESSIONS / search phase C"
+        },
+        "field_marker": {
+          "default": "COLON",
+          "description": "The separator between a field name and its value.",
+          "enum": [
+            "COLON",
+            "EQUALS",
+            "ARROW"
+          ],
+          "title": "GRAMMAR / search phase C"
+        },
+        "glyph_policy": {
+          "default": "UNICODE_NATIVE",
+          "description": "How non-ASCII mathematical glyphs are written. ASCII_ESCAPE is retained only so the UTF-8 hard gate recorded in FM-004 can be demonstrated to bite.  Values expected to fail a hard gate: ASCII_ESCAPE",
+          "enum": [
+            "UNICODE_NATIVE",
+            "ASCII_TRANSLITERATION",
+            "ASCII_ESCAPE"
+          ],
+          "title": "LEXICON / search phase D"
+        },
+        "goal_identity_visibility": {
+          "default": "SEMANTIC_ID",
+          "description": "How a goal is identified across before/after states.  Values expected to fail a hard gate: NONE, ORDINAL",
+          "enum": [
+            "SEMANTIC_ID",
+            "ORDINAL",
+            "BOTH",
+            "NONE"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "goal_position": {
+          "default": "AFTER_CONTEXT",
+          "description": "Where a goal's target sits relative to its local context.",
+          "enum": [
+            "FIRST",
+            "LAST",
+            "AFTER_CONTEXT",
+            "INLINE_WITH_CONTEXT"
+          ],
+          "title": "STRUCTURE / search phase A"
+        },
+        "graph_serialization": {
+          "default": "DFS_PREORDER",
+          "description": "Linearization strategy applied to the record graph.",
+          "enum": [
+            "DFS_PREORDER",
+            "BFS",
+            "TOPOLOGICAL",
+            "DEPENDENCY_LOCAL",
+            "GOAL_CENTRED",
+            "EDGE_LIST",
+            "NODE_LIST_THEN_EDGES"
+          ],
+          "title": "GRAPH_SERIALIZATION / search phase B"
+        },
+        "identity_scheme": {
+          "default": "SHORT_ID",
+          "description": "The token used to name a local declaration or goal.  Values expected to fail a hard gate: DISPLAY_NAME",
+          "enum": [
+            "SEMANTIC_ID",
+            "SHORT_ID",
+            "DISPLAY_NAME",
+            "DISPLAY_PLUS_SHORT_ID"
+          ],
+          "title": "IDENTITY / search phase A"
+        },
+        "identity_sigil": {
+          "default": "NONE",
+          "description": "Lexical marking that distinguishes an identity from a word.",
+          "enum": [
+            "NONE",
+            "PREFIX_SIGIL",
+            "BRACKETED"
+          ],
+          "title": "IDENTITY / search phase D"
+        },
+        "implicit_argument_visibility": {
+          "default": "ALL",
+          "description": "MARKED_ELIDED replaces the type of every implicit or instance-implicit local declaration with a marker, mirroring Lean's own inst-dagger display convention.  Values expected to fail a hard gate: MARKED_ELIDED",
+          "enum": [
+            "ALL",
+            "MARKED_ELIDED"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "keyword_case": {
+          "default": "LOWER",
+          "description": "Case of role keywords.",
+          "enum": [
+            "LOWER",
+            "UPPER"
+          ],
+          "title": "LEXICON / search phase D"
+        },
+        "lexicon_register": {
+          "default": "HUMAN_WORDS",
+          "description": "The vocabulary family used for role words.",
+          "enum": [
+            "HUMAN_WORDS",
+            "COMPACT_MNEMONIC",
+            "SYMBOLIC_ROLE",
+            "MATH_NOTATION"
+          ],
+          "title": "LEXICON / search phase D"
+        },
+        "list_syntax": {
+          "default": "BRACKET_COMMA",
+          "description": "How a list of atoms is written.",
+          "enum": [
+            "BRACKET_COMMA",
+            "SPACE_SEPARATED",
+            "PAREN"
+          ],
+          "title": "GRAMMAR / search phase C"
+        },
+        "literal_form": {
+          "default": "TAGGED",
+          "description": "Whether literals carry their kind tag. BARE recovers the kind from the value's shape, which is exact for Lean 4.10's two literal kinds (NAT, STRING) and would stop being exact if a source system introduced a third that a digit string could also denote.",
+          "enum": [
+            "TAGGED",
+            "BARE"
+          ],
+          "title": "EXPRESSIONS / search phase D"
+        },
+        "local_instance_visibility": {
+          "default": "MERGED_INTO_CONTEXT",
+          "description": "Whether typeclass instances get their own records.",
+          "enum": [
+            "EXPLICIT",
+            "MERGED_INTO_CONTEXT"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "obligation_visibility": {
+          "default": "EXPLICIT_METAVAR_BLOCK",
+          "description": "How open metavariable obligations are exposed.  Values expected to fail a hard gate: ASSIGNED_ONLY, NONE",
+          "enum": [
+            "EXPLICIT_METAVAR_BLOCK",
+            "ASSIGNED_ONLY",
+            "NONE"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "premise_locality": {
+          "default": "ADJACENT_TO_ACTION",
+          "description": "Where external premise references are stated.",
+          "enum": [
+            "HEADER_BLOCK",
+            "ADJACENT_TO_ACTION",
+            "TRAILING_BLOCK"
+          ],
+          "title": "STRUCTURE / search phase B"
+        },
+        "provenance_visibility": {
+          "default": "IDENTITY_ONLY",
+          "description": "Whether theorem/source identity accompanies the transition.",
+          "enum": [
+            "IDENTITY_ONLY",
+            "NONE"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "record_separator": {
+          "default": "NEWLINE",
+          "description": "What separates two records.",
+          "enum": [
+            "NEWLINE",
+            "NEWLINE_BLANK"
+          ],
+          "title": "GRAMMAR / search phase C"
+        },
+        "redundancy_level": {
+          "default": "LOW",
+          "description": "How much recoverable information is deliberately restated.",
+          "enum": [
+            "NONE",
+            "LOW",
+            "SELECTIVE",
+            "EXPLICIT",
+            "ERROR_CORRECTING"
+          ],
+          "title": "REDUNDANCY / search phase B"
+        },
+        "role_word_length": {
+          "default": "FULL",
+          "description": "Length of role words.",
+          "enum": [
+            "FULL",
+            "ABBREVIATED",
+            "SINGLE_CHAR"
+          ],
+          "title": "LEXICON / search phase D"
+        },
+        "scope_metadata": {
+          "default": "IMPLICIT_BY_NESTING",
+          "description": "Whether each declaration names its owning goal explicitly.",
+          "enum": [
+            "EXPLICIT_SCOPE_IDS",
+            "IMPLICIT_BY_NESTING"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "shared_subterm_handling": {
+          "default": "DUPLICATE",
+          "description": "Whether repeated subterms are hoisted into a shared table.",
+          "enum": [
+            "DUPLICATE",
+            "HOISTED_DAG_LETS"
+          ],
+          "title": "GRAPH_SERIALIZATION / search phase B"
+        },
+        "state_partitioning": {
+          "default": "BEFORE_AFTER_FULL",
+          "description": "Whether the after-state is emitted in full, replaced by a delta, or interleaved. BEFORE_PLUS_DELTA is the 18.8%-duplication saving FM-008 identified as the largest single cost in the prior design; it is kept in the space so the search can demonstrate that the identity-aware delta does not in fact determine the after-state's modified targets.  Values expected to fail a hard gate: BEFORE_PLUS_DELTA",
+          "enum": [
+            "BEFORE_AFTER_FULL",
+            "BEFORE_PLUS_DELTA",
+            "INTERLEAVED_BY_GOAL"
+          ],
+          "title": "STRUCTURE / search phase A"
+        },
+        "syntax_family": {
+          "default": "BLOCK",
+          "description": "Overall surface shape of a record.",
+          "enum": [
+            "BLOCK",
+            "SEXPR",
+            "TAGGED_LINE",
+            "INDENTED_TREE",
+            "JSONISH",
+            "PROSE"
+          ],
+          "title": "STRUCTURE / search phase C"
+        },
+        "tree_vs_graph_projection": {
+          "default": "TREE_NESTED",
+          "description": "Whether reference relations are embedded or stated as edges.",
+          "enum": [
+            "TREE_NESTED",
+            "GRAPH_EDGE_LIST",
+            "HYBRID_NESTED_WITH_EDGES"
+          ],
+          "title": "STRUCTURE / search phase B"
+        },
+        "type_attachment": {
+          "default": "TYPE_FIELD",
+          "description": "Whether a declaration's type is a suffix or a named field.",
+          "enum": [
+            "COLON_SUFFIX",
+            "TYPE_FIELD"
+          ],
+          "title": "GRAMMAR / search phase C"
+        },
+        "type_explicitness": {
+          "default": "FULL_TREE",
+          "description": "How much of a local declaration's type is shown.  Values expected to fail a hard gate: HEAD_SYMBOL_ONLY, OMITTED",
+          "enum": [
+            "FULL_TREE",
+            "HEAD_SYMBOL_ONLY",
+            "OMITTED"
+          ],
+          "title": "SEMANTIC_EXPOSURE / search phase A"
+        },
+        "universe_visibility": {
+          "default": "FULL",
+          "description": "Whether universe level arguments are printed.  Values expected to fail a hard gate: OMITTED",
+          "enum": [
+            "FULL",
+            "ELIDED_WHEN_TRIVIAL",
+            "OMITTED"
+          ],
+          "title": "EXPRESSIONS / search phase A"
+        }
+      },
+      "required": [
+        "syntax_family",
+        "state_partitioning",
+        "goal_position",
+        "context_order",
+        "premise_locality",
+        "tree_vs_graph_projection",
+        "type_explicitness",
+        "implicit_argument_visibility",
+        "binder_metadata",
+        "scope_metadata",
+        "goal_identity_visibility",
+        "dependency_visibility",
+        "obligation_visibility",
+        "provenance_visibility",
+        "delta_visibility",
+        "local_instance_visibility",
+        "identity_scheme",
+        "alpha_normalization",
+        "identity_sigil",
+        "expression_notation",
+        "application_style",
+        "binder_encoding",
+        "universe_visibility",
+        "const_name_form",
+        "literal_form",
+        "graph_serialization",
+        "shared_subterm_handling",
+        "redundancy_level",
+        "binder_use_reminder",
+        "checksum_policy",
+        "count_assertions",
+        "block_delimiter",
+        "field_marker",
+        "record_separator",
+        "type_attachment",
+        "list_syntax",
+        "lexicon_register",
+        "keyword_case",
+        "role_word_length",
+        "glyph_policy",
+        "action_encoding",
+        "action_position"
+      ],
+      "type": "object"
+    },
+    "candidate_id": {
+      "pattern": "^R_[0-9a-f]{12}$",
+      "type": "string"
+    },
+    "genome_sha256": {
+      "pattern": "^[0-9a-f]{64}$",
+      "type": "string"
+    },
+    "label": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "schema_version": {
+      "const": "representation-genome-v1.0.0"
+    },
+    "tags": {
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "schema_version",
+    "axes"
+  ],
+  "title": "HML V3 RepresentationGenome (search)",
+  "type": "object"
+}

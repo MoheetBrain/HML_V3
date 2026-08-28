@@ -1,0 +1,370 @@
+{
+  "schema_version": "hml-failure-memory-v1.0.0",
+  "generated_from": "prior repository artifacts inventoried in research/asset_inventory/ALL_EXPERIMENTS.md",
+  "policy": {
+    "consulted_every_generation": true,
+    "a_do_not_retry_unchanged_lesson_blocks": "a mutation whose blocked_traits are all reproduced by the child genome, unless the child is tagged RETRY_WITH_CHANGED_CONDITION and names the changed condition",
+    "retain_as_baseline_lessons_pin": "the named seed candidates stay in the population for the whole search"
+  },
+  "lessons": [
+    {
+      "id": "FM-001",
+      "title": "The headline HML advantage was a prompt-envelope artifact",
+      "disposition": "REJECTED_CAUSAL_CLAIM",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "uncontrolled_delta_pp": 35.55,
+        "uncontrolled_ci_pp": [
+          33.53,
+          37.5
+        ],
+        "common_envelope_delta_pp": -2.77,
+        "common_envelope_ci_pp": [
+          -3.72,
+          -1.81
+        ],
+        "zero_shot_common_envelope_delta_pp": -3.97,
+        "zero_shot_ci_pp": [
+          -4.87,
+          -3.07
+        ]
+      },
+      "source_artifacts": [
+        "hamiltonian-lang-final-signal/experiments/final_hml_signal",
+        "hamiltonian-lang-final-signal/experiments/common_envelope_10k"
+      ],
+      "binding_on": [
+        "future_model_experiment"
+      ],
+      "blocked_traits": [],
+      "requirement": "non-state prompt bytes must be byte-identical across arms"
+    },
+    {
+      "id": "FM-002",
+      "title": "Prior HML syntax is not privileged among reasonable surfaces",
+      "disposition": "RETAIN_AS_BASELINE",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "stage1_iid_macro_f1": {
+          "structured_english": 0.7939,
+          "lean_like": 0.7759,
+          "prior_hml": 0.7701,
+          "typed_ast": 0.7664
+        },
+        "ood_splits_won": {
+          "structured_english": 6,
+          "lean_like": 1,
+          "prior_hml": 0,
+          "typed_ast": 0
+        }
+      },
+      "source_artifacts": [
+        "hmlt-reasoning-corpus/experiments/max_ev_representation_v1"
+      ],
+      "pinned_seed_candidates": [
+        "SEED_STRUCTURED_ENGLISH",
+        "SEED_LEAN_LIKE",
+        "SEED_PRIOR_HML",
+        "SEED_TYPED_AST"
+      ],
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-003",
+      "title": "Most measured accuracy was lexical",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "bag_of_words_macro_f1": [
+          0.7213,
+          0.7559
+        ],
+        "transformer_uplift": [
+          0.0219,
+          0.0546
+        ]
+      },
+      "required_controls": [
+        "class_prior",
+        "length_only",
+        "structural_count",
+        "bag_of_words",
+        "char_ngram",
+        "shallow_lexical"
+      ],
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-004",
+      "title": "Serializer asymmetry can dominate the representation effect",
+      "disposition": "HARD_GATE",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "glyph_tokens": {
+          "turnstile": 1,
+          "escaped_turnstile": 5,
+          "inst_dagger_five": 4,
+          "escaped_inst_dagger_five": 11
+        },
+        "measured_accuracy_cost_pp": -3.41
+      },
+      "gate": "utf8_correctness",
+      "blocked_traits": [
+        "lexicon.escape_non_ascii"
+      ]
+    },
+    {
+      "id": "FM-005",
+      "title": "Goal-centred ordering worsens locality",
+      "disposition": "DO_NOT_RETRY_UNCHANGED",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "citation_distance_chars": {
+          "canonical": 910,
+          "topological": 818,
+          "goal_centered": 948
+        },
+        "citation_distance_tokens": {
+          "canonical": 340,
+          "topological": 306,
+          "goal_centered": 355
+        },
+        "real_corpus_bytes_identical_to_canonical": true
+      },
+      "mechanism": "relevance and dependency proximity are different relations",
+      "blocked_traits": [
+        "graph_serialization=GOAL_CENTRED"
+      ],
+      "changed_condition_permitting_one_retry": "the V2 runtime corpus carries real local contexts and reference edges; the prior corpus averaged 1.00 claims and zero dependencies",
+      "retry_budget": 1
+    },
+    {
+      "id": "FM-006",
+      "title": "Dependency-topological ordering is a free improvement",
+      "disposition": "RETAIN_AS_BASELINE",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "citation_distance_reduction_pct": 10.1,
+        "token_cost_delta_pct": 0.0,
+        "mutation_detection": 0.977
+      },
+      "pinned_seed_candidates": [
+        "SEED_DEPENDENCY_TOPOLOGICAL"
+      ],
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-007",
+      "title": "Flat S-expressions destroy record-order error detection",
+      "disposition": "DO_NOT_RETRY_UNCHANGED",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "swap_two_lines_detection": {
+          "sexpr": 0.0,
+          "block": 0.877
+        },
+        "overall_detection": {
+          "sexpr": 0.8,
+          "block": 0.948
+        },
+        "token_saving_pct": 0.6
+      },
+      "blocked_traits": [
+        "claim:flat_sexpr_is_strictly_better"
+      ],
+      "requirement": "error detection is reported per mutation family and never averaged before selection"
+    },
+    {
+      "id": "FM-008",
+      "title": "Compression is a diagnostic, never the objective",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "total_token_spread_pct": 1.4,
+        "duplicate_state_share_pct": 18.8
+      },
+      "requirement": "token count is a Pareto axis, never a scalar objective",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-009",
+      "title": "The line-based locality metric was an artifact",
+      "disposition": "METRIC_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "apparent_line_improvement_factor": 6.3,
+        "corrected_char_delta": 3
+      },
+      "requirement": "distances are measured in characters and tokens; lines are never a distance unit",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-010",
+      "title": "The minimal-pair instrument saturated",
+      "disposition": "INSTRUMENT_SATURATED",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "arm_range": [
+          0.9647,
+          0.9853
+        ]
+      },
+      "requirement": "an instrument whose arms all exceed 0.95 is reported as non-discriminative",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-011",
+      "title": "The shipped renderer was non-deterministic",
+      "disposition": "HARD_GATE",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "gate": "deterministic_serialization",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-012",
+      "title": "An opaque wrapper is not a semantic state",
+      "disposition": "HARD_GATE",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "gate": "structural_recoverability",
+      "blocked_traits": [
+        "structure.opaque_state_literal"
+      ]
+    },
+    {
+      "id": "FM-013",
+      "title": "Derived structured projections were lossy where it mattered",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "disagreeing_observations": 659,
+        "total_observations": 2000,
+        "prior_records_with_empty_premises": 241265
+      },
+      "requirement": "the search reads elaborated Lean runtime identities, never a re-parse of pretty text",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-014",
+      "title": "Real corpora can be too structurally trivial to discriminate",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "prior_mean_claims_per_state": 1.0,
+        "prior_dependencies_per_state": 0
+      },
+      "requirement": "structural-richness statistics accompany every locality result",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-015",
+      "title": "Trace provenance is not fresh replay",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "numbers": {
+        "stage100_exact_replay_passes": 32,
+        "stage100_nonpasses": 68,
+        "unsupported_paths": 56
+      },
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-016",
+      "title": "Generic structured representations sometimes matched or beat HML",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "ASSERTED_WITHOUT_LOCAL_ARTIFACT",
+      "note": "stated in the mission brief; the only local measurement supporting it is FM-002's Stage-1 table. Not cited as an independent result.",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-017",
+      "title": "Excessive compression is not automatically beneficial",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "ASSERTED_WITHOUT_LOCAL_ARTIFACT",
+      "note": "held as a design principle and enforced by the Pareto vector; no local experiment measured a compression-induced accuracy loss.",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-018",
+      "title": "Glyph token cost is a property of the vocabulary, not of the representation",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 representation search, pinned GPT-2 byte-level BPE",
+      "numbers": {
+        "single_glyph_tokens": {
+          "qwen3_8b_prior_audit": {
+            "turnstile": 1,
+            "forall": 1,
+            "reals": 1,
+            "field_k": 1,
+            "dagger": 1
+          },
+          "gpt2_this_search": {
+            "turnstile": 3,
+            "forall": 2,
+            "reals": 3,
+            "field_k": 3,
+            "dagger": 2
+          }
+        },
+        "escape_multiplier_gpt2": {
+          "turnstile": 2.33,
+          "field_k": 2.67,
+          "inst_dagger_five": 2.4
+        }
+      },
+      "note": "FM-004's escaping penalty reproduces under a second, independent vocabulary, so the UTF-8 hard gate is not an artifact of one tokenizer. The absolute token counts do not reproduce: every glyph the corpus needs is one token under Qwen3-8B and two or three under GPT-2. Any absolute token ranking is a statement about a vocabulary.",
+      "requirement": "report token counts alongside bytes and tokenizer-free pre-tokens, and name the vocabulary in every token claim",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-019",
+      "title": "Identifier-corruption detection saturates across every candidate",
+      "disposition": "INSTRUMENT_SATURATED",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 representation search, generation-zero seeds, 24 real V2 transitions",
+      "numbers": {
+        "detect_corrupt_identity": {
+          "min": 1.0,
+          "max": 1.0,
+          "seeds": 16
+        },
+        "detect_drop_field": {
+          "min": 0.0,
+          "max": 0.792,
+          "seeds": 16
+        },
+        "detect_truncate_tail": {
+          "min": 0.0,
+          "max": 0.833,
+          "seeds": 16
+        }
+      },
+      "note": "An altered identifier either fails to resolve or resolves to a different declaration, so every representation over an identity-carrying canonical state detects it. The axis was removed from Pareto selection before the search began and detect_drop_field took its place. detect_truncate_tail reads 0.000 for fifteen of sixteen seeds because the trailing block is usually the structured delta, which is outside the declared semantic contract; the one exception drops the delta entirely, which makes its tail contract content.",
+      "requirement": "an instrument whose arms all saturate is reported as non-discriminative and excluded from selection, never reported as agreement",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-020",
+      "title": "Goal linearization is unmeasurable on a corpus of single-goal states",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 representation search, pilot run, 317-transition V2 corpus",
+      "numbers": {
+        "graph_serialization_single_axis_mutations": 11,
+        "graph_serialization_mutations_that_changed_the_measurement": 0,
+        "mean_goals_per_state": 1.01,
+        "max_goals_per_state": 2,
+        "other_zero_effect_axes": [
+          "const_name_form",
+          "keyword_case",
+          "local_instance_visibility",
+          "role_word_length",
+          "type_attachment"
+        ]
+      },
+      "note": "This is FM-014's problem in a new place and now quantified per axis. The V2 corpus is structurally rich in local context (mean 13.4 declarations, 63.4 intra-context references) so context_order moves the measurement 90% of the time, but it averages 1.01 goals per state, so every goal-linearization strategy renders identically. A ranking over graph_serialization from this corpus would be selection on noise.",
+      "requirement": "report the share of single-axis mutations that changed the measurement, per axis, beside any claim about that axis; an axis at 0% is reported as unmeasurable on this corpus rather than as tied",
+      "blocked_traits": []
+    }
+  ]
+}

@@ -1,0 +1,2494 @@
+{
+  "campaign_dir": "external/runtime_probe/campaign500",
+  "canonical_size_histogram": {
+    "<=1MiB": 106,
+    "<=256KiB": 278,
+    "<=64KiB": 39,
+    ">1MiB": 62
+  },
+  "corpus_sha256": "d5cec1e82743dfbc60d49539d550947f234a9950d4a4011f3ea83686c6a08ec8",
+  "corpus_transitions": 317,
+  "counters": {
+    "captures_duplicate_record_id": 7,
+    "captures_kept": 317,
+    "captures_over_element_budget": 51,
+    "captures_over_size_budget": 117,
+    "captures_read": 492,
+    "files_truncated": 1
+  },
+  "domains": {
+    "Algebra": 26,
+    "AlgebraicGeometry": 6,
+    "Analysis": 25,
+    "CategoryTheory": 14,
+    "Combinatorics": 7,
+    "Computability": 16,
+    "Data": 59,
+    "Deprecated": 1,
+    "Dynamics": 1,
+    "FieldTheory": 1,
+    "Geometry": 7,
+    "GroupTheory": 5,
+    "Init": 1,
+    "LinearAlgebra": 9,
+    "Logic": 1,
+    "MeasureTheory": 21,
+    "ModelTheory": 2,
+    "NumberTheory": 20,
+    "Order": 13,
+    "Probability": 4,
+    "RingTheory": 15,
+    "SetTheory": 20,
+    "Tactic": 6,
+    "Testing": 1,
+    "Topology": 21,
+    "packages": 15
+  },
+  "file_outcomes": [
+    {
+      "bytes": 631303,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0000.json",
+      "source_file": ".lake/packages/batteries/Batteries/Classes/SatisfiesM.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 577,
+      "captures_kept": 0,
+      "captures_read": 0,
+      "detail": null,
+      "raw_file": "0001.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/Array/Lemmas.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 380,
+      "captures_kept": 0,
+      "captures_read": 0,
+      "detail": null,
+      "raw_file": "0002.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/Array/Monadic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 5193651,
+      "captures_kept": 2,
+      "captures_read": 4,
+      "detail": null,
+      "raw_file": "0003.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/HashMap/WF.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 250681,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0004.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/List/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 306829,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0005.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/List/Count.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 260558,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0006.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/List/EraseIdx.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 361695,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0007.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/RBMap/Lemmas.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 737550,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0008.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/RBMap/WF.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 377422,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0009.json",
+      "source_file": ".lake/packages/batteries/Batteries/Data/String/Lemmas.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 81401,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0010.json",
+      "source_file": ".lake/packages/batteries/Batteries/Logic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1519804,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0011.json",
+      "source_file": "Mathlib/Algebra/AlgebraicCard.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1841595,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0012.json",
+      "source_file": "Mathlib/Algebra/Associated.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1072772,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0013.json",
+      "source_file": "Mathlib/Algebra/BigOperators/Finsupp.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 168297,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0014.json",
+      "source_file": "Mathlib/Algebra/BigOperators/GroupWithZero/Finset.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 370762,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0015.json",
+      "source_file": "Mathlib/Algebra/ContinuedFractions/ContinuantsRecurrence.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 309531,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0016.json",
+      "source_file": "Mathlib/Algebra/CubicDiscriminant.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 584661,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0017.json",
+      "source_file": "Mathlib/Algebra/Group/Subgroup/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 292693,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0018.json",
+      "source_file": "Mathlib/Algebra/GroupWithZero/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1738538,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0019.json",
+      "source_file": "Mathlib/Algebra/Homology/DifferentialObject.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1468529,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0020.json",
+      "source_file": "Mathlib/Algebra/Homology/Exact.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 31481421,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0021.json",
+      "source_file": "Mathlib/Algebra/Homology/HomotopyCategory/MappingCone.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 5619480,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0022.json",
+      "source_file": "Mathlib/Algebra/Lie/BaseChange.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 477017141,
+      "captures_kept": 0,
+      "captures_read": 4,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0023.json",
+      "source_file": "Mathlib/Algebra/Lie/Weights/Killing.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 5204980,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0024.json",
+      "source_file": "Mathlib/Algebra/MonoidAlgebra/Ideal.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 935658,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0025.json",
+      "source_file": "Mathlib/Algebra/MvPolynomial/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 776393,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0026.json",
+      "source_file": "Mathlib/Algebra/MvPolynomial/Degrees.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 584552,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0027.json",
+      "source_file": "Mathlib/Algebra/MvPolynomial/Funext.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 285317,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0028.json",
+      "source_file": "Mathlib/Algebra/Order/Interval/Set/Monoid.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1791963,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0029.json",
+      "source_file": "Mathlib/Algebra/Polynomial/CancelLeads.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 10540495,
+      "captures_kept": 1,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0030.json",
+      "source_file": "Mathlib/Algebra/Polynomial/HasseDeriv.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 392413,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0031.json",
+      "source_file": "Mathlib/Algebra/Polynomial/Monic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3694306,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0032.json",
+      "source_file": "Mathlib/Algebra/Polynomial/UnitTrinomial.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 663939951,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0033.json",
+      "source_file": "Mathlib/AlgebraicGeometry/AffineScheme.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 6025514,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0034.json",
+      "source_file": "Mathlib/AlgebraicGeometry/EllipticCurve/Affine.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 7614462,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0035.json",
+      "source_file": "Mathlib/AlgebraicGeometry/EllipticCurve/Jacobian.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 903861,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0036.json",
+      "source_file": "Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 204709,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0037.json",
+      "source_file": "Mathlib/AlgebraicGeometry/Morphisms/FiniteType.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 7104806912,
+      "captures_kept": 1,
+      "captures_read": 5,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0039.json",
+      "source_file": "Mathlib/AlgebraicGeometry/Morphisms/RingHomProperties.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3877068,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0040.json",
+      "source_file": "Mathlib/AlgebraicGeometry/PrimeSpectrum/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1817469,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0041.json",
+      "source_file": "Mathlib/AlgebraicGeometry/PrimeSpectrum/Noetherian.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 62236398,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0042.json",
+      "source_file": "Mathlib/AlgebraicGeometry/Spec.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 11191181,
+      "captures_kept": 0,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0043.json",
+      "source_file": "Mathlib/AlgebraicTopology/SimplexCategory.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 37405581,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0044.json",
+      "source_file": "Mathlib/Analysis/Analytic/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1533611,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0045.json",
+      "source_file": "Mathlib/Analysis/Analytic/Polynomial.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2964508,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0046.json",
+      "source_file": "Mathlib/Analysis/Asymptotics/Asymptotics.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 10482825,
+      "captures_kept": 0,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0047.json",
+      "source_file": "Mathlib/Analysis/BoundedVariation.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 18859620,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0048.json",
+      "source_file": "Mathlib/Analysis/Calculus/ContDiff/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 9715795,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0049.json",
+      "source_file": "Mathlib/Analysis/Calculus/ContDiff/FiniteDimension.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 5028270,
+      "captures_kept": 1,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0050.json",
+      "source_file": "Mathlib/Analysis/Calculus/FDeriv/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1372169,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0051.json",
+      "source_file": "Mathlib/Analysis/Calculus/TangentCone.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2390749,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0052.json",
+      "source_file": "Mathlib/Analysis/Complex/CauchyIntegral.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2972351,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0053.json",
+      "source_file": "Mathlib/Analysis/Convex/Contractible.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2649944,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0054.json",
+      "source_file": "Mathlib/Analysis/Convex/Measure.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3186204,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0055.json",
+      "source_file": "Mathlib/Analysis/Convex/Radon.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2711257,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0056.json",
+      "source_file": "Mathlib/Analysis/Convex/Side.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 590603416,
+      "captures_kept": 0,
+      "captures_read": 4,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0057.json",
+      "source_file": "Mathlib/Analysis/Convolution.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1757930,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0058.json",
+      "source_file": "Mathlib/Analysis/Distribution/SchwartzSpace.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4907824,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0059.json",
+      "source_file": "Mathlib/Analysis/FunctionalSpaces/SobolevInequality.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 695164,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0060.json",
+      "source_file": "Mathlib/Analysis/Hofer.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 168313950,
+      "captures_kept": 0,
+      "captures_read": 3,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0061.json",
+      "source_file": "Mathlib/Analysis/InnerProductSpace/Adjoint.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1343591,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0062.json",
+      "source_file": "Mathlib/Analysis/InnerProductSpace/Orthogonal.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 44533556,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0063.json",
+      "source_file": "Mathlib/Analysis/InnerProductSpace/Projection.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 13197719,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0064.json",
+      "source_file": "Mathlib/Analysis/InnerProductSpace/Rayleigh.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2773071,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0065.json",
+      "source_file": "Mathlib/Analysis/MeanInequalities.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1016993,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0066.json",
+      "source_file": "Mathlib/Analysis/Normed/Group/CocompactMap.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 745078,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0067.json",
+      "source_file": "Mathlib/Analysis/Normed/Group/Pointwise.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 759193,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0068.json",
+      "source_file": "Mathlib/Analysis/NormedSpace/FunctionSeries.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4935894,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0069.json",
+      "source_file": "Mathlib/Analysis/NormedSpace/ProdLp.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2884199,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0070.json",
+      "source_file": "Mathlib/Analysis/NormedSpace/RieszLemma.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 960741,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0071.json",
+      "source_file": "Mathlib/Analysis/NormedSpace/Star/Exponential.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 985408,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0072.json",
+      "source_file": "Mathlib/Analysis/SpecialFunctions/Gamma/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1413539,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0073.json",
+      "source_file": "Mathlib/Analysis/SpecialFunctions/Pow/Integral.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 68516562,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0074.json",
+      "source_file": "Mathlib/Analysis/SpecialFunctions/Trigonometric/EulerSineProd.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 13840023552,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0075.json",
+      "source_file": "Mathlib/CategoryTheory/Abelian/DiagramLemmas/Four.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 467718,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0076.json",
+      "source_file": "Mathlib/CategoryTheory/Abelian/Exact.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 13045575,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0077.json",
+      "source_file": "Mathlib/CategoryTheory/Abelian/FunctorCategory.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 219662232,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0078.json",
+      "source_file": "Mathlib/CategoryTheory/Abelian/LeftDerived.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 612444,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0079.json",
+      "source_file": "Mathlib/CategoryTheory/Category/RelCat.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1953678,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0080.json",
+      "source_file": "Mathlib/CategoryTheory/CofilteredSystem.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 703832211,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0081.json",
+      "source_file": "Mathlib/CategoryTheory/Functor/Flat.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 167276,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0082.json",
+      "source_file": "Mathlib/CategoryTheory/Functor/OfSequence.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 6575319,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0083.json",
+      "source_file": "Mathlib/CategoryTheory/Limits/HasLimits.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 653918,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0084.json",
+      "source_file": "Mathlib/CategoryTheory/Limits/Shapes/Biproducts.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 468635,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0085.json",
+      "source_file": "Mathlib/CategoryTheory/Limits/Shapes/Types.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 24248451072,
+      "captures_kept": 0,
+      "captures_read": 4,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0086.json",
+      "source_file": "Mathlib/CategoryTheory/Limits/VanKampen.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 88111568,
+      "captures_kept": 0,
+      "captures_read": 3,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0087.json",
+      "source_file": "Mathlib/CategoryTheory/Monoidal/Bimod.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 214246,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0088.json",
+      "source_file": "Mathlib/CategoryTheory/Preadditive/ProjectiveResolution.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 707182,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0089.json",
+      "source_file": "Mathlib/CategoryTheory/Shift/ShiftedHom.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1819608,
+      "captures_kept": 4,
+      "captures_read": 4,
+      "detail": null,
+      "raw_file": "0090.json",
+      "source_file": "Mathlib/CategoryTheory/Sites/Sieves.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 15091127,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0091.json",
+      "source_file": "Mathlib/CategoryTheory/Triangulated/Pretriangulated.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 209102,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0092.json",
+      "source_file": "Mathlib/Combinatorics/Enumerative/Composition.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1426254,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0093.json",
+      "source_file": "Mathlib/Combinatorics/SimpleGraph/Clique.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 594630,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0094.json",
+      "source_file": "Mathlib/Combinatorics/SimpleGraph/Connectivity.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 16890090,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0095.json",
+      "source_file": "Mathlib/Combinatorics/SimpleGraph/Regularity/Chunk.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 165141,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0096.json",
+      "source_file": "Mathlib/Combinatorics/SimpleGraph/Turan.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1785377,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0097.json",
+      "source_file": "Mathlib/Computability/AkraBazzi/AkraBazzi.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 949659,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0098.json",
+      "source_file": "Mathlib/Computability/Halting.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 745355,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0099.json",
+      "source_file": "Mathlib/Computability/RegularExpressions.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4077433,
+      "captures_kept": 6,
+      "captures_read": 6,
+      "detail": null,
+      "raw_file": "0100.json",
+      "source_file": "Mathlib/Computability/TMToPartrec.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 5078807,
+      "captures_kept": 5,
+      "captures_read": 6,
+      "detail": null,
+      "raw_file": "0101.json",
+      "source_file": "Mathlib/Computability/TuringMachine.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 7935959,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0102.json",
+      "source_file": "Mathlib/Condensed/TopComparison.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1373258,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0103.json",
+      "source_file": "Mathlib/Control/Applicative.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 379227,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0104.json",
+      "source_file": "Mathlib/Data/Fin/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 213791,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0105.json",
+      "source_file": "Mathlib/Data/Finset/Pointwise.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2671450,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0106.json",
+      "source_file": "Mathlib/Data/Finsupp/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 241019,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0107.json",
+      "source_file": "Mathlib/Data/Fintype/CardEmbedding.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 759379,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0108.json",
+      "source_file": "Mathlib/Data/List/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 161719,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0109.json",
+      "source_file": "Mathlib/Data/List/Cycle.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 594451,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0110.json",
+      "source_file": "Mathlib/Data/List/Sublists.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 841581,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0111.json",
+      "source_file": "Mathlib/Data/Matrix/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2048409,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0112.json",
+      "source_file": "Mathlib/Data/Matroid/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 80846,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0113.json",
+      "source_file": "Mathlib/Data/Multiset/Antidiagonal.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 340337,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0114.json",
+      "source_file": "Mathlib/Data/Nat/Bits.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4686006,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0115.json",
+      "source_file": "Mathlib/Data/Nat/Defs.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 463533,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0116.json",
+      "source_file": "Mathlib/Data/Nat/Digits.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4084363,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0117.json",
+      "source_file": "Mathlib/Data/Nat/Multiplicity.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 338890,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0118.json",
+      "source_file": "Mathlib/Data/Nat/PartENat.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 467181,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0119.json",
+      "source_file": "Mathlib/Data/Nat/Prime.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 956178,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0120.json",
+      "source_file": "Mathlib/Data/Ordmap/Ordset.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 367030,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0121.json",
+      "source_file": "Mathlib/Data/PFunctor/Univariate/M.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 454453,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0122.json",
+      "source_file": "Mathlib/Data/PNat/Find.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 355481,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0123.json",
+      "source_file": "Mathlib/Data/PNat/Xgcd.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1696960,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0124.json",
+      "source_file": "Mathlib/Data/QPF/Multivariate/Constructions/Cofix.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 214663,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0125.json",
+      "source_file": "Mathlib/Data/QPF/Univariate/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 311930,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0126.json",
+      "source_file": "Mathlib/Data/Rat/Cast/Lemmas.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 208019,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0127.json",
+      "source_file": "Mathlib/Data/Real/Pi/Bounds.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1082411,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0128.json",
+      "source_file": "Mathlib/Data/Seq/Parallel.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 763227,
+      "captures_kept": 5,
+      "captures_read": 5,
+      "detail": null,
+      "raw_file": "0129.json",
+      "source_file": "Mathlib/Data/Seq/WSeq.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1117388,
+      "captures_kept": 4,
+      "captures_read": 4,
+      "detail": null,
+      "raw_file": "0130.json",
+      "source_file": "Mathlib/Data/Set/Card.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 328630,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0131.json",
+      "source_file": "Mathlib/Data/Set/Image.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 823733,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0132.json",
+      "source_file": "Mathlib/Data/Set/Prod.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 201643,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0133.json",
+      "source_file": "Mathlib/Data/ZMod/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 168734,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0134.json",
+      "source_file": "Mathlib/Deprecated/Subgroup.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 978000,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0135.json",
+      "source_file": "Mathlib/Dynamics/Flow.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 5130656,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0136.json",
+      "source_file": "Mathlib/FieldTheory/Finite/Trace.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3201790,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0137.json",
+      "source_file": "Mathlib/FieldTheory/RatFunc/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2164698,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0138.json",
+      "source_file": "Mathlib/FieldTheory/Tower.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4744050,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0139.json",
+      "source_file": "Mathlib/Geometry/Euclidean/Angle/Oriented/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 447779,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0140.json",
+      "source_file": "Mathlib/Geometry/Euclidean/Angle/Unoriented/Affine.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 16790016,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0141.json",
+      "source_file": "Mathlib/Geometry/Euclidean/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 305955257,
+      "captures_kept": 1,
+      "captures_read": 3,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0142.json",
+      "source_file": "Mathlib/Geometry/Euclidean/Circumcenter.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1095179,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0143.json",
+      "source_file": "Mathlib/Geometry/Manifold/AnalyticManifold.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1709668,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0144.json",
+      "source_file": "Mathlib/Geometry/Manifold/ContMDiff/Defs.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2148211,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0145.json",
+      "source_file": "Mathlib/Geometry/Manifold/ContMDiff/Product.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 473391651,
+      "captures_kept": 0,
+      "captures_read": 3,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0146.json",
+      "source_file": "Mathlib/Geometry/Manifold/ContMDiffMFDeriv.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 834164,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0147.json",
+      "source_file": "Mathlib/Geometry/Manifold/LocalInvariantProperties.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 57494502,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0148.json",
+      "source_file": "Mathlib/Geometry/Manifold/MFDeriv/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 6811680768,
+      "captures_kept": 0,
+      "captures_read": 3,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0149.json",
+      "source_file": "Mathlib/Geometry/RingedSpace/PresheafedSpace/Gluing.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 401792,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0150.json",
+      "source_file": "Mathlib/GroupTheory/Nilpotent.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1052029,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0151.json",
+      "source_file": "Mathlib/GroupTheory/Perm/Cycle/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 315711,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0152.json",
+      "source_file": "Mathlib/Init/Data/Int/Order.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2394272,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0153.json",
+      "source_file": "Mathlib/LinearAlgebra/AffineSpace/Combination.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 455744,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0154.json",
+      "source_file": "Mathlib/LinearAlgebra/Basis/Flag.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3996203,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0155.json",
+      "source_file": "Mathlib/LinearAlgebra/Eigenspace/Zero.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 7388101,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0156.json",
+      "source_file": "Mathlib/LinearAlgebra/FiniteDimensional.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1017354,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0157.json",
+      "source_file": "Mathlib/LinearAlgebra/Finsupp.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 5101810,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0158.json",
+      "source_file": "Mathlib/LinearAlgebra/LinearIndependent.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 6527835,
+      "captures_kept": 1,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0159.json",
+      "source_file": "Mathlib/LinearAlgebra/LinearPMap.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2995115,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0160.json",
+      "source_file": "Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 937332,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0161.json",
+      "source_file": "Mathlib/LinearAlgebra/Matrix/LDL.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 751726,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0162.json",
+      "source_file": "Mathlib/LinearAlgebra/Ray.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 106098,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0163.json",
+      "source_file": "Mathlib/Logic/Denumerable.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1252068,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0164.json",
+      "source_file": "Mathlib/MeasureTheory/Constructions/Pi.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1518222,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0165.json",
+      "source_file": "Mathlib/MeasureTheory/Constructions/Prod/Integral.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2634101,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0166.json",
+      "source_file": "Mathlib/MeasureTheory/Covering/Besicovitch.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3301942,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0167.json",
+      "source_file": "Mathlib/MeasureTheory/Covering/Differentiation.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 10233372,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0168.json",
+      "source_file": "Mathlib/MeasureTheory/Decomposition/Lebesgue.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 140042757,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0169.json",
+      "source_file": "Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL1.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 56168488,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0170.json",
+      "source_file": "Mathlib/MeasureTheory/Function/SimpleFuncDenseLp.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 6982396,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0171.json",
+      "source_file": "Mathlib/MeasureTheory/Integral/FundThmCalculus.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2453310,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0172.json",
+      "source_file": "Mathlib/MeasureTheory/Integral/Lebesgue.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 20863326,
+      "captures_kept": 0,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0173.json",
+      "source_file": "Mathlib/MeasureTheory/Integral/PeakFunction.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 640389,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0174.json",
+      "source_file": "Mathlib/MeasureTheory/MeasurableSpace/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 625949,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0175.json",
+      "source_file": "Mathlib/MeasureTheory/Measure/EverywherePos.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 770346,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0176.json",
+      "source_file": "Mathlib/MeasureTheory/Measure/VectorMeasure.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1507701,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0177.json",
+      "source_file": "Mathlib/MeasureTheory/PiSystem.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 441200,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0178.json",
+      "source_file": "Mathlib/ModelTheory/Satisfiability.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1542471,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0179.json",
+      "source_file": "Mathlib/NumberTheory/ArithmeticFunction.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 8219176,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0180.json",
+      "source_file": "Mathlib/NumberTheory/ClassNumber/AdmissibleCardPowDegree.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1490668,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0181.json",
+      "source_file": "Mathlib/NumberTheory/Cyclotomic/Three.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1483254,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0182.json",
+      "source_file": "Mathlib/NumberTheory/Harmonic/ZetaAsymp.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 5284329,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0183.json",
+      "source_file": "Mathlib/NumberTheory/LSeries/HurwitzZetaOdd.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 126603665,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0184.json",
+      "source_file": "Mathlib/NumberTheory/NumberField/Discriminant.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3401427,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0185.json",
+      "source_file": "Mathlib/NumberTheory/Ostrowski.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1306729,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0186.json",
+      "source_file": "Mathlib/NumberTheory/Padics/PadicIntegers.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2258153,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0187.json",
+      "source_file": "Mathlib/NumberTheory/Padics/PadicNumbers.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3293980,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0188.json",
+      "source_file": "Mathlib/NumberTheory/Padics/RingHoms.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2094134,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0189.json",
+      "source_file": "Mathlib/NumberTheory/PellMatiyasevic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 523187,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0190.json",
+      "source_file": "Mathlib/NumberTheory/PrimesCongruentOne.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1593674,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0191.json",
+      "source_file": "Mathlib/NumberTheory/PythagoreanTriples.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 456535680,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0192.json",
+      "source_file": "Mathlib/NumberTheory/RamificationInertia.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 229306,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0193.json",
+      "source_file": "Mathlib/NumberTheory/SiegelsLemma.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 478439,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0194.json",
+      "source_file": "Mathlib/NumberTheory/Wilson.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1199376,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0195.json",
+      "source_file": "Mathlib/Order/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1493679,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0196.json",
+      "source_file": "Mathlib/Order/CompactlyGenerated/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 373306,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0197.json",
+      "source_file": "Mathlib/Order/Filter/Prod.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 274128,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0198.json",
+      "source_file": "Mathlib/Order/Interval/Finset/Fin.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1109823,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0199.json",
+      "source_file": "Mathlib/Order/OmegaCompletePartialOrder.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 344628,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0200.json",
+      "source_file": "Mathlib/Order/SuccPred/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3794037,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0201.json",
+      "source_file": "Mathlib/Order/WellFoundedSet.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2459433,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0202.json",
+      "source_file": "Mathlib/Probability/Integration.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 67553144,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0203.json",
+      "source_file": "Mathlib/Probability/Kernel/Disintegration/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 24654120,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0204.json",
+      "source_file": "Mathlib/Probability/Kernel/Disintegration/Integral.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 634012,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0205.json",
+      "source_file": "Mathlib/Probability/ProbabilityMassFunction/Integrals.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4866985,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0206.json",
+      "source_file": "Mathlib/Probability/Process/Stopping.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 350795253,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": "document ended inside a capture element",
+      "raw_file": "0207.json",
+      "source_file": "Mathlib/RepresentationTheory/GroupCohomology/Resolution.lean",
+      "status": "TRUNCATED"
+    },
+    {
+      "bytes": 1024602,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0208.json",
+      "source_file": "Mathlib/RingTheory/Binomial.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2572685,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0209.json",
+      "source_file": "Mathlib/RingTheory/Coprime/Ideal.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1968517,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0210.json",
+      "source_file": "Mathlib/RingTheory/DedekindDomain/Dvr.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1246358,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0211.json",
+      "source_file": "Mathlib/RingTheory/DiscreteValuationRing/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4447553,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0212.json",
+      "source_file": "Mathlib/RingTheory/FiniteType.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4517521,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0213.json",
+      "source_file": "Mathlib/RingTheory/FractionalIdeal/Operations.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2983910,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0214.json",
+      "source_file": "Mathlib/RingTheory/GradedAlgebra/HomogeneousIdeal.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 6503628,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0215.json",
+      "source_file": "Mathlib/RingTheory/Ideal/MinimalPrime.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 36691545,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0216.json",
+      "source_file": "Mathlib/RingTheory/IsTensorProduct.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 2556157,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0217.json",
+      "source_file": "Mathlib/RingTheory/Polynomial/Cyclotomic/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 3254340,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0218.json",
+      "source_file": "Mathlib/RingTheory/Polynomial/Selmer.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 844053,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0219.json",
+      "source_file": "Mathlib/RingTheory/RootsOfUnity/Lemmas.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1782489,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0220.json",
+      "source_file": "Mathlib/RingTheory/UniqueFactorizationDomain.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 52316346,
+      "captures_kept": 0,
+      "captures_read": 2,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0221.json",
+      "source_file": "Mathlib/RingTheory/WittVector/MulCoeff.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 752232,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0222.json",
+      "source_file": "Mathlib/RingTheory/WittVector/MulP.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 12301289,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0223.json",
+      "source_file": "Mathlib/RingTheory/WittVector/WittPolynomial.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 978266,
+      "captures_kept": 2,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0224.json",
+      "source_file": "Mathlib/SetTheory/Cardinal/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 443163,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0225.json",
+      "source_file": "Mathlib/SetTheory/Cardinal/Cofinality.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 376479,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0226.json",
+      "source_file": "Mathlib/SetTheory/Cardinal/CountableCover.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4270852,
+      "captures_kept": 1,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0227.json",
+      "source_file": "Mathlib/SetTheory/Game/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1376452,
+      "captures_kept": 1,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0228.json",
+      "source_file": "Mathlib/SetTheory/Game/Nim.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 371148,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0229.json",
+      "source_file": "Mathlib/SetTheory/Ordinal/Arithmetic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 385043,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0230.json",
+      "source_file": "Mathlib/SetTheory/Ordinal/Exponential.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1227714,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0231.json",
+      "source_file": "Mathlib/SetTheory/Ordinal/FixedPoint.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1847493,
+      "captures_kept": 3,
+      "captures_read": 4,
+      "detail": null,
+      "raw_file": "0232.json",
+      "source_file": "Mathlib/SetTheory/Ordinal/Notation.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 825392,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0233.json",
+      "source_file": "Mathlib/SetTheory/Ordinal/Principal.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 739910,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0234.json",
+      "source_file": "Mathlib/SetTheory/Surreal/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 1714015,
+      "captures_kept": 6,
+      "captures_read": 6,
+      "detail": null,
+      "raw_file": "0235.json",
+      "source_file": "Mathlib/Tactic/Ring/Basic.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 178845,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0236.json",
+      "source_file": "Mathlib/Testing/SlimCheck/Functions.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 186389,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0237.json",
+      "source_file": "Mathlib/Topology/Algebra/InfiniteSum/Real.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 358371,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0238.json",
+      "source_file": "Mathlib/Topology/Algebra/Order/Compact.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 25322032,
+      "captures_kept": 1,
+      "captures_read": 4,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0239.json",
+      "source_file": "Mathlib/Topology/Category/Profinite/Nobeling.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 694869,
+      "captures_kept": 3,
+      "captures_read": 3,
+      "detail": null,
+      "raw_file": "0240.json",
+      "source_file": "Mathlib/Topology/Connected/PathConnected.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 486930,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0241.json",
+      "source_file": "Mathlib/Topology/Constructions.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 361463,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0242.json",
+      "source_file": "Mathlib/Topology/ContinuousOn.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 410367,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0243.json",
+      "source_file": "Mathlib/Topology/Instances/ENNReal.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 764607,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0244.json",
+      "source_file": "Mathlib/Topology/MetricSpace/CauSeqFilter.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 35087607,
+      "captures_kept": 1,
+      "captures_read": 3,
+      "detail": "one or more captures exceed the 8388608-byte raw element budget",
+      "raw_file": "0245.json",
+      "source_file": "Mathlib/Topology/MetricSpace/GromovHausdorff.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 294092,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0246.json",
+      "source_file": "Mathlib/Topology/RestrictGenTopology.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 189122,
+      "captures_kept": 1,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0247.json",
+      "source_file": "Mathlib/Topology/Separation/NotNormal.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 4311909,
+      "captures_kept": 0,
+      "captures_read": 1,
+      "detail": null,
+      "raw_file": "0248.json",
+      "source_file": "Mathlib/Topology/Sheaves/Sheafify.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 755466,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0249.json",
+      "source_file": "Mathlib/Topology/UniformSpace/Cauchy.lean",
+      "status": "OK"
+    },
+    {
+      "bytes": 656447,
+      "captures_kept": 2,
+      "captures_read": 2,
+      "detail": null,
+      "raw_file": "0250.json",
+      "source_file": "Mathlib/Topology/UniformSpace/Equicontinuity.lean",
+      "status": "OK"
+    }
+  ],
+  "job_process_status": {
+    "PROCESS_FAIL": 5,
+    "PROCESS_PASS": 246
+  },
+  "jobs_planned": 251,
+  "max_canonical_bytes": 262144,
+  "selected_transitions": 500,
+  "tactic_families": {
+    "null": 317
+  },
+  "unrecovered_record_ids": [
+    ".lake/packages/batteries/Batteries/Data/Array/Lemmas.lean::Array.zipWith_eq_zipWith_data::15",
+    ".lake/packages/batteries/Batteries/Data/Array/Monadic.lean::Array.SatisfiesM_foldrM::9",
+    ".lake/packages/batteries/Batteries/Data/HashMap/WF.lean::Batteries.HashMap.Imp.insert_size::10",
+    ".lake/packages/batteries/Batteries/Data/List/Basic.lean::List.takeWhile₂_eq_takeWhile₂TR::4",
+    "Mathlib/Algebra/Homology/DifferentialObject.lean::CategoryTheory.DifferentialObject.eqToHom_f'::0",
+    "Mathlib/Algebra/Homology/Exact.lean::CategoryTheory.kernelSubobject_arrow_eq_zero_of_exact_zero_left::0",
+    "Mathlib/Algebra/Homology/HomotopyCategory/MappingCone.lean::CochainComplex.mappingCone.ext_cochain_from_iff::13",
+    "Mathlib/Algebra/Lie/BaseChange.lean::LieSubmodule.baseChange_bot::0",
+    "Mathlib/Algebra/Lie/BaseChange.lean::LieSubmodule.baseChange_top::1",
+    "Mathlib/Algebra/Lie/Weights/Killing.lean::LieAlgebra.IsKilling.finrank_rootSpace_eq_one::7",
+    "Mathlib/Algebra/Lie/Weights/Killing.lean::LieAlgebra.IsKilling.isSemisimple_ad_of_mem_isCartanSubalgebra::23",
+    "Mathlib/Algebra/Lie/Weights/Killing.lean::LieAlgebra.IsKilling.lie_eq_smul_of_mem_rootSpace::0",
+    "Mathlib/Algebra/Lie/Weights/Killing.lean::LieAlgebra.IsKilling.root_apply_cartanEquivDual_symm_ne_zero::0",
+    "Mathlib/Algebra/MonoidAlgebra/Ideal.lean::MonoidAlgebra.mem_ideal_span_of_image::16",
+    "Mathlib/Algebra/MvPolynomial/Funext.lean::MvPolynomial.funext_fin::8",
+    "Mathlib/Algebra/Polynomial/CancelLeads.lean::Polynomial.natDegree_cancelLeads_lt_of_natDegree_le_natDegree_of_comm::10",
+    "Mathlib/Algebra/Polynomial/HasseDeriv.lean::Polynomial.factorial_smul_hasseDeriv::1",
+    "Mathlib/Algebra/Polynomial/HasseDeriv.lean::Polynomial.hasseDeriv_comp::14",
+    "Mathlib/Algebra/Polynomial/UnitTrinomial.lean::Polynomial.IsUnitTrinomial.irreducible_aux2::4",
+    "Mathlib/AlgebraicGeometry/AffineScheme.lean::AlgebraicGeometry.IsAffineOpen.basicOpen_union_eq_self_iff::4",
+    "Mathlib/AlgebraicGeometry/AffineScheme.lean::AlgebraicGeometry.IsAffineOpen.exists_basicOpen_le::7",
+    "Mathlib/AlgebraicGeometry/EllipticCurve/Affine.lean::WeierstrassCurve.Affine.addPolynomial_eq::2",
+    "Mathlib/AlgebraicGeometry/EllipticCurve/Affine.lean::WeierstrassCurve.Affine.equation_neg_iff::1",
+    "Mathlib/AlgebraicGeometry/EllipticCurve/Jacobian.lean::WeierstrassCurve.Jacobian.Y_ne_negY_of_Y_ne'::0",
+    "Mathlib/AlgebraicGeometry/EllipticCurve/Weierstrass.lean::WeierstrassCurve.map_Δ::1",
+    "Mathlib/AlgebraicGeometry/Morphisms/QuasiSeparated.lean::AlgebraicGeometry.exists_eq_pow_mul_of_isCompact_of_isQuasiSeparated::51",
+    "Mathlib/AlgebraicGeometry/Morphisms/QuasiSeparated.lean::AlgebraicGeometry.quasi_compact_affineProperty_iff_quasiSeparatedSpace::9",
+    "Mathlib/AlgebraicGeometry/Morphisms/RingHomProperties.lean::AlgebraicGeometry.affineLocally_iff_affineOpens_le::25",
+    "Mathlib/AlgebraicGeometry/Morphisms/RingHomProperties.lean::RingHom.PropertyIsLocal.affineLocally_of_comp::0",
+    "Mathlib/AlgebraicGeometry/Morphisms/RingHomProperties.lean::RingHom.PropertyIsLocal.sourceAffineLocally_of_source_openCover::7",
+    "Mathlib/AlgebraicGeometry/Morphisms/RingHomProperties.lean::RingHom.RespectsIso.basicOpen_iff::4",
+    "Mathlib/AlgebraicGeometry/PrimeSpectrum/Basic.lean::PrimeSpectrum.image_comap_zeroLocus_eq_zeroLocus_comap::10",
+    "Mathlib/AlgebraicGeometry/PrimeSpectrum/Noetherian.lean::PrimeSpectrum.exists_primeSpectrum_prod_le_and_ne_bot_of_domain::21",
+    "Mathlib/AlgebraicGeometry/Spec.lean::AlgebraicGeometry.StructureSheaf.isLocalizedModule_toPushforwardStalkAlgHom_aux::6",
+    "Mathlib/AlgebraicTopology/SimplexCategory.lean::SimplexCategory.eq_comp_δ_of_not_surjective'::16",
+    "Mathlib/AlgebraicTopology/SimplexCategory.lean::SimplexCategory.eq_σ_comp_of_not_injective'::31",
+    "Mathlib/AlgebraicTopology/SimplexCategory.lean::SimplexCategory.δ_comp_σ_succ::2",
+    "Mathlib/Analysis/Analytic/Basic.lean::FormalMultilinearSeries.changeOriginSeriesTerm_changeOriginIndexEquiv_symm::0",
+    "Mathlib/Analysis/Analytic/Basic.lean::HasFPowerSeriesAt.isBigO_sub_partialSum_pow::1",
+    "Mathlib/Analysis/BoundedVariation.lean::eVariationOn.add_le_union::21",
+    "Mathlib/Analysis/BoundedVariation.lean::eVariationOn.add_point::111",
+    "Mathlib/Analysis/BoundedVariation.lean::eVariationOn.lowerSemicontinuous_aux::1",
+    "Mathlib/Analysis/Calculus/ContDiff/Basic.lean::ContDiffWithinAt.comp::0",
+    "Mathlib/Analysis/Calculus/ContDiff/Basic.lean::ContDiffWithinAt.hasFDerivWithinAt_nhds::11",
+    "Mathlib/Analysis/Calculus/ContDiff/FiniteDimension.lean::contDiffOn_clm_apply::3",
+    "Mathlib/Analysis/Calculus/FDeriv/Basic.lean::HasStrictFDerivAt.exists_lipschitzOnWith_of_nnnorm_lt::0",
+    "Mathlib/Analysis/Calculus/FDeriv/Basic.lean::fderivWithin_zero_of_isolated::0",
+    "Mathlib/Analysis/Calculus/TangentCone.lean::subset_tangentCone_prod_left::10",
+    "Mathlib/Analysis/Complex/CauchyIntegral.lean::Complex.circleIntegral_sub_center_inv_smul_eq_of_differentiable_on_annulus_off_countable::1",
+    "Mathlib/Analysis/Complex/CauchyIntegral.lean::Complex.circleIntegral_sub_center_inv_smul_of_differentiable_on_off_countable_of_tendsto::10",
+    "Mathlib/Analysis/Convex/Contractible.lean::StarConvex.contractibleSpace::5",
+    "Mathlib/Analysis/Convex/Side.lean::AffineSubspace.setOf_sSameSide_eq_image2::7",
+    "Mathlib/Analysis/Convex/Side.lean::Wbtw.wOppSide₁₃::3",
+    "Mathlib/Analysis/Convolution.lean::MeasureTheory.continuousOn_convolution_right_with_param::33",
+    "Mathlib/Analysis/Convolution.lean::MeasureTheory.convolution_assoc::3",
+    "Mathlib/Analysis/Convolution.lean::MeasureTheory.hasFDerivAt_convolution_right_with_param::79",
+    "Mathlib/Analysis/Convolution.lean::MeasureTheory.posConvolution_eq_convolution_indicator::17",
+    "Mathlib/Analysis/FunctionalSpaces/SobolevInequality.lean::MeasureTheory.snorm_le_snorm_fderiv_of_eq_inner::95",
+    "Mathlib/Analysis/InnerProductSpace/Adjoint.lean::ContinuousLinearMap.adjointAux_adjointAux::0",
+    "Mathlib/Analysis/InnerProductSpace/Adjoint.lean::ContinuousLinearMap.apply_norm_sq_eq_inner_adjoint_left::2",
+    "Mathlib/Analysis/InnerProductSpace/Adjoint.lean::LinearMap.adjoint_inner_left::1",
+    "Mathlib/Analysis/InnerProductSpace/Orthogonal.lean::Submodule.inf_orthogonal_eq_bot::2",
+    "Mathlib/Analysis/InnerProductSpace/Projection.lean::maximal_orthonormal_iff_basis_of_finiteDimensional::2",
+    "Mathlib/Analysis/InnerProductSpace/Projection.lean::orthogonalProjection_singleton::2",
+    "Mathlib/Analysis/InnerProductSpace/Rayleigh.lean::IsSelfAdjoint.eq_smul_self_of_isLocalExtrOn_real::5",
+    "Mathlib/Analysis/InnerProductSpace/Rayleigh.lean::LinearMap.IsSymmetric.hasEigenvalue_iSup_of_finiteDimensional::1",
+    "Mathlib/Analysis/MeanInequalities.lean::ENNReal.inner_le_weight_mul_Lp_of_nonneg::7",
+    "Mathlib/Analysis/NormedSpace/ProdLp.lean::WithLp.prod_antilipschitzWith_equiv_aux::7",
+    "Mathlib/Analysis/NormedSpace/Star/Exponential.lean::Commute.expUnitary_add::4",
+    "Mathlib/Analysis/SpecialFunctions/Trigonometric/EulerSineProd.lean::EulerSine.sin_pi_mul_eq::19",
+    "Mathlib/CategoryTheory/Abelian/DiagramLemmas/Four.lean::CategoryTheory.Abelian.epi_of_epi_of_epi_of_mono'::4",
+    "Mathlib/CategoryTheory/Abelian/DiagramLemmas/Four.lean::CategoryTheory.Abelian.mono_of_epi_of_mono_of_mono'::6",
+    "Mathlib/CategoryTheory/Abelian/FunctorCategory.lean::CategoryTheory.Abelian.FunctorCategory.coimageImageComparison_app::2",
+    "Mathlib/CategoryTheory/Abelian/LeftDerived.lean::CategoryTheory.ProjectiveResolution.fromLeftDerivedZero_eq::3",
+    "Mathlib/CategoryTheory/Abelian/LeftDerived.lean::CategoryTheory.ProjectiveResolution.isoLeftDerivedToHomotopyCategoryObj_hom_naturality::0",
+    "Mathlib/CategoryTheory/CofilteredSystem.lean::CategoryTheory.Functor.eventualRange_eq_iff::2",
+    "Mathlib/CategoryTheory/Functor/Flat.lean::CategoryTheory.PreservesFiniteLimitsOfFlat.uniq::14",
+    "Mathlib/CategoryTheory/Limits/HasLimits.lean::CategoryTheory.Limits.colimit.pre_post::2",
+    "Mathlib/CategoryTheory/Limits/HasLimits.lean::CategoryTheory.Limits.limit.pre_post::0",
+    "Mathlib/CategoryTheory/Limits/VanKampen.lean::CategoryTheory.IsUniversalColimit.map_reflective::59",
+    "Mathlib/CategoryTheory/Limits/VanKampen.lean::CategoryTheory.isUniversalColimit_extendCofan::11",
+    "Mathlib/CategoryTheory/Limits/VanKampen.lean::CategoryTheory.isVanKampenColimit_extendCofan::36",
+    "Mathlib/CategoryTheory/Limits/VanKampen.lean::CategoryTheory.mono_of_cofan_isVanKampen::7",
+    "Mathlib/CategoryTheory/Monoidal/Bimod.lean::Bimod.LeftUnitorBimod.hom_inv_id::6",
+    "Mathlib/CategoryTheory/Monoidal/Bimod.lean::Bimod.comp_whiskerLeft_bimod::7",
+    "Mathlib/CategoryTheory/Monoidal/Bimod.lean::Bimod.pentagon_bimod::4",
+    "Mathlib/CategoryTheory/Shift/ShiftedHom.lean::CategoryTheory.ShiftedHom.mk₀_comp::1",
+    "Mathlib/CategoryTheory/Triangulated/Pretriangulated.lean::CategoryTheory.Pretriangulated.productTriangle_distinguished::47",
+    "Mathlib/Combinatorics/SimpleGraph/Clique.lean::SimpleGraph.not_cliqueFree_of_top_embedding::8",
+    "Mathlib/Combinatorics/SimpleGraph/Regularity/Chunk.lean::SzemerediRegularity.edgeDensity_chunk_not_uniform::18",
+    "Mathlib/Combinatorics/SimpleGraph/Regularity/Chunk.lean::SzemerediRegularity.sum_density_div_card_le_density_add_eps::1",
+    "Mathlib/Computability/AkraBazzi/AkraBazzi.lean::AkraBazziRecurrence.T_isBigO_smoothingFn_mul_asympBound::55",
+    "Mathlib/Computability/TuringMachine.lean::Turing.TM2to1.tr_respects_aux₂::33",
+    "Mathlib/Condensed/TopComparison.lean::equalizerCondition_yonedaPresheaf::5",
+    "Mathlib/Control/Applicative.lean::Applicative.ext::4",
+    "Mathlib/Data/QPF/Multivariate/Constructions/Cofix.lean::MvQPF.Cofix.bisim_aux::29",
+    "Mathlib/Data/QPF/Multivariate/Constructions/Cofix.lean::MvQPF.Cofix.bisim_rel::13",
+    "Mathlib/Data/QPF/Univariate/Basic.lean::QPF.Cofix.bisim_aux::2",
+    "Mathlib/Data/ZMod/Basic.lean::ZMod.mul_inv_cancel_aux::0",
+    "Mathlib/FieldTheory/Finite/Trace.lean::FiniteField.trace_to_zmod_nondegenerate::2",
+    "Mathlib/FieldTheory/RatFunc/Basic.lean::RatFunc.liftOn'_div::0",
+    "Mathlib/FieldTheory/RatFunc/Basic.lean::RatFunc.smul_eq_C_smul::1",
+    "Mathlib/Geometry/Euclidean/Angle/Oriented/Basic.lean::Orientation.oangle_smul_add_right_eq_zero_or_eq_pi_iff::22",
+    "Mathlib/Geometry/Euclidean/Basic.lean::EuclideanGeometry.dist_smul_vadd_eq_dist::2",
+    "Mathlib/Geometry/Euclidean/Basic.lean::EuclideanGeometry.reflection_eq_iff_orthogonalProjection_eq::6",
+    "Mathlib/Geometry/Euclidean/Circumcenter.lean::Affine.Simplex.reflection_circumcenter_eq_affineCombination_of_pointsWithCircumcenter::2",
+    "Mathlib/Geometry/Euclidean/Circumcenter.lean::EuclideanGeometry.existsUnique_dist_eq_of_insert::40",
+    "Mathlib/Geometry/Manifold/AnalyticManifold.lean::mem_analyticGroupoid_of_boundaryless::7",
+    "Mathlib/Geometry/Manifold/ContMDiff/Defs.lean::contMDiffWithinAt_iff_of_mem_source'::1",
+    "Mathlib/Geometry/Manifold/ContMDiff/Product.lean::ContMDiffWithinAt.prod_mk::0",
+    "Mathlib/Geometry/Manifold/ContMDiff/Product.lean::ContMDiffWithinAt.prod_mk_space::0",
+    "Mathlib/Geometry/Manifold/ContMDiffMFDeriv.lean::ContMDiffAt.mfderiv::39",
+    "Mathlib/Geometry/Manifold/ContMDiffMFDeriv.lean::ContMDiffOn.contMDiffOn_tangentMapWithin::95",
+    "Mathlib/Geometry/Manifold/ContMDiffMFDeriv.lean::ContMDiffOn.contMDiffOn_tangentMapWithin_aux::6",
+    "Mathlib/Geometry/Manifold/MFDeriv/Basic.lean::HasMFDerivWithinAt.comp::4",
+    "Mathlib/Geometry/Manifold/MFDeriv/Basic.lean::mfderiv_congr_point::0",
+    "Mathlib/Geometry/RingedSpace/PresheafedSpace/Gluing.lean::AlgebraicGeometry.PresheafedSpace.GlueData.f_invApp_f_app::7",
+    "Mathlib/Geometry/RingedSpace/PresheafedSpace/Gluing.lean::AlgebraicGeometry.PresheafedSpace.GlueData.opensImagePreimageMap_app'::4",
+    "Mathlib/Geometry/RingedSpace/PresheafedSpace/Gluing.lean::AlgebraicGeometry.PresheafedSpace.GlueData.π_ιInvApp_π::14",
+    "Mathlib/LinearAlgebra/Eigenspace/Zero.lean::LinearMap.charpoly_nilpotent_tfae::12",
+    "Mathlib/LinearAlgebra/Eigenspace/Zero.lean::LinearMap.not_hasEigenvalue_zero_tfae::7",
+    "Mathlib/LinearAlgebra/FiniteDimensional.lean::LinearMap.mul_eq_one_of_mul_eq_one::3",
+    "Mathlib/LinearAlgebra/LinearIndependent.lean::linearIndependent_iUnion_finite_subtype::10",
+    "Mathlib/LinearAlgebra/LinearIndependent.lean::linearIndependent_monoidHom::6",
+    "Mathlib/LinearAlgebra/LinearPMap.lean::LinearPMap.neg_graph::4",
+    "Mathlib/LinearAlgebra/LinearPMap.lean::LinearPMap.smul_graph::7",
+    "Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean::Matrix.det_fromBlocks_zero₂₁::25",
+    "Mathlib/LinearAlgebra/Matrix/Determinant/Basic.lean::Matrix.det_mul::7",
+    "Mathlib/Logic/Denumerable.lean::Nat.Subtype.right_inverse_aux::1",
+    "Mathlib/MeasureTheory/Covering/Besicovitch.lean::Besicovitch.exists_disjoint_closedBall_covering_ae_of_finiteMeasure_aux::60",
+    "Mathlib/MeasureTheory/Decomposition/Lebesgue.lean::MeasureTheory.Measure.rnDeriv_smul_right_of_ne_top::2",
+    "Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL1.lean::MeasureTheory.aestronglyMeasurable'_condexpL1CLM::10",
+    "Mathlib/MeasureTheory/Function/ConditionalExpectation/CondexpL1.lean::MeasureTheory.setIntegral_condexpL1CLM_of_measure_ne_top::2",
+    "Mathlib/MeasureTheory/Function/SimpleFuncDenseLp.lean::MeasureTheory.Lp.simpleFunc.denseEmbedding::5",
+    "Mathlib/MeasureTheory/Integral/FundThmCalculus.lean::intervalIntegral.integral_eq_sub_of_hasDeriv_right_of_le::2",
+    "Mathlib/MeasureTheory/Integral/PeakFunction.lean::tendsto_integral_comp_smul_smul_of_integrable::12",
+    "Mathlib/MeasureTheory/Integral/PeakFunction.lean::tendsto_setIntegral_peak_smul_of_integrableOn_of_tendsto_aux::26",
+    "Mathlib/MeasureTheory/Integral/PeakFunction.lean::tendsto_setIntegral_pow_smul_of_unique_maximum_of_isCompact_of_measure_nhdsWithin_pos::27",
+    "Mathlib/NumberTheory/ClassNumber/AdmissibleCardPowDegree.lean::Polynomial.exists_approx_polynomial::25",
+    "Mathlib/NumberTheory/Cyclotomic/Three.lean::IsCyclotomicExtension.Rat.Three.lambda_pow_four_dvd_cube_sub_one_or_add_one_of_lambda_not_dvd::2",
+    "Mathlib/NumberTheory/LSeries/HurwitzZetaOdd.lean::HurwitzZeta.hasSum_nat_sinKernel::3",
+    "Mathlib/NumberTheory/NumberField/Discriminant.lean::NumberField.exists_ne_zero_mem_ringOfIntegers_of_norm_le_mul_sqrt_discr::3",
+    "Mathlib/NumberTheory/NumberField/Discriminant.lean::NumberField.hermiteTheorem.finite_of_discr_bdd_of_isReal::14",
+    "Mathlib/NumberTheory/Ostrowski.lean::Rat.MulRingNorm.mulRingNorm_equiv_padic_of_bounded::13",
+    "Mathlib/NumberTheory/Padics/PadicNumbers.lean::Padic.exi_rat_seq_conv_cauchy::8",
+    "Mathlib/NumberTheory/Padics/RingHoms.lean::PadicInt.lift_sub_val_mem_span::0",
+    "Mathlib/NumberTheory/PythagoreanTriples.lean::coprime_sq_sub_mul_of_even_odd::23",
+    "Mathlib/NumberTheory/PythagoreanTriples.lean::coprime_sq_sub_sq_sum_of_odd_odd::15",
+    "Mathlib/NumberTheory/RamificationInertia.lean::Ideal.FinrankQuotientMap.span_eq_top::34",
+    "Mathlib/NumberTheory/RamificationInertia.lean::Ideal.finrank_quotient_map::14",
+    "Mathlib/Order/WellFoundedSet.lean::Set.PartiallyWellOrderedOn.partiallyWellOrderedOn_sublistForall₂::11",
+    "Mathlib/Probability/Kernel/Disintegration/Basic.lean::ProbabilityTheory.kernel.borelMarkovFromReal_apply'::1",
+    "Mathlib/Probability/Kernel/Disintegration/Basic.lean::ProbabilityTheory.kernel.compProd_fst_borelMarkovFromReal_eq_comapRight_compProd::5",
+    "Mathlib/Probability/Kernel/Disintegration/Integral.lean::ProbabilityTheory.setIntegral_condKernel_univ_right::0",
+    "Mathlib/Probability/Kernel/Disintegration/Integral.lean::ProbabilityTheory.setLIntegral_condKernel_eq_measure_prod::6",
+    "Mathlib/Probability/Process/Stopping.lean::MeasureTheory.progMeasurable_min_stopping_time::19",
+    "Mathlib/RepresentationTheory/GroupCohomology/Resolution.lean::Rep.diagonalHomEquiv_symm_apply::2",
+    "Mathlib/RepresentationTheory/GroupCohomology/Resolution.lean::groupCohomology.resolution.actionDiagonalSucc_inv_apply::0",
+    "Mathlib/RepresentationTheory/GroupCohomology/Resolution.lean::groupCohomology.resolution.quasiIso_forget₂_εToSingle₀::1",
+    "Mathlib/RingTheory/Binomial.lean::Polynomial.ascPochhammer_smeval_cast::3",
+    "Mathlib/RingTheory/Coprime/Ideal.lean::Ideal.iSup_iInf_eq_top_iff_pairwise::16",
+    "Mathlib/RingTheory/FiniteType.lean::AddMonoidAlgebra.mvPolynomial_aeval_of_surjective_of_closure::6",
+    "Mathlib/RingTheory/FractionalIdeal/Operations.lean::FractionalIdeal.exists_eq_spanSingleton_mul::11",
+    "Mathlib/RingTheory/GradedAlgebra/HomogeneousIdeal.lean::Ideal.mul_homogeneous_element_mem_of_mem::4",
+    "Mathlib/RingTheory/Ideal/MinimalPrime.lean::Ideal.exists_comap_eq_of_mem_minimalPrimes_of_injective::6",
+    "Mathlib/RingTheory/IsTensorProduct.lean::Algebra.IsPushout.symm::10",
+    "Mathlib/RingTheory/IsTensorProduct.lean::IsBaseChange.iff_lift_unique::0",
+    "Mathlib/RingTheory/Polynomial/Cyclotomic/Basic.lean::Polynomial.cyclotomic_prime_pow_eq_geom_sum::8",
+    "Mathlib/RingTheory/Polynomial/Selmer.lean::Polynomial.X_pow_sub_X_sub_one_irreducible::8",
+    "Mathlib/RingTheory/RootsOfUnity/Lemmas.lean::IsPrimitiveRoot.prod_one_sub_pow_eq_order::1",
+    "Mathlib/RingTheory/WittVector/MulCoeff.lean::WittVector.mul_polyOfInterest_aux3::4",
+    "Mathlib/RingTheory/WittVector/MulCoeff.lean::WittVector.peval_polyOfInterest::1",
+    "Mathlib/RingTheory/WittVector/WittPolynomial.lean::wittPolynomial_zmod_self::5",
+    "Mathlib/SetTheory/Cardinal/Basic.lean::Cardinal.mk_preimage_of_subset_range_lift::4",
+    "Mathlib/SetTheory/Game/Basic.lean::SetTheory.PGame.quot_left_distrib::52",
+    "Mathlib/SetTheory/Game/Basic.lean::SetTheory.PGame.quot_mul_assoc::81",
+    "Mathlib/SetTheory/Game/Nim.lean::SetTheory.PGame.nim_def::0",
+    "Mathlib/Topology/Category/Profinite/Nobeling.lean::Profinite.NobelingProof.GoodProducts.smaller_mono::0",
+    "Mathlib/Topology/Category/Profinite/Nobeling.lean::Profinite.NobelingProof.GoodProducts.spanFin::7",
+    "Mathlib/Topology/Category/Profinite/Nobeling.lean::Profinite.NobelingProof.GoodProducts.union_succ::7",
+    "Mathlib/Topology/MetricSpace/GromovHausdorff.lean::GromovHausdorff.hausdorffDist_optimal::63",
+    "Mathlib/Topology/MetricSpace/GromovHausdorff.lean::GromovHausdorff.totallyBounded::35",
+    "Mathlib/Topology/Sheaves/Sheafify.lean::TopCat.Presheaf.stalkToFiber_injective::11"
+  ]
+}

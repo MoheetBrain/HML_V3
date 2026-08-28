@@ -1,0 +1,20 @@
+{
+  "asset": "GPT-2 byte-level BPE tokenizer (117M)",
+  "files": {
+    "encoder.json": {
+      "url": "https://openaipublic.blob.core.windows.net/gpt-2/models/117M/encoder.json",
+      "sha256": "196139668be63f3b5d6574427317ae82f612a97c5d1cdaf36ed2256dbf636783",
+      "bytes": 1042301
+    },
+    "vocab.bpe": {
+      "url": "https://openaipublic.blob.core.windows.net/gpt-2/models/117M/vocab.bpe",
+      "sha256": "1ce1664773c50f3e0cc8842619a93edc4624525b728b188a9e0be33b7726adc5",
+      "bytes": 456318
+    }
+  },
+  "license": "MIT (OpenAI gpt-2)",
+  "acquired": "2026-08-28",
+  "purpose": "deterministic, offline, representation-neutral token accounting for the representation search",
+  "epistemic_status": "PROXY. GPT-2 BPE is one pretrained English-heavy tokenizer. Token counts under it are evidence about cost under that vocabulary, not a general claim about how any specific model segments a representation. Byte counts and tokenizer-free pre-token counts are reported alongside every token count.",
+  "no_training_performed": true
+}

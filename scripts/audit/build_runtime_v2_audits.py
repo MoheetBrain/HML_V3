@@ -78,15 +78,31 @@ def main() -> None:
         key=lambda row: Path(row["raw_capture_file"]).stat().st_size,
     )[:3]
     canonical_samples = []
-    raw_cache: dict[Path, dict[str, dict[str, Any]]] = {}
+    raw_cache: dict[Path, dict[str, Any]] = {}
     for row in smallest:
         raw_path = Path(row["raw_capture_file"])
         if raw_path not in raw_cache:
-            payload = json.loads(raw_path.read_text())
-            raw_cache[raw_path] = {
-                capture["record_id"]: capture for capture in payload["captures"]
-            }
-        capture = raw_cache[raw_path][row["record_id"]]
+            raw_cache[raw_path] = json.loads(raw_path.read_text())
+        payload = raw_cache[raw_path]
+        captures_by_id: dict[str, list[dict[str, Any]]] = collections.defaultdict(list)
+        for item in payload["captures"]:
+            captures_by_id[item["record_id"]].append(item)
+        matching = [
+            item for item in captures_by_id[row["record_id"]]
+            if item["fresh_trace_ordinal"] == row["fresh_trace_ordinal"]
+        ]
+        if len(matching) != 1:
+            raise RuntimeError(
+                f"cannot recover selected runtime occurrence for {row['record_id']}"
+            )
+        capture = matching[0]
+        capture = dict(capture)
+        capture["environment"] = {
+            "runtime_pin": summary["environment"],
+            "source_file": row["source_file"],
+            "direct_imports": payload["direct_imports"],
+            "lean_runtime_snapshot": capture["environment"],
+        }
         delta = structured_delta(
             capture["state_before"], capture["state_after"],
             row["official_external_premise_refs"], capture["local_context_refs"],
@@ -169,7 +185,8 @@ def main() -> None:
         "campaign": {key: summary[key] for key in (
             "selected", "replayable", "exact_pass", "exact_fail", "unsupported",
             "environment_mismatch", "primary_exact_pass_rate", "conditional_exact_pass_rate",
-            "elapsed_seconds", "workers", "process_status_counts", "audit_rows_sha256",
+            "classification_complete", "elapsed_seconds", "workers", "process_status_counts",
+            "audit_rows_sha256",
         )},
         "environment": summary["environment"],
         "expression_constructor_coverage": constructor_coverage,

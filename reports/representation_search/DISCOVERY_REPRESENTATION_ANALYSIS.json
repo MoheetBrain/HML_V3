@@ -1,0 +1,92 @@
+{
+  "attempts": 20949,
+  "branching_factor": {
+    "0": 24,
+    "1": 148540,
+    "2": 210,
+    "3": 456,
+    "4": 1209,
+    "5": 12469,
+    "6": 315,
+    "7": 5290
+  },
+  "completions": 256429,
+  "dimensions": {
+    "alternative_branch": {
+      "canonical_v2_field": null,
+      "expressible_by_any_genome": false,
+      "prm800k_signal": "multiple completions offered at one step",
+      "question": "what else could have been done at this state?",
+      "why": "a CanonicalMathTransition is a single before/action/after triple. Siblings would require a state-to-many-actions record the schema does not have."
+    },
+    "dead_end": {
+      "canonical_v2_field": null,
+      "expressible_by_any_genome": false,
+      "prm800k_signal": "completion rating -1",
+      "question": "did this action make the goal unreachable or wrong?",
+      "why": "a Lean trace contains only steps that were kept. Abandoned branches leave no TacticInfo, so the corpus has no negative examples at all."
+    },
+    "no_acceptable_alternative": {
+      "canonical_v2_field": null,
+      "expressible_by_any_genome": false,
+      "prm800k_signal": "human_completion present with chosen_completion null",
+      "question": "were all offered continuations rejected?",
+      "why": "same structural absence as alternative_branch."
+    },
+    "solution_outcome": {
+      "canonical_v2_field": "verifier evidence exists per transition, not per attempt",
+      "expressible_by_any_genome": false,
+      "prm800k_signal": "label.finish_reason",
+      "question": "did the whole attempt end in a solution, an error, or a give-up?",
+      "why": "the corpus unit is one transition; an attempt-level outcome has no home."
+    },
+    "step_progress": {
+      "canonical_v2_field": null,
+      "expressible_by_any_genome": false,
+      "prm800k_signal": "completion rating +1",
+      "question": "did this action move the proof toward a solution?",
+      "why": "CanonicalMathTransition carries the verifier's acceptance of a step, not a judgement of whether the step helped. No axis can expose an absent field."
+    },
+    "valid_but_useless": {
+      "canonical_v2_field": null,
+      "expressible_by_any_genome": false,
+      "prm800k_signal": "completion rating 0",
+      "question": "was this action legal yet unhelpful?",
+      "why": "the structured delta records what changed, and a legal no-op is visible as an empty delta, but 'legal and unhelpful' is a judgement the delta does not make."
+    }
+  },
+  "files_read": [
+    "/Users/moheet/Documents/ChatGPT/prm800k/prm800k/data/phase1_train.jsonl",
+    "/Users/moheet/Documents/ChatGPT/prm800k/prm800k/data/phase2_train.jsonl"
+  ],
+  "finish_reasons": {
+    "bad_problem": 196,
+    "found_error": 14279,
+    "give_up": 640,
+    "solution": 5834
+  },
+  "flagged_completions": 231,
+  "mean_steps_per_attempt": 8.044,
+  "rating_distribution": {
+    "DEAD_END_OR_ERROR": {
+      "count": 62491,
+      "share": 0.2437
+    },
+    "PROGRESS_TOWARD_SOLUTION": {
+      "count": 156719,
+      "share": 0.6112
+    },
+    "UNRATED": {
+      "count": 7188,
+      "share": 0.028
+    },
+    "VALID_BUT_NOT_PROGRESSING": {
+      "count": 30031,
+      "share": 0.1171
+    }
+  },
+  "rows_per_file_limit": 20000,
+  "steps": 168513,
+  "steps_where_every_offered_continuation_was_rejected": 16750,
+  "steps_with_a_human_written_continuation": 2341
+}

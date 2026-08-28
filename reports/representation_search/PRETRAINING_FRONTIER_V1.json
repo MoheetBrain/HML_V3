@@ -1,0 +1,3965 @@
+{
+  "axis_effects": [
+    {
+      "axis": "const_name_form",
+      "changed_the_measurement": 0,
+      "share": 0.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "graph_serialization",
+      "changed_the_measurement": 0,
+      "share": 0.0,
+      "single_axis_mutations": 11
+    },
+    {
+      "axis": "keyword_case",
+      "changed_the_measurement": 0,
+      "share": 0.0,
+      "single_axis_mutations": 1
+    },
+    {
+      "axis": "local_instance_visibility",
+      "changed_the_measurement": 0,
+      "share": 0.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "role_word_length",
+      "changed_the_measurement": 0,
+      "share": 0.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "type_attachment",
+      "changed_the_measurement": 0,
+      "share": 0.0,
+      "single_axis_mutations": 1
+    },
+    {
+      "axis": "goal_position",
+      "changed_the_measurement": 1,
+      "share": 0.167,
+      "single_axis_mutations": 6
+    },
+    {
+      "axis": "premise_locality",
+      "changed_the_measurement": 1,
+      "share": 0.2,
+      "single_axis_mutations": 5
+    },
+    {
+      "axis": "field_marker",
+      "changed_the_measurement": 1,
+      "share": 0.5,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "redundancy_level",
+      "changed_the_measurement": 6,
+      "share": 0.5,
+      "single_axis_mutations": 12
+    },
+    {
+      "axis": "binder_encoding",
+      "changed_the_measurement": 5,
+      "share": 0.714,
+      "single_axis_mutations": 7
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "changed_the_measurement": 8,
+      "share": 0.889,
+      "single_axis_mutations": 9
+    },
+    {
+      "axis": "context_order",
+      "changed_the_measurement": 9,
+      "share": 0.9,
+      "single_axis_mutations": 10
+    },
+    {
+      "axis": "action_encoding",
+      "changed_the_measurement": 2,
+      "share": 1.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "action_position",
+      "changed_the_measurement": 6,
+      "share": 1.0,
+      "single_axis_mutations": 6
+    },
+    {
+      "axis": "alpha_normalization",
+      "changed_the_measurement": 3,
+      "share": 1.0,
+      "single_axis_mutations": 3
+    },
+    {
+      "axis": "application_style",
+      "changed_the_measurement": 3,
+      "share": 1.0,
+      "single_axis_mutations": 3
+    },
+    {
+      "axis": "binder_use_reminder",
+      "changed_the_measurement": 4,
+      "share": 1.0,
+      "single_axis_mutations": 4
+    },
+    {
+      "axis": "block_delimiter",
+      "changed_the_measurement": 4,
+      "share": 1.0,
+      "single_axis_mutations": 4
+    },
+    {
+      "axis": "checksum_policy",
+      "changed_the_measurement": 3,
+      "share": 1.0,
+      "single_axis_mutations": 3
+    },
+    {
+      "axis": "count_assertions",
+      "changed_the_measurement": 2,
+      "share": 1.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "delta_visibility",
+      "changed_the_measurement": 2,
+      "share": 1.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "expression_notation",
+      "changed_the_measurement": 5,
+      "share": 1.0,
+      "single_axis_mutations": 5
+    },
+    {
+      "axis": "goal_identity_visibility",
+      "changed_the_measurement": 1,
+      "share": 1.0,
+      "single_axis_mutations": 1
+    },
+    {
+      "axis": "identity_scheme",
+      "changed_the_measurement": 1,
+      "share": 1.0,
+      "single_axis_mutations": 1
+    },
+    {
+      "axis": "identity_sigil",
+      "changed_the_measurement": 5,
+      "share": 1.0,
+      "single_axis_mutations": 5
+    },
+    {
+      "axis": "lexicon_register",
+      "changed_the_measurement": 13,
+      "share": 1.0,
+      "single_axis_mutations": 13
+    },
+    {
+      "axis": "list_syntax",
+      "changed_the_measurement": 2,
+      "share": 1.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "literal_form",
+      "changed_the_measurement": 1,
+      "share": 1.0,
+      "single_axis_mutations": 1
+    },
+    {
+      "axis": "provenance_visibility",
+      "changed_the_measurement": 2,
+      "share": 1.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "record_separator",
+      "changed_the_measurement": 1,
+      "share": 1.0,
+      "single_axis_mutations": 1
+    },
+    {
+      "axis": "scope_metadata",
+      "changed_the_measurement": 1,
+      "share": 1.0,
+      "single_axis_mutations": 1
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "changed_the_measurement": 2,
+      "share": 1.0,
+      "single_axis_mutations": 2
+    },
+    {
+      "axis": "syntax_family",
+      "changed_the_measurement": 13,
+      "share": 1.0,
+      "single_axis_mutations": 13
+    }
+  ],
+  "blocked_by_memory": [
+    {
+      "axis": "graph_serialization",
+      "parent": "R_0eaf36f22de1",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_ca96225a3105",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_9828900de975",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_e5c508d5c321",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_355c420a748e",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_7943f3bad185",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_8b297a184ca2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_f8c6e06c24ad",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_5d5c1e231af2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_e68263bfec9d",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_e6b1d8e8e992",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_b32c0ad2b2d2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_feb0e2a9bd1a",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_743fc4f86fab",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_a850a6e54b7a",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_0b69bd4ddbfc",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_5e0ff5d2dbbd",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_0eaf36f22de1",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_ca96225a3105",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_e5c508d5c321",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_355c420a748e",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_7943f3bad185",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_8b297a184ca2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_743fc4f86fab",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_a850a6e54b7a",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_0b69bd4ddbfc",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_5e0ff5d2dbbd",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_9d23ae334dc3",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_a4bb78b644b2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_dd7a03ce6ebf",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_7f7e5926dbb7",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_8e656843a770",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_8dfb038fbaee",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_e201bedb9d76",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_578089816e70",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_3cd0b9d841a8",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_fe043354b273",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_15c20eb3e481",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_4b3a50f9e121",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_16ab1138f5d4",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_1d441775d5fc",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_87f930b7b66f",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_4a3f533ff2e5",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_0eaf36f22de1",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_ca96225a3105",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_e5c508d5c321",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_355c420a748e",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_7943f3bad185",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_a850a6e54b7a",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_5e0ff5d2dbbd",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_a4bb78b644b2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_dd7a03ce6ebf",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_4b3a50f9e121",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_16ab1138f5d4",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_1d441775d5fc",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_4a3f533ff2e5",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_124568b25991",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_821d1541ac9b",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_0bf199c1ebca",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_8198ebbe5185",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_bdba714eeca8",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_ea7112aac24c",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_6afd6b5c61d4",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_7313e666736f",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_e90c8a8384f4",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_d644dff8c9c6",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_bace21dec43b",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_3de8b45034d1",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_d1accb194ad0",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_f5d8e89eb43a",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_20c78ce0fd97",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_07e59bff963f",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_b40c6551194e",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_62519d90f217",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_5273a6d74118",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_0b36a48dadea",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_c78387a58962",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_d1accb194ad0",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_f5d8e89eb43a",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_20c78ce0fd97",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_07e59bff963f",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_5273a6d74118",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_0b36a48dadea",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_c78387a58962",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_09976fa51d66",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_2d612d3a38ed",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_3227a8ac3a06",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_d51968446f17",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_f5966e97e791",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_93fd5967d1e2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_b3d960e9e5f2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_d1accb194ad0",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_f5d8e89eb43a",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_20c78ce0fd97",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_07e59bff963f",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_5273a6d74118",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_93fd5967d1e2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_b3d960e9e5f2",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_72e243fe3dce",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_2620871cf4cd",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_6eb003bf8b58",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_da06b2129f21",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_3d45ca9177b1",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    },
+    {
+      "axis": "graph_serialization",
+      "parent": "R_be204d70d432",
+      "reason": "BLOCKED_BY:FM-005",
+      "value": "GOAL_CENTRED"
+    }
+  ],
+  "candidates_evaluated": 165,
+  "candidates_hard_rejected": 27,
+  "candidates_registered": 208,
+  "canonical_state_version": "canonical-math-transition-v2.0.0",
+  "claim_of_universal_optimality": false,
+  "compiler_version": "representation-compiler-v1.0.0",
+  "controls": [
+    {
+      "candidate_id": "R_02a757cf3ef8",
+      "label": "SEED_CANONICAL_SEXPR",
+      "metrics": {
+        "binder_use_distance_tokens": 248.0178,
+        "bpe_tokens_per_transition": 9040.5625,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.9306,
+        "max_reference_span_tokens": 3851.0,
+        "premise_to_action_distance_tokens": 402.4649
+      },
+      "on_front": false,
+      "on_strict_front": true,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 77
+    },
+    {
+      "candidate_id": "R_0eaf36f22de1",
+      "label": "SEED_DELTA_FIRST",
+      "metrics": {
+        "binder_use_distance_tokens": 246.6821,
+        "bpe_tokens_per_transition": 9466.9375,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9891,
+        "max_reference_span_tokens": 4453.8125,
+        "premise_to_action_distance_tokens": 63.8488
+      },
+      "on_front": true,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 100
+    },
+    {
+      "candidate_id": "R_ca96225a3105",
+      "label": "SEED_DEPENDENCY_TOPOLOGICAL",
+      "metrics": {
+        "binder_use_distance_tokens": 262.2865,
+        "bpe_tokens_per_transition": 9466.9375,
+        "detect_drop_field": 0.7917,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.9891,
+        "max_reference_span_tokens": 4039.3125,
+        "premise_to_action_distance_tokens": 421.2679
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 102
+    },
+    {
+      "candidate_id": "R_939e2a4d43f8",
+      "label": "SEED_EXPLICIT_REDUNDANT",
+      "metrics": {
+        "binder_use_distance_tokens": 292.7624,
+        "bpe_tokens_per_transition": 10307.2188,
+        "detect_drop_field": 0.125,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.99,
+        "max_reference_span_tokens": 4452.25,
+        "premise_to_action_distance_tokens": 445.2232
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 136
+    },
+    {
+      "candidate_id": "R_0efd778653d8",
+      "label": "SEED_GOAL_LOCAL",
+      "metrics": {
+        "binder_use_distance_tokens": 267.6996,
+        "bpe_tokens_per_transition": 9720.5312,
+        "detect_drop_field": 0.7083,
+        "detect_swap_records": 0.8261,
+        "identifier_fragmentation": 1.9762,
+        "max_reference_span_tokens": 4491.3125,
+        "premise_to_action_distance_tokens": 514.8119
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 119
+    },
+    {
+      "candidate_id": "R_9584b246a125",
+      "label": "SEED_GRAPH_EDGE",
+      "metrics": {
+        "binder_use_distance_tokens": 238.6198,
+        "bpe_tokens_per_transition": 9985.9375,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.625,
+        "identifier_fragmentation": 1.9213,
+        "max_reference_span_tokens": 3784.5312,
+        "premise_to_action_distance_tokens": 454.7929
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 132
+    },
+    {
+      "candidate_id": "R_9828900de975",
+      "label": "SEED_HEADER_PREMISE",
+      "metrics": {
+        "binder_use_distance_tokens": 256.0575,
+        "bpe_tokens_per_transition": 9469.9375,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.9565,
+        "identifier_fragmentation": 1.9885,
+        "max_reference_span_tokens": 3929.8438,
+        "premise_to_action_distance_tokens": 1103.3435
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 113
+    },
+    {
+      "candidate_id": "R_dd216e17fe7e",
+      "label": "SEED_HYBRID_COMPACT_BLOCK",
+      "metrics": {
+        "binder_use_distance_tokens": 241.3192,
+        "bpe_tokens_per_transition": 8701.2812,
+        "detect_drop_field": 0.7917,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 2.0495,
+        "max_reference_span_tokens": 3706.5312,
+        "premise_to_action_distance_tokens": 390.4405
+      },
+      "on_front": false,
+      "on_strict_front": true,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 55
+    },
+    {
+      "candidate_id": "R_e5c508d5c321",
+      "label": "SEED_HYBRID_LOCAL_DAG",
+      "metrics": {
+        "binder_use_distance_tokens": 175.7141,
+        "bpe_tokens_per_transition": 23839.625,
+        "detect_drop_field": 0.1667,
+        "detect_swap_records": 0.375,
+        "identifier_fragmentation": 1.9002,
+        "max_reference_span_tokens": 6387.3438,
+        "premise_to_action_distance_tokens": 3356.3542
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 165
+    },
+    {
+      "candidate_id": "R_355c420a748e",
+      "label": "SEED_HYBRID_RPN_MACHINE",
+      "metrics": {
+        "binder_use_distance_tokens": 212.0641,
+        "bpe_tokens_per_transition": 7667.1562,
+        "detect_drop_field": 0.7917,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 2.1331,
+        "max_reference_span_tokens": 3258.8125,
+        "premise_to_action_distance_tokens": 347.2208
+      },
+      "on_front": false,
+      "on_strict_front": true,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 14
+    },
+    {
+      "candidate_id": "R_17ce007abb78",
+      "label": "SEED_JSON_BASELINE",
+      "metrics": {
+        "binder_use_distance_tokens": 256.6891,
+        "bpe_tokens_per_transition": 9261.9062,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.9861,
+        "max_reference_span_tokens": 3960.875,
+        "premise_to_action_distance_tokens": 412.0327
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 89
+    },
+    {
+      "candidate_id": "R_8611f71278fd",
+      "label": "SEED_LEAN_LIKE",
+      "metrics": {
+        "binder_use_distance_tokens": 394.8585,
+        "bpe_tokens_per_transition": 11924.9688,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 2.2719,
+        "max_reference_span_tokens": 5027.0,
+        "premise_to_action_distance_tokens": 228.5732
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 151
+    },
+    {
+      "candidate_id": "R_97bec3a66267",
+      "label": "SEED_MINIMAL_MACHINE",
+      "metrics": {
+        "binder_use_distance_tokens": 225.4128,
+        "bpe_tokens_per_transition": 7977.0,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.6667,
+        "identifier_fragmentation": 2.0072,
+        "max_reference_span_tokens": 3489.25,
+        "premise_to_action_distance_tokens": 152.4
+      },
+      "on_front": false,
+      "on_strict_front": true,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 29
+    },
+    {
+      "candidate_id": "R_7943f3bad185",
+      "label": "SEED_PRIOR_HML",
+      "metrics": {
+        "binder_use_distance_tokens": 262.2865,
+        "bpe_tokens_per_transition": 9466.9375,
+        "detect_drop_field": 0.7917,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.9891,
+        "max_reference_span_tokens": 4039.3125,
+        "premise_to_action_distance_tokens": 421.2679
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 101
+    },
+    {
+      "candidate_id": "R_699a25a6ae96",
+      "label": "SEED_STRUCTURED_ENGLISH",
+      "metrics": {
+        "binder_use_distance_tokens": 384.6373,
+        "bpe_tokens_per_transition": 11665.625,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 2.1615,
+        "max_reference_span_tokens": 4916.6875,
+        "premise_to_action_distance_tokens": 493.5244
+      },
+      "on_front": false,
+      "on_strict_front": false,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 150
+    },
+    {
+      "candidate_id": "R_d1accb194ad0",
+      "label": "SEED_TYPED_AST",
+      "metrics": {
+        "binder_use_distance_tokens": 304.7065,
+        "bpe_tokens_per_transition": 10996.8125,
+        "detect_drop_field": 0.7917,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.9306,
+        "max_reference_span_tokens": 4712.5625,
+        "premise_to_action_distance_tokens": 491.2982
+      },
+      "on_front": false,
+      "on_strict_front": true,
+      "rejection_reason": null,
+      "status": "EVALUATED",
+      "token_rank": 144
+    }
+  ],
+  "corpus": {
+    "domains": 26,
+    "selected": 500,
+    "transitions": 317
+  },
+  "epsilon": 0.02,
+  "epsilon_front_size": 147,
+  "front": [
+    {
+      "all_metrics": {
+        "binder_use_distance_chars": 426.1555,
+        "binder_use_distance_tokens": 194.2581,
+        "bpe_tokens_per_transition": 7161.7188,
+        "bytes_per_transition": 15822.0938,
+        "chars_per_transition": 15722.625,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.0,
+        "detect_drop_line": 1.0,
+        "detect_reorder_scope": 0.4583,
+        "detect_swap_records": 0.6957,
+        "detect_truncate_tail": 1.0,
+        "forward_reference_rate": 0.4148,
+        "gzip_bytes_per_transition": 1116.5,
+        "gzip_ratio": 14.1712,
+        "identifier_fragmentation": 1.803,
+        "max_reference_span_tokens": 3176.0625,
+        "premise_to_action_distance_tokens": 623.8673,
+        "pretokens_per_transition": 5309.8438,
+        "role_vocabulary_entropy": 3.4888,
+        "role_word_fragmentation": 1.8333,
+        "structural_density": 0.6235
+      },
+      "ancestry": [
+        "R_26259b75353b",
+        "R_0b36a48dadea",
+        "R_fdd4732ecbc0",
+        "R_1f7b776ade73",
+        "R_5e0ff5d2dbbd",
+        "R_76227d39d30a",
+        "R_9828900de975"
+      ],
+      "candidate_id": "R_26259b75353b",
+      "derived_from": "SEED_HEADER_PREMISE",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "TRAILER",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "CURRIED_BINARY",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "NONE",
+        "block_delimiter": "INDENT",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "REVERSE_INDEX",
+        "count_assertions": "NONE",
+        "delta_visibility": "DERIVABLE_ONLY",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "POSTFIX_RPN",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "BOTH",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SHORT_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "MATH_NOTATION",
+        "list_syntax": "BRACKET_COMMA",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "HEADER_BLOCK",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "LOW",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "PROSE",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "genome_differences_from_seed": [
+        "context_order=REVERSE_INDEX",
+        "delta_visibility=DERIVABLE_ONLY",
+        "expression_notation=POSTFIX_RPN",
+        "goal_identity_visibility=BOTH",
+        "lexicon_register=MATH_NOTATION",
+        "syntax_family=PROSE"
+      ],
+      "label": "R_26259b75353b",
+      "metrics": {
+        "binder_use_distance_tokens": 194.2581,
+        "bpe_tokens_per_transition": 7161.7188,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.6957,
+        "identifier_fragmentation": 1.803,
+        "max_reference_span_tokens": 3176.0625,
+        "premise_to_action_distance_tokens": 623.8673
+      },
+      "origin": "SINGLE_AXIS",
+      "parents": [
+        "R_0b36a48dadea"
+      ],
+      "seed": null,
+      "token_rank": 1,
+      "why_shortlisted": [
+        "best_on:bpe_tokens_per_transition",
+        "best_on:identifier_fragmentation"
+      ]
+    },
+    {
+      "all_metrics": {
+        "binder_use_distance_chars": 404.09,
+        "binder_use_distance_tokens": 195.4709,
+        "bpe_tokens_per_transition": 7337.0938,
+        "bytes_per_transition": 15211.375,
+        "chars_per_transition": 15209.4375,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.0,
+        "detect_drop_line": 0.875,
+        "detect_reorder_scope": 0.4583,
+        "detect_swap_records": 0.913,
+        "detect_truncate_tail": 0.0,
+        "forward_reference_rate": 0.0,
+        "gzip_bytes_per_transition": 1184.8125,
+        "gzip_ratio": 12.8386,
+        "identifier_fragmentation": 2.1331,
+        "max_reference_span_tokens": 3012.5312,
+        "premise_to_action_distance_tokens": 882.4071,
+        "pretokens_per_transition": 5227.6562,
+        "role_vocabulary_entropy": 3.7418,
+        "role_word_fragmentation": 1.3333,
+        "structural_density": 0.6904
+      },
+      "ancestry": [
+        "R_3c2d80a45f5f",
+        "R_c54e5b6a3786",
+        "R_a850a6e54b7a",
+        "R_355c420a748e"
+      ],
+      "candidate_id": "R_3c2d80a45f5f",
+      "derived_from": "SEED_HYBRID_RPN_MACHINE",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "TRAILER",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "FLATTENED_SPINE",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "NONE",
+        "block_delimiter": "KEYWORD_END",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "DECLARATION_INDEX",
+        "count_assertions": "NONE",
+        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "POSTFIX_RPN",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "SEMANTIC_ID",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SHORT_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "COMPACT_MNEMONIC",
+        "list_syntax": "BRACKET_COMMA",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "ADJACENT_TO_ACTION",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "LOW",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "SEXPR",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "genome_differences_from_seed": [
+        "action_position=TRAILER",
+        "block_delimiter=KEYWORD_END",
+        "syntax_family=SEXPR"
+      ],
+      "label": "R_3c2d80a45f5f",
+      "metrics": {
+        "binder_use_distance_tokens": 195.4709,
+        "bpe_tokens_per_transition": 7337.0938,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.913,
+        "identifier_fragmentation": 2.1331,
+        "max_reference_span_tokens": 3012.5312,
+        "premise_to_action_distance_tokens": 882.4071
+      },
+      "origin": "SINGLE_AXIS",
+      "parents": [
+        "R_c54e5b6a3786"
+      ],
+      "seed": null,
+      "token_rank": 3,
+      "why_shortlisted": [
+        "best_on:max_reference_span_tokens"
+      ]
+    },
+    {
+      "all_metrics": {
+        "binder_use_distance_chars": 412.5307,
+        "binder_use_distance_tokens": 203.4928,
+        "bpe_tokens_per_transition": 7422.0,
+        "bytes_per_transition": 15449.5,
+        "chars_per_transition": 15350.0312,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.9167,
+        "detect_drop_line": 0.5833,
+        "detect_reorder_scope": 1.0,
+        "detect_swap_records": 0.9545,
+        "detect_truncate_tail": 0.7917,
+        "forward_reference_rate": 0.4081,
+        "gzip_bytes_per_transition": 1101.7188,
+        "gzip_ratio": 14.0231,
+        "identifier_fragmentation": 1.899,
+        "max_reference_span_tokens": 3281.8438,
+        "premise_to_action_distance_tokens": 647.9774,
+        "pretokens_per_transition": 5164.375,
+        "role_vocabulary_entropy": 3.3722,
+        "role_word_fragmentation": 1.8333,
+        "structural_density": 2.2631
+      },
+      "ancestry": [
+        "R_d51968446f17",
+        "R_0b36a48dadea",
+        "R_fdd4732ecbc0",
+        "R_1f7b776ade73",
+        "R_5e0ff5d2dbbd",
+        "R_76227d39d30a",
+        "R_9828900de975"
+      ],
+      "candidate_id": "R_d51968446f17",
+      "derived_from": "SEED_HEADER_PREMISE",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "TRAILER",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "CURRIED_BINARY",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "NONE",
+        "block_delimiter": "INDENT",
+        "checksum_policy": "PER_STATE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "REVERSE_INDEX",
+        "count_assertions": "NONE",
+        "delta_visibility": "DERIVABLE_ONLY",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "POSTFIX_RPN",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "BOTH",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SHORT_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "MATH_NOTATION",
+        "list_syntax": "BRACKET_COMMA",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "HEADER_BLOCK",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "LOW",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "BLOCK",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "genome_differences_from_seed": [
+        "checksum_policy=PER_STATE",
+        "context_order=REVERSE_INDEX",
+        "delta_visibility=DERIVABLE_ONLY",
+        "expression_notation=POSTFIX_RPN",
+        "goal_identity_visibility=BOTH",
+        "lexicon_register=MATH_NOTATION"
+      ],
+      "label": "R_d51968446f17",
+      "metrics": {
+        "binder_use_distance_tokens": 203.4928,
+        "bpe_tokens_per_transition": 7422.0,
+        "detect_drop_field": 0.9167,
+        "detect_swap_records": 0.9545,
+        "identifier_fragmentation": 1.899,
+        "max_reference_span_tokens": 3281.8438,
+        "premise_to_action_distance_tokens": 647.9774
+      },
+      "origin": "SINGLE_AXIS",
+      "parents": [
+        "R_0b36a48dadea"
+      ],
+      "seed": null,
+      "token_rank": 5,
+      "why_shortlisted": [
+        "knee"
+      ]
+    },
+    {
+      "all_metrics": {
+        "binder_use_distance_chars": 426.852,
+        "binder_use_distance_tokens": 206.2414,
+        "bpe_tokens_per_transition": 7512.7812,
+        "bytes_per_transition": 15773.7812,
+        "chars_per_transition": 15771.8438,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.9167,
+        "detect_drop_line": 0.4583,
+        "detect_reorder_scope": 1.0,
+        "detect_swap_records": 0.9565,
+        "detect_truncate_tail": 0.0,
+        "forward_reference_rate": 0.4081,
+        "gzip_bytes_per_transition": 1090.9062,
+        "gzip_ratio": 14.4593,
+        "identifier_fragmentation": 1.8649,
+        "max_reference_span_tokens": 3314.9375,
+        "premise_to_action_distance_tokens": 1033.5673,
+        "pretokens_per_transition": 5281.7188,
+        "role_vocabulary_entropy": 3.6358,
+        "role_word_fragmentation": 1.3333,
+        "structural_density": 2.7769
+      },
+      "ancestry": [
+        "R_07e59bff963f",
+        "R_2d41727ba5b8",
+        "R_fdd4732ecbc0",
+        "R_1f7b776ade73",
+        "R_5e0ff5d2dbbd",
+        "R_76227d39d30a",
+        "R_9828900de975"
+      ],
+      "candidate_id": "R_07e59bff963f",
+      "derived_from": "SEED_HEADER_PREMISE",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "TRAILER",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "CURRIED_BINARY",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "NONE",
+        "block_delimiter": "KEYWORD_END",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "REVERSE_INDEX",
+        "count_assertions": "NONE",
+        "delta_visibility": "DERIVABLE_ONLY",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "POSTFIX_RPN",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "BOTH",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SHORT_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "COMPACT_MNEMONIC",
+        "list_syntax": "BRACKET_COMMA",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "HEADER_BLOCK",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "LOW",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "BLOCK",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "genome_differences_from_seed": [
+        "block_delimiter=KEYWORD_END",
+        "context_order=REVERSE_INDEX",
+        "delta_visibility=DERIVABLE_ONLY",
+        "expression_notation=POSTFIX_RPN",
+        "goal_identity_visibility=BOTH",
+        "lexicon_register=COMPACT_MNEMONIC"
+      ],
+      "label": "R_07e59bff963f",
+      "metrics": {
+        "binder_use_distance_tokens": 206.2414,
+        "bpe_tokens_per_transition": 7512.7812,
+        "detect_drop_field": 0.9167,
+        "detect_swap_records": 0.9565,
+        "identifier_fragmentation": 1.8649,
+        "max_reference_span_tokens": 3314.9375,
+        "premise_to_action_distance_tokens": 1033.5673
+      },
+      "origin": "SINGLE_AXIS",
+      "parents": [
+        "R_2d41727ba5b8"
+      ],
+      "seed": null,
+      "token_rank": 7,
+      "why_shortlisted": [
+        "best_on:detect_drop_field"
+      ]
+    },
+    {
+      "all_metrics": {
+        "binder_use_distance_chars": 475.5902,
+        "binder_use_distance_tokens": 241.7673,
+        "bpe_tokens_per_transition": 9017.2812,
+        "bytes_per_transition": 17835.9375,
+        "chars_per_transition": 17834.0,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.0,
+        "detect_drop_line": 0.8333,
+        "detect_reorder_scope": 0.4167,
+        "detect_swap_records": 0.8636,
+        "detect_truncate_tail": 0.0,
+        "forward_reference_rate": 0.0,
+        "gzip_bytes_per_transition": 1190.7188,
+        "gzip_ratio": 14.9791,
+        "identifier_fragmentation": 1.9331,
+        "max_reference_span_tokens": 3740.6875,
+        "premise_to_action_distance_tokens": 49.2988,
+        "pretokens_per_transition": 6860.9375,
+        "role_vocabulary_entropy": 3.4053,
+        "role_word_fragmentation": 1.1667,
+        "structural_density": 0.5618
+      },
+      "ancestry": [
+        "R_f3d7d713e16a",
+        "R_6d3e086f3797",
+        "R_830d31b9642b",
+        "R_02a757cf3ef8"
+      ],
+      "candidate_id": "R_f3d7d713e16a",
+      "derived_from": "SEED_CANONICAL_SEXPR",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "HEADER",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "CURRIED_BINARY",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "NONE",
+        "block_delimiter": "INDENT",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "DECLARATION_INDEX",
+        "count_assertions": "NONE",
+        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "SEXPR_PREFIX",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "SEMANTIC_ID",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SHORT_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "SYMBOLIC_ROLE",
+        "list_syntax": "BRACKET_COMMA",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "ADJACENT_TO_ACTION",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "NONE",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "SEXPR",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "genome_differences_from_seed": [
+        "action_position=HEADER",
+        "lexicon_register=SYMBOLIC_ROLE"
+      ],
+      "label": "R_f3d7d713e16a",
+      "metrics": {
+        "binder_use_distance_tokens": 241.7673,
+        "bpe_tokens_per_transition": 9017.2812,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.8636,
+        "identifier_fragmentation": 1.9331,
+        "max_reference_span_tokens": 3740.6875,
+        "premise_to_action_distance_tokens": 49.2988
+      },
+      "origin": "SINGLE_AXIS",
+      "parents": [
+        "R_6d3e086f3797"
+      ],
+      "seed": null,
+      "token_rank": 74,
+      "why_shortlisted": [
+        "best_on:premise_to_action_distance_tokens"
+      ]
+    },
+    {
+      "all_metrics": {
+        "binder_use_distance_chars": 504.9639,
+        "binder_use_distance_tokens": 246.6821,
+        "bpe_tokens_per_transition": 9466.9375,
+        "bytes_per_transition": 19321.4375,
+        "chars_per_transition": 19319.5,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.5833,
+        "detect_drop_line": 0.8333,
+        "detect_reorder_scope": 0.9583,
+        "detect_swap_records": 1.0,
+        "detect_truncate_tail": 0.0,
+        "forward_reference_rate": 1.0,
+        "gzip_bytes_per_transition": 1324.2188,
+        "gzip_ratio": 14.5908,
+        "identifier_fragmentation": 1.9891,
+        "max_reference_span_tokens": 4453.8125,
+        "premise_to_action_distance_tokens": 63.8488,
+        "pretokens_per_transition": 6959.9062,
+        "role_vocabulary_entropy": 3.1725,
+        "role_word_fragmentation": 1.1667,
+        "structural_density": 1.797
+      },
+      "ancestry": [
+        "R_0eaf36f22de1"
+      ],
+      "candidate_id": "R_0eaf36f22de1",
+      "derived_from": "SEED_DELTA_FIRST",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "HEADER",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "CURRIED_BINARY",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "NONE",
+        "block_delimiter": "INDENT",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "DECLARATION_INDEX",
+        "count_assertions": "NONE",
+        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "SEXPR_PREFIX",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "SEMANTIC_ID",
+        "goal_position": "FIRST",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SHORT_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "HUMAN_WORDS",
+        "list_syntax": "BRACKET_COMMA",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "ADJACENT_TO_ACTION",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "LOW",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "BLOCK",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "genome_differences_from_seed": [],
+      "label": "SEED_DELTA_FIRST",
+      "metrics": {
+        "binder_use_distance_tokens": 246.6821,
+        "bpe_tokens_per_transition": 9466.9375,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9891,
+        "max_reference_span_tokens": 4453.8125,
+        "premise_to_action_distance_tokens": 63.8488
+      },
+      "origin": "SEED",
+      "parents": [],
+      "seed": "SEED_DELTA_FIRST",
+      "token_rank": 100,
+      "why_shortlisted": [
+        "best_on:detect_swap_records"
+      ]
+    },
+    {
+      "all_metrics": {
+        "binder_use_distance_chars": 286.0912,
+        "binder_use_distance_tokens": 147.0813,
+        "bpe_tokens_per_transition": 18096.7188,
+        "bytes_per_transition": 36532.625,
+        "chars_per_transition": 36529.25,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.2917,
+        "detect_drop_line": 0.375,
+        "detect_reorder_scope": 0.7083,
+        "detect_swap_records": 0.6818,
+        "detect_truncate_tail": 0.0,
+        "forward_reference_rate": 0.4874,
+        "gzip_bytes_per_transition": 1853.4688,
+        "gzip_ratio": 19.7104,
+        "identifier_fragmentation": 2.1245,
+        "max_reference_span_tokens": 5180.4375,
+        "premise_to_action_distance_tokens": 2742.347,
+        "pretokens_per_transition": 12400.25,
+        "role_vocabulary_entropy": 3.4936,
+        "role_word_fragmentation": 1.3333,
+        "structural_density": 1.818
+      },
+      "ancestry": [
+        "R_74de39415d66",
+        "R_c5f02f1aa503",
+        "R_a850a6e54b7a",
+        "R_355c420a748e"
+      ],
+      "candidate_id": "R_74de39415d66",
+      "derived_from": "SEED_HYBRID_RPN_MACHINE",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "TRAILER",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "FLATTENED_SPINE",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "NONE",
+        "block_delimiter": "INDENT",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "DECLARATION_INDEX",
+        "count_assertions": "NONE",
+        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "POSTFIX_RPN",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "SEMANTIC_ID",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SHORT_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "COMPACT_MNEMONIC",
+        "list_syntax": "SPACE_SEPARATED",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "ADJACENT_TO_ACTION",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "LOW",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "HOISTED_DAG_LETS",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "BLOCK",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "genome_differences_from_seed": [
+        "action_position=TRAILER",
+        "list_syntax=SPACE_SEPARATED",
+        "shared_subterm_handling=HOISTED_DAG_LETS"
+      ],
+      "label": "R_74de39415d66",
+      "metrics": {
+        "binder_use_distance_tokens": 147.0813,
+        "bpe_tokens_per_transition": 18096.7188,
+        "detect_drop_field": 0.2917,
+        "detect_swap_records": 0.6818,
+        "identifier_fragmentation": 2.1245,
+        "max_reference_span_tokens": 5180.4375,
+        "premise_to_action_distance_tokens": 2742.347
+      },
+      "origin": "SINGLE_AXIS",
+      "parents": [
+        "R_c5f02f1aa503"
+      ],
+      "seed": null,
+      "token_rank": 154,
+      "why_shortlisted": [
+        "best_on:binder_use_distance_tokens"
+      ]
+    }
+  ],
+  "generations": [
+    {
+      "blocked_by_memory": 0,
+      "elapsed_seconds": 33.8,
+      "evaluated": 16,
+      "front_size": 12,
+      "frontier_moved": true,
+      "generation": 0,
+      "hard_rejected": 0,
+      "phase": "A",
+      "refuted_hypotheses": 0
+    },
+    {
+      "blocked_by_memory": 0,
+      "elapsed_seconds": 19.292,
+      "evaluated": 27,
+      "front_size": 22,
+      "frontier_moved": true,
+      "generation": 1,
+      "hard_rejected": 5,
+      "phase": "A",
+      "refuted_hypotheses": 6
+    },
+    {
+      "blocked_by_memory": 17,
+      "elapsed_seconds": 18.532,
+      "evaluated": 35,
+      "front_size": 27,
+      "frontier_moved": true,
+      "generation": 2,
+      "hard_rejected": 5,
+      "phase": "B",
+      "refuted_hypotheses": 14
+    },
+    {
+      "blocked_by_memory": 26,
+      "elapsed_seconds": 31.631,
+      "evaluated": 40,
+      "front_size": 36,
+      "frontier_moved": false,
+      "generation": 3,
+      "hard_rejected": 0,
+      "phase": "B",
+      "refuted_hypotheses": 18
+    },
+    {
+      "blocked_by_memory": 25,
+      "elapsed_seconds": 36.511,
+      "evaluated": 40,
+      "front_size": 37,
+      "frontier_moved": true,
+      "generation": 4,
+      "hard_rejected": 0,
+      "phase": "B",
+      "refuted_hypotheses": 18
+    },
+    {
+      "blocked_by_memory": 0,
+      "elapsed_seconds": 28.179,
+      "evaluated": 40,
+      "front_size": 37,
+      "frontier_moved": true,
+      "generation": 5,
+      "hard_rejected": 0,
+      "phase": "C",
+      "refuted_hypotheses": 17
+    },
+    {
+      "blocked_by_memory": 0,
+      "elapsed_seconds": 34.894,
+      "evaluated": 40,
+      "front_size": 25,
+      "frontier_moved": true,
+      "generation": 6,
+      "hard_rejected": 0,
+      "phase": "C",
+      "refuted_hypotheses": 16
+    },
+    {
+      "blocked_by_memory": 0,
+      "elapsed_seconds": 34.287,
+      "evaluated": 40,
+      "front_size": 30,
+      "frontier_moved": true,
+      "generation": 7,
+      "hard_rejected": 0,
+      "phase": "D",
+      "refuted_hypotheses": 20
+    },
+    {
+      "blocked_by_memory": 0,
+      "elapsed_seconds": 17.2,
+      "evaluated": 34,
+      "front_size": 23,
+      "frontier_moved": true,
+      "generation": 8,
+      "hard_rejected": 6,
+      "phase": "D",
+      "refuted_hypotheses": 14
+    },
+    {
+      "blocked_by_memory": 9,
+      "elapsed_seconds": 32.456,
+      "evaluated": 35,
+      "front_size": 23,
+      "frontier_moved": true,
+      "generation": 9,
+      "hard_rejected": 5,
+      "phase": null,
+      "refuted_hypotheses": 14
+    },
+    {
+      "blocked_by_memory": 14,
+      "elapsed_seconds": 27.622,
+      "evaluated": 38,
+      "front_size": 29,
+      "frontier_moved": true,
+      "generation": 10,
+      "hard_rejected": 2,
+      "phase": null,
+      "refuted_hypotheses": 22
+    },
+    {
+      "blocked_by_memory": 13,
+      "elapsed_seconds": 17.374,
+      "evaluated": 36,
+      "front_size": 27,
+      "frontier_moved": true,
+      "generation": 11,
+      "hard_rejected": 4,
+      "phase": null,
+      "refuted_hypotheses": 23
+    }
+  ],
+  "generations_completed": 12,
+  "genome_axes": 42,
+  "metric_equivalence_classes": 120,
+  "name": "PRETRAINING_REPRESENTATION_FRONTIER_V1",
+  "no_effect_groups": [
+    [
+      "R_124568b25991",
+      "R_5d5c1e231af2",
+      "R_7943f3bad185",
+      "R_ca96225a3105",
+      "R_e201bedb9d76",
+      "R_e24ec185529d",
+      "R_fe043354b273",
+      "R_feb0e2a9bd1a"
+    ],
+    [
+      "R_8b297a184ca2",
+      "R_8dfb038fbaee",
+      "R_d09714dfaab5",
+      "R_e6b1d8e8e992",
+      "R_e90c8a8384f4"
+    ],
+    [
+      "R_07e59bff963f",
+      "R_09976fa51d66",
+      "R_72e243fe3dce",
+      "R_f5966e97e791"
+    ],
+    [
+      "R_09eef74441f2",
+      "R_0b69bd4ddbfc",
+      "R_1d441775d5fc",
+      "R_f8c6e06c24ad"
+    ],
+    [
+      "R_7e6d29d9faa7",
+      "R_97bec3a66267",
+      "R_a0ddbc4d5ca3",
+      "R_f88bd2345a61"
+    ],
+    [
+      "R_0efd778653d8",
+      "R_2ec8cdca17ba",
+      "R_717f85b2ff79"
+    ],
+    [
+      "R_3227a8ac3a06",
+      "R_6eb003bf8b58",
+      "R_c78387a58962"
+    ],
+    [
+      "R_3de8b45034d1",
+      "R_c6e19b272841",
+      "R_e14b56bb2695"
+    ],
+    [
+      "R_4f7435f0252a",
+      "R_7313e666736f",
+      "R_a4bb78b644b2"
+    ],
+    [
+      "R_93fd5967d1e2",
+      "R_be204d70d432",
+      "R_da06b2129f21"
+    ],
+    [
+      "R_02a757cf3ef8",
+      "R_1c9b5e72a8c1"
+    ],
+    [
+      "R_0eaf36f22de1",
+      "R_9d23ae334dc3"
+    ]
+  ],
+  "pareto_axes": [
+    "bpe_tokens_per_transition",
+    "binder_use_distance_tokens",
+    "premise_to_action_distance_tokens",
+    "detect_swap_records",
+    "detect_drop_field",
+    "identifier_fragmentation",
+    "max_reference_span_tokens"
+  ],
+  "refuted_hypotheses": [
+    {
+      "axis": "action_position",
+      "candidate_id": "R_f8c6e06c24ad",
+      "child_value": 1045.76369,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 390.440476,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_position",
+      "candidate_id": "R_5d5c1e231af2",
+      "child_value": 421.267857,
+      "from": "AFTER_CONTEXT",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 421.267857,
+      "to": "INLINE_WITH_CONTEXT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_scheme",
+      "candidate_id": "R_c01fafbf26bd",
+      "child_value": 2.373995,
+      "from": "SHORT_ID",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.049485,
+      "to": "DISPLAY_PLUS_SHORT_ID",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "local_instance_visibility",
+      "candidate_id": "R_1c9b5e72a8c1",
+      "child_value": 9040.5625,
+      "from": "MERGED_INTO_CONTEXT",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_identity_visibility",
+      "candidate_id": "R_76227d39d30a",
+      "child_value": 9482.84375,
+      "from": "SEMANTIC_ID",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9469.9375,
+      "to": "BOTH",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "provenance_visibility",
+      "candidate_id": "R_f93ccde60960",
+      "child_value": 8014.5,
+      "from": "NONE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7977.0,
+      "to": "IDENTITY_ONLY",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_identity_visibility",
+      "candidate_id": "R_76227d39d30a",
+      "child_value": 9482.84375,
+      "from": "SEMANTIC_ID",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9469.9375,
+      "to": "BOTH",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "provenance_visibility",
+      "candidate_id": "R_f93ccde60960",
+      "child_value": 8014.5,
+      "from": "NONE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7977.0,
+      "to": "IDENTITY_ONLY",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_f8c6e06c24ad",
+      "child_value": 1045.76369,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 390.440476,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "local_instance_visibility",
+      "candidate_id": "R_1c9b5e72a8c1",
+      "child_value": 9040.5625,
+      "from": "MERGED_INTO_CONTEXT",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_position",
+      "candidate_id": "R_5d5c1e231af2",
+      "child_value": 421.267857,
+      "from": "AFTER_CONTEXT",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 421.267857,
+      "to": "INLINE_WITH_CONTEXT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_scheme",
+      "candidate_id": "R_c01fafbf26bd",
+      "child_value": 2.373995,
+      "from": "SHORT_ID",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.049485,
+      "to": "DISPLAY_PLUS_SHORT_ID",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_position",
+      "candidate_id": "R_e6b1d8e8e992",
+      "child_value": 371.809524,
+      "from": "AFTER_CONTEXT",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 371.809524,
+      "to": "LAST",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "alpha_normalization",
+      "candidate_id": "R_df248118a651",
+      "child_value": 8029.96875,
+      "from": "NORMALIZED",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "BOTH",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_position",
+      "candidate_id": "R_feb0e2a9bd1a",
+      "child_value": 421.267857,
+      "from": "AFTER_CONTEXT",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 421.267857,
+      "to": "INLINE_WITH_CONTEXT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "alpha_normalization",
+      "candidate_id": "R_3dfa58303ea8",
+      "child_value": 9044.09375,
+      "from": "NORMALIZED",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 8681.28125,
+      "to": "BOTH",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_a850a6e54b7a",
+      "child_value": 917.539881,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 347.220833,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_position",
+      "candidate_id": "R_0b69bd4ddbfc",
+      "child_value": 1045.76369,
+      "from": "AFTER_CONTEXT",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 1045.76369,
+      "to": "INLINE_WITH_CONTEXT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_b34bb2001339",
+      "child_value": 574.331548,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 157.542857,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "scope_metadata",
+      "candidate_id": "R_9893b5519b68",
+      "child_value": 9237.40625,
+      "from": "IMPLICIT_BY_NESTING",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "EXPLICIT_SCOPE_IDS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_a850a6e54b7a",
+      "child_value": 917.539881,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 347.220833,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_b34bb2001339",
+      "child_value": 574.331548,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 157.542857,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "provenance_visibility",
+      "candidate_id": "R_f93ccde60960",
+      "child_value": 8014.5,
+      "from": "NONE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7977.0,
+      "to": "IDENTITY_ONLY",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_position",
+      "candidate_id": "R_0b69bd4ddbfc",
+      "child_value": 1045.76369,
+      "from": "AFTER_CONTEXT",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 1045.76369,
+      "to": "INLINE_WITH_CONTEXT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "scope_metadata",
+      "candidate_id": "R_9893b5519b68",
+      "child_value": 9237.40625,
+      "from": "IMPLICIT_BY_NESTING",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "EXPLICIT_SCOPE_IDS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "local_instance_visibility",
+      "candidate_id": "R_1c9b5e72a8c1",
+      "child_value": 9040.5625,
+      "from": "MERGED_INTO_CONTEXT",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "premise_locality",
+      "candidate_id": "R_9d23ae334dc3",
+      "child_value": 63.84881,
+      "from": "ADJACENT_TO_ACTION",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 63.84881,
+      "to": "TRAILING_BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "context_order",
+      "candidate_id": "R_7f7e5926dbb7",
+      "child_value": 244.099541,
+      "from": "DEPENDENCY_TOPOLOGICAL",
+      "metric": "binder_use_distance_tokens",
+      "parent_value": 235.00228,
+      "to": "GOAL_CENTRED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "candidate_id": "R_8e656843a770",
+      "child_value": 3195.84375,
+      "from": "TREE_NESTED",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3147.46875,
+      "to": "GRAPH_EDGE_LIST",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "context_order",
+      "candidate_id": "R_8dfb038fbaee",
+      "child_value": 240.440106,
+      "from": "DEPENDENCY_TOPOLOGICAL",
+      "metric": "binder_use_distance_tokens",
+      "parent_value": 240.440106,
+      "to": "DECLARATION_INDEX",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "premise_locality",
+      "candidate_id": "R_e201bedb9d76",
+      "child_value": 421.267857,
+      "from": "ADJACENT_TO_ACTION",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 421.267857,
+      "to": "TRAILING_BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "candidate_id": "R_3cd0b9d841a8",
+      "child_value": 3267.78125,
+      "from": "TREE_NESTED",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3258.8125,
+      "to": "GRAPH_EDGE_LIST",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_fe043354b273",
+      "child_value": 4039.3125,
+      "from": "TOPOLOGICAL",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 4039.3125,
+      "to": "EDGE_LIST",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_15c20eb3e481",
+      "child_value": 3933.34375,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3933.34375,
+      "to": "TOPOLOGICAL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "candidate_id": "R_4b3a50f9e121",
+      "child_value": 3195.84375,
+      "from": "TREE_NESTED",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3147.46875,
+      "to": "HYBRID_NESTED_WITH_EDGES",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_1d441775d5fc",
+      "child_value": 3595.03125,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3595.03125,
+      "to": "BFS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "context_order",
+      "candidate_id": "R_87f930b7b66f",
+      "child_value": 272.241462,
+      "from": "DEPENDENCY_TOPOLOGICAL",
+      "metric": "binder_use_distance_tokens",
+      "parent_value": 262.286519,
+      "to": "GOAL_CENTRED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "candidate_id": "R_4a3f533ff2e5",
+      "child_value": 22420.40625,
+      "from": "DUPLICATE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9466.9375,
+      "to": "HOISTED_DAG_LETS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_a850a6e54b7a",
+      "child_value": 917.539881,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 347.220833,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "candidate_id": "R_4a3f533ff2e5",
+      "child_value": 22420.40625,
+      "from": "DUPLICATE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9466.9375,
+      "to": "HOISTED_DAG_LETS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "candidate_id": "R_4b3a50f9e121",
+      "child_value": 3195.84375,
+      "from": "TREE_NESTED",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3147.46875,
+      "to": "HYBRID_NESTED_WITH_EDGES",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_b34bb2001339",
+      "child_value": 574.331548,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 157.542857,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_1d441775d5fc",
+      "child_value": 3595.03125,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3595.03125,
+      "to": "BFS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "provenance_visibility",
+      "candidate_id": "R_f93ccde60960",
+      "child_value": 8014.5,
+      "from": "NONE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7977.0,
+      "to": "IDENTITY_ONLY",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "premise_locality",
+      "candidate_id": "R_124568b25991",
+      "child_value": 421.267857,
+      "from": "ADJACENT_TO_ACTION",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 421.267857,
+      "to": "TRAILING_BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_821d1541ac9b",
+      "child_value": 3147.46875,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3147.46875,
+      "to": "TOPOLOGICAL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "checksum_policy",
+      "candidate_id": "R_0bf199c1ebca",
+      "child_value": 1.0,
+      "from": "NONE",
+      "metric": "detect_corrupt_identity",
+      "parent_value": 1.0,
+      "to": "PER_STATE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "count_assertions",
+      "candidate_id": "R_8198ebbe5185",
+      "child_value": 0.708333,
+      "from": "NONE",
+      "metric": "detect_drop_line",
+      "parent_value": 0.833333,
+      "to": "PER_BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_c057d5cb0340",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "ERROR_CORRECTING",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "checksum_policy",
+      "candidate_id": "R_bdba714eeca8",
+      "child_value": 1.0,
+      "from": "NONE",
+      "metric": "detect_corrupt_identity",
+      "parent_value": 1.0,
+      "to": "PER_STATE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_6afd6b5c61d4",
+      "child_value": 4786.84375,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 4786.84375,
+      "to": "EDGE_LIST",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "candidate_id": "R_c5f02f1aa503",
+      "child_value": 18098.96875,
+      "from": "DUPLICATE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "HOISTED_DAG_LETS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_e90c8a8384f4",
+      "child_value": 3694.03125,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3694.03125,
+      "to": "NODE_LIST_THEN_EDGES",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "candidate_id": "R_d644dff8c9c6",
+      "child_value": 3614.71875,
+      "from": "TREE_NESTED",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3595.03125,
+      "to": "HYBRID_NESTED_WITH_EDGES",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_475665b0cf09",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "count_assertions",
+      "candidate_id": "R_3de8b45034d1",
+      "child_value": 0.5,
+      "from": "NONE",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "PER_BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_475665b0cf09",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_a850a6e54b7a",
+      "child_value": 917.539881,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 347.220833,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "candidate_id": "R_c5f02f1aa503",
+      "child_value": 18098.96875,
+      "from": "DUPLICATE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "HOISTED_DAG_LETS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "candidate_id": "R_4a3f533ff2e5",
+      "child_value": 22420.40625,
+      "from": "DUPLICATE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9466.9375,
+      "to": "HOISTED_DAG_LETS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "candidate_id": "R_d644dff8c9c6",
+      "child_value": 3614.71875,
+      "from": "TREE_NESTED",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3595.03125,
+      "to": "HYBRID_NESTED_WITH_EDGES",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_b34bb2001339",
+      "child_value": 574.331548,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 157.542857,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "checksum_policy",
+      "candidate_id": "R_bdba714eeca8",
+      "child_value": 1.0,
+      "from": "NONE",
+      "metric": "detect_corrupt_identity",
+      "parent_value": 1.0,
+      "to": "PER_STATE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "provenance_visibility",
+      "candidate_id": "R_f93ccde60960",
+      "child_value": 8014.5,
+      "from": "NONE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7977.0,
+      "to": "IDENTITY_ONLY",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_717f85b2ff79",
+      "child_value": 0.708333,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.708333,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_a0ddbc4d5ca3",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "candidate_id": "R_4f7435f0252a",
+      "child_value": 3979.625,
+      "from": "HYBRID_NESTED_WITH_EDGES",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3979.625,
+      "to": "GRAPH_EDGE_LIST",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_7793bf6cd6a5",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_c6e19b272841",
+      "child_value": 0.833333,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.833333,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_daf2d328754f",
+      "child_value": 3205.21875,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3205.21875,
+      "to": "NODE_LIST_THEN_EDGES",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_e14b56bb2695",
+      "child_value": 3599.28125,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3599.28125,
+      "to": "NODE_LIST_THEN_EDGES",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_e24ec185529d",
+      "child_value": 0.791667,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.791667,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "premise_locality",
+      "candidate_id": "R_d09714dfaab5",
+      "child_value": 371.809524,
+      "from": "ADJACENT_TO_ACTION",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 371.809524,
+      "to": "TRAILING_BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_7793bf6cd6a5",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_a850a6e54b7a",
+      "child_value": 917.539881,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 347.220833,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "candidate_id": "R_c5f02f1aa503",
+      "child_value": 18098.96875,
+      "from": "DUPLICATE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "HOISTED_DAG_LETS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "candidate_id": "R_4a3f533ff2e5",
+      "child_value": 22420.40625,
+      "from": "DUPLICATE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9466.9375,
+      "to": "HOISTED_DAG_LETS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_717f85b2ff79",
+      "child_value": 0.708333,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.708333,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_a0ddbc4d5ca3",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "expression_notation",
+      "candidate_id": "R_09eef74441f2",
+      "child_value": 8701.28125,
+      "from": "POSTFIX_RPN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "SEXPR_PREFIX",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_ee7bd553a6b2",
+      "child_value": 0.909091,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 0.909091,
+      "to": "SEXPR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c60a0b0c49aa",
+      "child_value": 0.375,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.625,
+      "to": "BRACE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "binder_encoding",
+      "candidate_id": "R_e957bb917e87",
+      "child_value": 7667.15625,
+      "from": "DE_BRUIJN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "NAMED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "binder_encoding",
+      "candidate_id": "R_01416505f10b",
+      "child_value": 9861.84375,
+      "from": "DE_BRUIJN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9720.53125,
+      "to": "NAMED_PLUS_DE_BRUIJN",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_b7c047a41dc0",
+      "child_value": 0.791667,
+      "from": "SEXPR",
+      "metric": "detect_swap_records",
+      "parent_value": 0.909091,
+      "to": "BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c54e5b6a3786",
+      "child_value": 0.541667,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "binder_encoding",
+      "candidate_id": "R_e2ae474da499",
+      "child_value": 9608.25,
+      "from": "DE_BRUIJN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9466.9375,
+      "to": "NAMED_PLUS_DE_BRUIJN",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "field_marker",
+      "candidate_id": "R_2ec8cdca17ba",
+      "child_value": 9720.53125,
+      "from": "COLON",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9720.53125,
+      "to": "EQUALS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "binder_encoding",
+      "candidate_id": "R_32212414908b",
+      "child_value": 9819.28125,
+      "from": "DE_BRUIJN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9720.53125,
+      "to": "NAMED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "action_position",
+      "candidate_id": "R_a850a6e54b7a",
+      "child_value": 917.539881,
+      "from": "BETWEEN_STATES",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 347.220833,
+      "to": "TRAILER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "shared_subterm_handling",
+      "candidate_id": "R_4a3f533ff2e5",
+      "child_value": 22420.40625,
+      "from": "DUPLICATE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9466.9375,
+      "to": "HOISTED_DAG_LETS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "expression_notation",
+      "candidate_id": "R_09eef74441f2",
+      "child_value": 8701.28125,
+      "from": "POSTFIX_RPN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "SEXPR_PREFIX",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c60a0b0c49aa",
+      "child_value": 0.375,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.625,
+      "to": "BRACE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c54e5b6a3786",
+      "child_value": 0.541667,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_7793bf6cd6a5",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_717f85b2ff79",
+      "child_value": 0.708333,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.708333,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_b7c047a41dc0",
+      "child_value": 0.791667,
+      "from": "SEXPR",
+      "metric": "detect_swap_records",
+      "parent_value": 0.909091,
+      "to": "BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_a0ddbc4d5ca3",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "type_attachment",
+      "candidate_id": "R_bc82692903cb",
+      "child_value": 9898.15625,
+      "from": "TYPE_FIELD",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9898.15625,
+      "to": "COLON_SUFFIX",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "binder_encoding",
+      "candidate_id": "R_8b51731e779a",
+      "child_value": 7667.15625,
+      "from": "DE_BRUIJN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "NAMED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_41c98782cbb4",
+      "child_value": 0.541667,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "expression_notation",
+      "candidate_id": "R_4c0bfb6cfa7a",
+      "child_value": 8634.28125,
+      "from": "POSTFIX_RPN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7807.125,
+      "to": "FUNCTIONAL_APPLICATION",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_759acf12a2f5",
+      "child_value": 0.909091,
+      "from": "INDENTED_TREE",
+      "metric": "detect_swap_records",
+      "parent_value": 0.909091,
+      "to": "JSONISH",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_3c2d80a45f5f",
+      "child_value": 0.913043,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 1.0,
+      "to": "SEXPR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "binder_encoding",
+      "candidate_id": "R_7fd5899652ab",
+      "child_value": 11208.78125,
+      "from": "DE_BRUIJN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 10996.8125,
+      "to": "NAMED_PLUS_DE_BRUIJN",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "application_style",
+      "candidate_id": "R_80bd6fafc312",
+      "child_value": 7738.5625,
+      "from": "CURRIED_BINARY",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7643.34375,
+      "to": "FLATTENED_SPINE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_2d41727ba5b8",
+      "child_value": 0.458333,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_21ebf0c030fc",
+      "child_value": 0.666667,
+      "from": "TAGGED_LINE",
+      "metric": "detect_swap_records",
+      "parent_value": 0.666667,
+      "to": "PROSE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "record_separator",
+      "candidate_id": "R_8a32d1e7ae98",
+      "child_value": 9045.5625,
+      "from": "NEWLINE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "NEWLINE_BLANK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_3c2d80a45f5f",
+      "child_value": 0.913043,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 1.0,
+      "to": "SEXPR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c54e5b6a3786",
+      "child_value": 0.541667,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "application_style",
+      "candidate_id": "R_80bd6fafc312",
+      "child_value": 7738.5625,
+      "from": "CURRIED_BINARY",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7643.34375,
+      "to": "FLATTENED_SPINE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_717f85b2ff79",
+      "child_value": 0.708333,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.708333,
+      "to": "SELECTIVE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_2d41727ba5b8",
+      "child_value": 0.458333,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c60a0b0c49aa",
+      "child_value": 0.375,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.625,
+      "to": "BRACE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "binder_encoding",
+      "candidate_id": "R_8b51731e779a",
+      "child_value": 7667.15625,
+      "from": "DE_BRUIJN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7667.15625,
+      "to": "NAMED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "type_attachment",
+      "candidate_id": "R_bc82692903cb",
+      "child_value": 9898.15625,
+      "from": "TYPE_FIELD",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9898.15625,
+      "to": "COLON_SUFFIX",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_21ebf0c030fc",
+      "child_value": 0.666667,
+      "from": "TAGGED_LINE",
+      "metric": "detect_swap_records",
+      "parent_value": 0.666667,
+      "to": "PROSE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_6d3e086f3797",
+      "child_value": 9070.78125,
+      "from": "COMPACT_MNEMONIC",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "MATH_NOTATION",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_35626ec408b9",
+      "child_value": 8704.6875,
+      "from": "COMPACT_MNEMONIC",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 8634.28125,
+      "to": "HUMAN_WORDS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_e3ff4ffbdc86",
+      "child_value": 2.133126,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.133126,
+      "to": "BRACKETED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_7d27e2f65ed7",
+      "child_value": 1.976192,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 1.976192,
+      "to": "PREFIX_SIGIL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_f2333e648c35",
+      "child_value": 2.022039,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.022039,
+      "to": "PREFIX_SIGIL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_3c2d80a45f5f",
+      "child_value": 0.913043,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 1.0,
+      "to": "SEXPR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_6d3e086f3797",
+      "child_value": 9070.78125,
+      "from": "COMPACT_MNEMONIC",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "MATH_NOTATION",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c54e5b6a3786",
+      "child_value": 0.541667,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "application_style",
+      "candidate_id": "R_80bd6fafc312",
+      "child_value": 7738.5625,
+      "from": "CURRIED_BINARY",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7643.34375,
+      "to": "FLATTENED_SPINE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_21ebf0c030fc",
+      "child_value": 0.666667,
+      "from": "TAGGED_LINE",
+      "metric": "detect_swap_records",
+      "parent_value": 0.666667,
+      "to": "PROSE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_7d27e2f65ed7",
+      "child_value": 1.976192,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 1.976192,
+      "to": "PREFIX_SIGIL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_e3ff4ffbdc86",
+      "child_value": 2.133126,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.133126,
+      "to": "BRACKETED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "role_word_length",
+      "candidate_id": "R_62519d90f217",
+      "child_value": 9332.40625,
+      "from": "FULL",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9332.40625,
+      "to": "SINGLE_CHAR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_0801b3149d0e",
+      "child_value": 20254.625,
+      "from": "SYMBOLIC_ROLE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 20171.28125,
+      "to": "MATH_NOTATION",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_ef6975f6862d",
+      "child_value": 20311.34375,
+      "from": "SYMBOLIC_ROLE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 20171.28125,
+      "to": "COMPACT_MNEMONIC",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "keyword_case",
+      "candidate_id": "R_f88bd2345a61",
+      "child_value": 7977.0,
+      "from": "LOWER",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7977.0,
+      "to": "UPPER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "const_name_form",
+      "candidate_id": "R_42424a932446",
+      "child_value": 1.930584,
+      "from": "FULL_NAME",
+      "metric": "identifier_fragmentation",
+      "parent_value": 1.930584,
+      "to": "FULL_NAME_WITH_ALIAS_TABLE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_c78387a58962",
+      "child_value": 2.028557,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.028557,
+      "to": "BRACKETED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_76e352c4ff14",
+      "child_value": 9162.78125,
+      "from": "COMPACT_MNEMONIC",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9040.5625,
+      "to": "HUMAN_WORDS",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_3c2d80a45f5f",
+      "child_value": 0.913043,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 1.0,
+      "to": "SEXPR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c54e5b6a3786",
+      "child_value": 0.541667,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_c78387a58962",
+      "child_value": 2.028557,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.028557,
+      "to": "BRACKETED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "application_style",
+      "candidate_id": "R_80bd6fafc312",
+      "child_value": 7738.5625,
+      "from": "CURRIED_BINARY",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7643.34375,
+      "to": "FLATTENED_SPINE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_e3ff4ffbdc86",
+      "child_value": 2.133126,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.133126,
+      "to": "BRACKETED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "keyword_case",
+      "candidate_id": "R_f88bd2345a61",
+      "child_value": 7977.0,
+      "from": "LOWER",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7977.0,
+      "to": "UPPER",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_7d27e2f65ed7",
+      "child_value": 1.976192,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 1.976192,
+      "to": "PREFIX_SIGIL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_0801b3149d0e",
+      "child_value": 20254.625,
+      "from": "SYMBOLIC_ROLE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 20171.28125,
+      "to": "MATH_NOTATION",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_ef6975f6862d",
+      "child_value": 20311.34375,
+      "from": "SYMBOLIC_ROLE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 20171.28125,
+      "to": "COMPACT_MNEMONIC",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "local_instance_visibility",
+      "candidate_id": "R_09976fa51d66",
+      "child_value": 7512.78125,
+      "from": "MERGED_INTO_CONTEXT",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7512.78125,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "field_marker",
+      "candidate_id": "R_629f4139d799",
+      "child_value": 20203.25,
+      "from": "COLON",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 20171.28125,
+      "to": "ARROW",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_2d612d3a38ed",
+      "child_value": 1.933064,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 1.933064,
+      "to": "PREFIX_SIGIL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_ec1fc59705d7",
+      "child_value": 0.913043,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 1.0,
+      "to": "SEXPR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "binder_encoding",
+      "candidate_id": "R_ef9945e1c703",
+      "child_value": 9473.71875,
+      "from": "DE_BRUIJN",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 9332.40625,
+      "to": "NAMED_PLUS_DE_BRUIJN",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "goal_position",
+      "candidate_id": "R_3227a8ac3a06",
+      "child_value": 588.267857,
+      "from": "AFTER_CONTEXT",
+      "metric": "premise_to_action_distance_tokens",
+      "parent_value": 588.267857,
+      "to": "INLINE_WITH_CONTEXT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "checksum_policy",
+      "candidate_id": "R_d51968446f17",
+      "child_value": 1.0,
+      "from": "NONE",
+      "metric": "detect_corrupt_identity",
+      "parent_value": 1.0,
+      "to": "PER_STATE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_dfad74c66382",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "const_name_form",
+      "candidate_id": "R_f5966e97e791",
+      "child_value": 1.864874,
+      "from": "FULL_NAME",
+      "metric": "identifier_fragmentation",
+      "parent_value": 1.864874,
+      "to": "FULL_NAME_WITH_ALIAS_TABLE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_93fd5967d1e2",
+      "child_value": 0.541667,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.916667,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_c2498ab2c982",
+      "child_value": 0.375,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.416667,
+      "to": "ERROR_CORRECTING",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_7e6d29d9faa7",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "LOW",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_b3d960e9e5f2",
+      "child_value": 0.909091,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 0.909091,
+      "to": "INDENTED_TREE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_3c2d80a45f5f",
+      "child_value": 0.913043,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 1.0,
+      "to": "SEXPR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_7e6d29d9faa7",
+      "child_value": 0.0,
+      "from": "NONE",
+      "metric": "detect_drop_field",
+      "parent_value": 0.0,
+      "to": "LOW",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_93fd5967d1e2",
+      "child_value": 0.541667,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.916667,
+      "to": "EXPLICIT",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "block_delimiter",
+      "candidate_id": "R_c54e5b6a3786",
+      "child_value": 0.541667,
+      "from": "INDENT",
+      "metric": "detect_drop_line",
+      "parent_value": 0.708333,
+      "to": "KEYWORD_END",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "redundancy_level",
+      "candidate_id": "R_c2498ab2c982",
+      "child_value": 0.375,
+      "from": "LOW",
+      "metric": "detect_drop_field",
+      "parent_value": 0.416667,
+      "to": "ERROR_CORRECTING",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_7d27e2f65ed7",
+      "child_value": 1.976192,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 1.976192,
+      "to": "PREFIX_SIGIL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "application_style",
+      "candidate_id": "R_80bd6fafc312",
+      "child_value": 7738.5625,
+      "from": "CURRIED_BINARY",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7643.34375,
+      "to": "FLATTENED_SPINE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "identity_sigil",
+      "candidate_id": "R_e3ff4ffbdc86",
+      "child_value": 2.133126,
+      "from": "NONE",
+      "metric": "identifier_fragmentation",
+      "parent_value": 2.133126,
+      "to": "BRACKETED",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_b3d960e9e5f2",
+      "child_value": 0.909091,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 0.909091,
+      "to": "INDENTED_TREE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "field_marker",
+      "candidate_id": "R_629f4139d799",
+      "child_value": 20203.25,
+      "from": "COLON",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 20171.28125,
+      "to": "ARROW",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_0801b3149d0e",
+      "child_value": 20254.625,
+      "from": "SYMBOLIC_ROLE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 20171.28125,
+      "to": "MATH_NOTATION",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "lexicon_register",
+      "candidate_id": "R_ef6975f6862d",
+      "child_value": 20311.34375,
+      "from": "SYMBOLIC_ROLE",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 20171.28125,
+      "to": "COMPACT_MNEMONIC",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "delta_visibility",
+      "candidate_id": "R_f11424e0a9ed",
+      "child_value": 7960.65625,
+      "from": "DERIVABLE_ONLY",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7739.78125,
+      "to": "EXPLICIT_DELTA_BLOCK",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_6f3ba6ae5e78",
+      "child_value": 0.956522,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 0.956522,
+      "to": "INDENTED_TREE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_96297b22c215",
+      "child_value": 0.652174,
+      "from": "TAGGED_LINE",
+      "metric": "detect_swap_records",
+      "parent_value": 0.666667,
+      "to": "JSONISH",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_72e243fe3dce",
+      "child_value": 3314.9375,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3314.9375,
+      "to": "DEPENDENCY_LOCAL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "alpha_normalization",
+      "candidate_id": "R_2620871cf4cd",
+      "child_value": 7728.625,
+      "from": "NORMALIZED",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 7394.1875,
+      "to": "BOTH",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "role_word_length",
+      "candidate_id": "R_6eb003bf8b58",
+      "child_value": 8607.5625,
+      "from": "FULL",
+      "metric": "bpe_tokens_per_transition",
+      "parent_value": 8607.5625,
+      "to": "SINGLE_CHAR",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_da06b2129f21",
+      "child_value": 3417.0625,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3417.0625,
+      "to": "EDGE_LIST",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "syntax_family",
+      "candidate_id": "R_26259b75353b",
+      "child_value": 0.695652,
+      "from": "BLOCK",
+      "metric": "detect_swap_records",
+      "parent_value": 0.875,
+      "to": "PROSE",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "context_order",
+      "candidate_id": "R_6dbb6fd0b9c0",
+      "child_value": 275.551548,
+      "from": "REVERSE_INDEX",
+      "metric": "binder_use_distance_tokens",
+      "parent_value": 274.322658,
+      "to": "DECLARATION_INDEX",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "tree_vs_graph_projection",
+      "candidate_id": "R_3d45ca9177b1",
+      "child_value": 3614.65625,
+      "from": "TREE_NESTED",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3314.9375,
+      "to": "HYBRID_NESTED_WITH_EDGES",
+      "verdict": "HYPOTHESIS_REFUTED"
+    },
+    {
+      "axis": "graph_serialization",
+      "candidate_id": "R_be204d70d432",
+      "child_value": 3417.0625,
+      "from": "DFS_PREORDER",
+      "metric": "max_reference_span_tokens",
+      "parent_value": 3417.0625,
+      "to": "DEPENDENCY_LOCAL",
+      "verdict": "HYPOTHESIS_REFUTED"
+    }
+  ],
+  "registry_statistics": {
+    "by_rejection_reason": {
+      "AMBIGUOUS_LEXICON": 7,
+      "glyph_fidelity_utf8": 5,
+      "semantic_round_trip": 15
+    },
+    "by_status": {
+      "EVALUATED": 165,
+      "HARD_REJECTED": 27,
+      "PENDING": 16
+    },
+    "total": 208
+  },
+  "rejection_reasons": {
+    "AMBIGUOUS_LEXICON": 7,
+    "glyph_fidelity_utf8": 5,
+    "semantic_round_trip": 15
+  },
+  "sealed_final_evaluation": null,
+  "shortlist_reasons": {
+    "R_07e59bff963f": [
+      "best_on:detect_drop_field"
+    ],
+    "R_0eaf36f22de1": [
+      "best_on:detect_swap_records"
+    ],
+    "R_26259b75353b": [
+      "best_on:bpe_tokens_per_transition",
+      "best_on:identifier_fragmentation"
+    ],
+    "R_3c2d80a45f5f": [
+      "best_on:max_reference_span_tokens"
+    ],
+    "R_74de39415d66": [
+      "best_on:binder_use_distance_tokens"
+    ],
+    "R_d51968446f17": [
+      "knee"
+    ],
+    "R_f3d7d713e16a": [
+      "best_on:premise_to_action_distance_tokens"
+    ]
+  },
+  "space_size": "4.095e+19",
+  "split_manifest": {
+    "counts": {
+      "SEALED_FINAL_EVALUATION": 56,
+      "SEARCH_DEV": 224,
+      "SEARCH_VALIDATION": 37
+    },
+    "families_sha256": "c6c1befad5ca82e33a46cad149f5ebc1b10e74b6bb14eed4981cdd704aaf7b66",
+    "family_counts": {
+      "SEALED_FINAL_EVALUATION": 37,
+      "SEARCH_DEV": 126,
+      "SEARCH_VALIDATION": 24
+    },
+    "split_key": "hml-v3-representation-search-split-v1",
+    "target_shares": {
+      "SEALED_FINAL_EVALUATION": 0.2,
+      "SEARCH_DEV": 0.7,
+      "SEARCH_VALIDATION": 0.1
+    },
+    "transition_id_sha256": {
+      "SEALED_FINAL_EVALUATION": "b515dfded1130c84b09c24e6f23725ed12f8b9fd61e170e24a4e4bda916b0881",
+      "SEARCH_DEV": "82a4b8a431163ff90b000fbc84e372155544c27d72573f9aa0f78372abbb1bd0",
+      "SEARCH_VALIDATION": "22889689103195d7b85fa51e43d9be3c0e79973802d6ca6d74239399262316c9"
+    },
+    "unit": "MATHLIB_SOURCE_FILE"
+  },
+  "stall_count": 0,
+  "strict_front_size": 85
+}

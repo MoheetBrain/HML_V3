@@ -68,7 +68,7 @@ Completeness is `PARTIAL_TACTICS_WITHOUT_TERMINFO_MAY_HIDE_INTERNAL_USE`: tactic
 
 ## Environment provenance
 
-Each capture retains the parent declaration, current namespace, open declarations, active options, transitive imported modules, main module, direct imports, source file, and local instances. Campaign manifests add the exact Lean build, Mathlib commit, host platform, archive identity, and an environment fingerprint. The entire Mathlib environment is not duplicated per state.
+The inner Lean capture retains the parent declaration, current namespace, open declarations, active options, transitive imported modules, main module, and local instances. The transport envelope adds source file and direct imports. The campaign manifest adds the exact Lean build, Mathlib commit, LeanDojo commit, host platform, and a runtime-pin fingerprint. The canonical adapter explicitly joins these three layers; compact audit rows retain their hashes and small identity fields rather than duplicating the entire Mathlib environment per state.
 
 ## Replay path
 
