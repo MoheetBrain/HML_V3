@@ -1,16 +1,16 @@
 {
-  "attempts": 20949,
+  "attempts": 60949,
   "branching_factor": {
     "0": 24,
-    "1": 148540,
-    "2": 210,
-    "3": 456,
-    "4": 1209,
-    "5": 12469,
+    "1": 398367,
+    "2": 814,
+    "3": 1938,
+    "4": 4694,
+    "5": 41457,
     "6": 315,
     "7": 5290
   },
-  "completions": 256429,
+  "completions": 670790,
   "dimensions": {
     "alternative_branch": {
       "canonical_v2_field": null,
@@ -60,33 +60,33 @@
     "/Users/moheet/Documents/ChatGPT/prm800k/prm800k/data/phase2_train.jsonl"
   ],
   "finish_reasons": {
-    "bad_problem": 196,
-    "found_error": 14279,
-    "give_up": 640,
-    "solution": 5834
+    "bad_problem": 275,
+    "found_error": 48621,
+    "give_up": 2662,
+    "solution": 9391
   },
-  "flagged_completions": 231,
-  "mean_steps_per_attempt": 8.044,
+  "flagged_completions": 619,
+  "mean_steps_per_attempt": 7.431,
   "rating_distribution": {
     "DEAD_END_OR_ERROR": {
-      "count": 62491,
-      "share": 0.2437
+      "count": 169844,
+      "share": 0.2532
     },
     "PROGRESS_TOWARD_SOLUTION": {
-      "count": 156719,
-      "share": 0.6112
+      "count": 404675,
+      "share": 0.6033
     },
     "UNRATED": {
-      "count": 7188,
-      "share": 0.028
+      "count": 28816,
+      "share": 0.043
     },
     "VALID_BUT_NOT_PROGRESSING": {
-      "count": 30031,
-      "share": 0.1171
+      "count": 67455,
+      "share": 0.1006
     }
   },
-  "rows_per_file_limit": 20000,
-  "steps": 168513,
-  "steps_where_every_offered_continuation_was_rejected": 16750,
+  "rows_per_file_limit": 60000,
+  "steps": 452899,
+  "steps_where_every_offered_continuation_was_rejected": 51152,
   "steps_with_a_human_written_continuation": 2341
 }

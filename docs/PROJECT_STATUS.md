@@ -55,7 +55,8 @@ reports/representation_search/PRETRAINING_FRONTIER_V1.{md,json}
   metavariable declarations and assignments, local dependency references, `InfoTree` paths
   and environment provenance.
 - Streaming, crash-safe ingestion of a multi-gigabyte raw campaign into a canonical corpus
-  with per-exclusion accounting.
+  with per-exclusion accounting, written as size-capped shards whose concatenation is
+  byte-identical to the single-file form.
 - A machine-readable representation genome with a generated JSON Schema.
 - One generic representation compiler: genome in, matched renderer and parser out.
 - Six hard semantic gates, each traceable to a recorded prior failure.
@@ -76,8 +77,10 @@ reports/representation_search/PRETRAINING_FRONTIER_V1.{md,json}
 2. **Substrate certification (this stage).** The 500-target V2 campaign was aggregated. The
    original driver aborted on a truncated 350 MB document; a streaming reader replaced it and
    records every defect instead of aborting.
-3. **Corpus.** 317 canonical transitions over 26 Mathlib domains, mean 13.4 local
-   declarations and 63.4 intra-context references per transition.
+3. **Corpus.** Two Lean campaigns over the complementary halves of the V1 sample: 1,000
+   selected transitions, 608 recovered into the canonical corpus across 27 Mathlib domains,
+   mean 13.4 local declarations and 63.4 intra-context references per transition. Every one
+   of the 392 unrecovered selections is counted by reason.
 4. **Failure memory.** 22 lessons: 17 carried in from prior repositories and 5 measured
    here (`FM-018` to `FM-022`).
 5. **Search engine.** Built and tested; 38 dedicated tests, 58 in the suite.
@@ -87,14 +90,25 @@ reports/representation_search/PRETRAINING_FRONTIER_V1.{md,json}
    dependencies present; DAG hoisting costs +136% tokens; identifier-corruption detection
    saturates; goal linearization is unmeasurable at 1.01 goals per state; and the glyph
    escaping penalty reproduces under a second vocabulary while absolute token counts do not.
-7. **Second campaign.** A complementary 500-target campaign over the untouched half of the
-   V1 sample is running to extend the corpus.
+7. **Second campaign.** Complete: 500 files, 498 jobs passed, 2 failed. Merged into the
+   corpus, which doubled from 317 to 608 transitions.
+8. **Definitive search.** 30 generations on the merged corpus, re-run from generation zero
+   after a metric defect was found and fixed (`FM-023`). 616 candidates registered, 489
+   evaluated, 107 hard-rejected (82 semantic round-trip, 13 ambiguous lexicon, 12 glyph
+   fidelity). Every one of the sixteen hand-specified seeds — prior HML, Structured English,
+   Lean-like, typed AST included — was pushed off the strict Pareto front by candidates the
+   search constructed. The cheapest finalist costs 5,131 GPT-2 tokens per transition against
+   5,979 for the best seed.
+9. **Verification of the search itself.** 373 candidates re-render byte-identically in a
+   fresh subprocess under a different hash seed; 296 gate verdicts are unchanged on a
+   disjoint dev slice; 5 of 7 axis leaders survive on the validation split selection never
+   read; the sealed split was read once, for the 6 finalists, and all 6 pass every gate on it.
 
 ## Important Files and Artifacts
 
 | Path | What it is |
 |---|---|
-| `data/corpus/lean_runtime_v2.canonical.jsonl.gz` | the canonical transition corpus |
+| `data/corpus/lean_runtime_v2.canonical.part-*.jsonl.gz` | the canonical transition corpus, in size-capped shards |
 | `reports/audits/LEAN_RUNTIME_V2_CORPUS.md` | corpus accounting, every exclusion counted |
 | `research/representation_search/HML_FAILURE_MEMORY.md` | the persistent failure memory |
 | `research/representation_search/SEARCH_SPACE.md` | the 42 axes and what they mean |
@@ -131,10 +145,12 @@ claims, and the size-bounded corpus.
 
 ## Known Failures and Limitations
 
-- **The corpus is 317 transitions, not 50,000.** 183 of 500 selected transitions were not
-  recovered: 117 exceeded the declared canonical size budget, 51 exceeded the raw element
-  budget, 7 were duplicate record ids, 5 elaboration jobs failed with Lean memory errors, and
-  1 raw document was truncated. All are counted in the corpus audit.
+- **The corpus is 608 transitions, not 50,000.** 392 of 1,000 selected transitions were not
+  recovered: 272 exceeded the declared canonical size budget, 96 exceeded the raw element
+  budget, 9 were duplicate record ids, 7 elaboration jobs failed with Lean memory errors, and
+  1 raw document is truncated. All are counted in `reports/audits/LEAN_RUNTIME_V2_CORPUS.md`.
+  Reaching 50,000 at this fidelity would need roughly 80 more campaigns of this size,
+  something on the order of 4 TB of raw captures and days of elaboration.
 - **Lean's metavariable inventory is quadratic in some proofs.** Four raw documents are
   between 6.8 GiB and 24 GiB. Nothing is wrong with the extractor's fidelity; the inventory
   is genuinely that large, and bounding it would change the V2 contract.
@@ -144,6 +160,9 @@ claims, and the size-bounded corpus.
 - **No model evidence exists.** Every result here is static.
 - **Token counts are vocabulary-specific.** Under GPT-2 the corpus's mathematical glyphs cost
   2–3 tokens each; the prior audit measured 1 under Qwen3-8B.
+- **The pilot run's locality numbers are wrong and are retained only as archived history.**
+  They were computed before `FM-023` — a substring match that overcounted short identity
+  mentions by 25% — was found and fixed. The definitive run is not comparable to them.
 
 ## Risks and Technical Debt
 
@@ -155,12 +174,15 @@ claims, and the size-bounded corpus.
 
 ## Current Blockers
 
-None blocking. The second Lean campaign is running; the corpus will be rebuilt and the search
-extended when it finishes.
+None.
 
 ## Exact Next Actions
 
-1. Finish the second 500-target campaign and rebuild the corpus.
-2. Re-run the search on the extended corpus and continue to structural convergence.
-3. Perform the single sealed evaluation and publish `PRETRAINING_REPRESENTATION_FRONTIER_V1`.
-4. Only then design a matched, control-gated model experiment on the finalists.
+1. **Continue the search.** It stopped on its 30-generation budget with a stall count of 1,
+   not on structural convergence — the frontier was still moving. The state resumes exactly:
+   `python3 scripts/search/run_representation_search.py --generations 20`.
+2. **Enlarge the corpus** if the frontier keeps moving. Two more campaigns over untouched
+   Mathlib files would roughly double it again; 50,000 at this fidelity needs ~80.
+3. **Design the model experiment** on the six finalists: matched envelope (`FM-001`), the six
+   lexical controls (`FM-003`), and a task that does not saturate (`FM-010`). Frozen
+   inference first.

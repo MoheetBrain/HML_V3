@@ -410,6 +410,55 @@
       ],
       "retry_budget": 1,
       "changed_condition_permitting_one_retry": "a corpus whose expression trees repeat large maximal subterms -- measure the repeat-size distribution before retrying"
+    },
+    {
+      "id": "FM-023",
+      "title": "Naive substring matching inflated the locality metric",
+      "disposition": "METRIC_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 representation search, found while the definitive run was in progress",
+      "numbers": {
+        "naive_matches": 80,
+        "boundary_matches": 64,
+        "overcount": 0.25,
+        "identity_checked": "bf1",
+        "collides_with": "bf10 through bf19"
+      },
+      "note": "Short identity tokens are prefixes of longer ones. Searching for 'bf1' with a plain substring scan also matched inside 'bf10'..'bf19', overcounting mentions by 25% on the first transition checked and distorting every distance derived from them. Premise names had the same defect: 'Nat.add' matches inside 'Nat.add_comm'. Fixed by requiring a non-word character on both sides. The pilot run's locality figures were computed before this fix and are inflated; the definitive run is not comparable to them and the pilot's numbers are retained only as archived history.",
+      "requirement": "identity and premise occurrences are counted with token boundaries, never with a plain substring scan",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-024",
+      "title": "Cost and locality rank stably; corruption detection does not",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 representation search, finalists measured on SEARCH_DEV and on the never-selected SEARCH_VALIDATION split, and separately across 16+ Mathlib domains",
+      "numbers": {
+        "spearman_dev_vs_validation": {
+          "bpe_tokens_per_transition": 0.976,
+          "binder_use_distance_tokens": 0.952,
+          "premise_to_action_distance_tokens": 0.929,
+          "identifier_fragmentation": 1.0,
+          "max_reference_span_tokens": 0.976,
+          "detect_drop_field": 0.929,
+          "detect_swap_records": 0.357
+        },
+        "same_leader_axes": 5,
+        "total_axes": 7,
+        "modal_leader_share_across_domains": {
+          "bpe_tokens_per_transition": 1.0,
+          "binder_use_distance_tokens": 1.0,
+          "identifier_fragmentation": 1.0,
+          "max_reference_span_tokens": 0.81,
+          "premise_to_action_distance_tokens": 0.88,
+          "detect_swap_records": 0.69,
+          "detect_drop_field": 0.56
+        }
+      },
+      "note": "Two independent checks agree. Across a held-out split selection never read, the cost and locality axes rank the finalists almost identically (rho 0.93-1.00) while record-swap detection nearly loses its ordering (rho 0.357). Across Mathlib domains, the same three axes have one leader in 100% of domains while the detection axes have a modal leader in only 56-69%. Cost and locality are properties of the representation; corruption detection depends on what the state happens to contain.",
+      "requirement": "a corruption-detection claim names its sample and is reported with its cross-split rank correlation; a cost or locality claim may be stated for the representation",
+      "blocked_traits": []
     }
   ]
 }

@@ -4,32 +4,32 @@ PRM800K labels are **human judgements of usefulness**. They are not verdicts of 
 
 ## What the labels contain
 
-Read 20,949 labelled attempts containing 168,513 steps and 256,429 rated continuations (first 20,000 rows of each file).
+Read 60,949 labelled attempts containing 452,899 steps and 670,790 rated continuations (first 60,000 rows of each file).
 
 | Step judgement | Count | Share |
 |---|---:|---:|
-| `DEAD_END_OR_ERROR` | 62,491 | 24.4% |
-| `VALID_BUT_NOT_PROGRESSING` | 30,031 | 11.7% |
-| `PROGRESS_TOWARD_SOLUTION` | 156,719 | 61.1% |
-| `UNRATED` | 7,188 | 2.8% |
+| `DEAD_END_OR_ERROR` | 169,844 | 25.3% |
+| `VALID_BUT_NOT_PROGRESSING` | 67,455 | 10.1% |
+| `PROGRESS_TOWARD_SOLUTION` | 404,675 | 60.3% |
+| `UNRATED` | 28,816 | 4.3% |
 
 | Attempt outcome | Attempts |
 |---|---:|
-| `found_error` | 14,279 |
-| `solution` | 5,834 |
-| `give_up` | 640 |
-| `bad_problem` | 196 |
+| `found_error` | 48,621 |
+| `solution` | 9,391 |
+| `give_up` | 2,662 |
+| `bad_problem` | 275 |
 
-Mean steps per attempt: **8.044**. Steps where a human had to write the continuation because every offered one was unacceptable: **16,750**.
+Mean steps per attempt: **7.431**. Steps where a human had to write the continuation because every offered one was unacceptable: **51,152**.
 
 | Continuations offered at a step | Steps |
 |---|---:|
 | 0 | 24 |
-| 1 | 148,540 |
-| 2 | 210 |
-| 3 | 456 |
-| 4 | 1,209 |
-| 5 | 12,469 |
+| 1 | 398,367 |
+| 2 | 814 |
+| 3 | 1,938 |
+| 4 | 4,694 |
+| 5 | 41,457 |
 | 6 | 315 |
 | 7 | 5,290 |
 
@@ -57,7 +57,7 @@ Mean steps per attempt: **8.044**. Steps where a human had to write the continua
 
 ## The structural asymmetry this exposes
 
-A Lean trace contains only the steps that were kept. Abandoned branches leave no `TacticInfo`, so the formal corpus has **no negative examples at all** — every one of its 317 transitions is a step that worked. PRM800K's rated continuations are 24.4% dead ends and 11.7% valid-but-not-progressing. A representation search optimised only on the formal corpus is therefore tuned on a distribution with no failure in it.
+A Lean trace contains only the steps that were kept. Abandoned branches leave no `TacticInfo`, so the formal corpus has **no negative examples at all** — every one of its 317 transitions is a step that worked. PRM800K's rated continuations are 25.3% dead ends and 10.1% valid-but-not-progressing. A representation search optimised only on the formal corpus is therefore tuned on a distribution with no failure in it.
 
 ## What would have to change, and what must not
 

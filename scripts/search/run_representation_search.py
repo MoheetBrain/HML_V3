@@ -20,6 +20,7 @@ import time
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "src"))
 
+from hml_v3.representation_search.corpus import load_corpus  # noqa: E402
 from hml_v3.representation_search.compiler import build  # noqa: E402
 from hml_v3.representation_search.controller import SearchConfig, SearchController  # noqa: E402
 from hml_v3.representation_search.failure_memory import FailureMemory  # noqa: E402
@@ -28,11 +29,6 @@ from hml_v3.representation_search.sealing import SealedEvaluator, split_corpus  
 
 DEFAULT_CORPUS = ROOT / "data/corpus/lean_runtime_v2.canonical.jsonl.gz"
 DEFAULT_WORKSPACE = ROOT / "data/representation_search"
-
-
-def load_corpus(path: Path) -> list[dict]:
-    with gzip.open(path, "rt", encoding="utf-8") as handle:
-        return [json.loads(line) for line in handle if line.strip()]
 
 
 def main() -> None:
@@ -59,10 +55,27 @@ def main() -> None:
     if manifest_path.exists():
         previous = json.loads(manifest_path.read_text())
         if previous["families_sha256"] != manifest["families_sha256"]:
-            raise SystemExit(
-                "SPLIT_DRIFT: the corpus changed after the split was fixed. Refusing to "
-                "continue a search whose dev/sealed boundary has moved."
-            )
+            if not args.fresh:
+                raise SystemExit(
+                    "SPLIT_DRIFT: the corpus changed after the split was fixed. Refusing to "
+                    "continue a search whose dev/sealed boundary has moved. Re-run with "
+                    "--fresh to archive this search and start a new one on the new corpus."
+                )
+            # A new corpus is a new experiment. The previous search is archived rather than
+            # overwritten: its registry, checkpoints and split manifest are the evidence that
+            # a result was produced under a different corpus.
+            archive = args.workspace / "archive" / previous["families_sha256"][:12]
+            archive.mkdir(parents=True, exist_ok=True)
+            for name in ("split_manifest.json", "search_state.json",
+                         "candidate_registry.jsonl", "sealed_access_log.jsonl",
+                         "sealed_final_evaluation.json"):
+                source = args.workspace / name
+                if source.exists():
+                    source.replace(archive / name)
+            generations = args.workspace / "generations"
+            if generations.exists():
+                generations.replace(archive / "generations")
+            print(f"archived the previous search to {archive}")
     manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
 
     config = SearchConfig(

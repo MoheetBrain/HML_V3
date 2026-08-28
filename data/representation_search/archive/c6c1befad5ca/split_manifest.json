@@ -1,0 +1,25 @@
+{
+  "counts": {
+    "SEALED_FINAL_EVALUATION": 56,
+    "SEARCH_DEV": 224,
+    "SEARCH_VALIDATION": 37
+  },
+  "families_sha256": "c6c1befad5ca82e33a46cad149f5ebc1b10e74b6bb14eed4981cdd704aaf7b66",
+  "family_counts": {
+    "SEALED_FINAL_EVALUATION": 37,
+    "SEARCH_DEV": 126,
+    "SEARCH_VALIDATION": 24
+  },
+  "split_key": "hml-v3-representation-search-split-v1",
+  "target_shares": {
+    "SEALED_FINAL_EVALUATION": 0.2,
+    "SEARCH_DEV": 0.7,
+    "SEARCH_VALIDATION": 0.1
+  },
+  "transition_id_sha256": {
+    "SEALED_FINAL_EVALUATION": "b515dfded1130c84b09c24e6f23725ed12f8b9fd61e170e24a4e4bda916b0881",
+    "SEARCH_DEV": "82a4b8a431163ff90b000fbc84e372155544c27d72573f9aa0f78372abbb1bd0",
+    "SEARCH_VALIDATION": "22889689103195d7b85fa51e43d9be3c0e79973802d6ca6d74239399262316c9"
+  },
+  "unit": "MATHLIB_SOURCE_FILE"
+}

@@ -1,0 +1,133 @@
+{
+  "front_size": 6,
+  "generation_history_tail": {
+    "evaluated": 46,
+    "front_size": 29,
+    "frontier_moved": false,
+    "generation": 29,
+    "phase": null,
+    "rejected": 2,
+    "stall_count": 1
+  },
+  "results": [
+    {
+      "candidate_id": "R_c8a70a62eebb",
+      "first_gate_failure": null,
+      "gates_passed": true,
+      "pareto_axes": {
+        "binder_use_distance_tokens": 251.576457,
+        "bpe_tokens_per_transition": 5864.71875,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.708333,
+        "identifier_fragmentation": 1.831593,
+        "max_reference_span_tokens": 2457.520833,
+        "premise_to_action_distance_tokens": 13.802145
+      },
+      "purpose": "PRETRAINING_FRONTIER_V1_FINAL",
+      "sealed_sample_size": 96
+    },
+    {
+      "candidate_id": "R_0412a34e70c7",
+      "first_gate_failure": null,
+      "gates_passed": true,
+      "pareto_axes": {
+        "binder_use_distance_tokens": 270.635472,
+        "bpe_tokens_per_transition": 6234.854167,
+        "detect_drop_field": 0.708333,
+        "detect_swap_records": 0.954545,
+        "identifier_fragmentation": 1.886073,
+        "max_reference_span_tokens": 2731.739583,
+        "premise_to_action_distance_tokens": 923.728797
+      },
+      "purpose": "PRETRAINING_FRONTIER_V1_FINAL",
+      "sealed_sample_size": 96
+    },
+    {
+      "candidate_id": "R_211cd0165db9",
+      "first_gate_failure": null,
+      "gates_passed": true,
+      "pareto_axes": {
+        "binder_use_distance_tokens": 267.315884,
+        "bpe_tokens_per_transition": 6202.166667,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 0.956522,
+        "identifier_fragmentation": 1.840148,
+        "max_reference_span_tokens": 2697.75,
+        "premise_to_action_distance_tokens": 419.924803
+      },
+      "purpose": "PRETRAINING_FRONTIER_V1_FINAL",
+      "sealed_sample_size": 96
+    },
+    {
+      "candidate_id": "R_9044f4984fce",
+      "first_gate_failure": null,
+      "gates_passed": true,
+      "pareto_axes": {
+        "binder_use_distance_tokens": 271.528694,
+        "bpe_tokens_per_transition": 6301.135417,
+        "detect_drop_field": 0.666667,
+        "detect_swap_records": 0.916667,
+        "identifier_fragmentation": 1.843066,
+        "max_reference_span_tokens": 2833.052083,
+        "premise_to_action_distance_tokens": 20.340607
+      },
+      "purpose": "PRETRAINING_FRONTIER_V1_FINAL",
+      "sealed_sample_size": 96
+    },
+    {
+      "candidate_id": "R_9f3eb215d943",
+      "first_gate_failure": null,
+      "gates_passed": true,
+      "pareto_axes": {
+        "binder_use_distance_tokens": 201.142141,
+        "bpe_tokens_per_transition": 16414.260417,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.521739,
+        "identifier_fragmentation": 1.820166,
+        "max_reference_span_tokens": 4424.03125,
+        "premise_to_action_distance_tokens": 924.856632
+      },
+      "purpose": "PRETRAINING_FRONTIER_V1_FINAL",
+      "sealed_sample_size": 96
+    },
+    {
+      "candidate_id": "R_cf8323f05a83",
+      "first_gate_failure": null,
+      "gates_passed": true,
+      "pareto_axes": {
+        "binder_use_distance_tokens": 326.382874,
+        "bpe_tokens_per_transition": 9085.90625,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.791667,
+        "identifier_fragmentation": 1.715484,
+        "max_reference_span_tokens": 3414.03125,
+        "premise_to_action_distance_tokens": 587.10392
+      },
+      "purpose": "PRETRAINING_FRONTIER_V1_FINAL",
+      "sealed_sample_size": 96
+    }
+  ],
+  "sealed_transitions": 120,
+  "shortlist_reasons": {
+    "R_0412a34e70c7": [
+      "best_on:detect_drop_field"
+    ],
+    "R_211cd0165db9": [
+      "best_on:detect_swap_records"
+    ],
+    "R_9044f4984fce": [
+      "knee"
+    ],
+    "R_9f3eb215d943": [
+      "best_on:binder_use_distance_tokens"
+    ],
+    "R_c8a70a62eebb": [
+      "best_on:bpe_tokens_per_transition",
+      "best_on:premise_to_action_distance_tokens",
+      "best_on:max_reference_span_tokens"
+    ],
+    "R_cf8323f05a83": [
+      "best_on:identifier_fragmentation"
+    ]
+  }
+}

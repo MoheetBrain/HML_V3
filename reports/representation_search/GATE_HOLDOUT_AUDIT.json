@@ -1,0 +1,11 @@
+{
+  "candidates_evaluated": 489,
+  "candidates_hard_rejected": 107,
+  "corpus": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2.canonical.jsonl.gz",
+  "disagreements": [],
+  "holdout_slice": {
+    "offset": 150,
+    "size": 40
+  },
+  "verdicts_stable": true
+}

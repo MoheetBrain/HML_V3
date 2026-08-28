@@ -23,6 +23,9 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "src"))
+
+from hml_v3.representation_search.corpus import iter_corpus  # noqa: E402
 DEFAULT_MATH = Path("/Users/moheet/Documents/ChatGPT/prm800k/prm800k/math_splits/train.jsonl")
 
 LATEX_TOKEN = re.compile(r"\\[a-zA-Z]+")
@@ -97,16 +100,12 @@ def corpus_constants(path: Path) -> tuple[collections.Counter, int]:
             for item in node:
                 walk(item)
 
-    with gzip.open(path, "rt", encoding="utf-8") as handle:
-        for line in handle:
-            if not line.strip():
-                continue
-            rows += 1
-            row = json.loads(line)
-            walk(row["state_before"])
-            walk(row["state_after"])
-            for name in row["action"]["external_premise_refs"]:
-                constants[name] += 1
+    for row in iter_corpus(path):
+        rows += 1
+        walk(row["state_before"])
+        walk(row["state_after"])
+        for name in row["action"]["external_premise_refs"]:
+            constants[name] += 1
     return constants, rows
 
 

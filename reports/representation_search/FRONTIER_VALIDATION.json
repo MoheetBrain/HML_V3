@@ -1,0 +1,179 @@
+{
+  "axes": 7,
+  "axes_with_the_same_leader": 5,
+  "dev_sample": 48,
+  "finalists": [
+    "R_c8a70a62eebb",
+    "R_0412a34e70c7",
+    "R_211cd0165db9",
+    "R_9044f4984fce",
+    "R_9f3eb215d943",
+    "R_cf8323f05a83"
+  ],
+  "note": "SEARCH_VALIDATION was never used for selection. The sealed split is not read here.",
+  "per_axis": {
+    "binder_use_distance_tokens": {
+      "dev_order": [
+        "R_9f3eb215d943",
+        "R_c8a70a62eebb",
+        "R_9044f4984fce",
+        "R_211cd0165db9",
+        "R_0412a34e70c7",
+        "R_cf8323f05a83"
+      ],
+      "same_leader": true,
+      "spearman_rho": 1.0,
+      "validation_order": [
+        "R_9f3eb215d943",
+        "R_c8a70a62eebb",
+        "R_9044f4984fce",
+        "R_211cd0165db9",
+        "R_0412a34e70c7",
+        "R_cf8323f05a83"
+      ]
+    },
+    "bpe_tokens_per_transition": {
+      "dev_order": [
+        "R_c8a70a62eebb",
+        "R_211cd0165db9",
+        "R_0412a34e70c7",
+        "R_9044f4984fce",
+        "R_cf8323f05a83",
+        "R_9f3eb215d943"
+      ],
+      "same_leader": true,
+      "spearman_rho": 1.0,
+      "validation_order": [
+        "R_c8a70a62eebb",
+        "R_211cd0165db9",
+        "R_0412a34e70c7",
+        "R_9044f4984fce",
+        "R_cf8323f05a83",
+        "R_9f3eb215d943"
+      ]
+    },
+    "detect_drop_field": {
+      "dev_order": [
+        "R_0412a34e70c7",
+        "R_9044f4984fce",
+        "R_211cd0165db9",
+        "R_9f3eb215d943",
+        "R_c8a70a62eebb",
+        "R_cf8323f05a83"
+      ],
+      "same_leader": false,
+      "spearman_rho": 0.8286,
+      "validation_order": [
+        "R_9044f4984fce",
+        "R_211cd0165db9",
+        "R_0412a34e70c7",
+        "R_9f3eb215d943",
+        "R_c8a70a62eebb",
+        "R_cf8323f05a83"
+      ]
+    },
+    "detect_swap_records": {
+      "dev_order": [
+        "R_211cd0165db9",
+        "R_9044f4984fce",
+        "R_cf8323f05a83",
+        "R_0412a34e70c7",
+        "R_c8a70a62eebb",
+        "R_9f3eb215d943"
+      ],
+      "same_leader": false,
+      "spearman_rho": 0.6571,
+      "validation_order": [
+        "R_0412a34e70c7",
+        "R_211cd0165db9",
+        "R_9044f4984fce",
+        "R_cf8323f05a83",
+        "R_c8a70a62eebb",
+        "R_9f3eb215d943"
+      ]
+    },
+    "identifier_fragmentation": {
+      "dev_order": [
+        "R_cf8323f05a83",
+        "R_9f3eb215d943",
+        "R_c8a70a62eebb",
+        "R_9044f4984fce",
+        "R_211cd0165db9",
+        "R_0412a34e70c7"
+      ],
+      "same_leader": true,
+      "spearman_rho": 0.9429,
+      "validation_order": [
+        "R_cf8323f05a83",
+        "R_9f3eb215d943",
+        "R_c8a70a62eebb",
+        "R_211cd0165db9",
+        "R_9044f4984fce",
+        "R_0412a34e70c7"
+      ]
+    },
+    "max_reference_span_tokens": {
+      "dev_order": [
+        "R_c8a70a62eebb",
+        "R_9044f4984fce",
+        "R_211cd0165db9",
+        "R_0412a34e70c7",
+        "R_cf8323f05a83",
+        "R_9f3eb215d943"
+      ],
+      "same_leader": true,
+      "spearman_rho": 0.8286,
+      "validation_order": [
+        "R_c8a70a62eebb",
+        "R_211cd0165db9",
+        "R_0412a34e70c7",
+        "R_9044f4984fce",
+        "R_cf8323f05a83",
+        "R_9f3eb215d943"
+      ]
+    },
+    "premise_to_action_distance_tokens": {
+      "dev_order": [
+        "R_c8a70a62eebb",
+        "R_9044f4984fce",
+        "R_211cd0165db9",
+        "R_cf8323f05a83",
+        "R_0412a34e70c7",
+        "R_9f3eb215d943"
+      ],
+      "same_leader": true,
+      "spearman_rho": 0.9429,
+      "validation_order": [
+        "R_c8a70a62eebb",
+        "R_9044f4984fce",
+        "R_211cd0165db9",
+        "R_0412a34e70c7",
+        "R_cf8323f05a83",
+        "R_9f3eb215d943"
+      ]
+    }
+  },
+  "shortlist_reasons": {
+    "R_0412a34e70c7": [
+      "best_on:detect_drop_field"
+    ],
+    "R_211cd0165db9": [
+      "best_on:detect_swap_records"
+    ],
+    "R_9044f4984fce": [
+      "knee"
+    ],
+    "R_9f3eb215d943": [
+      "best_on:binder_use_distance_tokens"
+    ],
+    "R_c8a70a62eebb": [
+      "best_on:bpe_tokens_per_transition",
+      "best_on:premise_to_action_distance_tokens",
+      "best_on:max_reference_span_tokens"
+    ],
+    "R_cf8323f05a83": [
+      "best_on:identifier_fragmentation"
+    ]
+  },
+  "validation_sample": 48
+}

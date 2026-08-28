@@ -65,6 +65,20 @@ class MetricVector:
 IDENTIFIER_RE = re.compile(r"[^\W\d][\w.]*", re.UNICODE)
 
 
+def token_positions(text: str, token: str) -> list[int]:
+    """Character offsets where ``token`` occurs as a whole identifier.
+
+    A naive substring search is wrong here and wrong in a way that inflates the locality
+    numbers: with short identities, ``bf1`` also matches inside ``bf10`` through ``bf19``.
+    Measured on one real transition that was an 80-against-64 overcount, 25% high. This is
+    the same class of defect as FM-009, where a line-based distance unit produced a
+    persuasive 6.3x improvement that did not exist.
+    """
+
+    pattern = re.compile(rf"(?<![A-Za-z0-9_]){re.escape(token)}(?![A-Za-z0-9_])")
+    return [match.start() for match in pattern.finditer(text)]
+
+
 # ------------------------------------------------------------------------------ utilities
 
 
@@ -112,7 +126,7 @@ def _reference_distances(
     char_gaps: list[int] = []
     token_gaps: list[int] = []
     for identity in identities:
-        positions = [match.start() for match in re.finditer(re.escape(identity), text)]
+        positions = token_positions(text, identity)
         if len(positions) < 2:
             continue
         for previous, current in zip(positions, positions[1:]):
@@ -139,7 +153,7 @@ def _forward_reference_rate(text: str, identities: list[str]) -> float:
         introduced = None
         first_use = None
         for index, line in enumerate(lines):
-            if identity not in line:
+            if not token_positions(line, identity):
                 continue
             if first_use is None:
                 first_use = index
@@ -279,7 +293,8 @@ def measure(
         if premises and action_position >= 0:
             gaps = []
             for premise in premises:
-                position = text.find(premise)
+                found = token_positions(text, premise)
+                position = found[0] if found else -1
                 if position >= 0:
                     gaps.append(abs(
                         _char_to_token_index(offsets, position)

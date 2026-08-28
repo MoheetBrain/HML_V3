@@ -512,6 +512,25 @@ def render_markdown(payload: dict, registry: CandidateRegistry) -> str:
 
     lines += [
         "",
+        "## Companion reports",
+        "",
+        "- [`FINALIST_DOMAIN_PROFILES.md`](FINALIST_DOMAIN_PROFILES.md) — each finalist "
+        "measured per Mathlib domain, because a frontier table reports averages and a user "
+        "of the language asks about their own mathematics.",
+        "- [`DISCOVERY_REPRESENTATION_ANALYSIS.md`](DISCOVERY_REPRESENTATION_ANALYSIS.md) — "
+        "what PRM800K's step labels expose that no representation in this space can, and why.",
+        "- [`NOTATION_COVERAGE.md`](NOTATION_COVERAGE.md) — which human mathematical "
+        "constructs the formal corpus barely exercises.",
+        "- [`FRONTIER_VALIDATION.md`](FRONTIER_VALIDATION.md) — the finalists re-measured on "
+        "the validation split selection never read, with rank correlations.",
+        "- [`GATE_HOLDOUT_AUDIT.json`](GATE_HOLDOUT_AUDIT.json) — every gate verdict re-run "
+        "on a disjoint dev slice, to catch a verdict that held only by evaluation order.",
+        "- [`REPRODUCIBILITY.json`](REPRODUCIBILITY.json) — candidates re-rendered in a fresh "
+        "subprocess under a different hash seed, testing the claim that a genome hash "
+        "determines a language.",
+        "- [`../audits/LEAN_RUNTIME_V2_CORPUS.md`](../audits/LEAN_RUNTIME_V2_CORPUS.md) — the "
+        "corpus accounting, with every excluded transition counted by reason.",
+        "",
         "## What this does not establish",
         "",
         "- That any of these representations makes mathematical reasoning easier for a model. "

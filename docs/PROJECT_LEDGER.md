@@ -204,3 +204,78 @@ at generation 11.
 
 **Next intended step.** Merge the second campaign into the corpus, re-run the search to
 convergence, perform the single sealed evaluation.
+
+## 2026-08-28 — merged corpus, a metric defect, and the definitive search
+
+**Branch:** `codex/lean-runtime-semantic-capture-v2`
+**Stage:** REPRESENTATION_SEARCH_V1
+
+**Objective.** Extend the corpus with the second Lean campaign and run the search that the
+frontier report would be based on.
+
+**Corpus.** Both campaigns merged: 1,000 selected transitions, **608 recovered** across 27
+Mathlib domains. 392 unrecovered, all counted: 272 over the canonical size budget, 96 over
+the raw element budget, 9 duplicate record ids, 7 failed elaboration jobs, 1 truncated
+document. Structure is unchanged from the smaller corpus — mean 13.4 local declarations,
+1.01 goals per state.
+
+**A metric defect, found mid-run.** The definitive search had reached generation 3 when a
+check of the locality metric against a real rendering showed that `bf1` was matching inside
+`bf10` through `bf19`: **80 apparent mentions against a true 64, a 25% overcount**. Premise
+names had the same defect (`Nat.add` inside `Nat.add_comm`). This is `FM-009`'s failure mode
+in a new place. The run was killed, the metric fixed to require token boundaries, a
+regression test added, the defect recorded as `FM-023`, and the search restarted from
+generation zero. **The pilot run's locality numbers are inflated and are retained only as
+archived history** under `data/representation_search/archive/`.
+
+**The definitive run.** 30 generations. 616 candidates registered, 489 evaluated, 107
+hard-rejected — 82 on semantic round-trip, 13 on ambiguous lexicon, 12 on glyph fidelity.
+661 proposed hypotheses were refuted by measurement; 1,133 mutations were blocked by the
+failure memory before any compute was spent on them.
+
+**Result.** Six finalists, chosen by a stated rule: the best candidate on each Pareto axis
+plus the knee. **Every one of the sixteen hand-specified seeds was pushed off the strict
+Pareto front** — prior HML, Structured English, Lean-like and typed AST included. The
+cheapest finalist costs 5,131 GPT-2 tokens per transition against 5,979 for the best seed,
+and it simultaneously leads premise-to-action distance and maximum reference span.
+
+**Strongest measured effects**, aggregated across parents with 100% sign agreement:
+postfix expression notation saves **17.5%** tokens (n=5); moving the action to a header cuts
+premise-to-action distance **92%** (n=5); reversing DAG hoisting improves tokens **50.9%**
+(n=4), confirming `FM-022`; and `redundancy_level=EXPLICIT` *reduces* dropped-field detection
+by 15–19% (n=3), which is the opposite of its predicted mechanism.
+
+**Verification actually executed.**
+- `python3 -m unittest discover -s tests` — 60 tests, all passing.
+- `verify_reproducibility.py --candidates 400 --transitions 24` — 373 candidates re-rendered
+  in a fresh subprocess under `PYTHONHASHSEED=12345`; **0 mismatches**.
+- `audit_gates_on_holdout.py --offset 150 --size 60` — 246 evaluated and 50 hard-rejected
+  candidates re-gated on a disjoint dev slice; **0 verdict disagreements**.
+- `validate_frontier.py --sample 48` — **5 of 7** axis leaders unchanged on the validation
+  split selection never read; Spearman rho +0.93 to +1.00 on cost and locality, **+0.357** on
+  record-swap detection.
+- `build_domain_profiles.py` — across 16 Mathlib domains, token cost, binder distance and
+  identifier fragmentation have one leader in **100%** of domains; the detection axes in
+  **38–56%**. Recorded as `FM-024`.
+- `run_representation_search.py --generations 0 --seal-final` — the sealed split (120
+  transitions from 101 families never read during the search) was evaluated **once**, on the
+  six finalists. All six pass every hard gate on it. `sealed_access_log.jsonl` records exactly
+  6 accesses.
+
+**Failures and unresolved uncertainty.** The search **did not structurally converge**: it
+stopped on its 30-generation budget with a stall count of 1, so the frontier was still moving.
+Any claim that this is the frontier is a claim about 489 of 4.095e19 points. The strict front
+holds 92 of 489 candidates, which is why the shortlist follows a stated rule rather than
+front membership.
+
+**One further change, forced by the commit guard.** The corpus is 8.3 MiB gzipped and the
+guard caps a tracked file at 5 MiB. The corpus is a generated artifact but it is also the
+object every result here is measured on, and it is not reproducible from the repository alone
+because the 63 GB of raw captures stay external. Leaving it out of Git would make the results
+uncheckable. It is therefore written as size-capped shards, with a shared reader that
+concatenates them in name order. Verified: 608 rows in and 608 rows out, list-equal, and the
+content hash `125f8add19741df9` is identical to the single-file form and independent of the
+shard size chosen.
+
+**Next intended step.** Resume the search for further generations; design the matched,
+control-gated model experiment on the six finalists.

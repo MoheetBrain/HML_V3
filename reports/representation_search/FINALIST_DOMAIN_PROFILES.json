@@ -1,0 +1,1490 @@
+{
+  "axis_leaders_by_domain": {
+    "Algebra": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_0412a34e70c7",
+      "detect_swap_records": "R_0412a34e70c7",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_37383109997e",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "Analysis": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_0412a34e70c7",
+      "detect_swap_records": "R_043bb2c2cfac",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_37383109997e",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "CategoryTheory": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_9044f4984fce",
+      "detect_swap_records": "R_0412a34e70c7",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "Combinatorics": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_043bb2c2cfac",
+      "detect_swap_records": "R_043bb2c2cfac",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "Computability": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_8ae4ba2c1f7e",
+      "detect_swap_records": "R_043bb2c2cfac",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "Data": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_8ae4ba2c1f7e",
+      "detect_swap_records": "R_0412a34e70c7",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "GroupTheory": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_9044f4984fce",
+      "detect_swap_records": "R_9ea6caecfa33",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "LinearAlgebra": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_0412a34e70c7",
+      "detect_swap_records": "R_0412a34e70c7",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "MeasureTheory": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_9ea6caecfa33",
+      "detect_swap_records": "R_043bb2c2cfac",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_9044f4984fce",
+      "premise_to_action_distance_tokens": "R_8ae4ba2c1f7e"
+    },
+    "NumberTheory": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_9ea6caecfa33",
+      "detect_swap_records": "R_0412a34e70c7",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "Order": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_0412a34e70c7",
+      "detect_swap_records": "R_043bb2c2cfac",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_37383109997e",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "Probability": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_0412a34e70c7",
+      "detect_swap_records": "R_0412a34e70c7",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_37383109997e",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "RingTheory": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_9ea6caecfa33",
+      "detect_swap_records": "R_0412a34e70c7",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_37383109997e",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "SetTheory": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_0412a34e70c7",
+      "detect_swap_records": "R_043bb2c2cfac",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "Topology": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_8ae4ba2c1f7e",
+      "detect_swap_records": "R_043bb2c2cfac",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    },
+    "packages": {
+      "binder_use_distance_tokens": "R_1a776db1d4c0",
+      "bpe_tokens_per_transition": "R_37383109997e",
+      "detect_drop_field": "R_0412a34e70c7",
+      "detect_swap_records": "R_8ae4ba2c1f7e",
+      "identifier_fragmentation": "R_cf8323f05a83",
+      "max_reference_span_tokens": "R_043bb2c2cfac",
+      "premise_to_action_distance_tokens": "R_9ea6caecfa33"
+    }
+  },
+  "corpus": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2.canonical.jsonl.gz",
+  "domain_wins": {
+    "R_0412a34e70c7": {
+      "Algebra": 2,
+      "Analysis": 1,
+      "CategoryTheory": 1,
+      "Data": 1,
+      "LinearAlgebra": 2,
+      "NumberTheory": 1,
+      "Order": 1,
+      "Probability": 2,
+      "RingTheory": 1,
+      "SetTheory": 1,
+      "packages": 1
+    },
+    "R_043bb2c2cfac": {
+      "Analysis": 1,
+      "CategoryTheory": 1,
+      "Combinatorics": 3,
+      "Computability": 2,
+      "Data": 1,
+      "GroupTheory": 1,
+      "LinearAlgebra": 1,
+      "MeasureTheory": 1,
+      "NumberTheory": 1,
+      "Order": 1,
+      "SetTheory": 2,
+      "Topology": 2,
+      "packages": 1
+    },
+    "R_1a776db1d4c0": {
+      "Algebra": 1,
+      "Analysis": 1,
+      "CategoryTheory": 1,
+      "Combinatorics": 1,
+      "Computability": 1,
+      "Data": 1,
+      "GroupTheory": 1,
+      "LinearAlgebra": 1,
+      "MeasureTheory": 1,
+      "NumberTheory": 1,
+      "Order": 1,
+      "Probability": 1,
+      "RingTheory": 1,
+      "SetTheory": 1,
+      "Topology": 1,
+      "packages": 1
+    },
+    "R_37383109997e": {
+      "Algebra": 2,
+      "Analysis": 2,
+      "CategoryTheory": 1,
+      "Combinatorics": 1,
+      "Computability": 1,
+      "Data": 1,
+      "GroupTheory": 1,
+      "LinearAlgebra": 1,
+      "MeasureTheory": 1,
+      "NumberTheory": 1,
+      "Order": 2,
+      "Probability": 2,
+      "RingTheory": 2,
+      "SetTheory": 1,
+      "Topology": 1,
+      "packages": 1
+    },
+    "R_8ae4ba2c1f7e": {
+      "Computability": 1,
+      "Data": 1,
+      "MeasureTheory": 1,
+      "Topology": 1,
+      "packages": 1
+    },
+    "R_9044f4984fce": {
+      "CategoryTheory": 1,
+      "GroupTheory": 1,
+      "MeasureTheory": 1
+    },
+    "R_9ea6caecfa33": {
+      "Algebra": 1,
+      "Analysis": 1,
+      "CategoryTheory": 1,
+      "Combinatorics": 1,
+      "Computability": 1,
+      "Data": 1,
+      "GroupTheory": 2,
+      "LinearAlgebra": 1,
+      "MeasureTheory": 1,
+      "NumberTheory": 2,
+      "Order": 1,
+      "Probability": 1,
+      "RingTheory": 2,
+      "SetTheory": 1,
+      "Topology": 1,
+      "packages": 1
+    },
+    "R_cf8323f05a83": {
+      "Algebra": 1,
+      "Analysis": 1,
+      "CategoryTheory": 1,
+      "Combinatorics": 1,
+      "Computability": 1,
+      "Data": 1,
+      "GroupTheory": 1,
+      "LinearAlgebra": 1,
+      "MeasureTheory": 1,
+      "NumberTheory": 1,
+      "Order": 1,
+      "Probability": 1,
+      "RingTheory": 1,
+      "SetTheory": 1,
+      "Topology": 1,
+      "packages": 1
+    }
+  },
+  "domains_measured": {
+    "Algebra": 12,
+    "Analysis": 12,
+    "CategoryTheory": 12,
+    "Combinatorics": 12,
+    "Computability": 12,
+    "Data": 12,
+    "GroupTheory": 10,
+    "LinearAlgebra": 12,
+    "MeasureTheory": 12,
+    "NumberTheory": 12,
+    "Order": 12,
+    "Probability": 10,
+    "RingTheory": 12,
+    "SetTheory": 12,
+    "Topology": 12,
+    "packages": 12
+  },
+  "finalists": [
+    "R_0412a34e70c7",
+    "R_043bb2c2cfac",
+    "R_1a776db1d4c0",
+    "R_37383109997e",
+    "R_8ae4ba2c1f7e",
+    "R_9044f4984fce",
+    "R_9ea6caecfa33",
+    "R_cf8323f05a83"
+  ],
+  "min_domain_size": 8,
+  "note": "Dev and validation splits only. The sealed split is never read here.",
+  "per_candidate": {
+    "R_0412a34e70c7": {
+      "Algebra": {
+        "binder_use_distance_tokens": 247.5742,
+        "bpe_tokens_per_transition": 6794.75,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9487,
+        "max_reference_span_tokens": 2958.8333,
+        "premise_to_action_distance_tokens": 1476.631
+      },
+      "Analysis": {
+        "binder_use_distance_tokens": 452.9246,
+        "bpe_tokens_per_transition": 9557.8333,
+        "detect_drop_field": 0.8333,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 2.0213,
+        "max_reference_span_tokens": 4239.6667,
+        "premise_to_action_distance_tokens": 3341.5787
+      },
+      "CategoryTheory": {
+        "binder_use_distance_tokens": 201.9959,
+        "bpe_tokens_per_transition": 8023.75,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9311,
+        "max_reference_span_tokens": 3435.0,
+        "premise_to_action_distance_tokens": 5307.0083
+      },
+      "Combinatorics": {
+        "binder_use_distance_tokens": 296.6289,
+        "bpe_tokens_per_transition": 6154.4167,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.7912,
+        "max_reference_span_tokens": 2729.0,
+        "premise_to_action_distance_tokens": 134.3333
+      },
+      "Computability": {
+        "binder_use_distance_tokens": 363.6396,
+        "bpe_tokens_per_transition": 7360.8333,
+        "detect_drop_field": 0.4167,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 2.0,
+        "max_reference_span_tokens": 3343.0,
+        "premise_to_action_distance_tokens": 92.6798
+      },
+      "Data": {
+        "binder_use_distance_tokens": 282.2987,
+        "bpe_tokens_per_transition": 6262.6667,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.8129,
+        "max_reference_span_tokens": 2816.0833,
+        "premise_to_action_distance_tokens": 379.6875
+      },
+      "GroupTheory": {
+        "binder_use_distance_tokens": 233.6972,
+        "bpe_tokens_per_transition": 4914.4,
+        "detect_drop_field": 0.4,
+        "detect_swap_records": 0.8,
+        "identifier_fragmentation": 1.843,
+        "max_reference_span_tokens": 2701.2,
+        "premise_to_action_distance_tokens": 522.1012
+      },
+      "LinearAlgebra": {
+        "binder_use_distance_tokens": 220.7569,
+        "bpe_tokens_per_transition": 8803.5,
+        "detect_drop_field": 0.8333,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8854,
+        "max_reference_span_tokens": 3871.75,
+        "premise_to_action_distance_tokens": 2237.4722
+      },
+      "MeasureTheory": {
+        "binder_use_distance_tokens": 302.6693,
+        "bpe_tokens_per_transition": 8321.6667,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.7273,
+        "identifier_fragmentation": 1.944,
+        "max_reference_span_tokens": 3840.1667,
+        "premise_to_action_distance_tokens": 61.875
+      },
+      "NumberTheory": {
+        "binder_use_distance_tokens": 491.3391,
+        "bpe_tokens_per_transition": 6316.0833,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9152,
+        "max_reference_span_tokens": 3356.3333,
+        "premise_to_action_distance_tokens": 127.6528
+      },
+      "Order": {
+        "binder_use_distance_tokens": 172.8978,
+        "bpe_tokens_per_transition": 4598.25,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.8182,
+        "identifier_fragmentation": 1.806,
+        "max_reference_span_tokens": 1734.0833,
+        "premise_to_action_distance_tokens": 1077.2
+      },
+      "Probability": {
+        "binder_use_distance_tokens": 261.9574,
+        "bpe_tokens_per_transition": 6283.0,
+        "detect_drop_field": 0.7,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9886,
+        "max_reference_span_tokens": 2924.5,
+        "premise_to_action_distance_tokens": 537.875
+      },
+      "RingTheory": {
+        "binder_use_distance_tokens": 188.6103,
+        "bpe_tokens_per_transition": 8145.0,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9692,
+        "max_reference_span_tokens": 3330.8333,
+        "premise_to_action_distance_tokens": 1013.2889
+      },
+      "SetTheory": {
+        "binder_use_distance_tokens": 487.1712,
+        "bpe_tokens_per_transition": 5191.0,
+        "detect_drop_field": 0.8333,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.7438,
+        "max_reference_span_tokens": 2461.6667,
+        "premise_to_action_distance_tokens": 1641.5774
+      },
+      "Topology": {
+        "binder_use_distance_tokens": 191.3725,
+        "bpe_tokens_per_transition": 5703.4167,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.9311,
+        "max_reference_span_tokens": 2528.75,
+        "premise_to_action_distance_tokens": 1748.25
+      },
+      "packages": {
+        "binder_use_distance_tokens": 225.0166,
+        "bpe_tokens_per_transition": 5737.25,
+        "detect_drop_field": 0.8333,
+        "detect_swap_records": 0.6667,
+        "identifier_fragmentation": 1.8565,
+        "max_reference_span_tokens": 3486.0,
+        "premise_to_action_distance_tokens": 215.2
+      }
+    },
+    "R_043bb2c2cfac": {
+      "Algebra": {
+        "binder_use_distance_tokens": 245.2025,
+        "bpe_tokens_per_transition": 6757.5833,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8882,
+        "max_reference_span_tokens": 2918.25,
+        "premise_to_action_distance_tokens": 22.6616
+      },
+      "Analysis": {
+        "binder_use_distance_tokens": 447.8552,
+        "bpe_tokens_per_transition": 9500.1667,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9689,
+        "max_reference_span_tokens": 4184.5,
+        "premise_to_action_distance_tokens": 21.9954
+      },
+      "CategoryTheory": {
+        "binder_use_distance_tokens": 198.6581,
+        "bpe_tokens_per_transition": 8003.1667,
+        "detect_drop_field": 0.8333,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9015,
+        "max_reference_span_tokens": 3005.0833,
+        "premise_to_action_distance_tokens": 28.8083
+      },
+      "Combinatorics": {
+        "binder_use_distance_tokens": 297.6655,
+        "bpe_tokens_per_transition": 6150.5833,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.7416,
+        "max_reference_span_tokens": 2640.1667,
+        "premise_to_action_distance_tokens": 17.6667
+      },
+      "Computability": {
+        "binder_use_distance_tokens": 361.3999,
+        "bpe_tokens_per_transition": 7339.1667,
+        "detect_drop_field": 0.5,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.9688,
+        "max_reference_span_tokens": 3006.9167,
+        "premise_to_action_distance_tokens": 22.8048
+      },
+      "Data": {
+        "binder_use_distance_tokens": 284.017,
+        "bpe_tokens_per_transition": 6244.9167,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.7636,
+        "max_reference_span_tokens": 2621.5833,
+        "premise_to_action_distance_tokens": 16.0625
+      },
+      "GroupTheory": {
+        "binder_use_distance_tokens": 231.3651,
+        "bpe_tokens_per_transition": 4895.0,
+        "detect_drop_field": 0.7,
+        "detect_swap_records": 0.9,
+        "identifier_fragmentation": 1.7963,
+        "max_reference_span_tokens": 2335.6,
+        "premise_to_action_distance_tokens": 19.5298
+      },
+      "LinearAlgebra": {
+        "binder_use_distance_tokens": 218.7922,
+        "bpe_tokens_per_transition": 8758.25,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8515,
+        "max_reference_span_tokens": 3740.0833,
+        "premise_to_action_distance_tokens": 14.7222
+      },
+      "MeasureTheory": {
+        "binder_use_distance_tokens": 298.2913,
+        "bpe_tokens_per_transition": 8275.6667,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.8913,
+        "max_reference_span_tokens": 3744.5833,
+        "premise_to_action_distance_tokens": 16.875
+      },
+      "NumberTheory": {
+        "binder_use_distance_tokens": 456.2102,
+        "bpe_tokens_per_transition": 6393.1667,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8782,
+        "max_reference_span_tokens": 2676.5,
+        "premise_to_action_distance_tokens": 27.7861
+      },
+      "Order": {
+        "binder_use_distance_tokens": 167.6174,
+        "bpe_tokens_per_transition": 4554.0,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.7485,
+        "max_reference_span_tokens": 1692.5833,
+        "premise_to_action_distance_tokens": 15.9
+      },
+      "Probability": {
+        "binder_use_distance_tokens": 260.1725,
+        "bpe_tokens_per_transition": 6266.7,
+        "detect_drop_field": 0.6,
+        "detect_swap_records": 0.9,
+        "identifier_fragmentation": 1.9475,
+        "max_reference_span_tokens": 2891.2,
+        "premise_to_action_distance_tokens": 14.125
+      },
+      "RingTheory": {
+        "binder_use_distance_tokens": 186.6074,
+        "bpe_tokens_per_transition": 8129.5,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.94,
+        "max_reference_span_tokens": 3288.6667,
+        "premise_to_action_distance_tokens": 20.2704
+      },
+      "SetTheory": {
+        "binder_use_distance_tokens": 472.584,
+        "bpe_tokens_per_transition": 5181.4167,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.7093,
+        "max_reference_span_tokens": 1922.25,
+        "premise_to_action_distance_tokens": 19.6885
+      },
+      "Topology": {
+        "binder_use_distance_tokens": 188.514,
+        "bpe_tokens_per_transition": 5672.0833,
+        "detect_drop_field": 0.4167,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.877,
+        "max_reference_span_tokens": 2092.6667,
+        "premise_to_action_distance_tokens": 19.75
+      },
+      "packages": {
+        "binder_use_distance_tokens": 220.1611,
+        "bpe_tokens_per_transition": 5736.0,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.8135,
+        "max_reference_span_tokens": 2799.9167,
+        "premise_to_action_distance_tokens": 15.9333
+      }
+    },
+    "R_1a776db1d4c0": {
+      "Algebra": {
+        "binder_use_distance_tokens": 177.0994,
+        "bpe_tokens_per_transition": 18210.6667,
+        "detect_drop_field": 0.25,
+        "detect_swap_records": 0.5,
+        "identifier_fragmentation": 1.8682,
+        "max_reference_span_tokens": 4098.0,
+        "premise_to_action_distance_tokens": 1387.335
+      },
+      "Analysis": {
+        "binder_use_distance_tokens": 315.7775,
+        "bpe_tokens_per_transition": 21954.4167,
+        "detect_drop_field": 0.25,
+        "detect_swap_records": 0.4167,
+        "identifier_fragmentation": 1.9478,
+        "max_reference_span_tokens": 6585.75,
+        "premise_to_action_distance_tokens": 633.287
+      },
+      "CategoryTheory": {
+        "binder_use_distance_tokens": 188.3512,
+        "bpe_tokens_per_transition": 23255.5,
+        "detect_drop_field": 0.1667,
+        "detect_swap_records": 0.6667,
+        "identifier_fragmentation": 1.8721,
+        "max_reference_span_tokens": 6758.3333,
+        "premise_to_action_distance_tokens": 3868.2833
+      },
+      "Combinatorics": {
+        "binder_use_distance_tokens": 191.6192,
+        "bpe_tokens_per_transition": 13901.1667,
+        "detect_drop_field": 0.4167,
+        "detect_swap_records": 0.6364,
+        "identifier_fragmentation": 1.7332,
+        "max_reference_span_tokens": 3696.8333,
+        "premise_to_action_distance_tokens": 239.6667
+      },
+      "Computability": {
+        "binder_use_distance_tokens": 276.4805,
+        "bpe_tokens_per_transition": 22625.5833,
+        "detect_drop_field": 0.25,
+        "detect_swap_records": 0.3333,
+        "identifier_fragmentation": 1.9699,
+        "max_reference_span_tokens": 5562.9167,
+        "premise_to_action_distance_tokens": 115.9298
+      },
+      "Data": {
+        "binder_use_distance_tokens": 163.0349,
+        "bpe_tokens_per_transition": 18051.9167,
+        "detect_drop_field": 0.4167,
+        "detect_swap_records": 0.5,
+        "identifier_fragmentation": 1.7616,
+        "max_reference_span_tokens": 5080.25,
+        "premise_to_action_distance_tokens": 632.625
+      },
+      "GroupTheory": {
+        "binder_use_distance_tokens": 166.4789,
+        "bpe_tokens_per_transition": 10323.4,
+        "detect_drop_field": 0.2,
+        "detect_swap_records": 0.7,
+        "identifier_fragmentation": 1.7866,
+        "max_reference_span_tokens": 2803.4,
+        "premise_to_action_distance_tokens": 355.1012
+      },
+      "LinearAlgebra": {
+        "binder_use_distance_tokens": 180.5594,
+        "bpe_tokens_per_transition": 29672.0833,
+        "detect_drop_field": 0.0833,
+        "detect_swap_records": 0.7273,
+        "identifier_fragmentation": 1.8463,
+        "max_reference_span_tokens": 8900.75,
+        "premise_to_action_distance_tokens": 3416.5556
+      },
+      "MeasureTheory": {
+        "binder_use_distance_tokens": 243.6312,
+        "bpe_tokens_per_transition": 17378.9167,
+        "detect_drop_field": 0.4167,
+        "detect_swap_records": 0.6667,
+        "identifier_fragmentation": 1.8447,
+        "max_reference_span_tokens": 4276.8333,
+        "premise_to_action_distance_tokens": 60.875
+      },
+      "NumberTheory": {
+        "binder_use_distance_tokens": 384.6344,
+        "bpe_tokens_per_transition": 17107.8333,
+        "detect_drop_field": 0.1667,
+        "detect_swap_records": 0.6667,
+        "identifier_fragmentation": 1.9249,
+        "max_reference_span_tokens": 4243.5,
+        "premise_to_action_distance_tokens": 227.5861
+      },
+      "Order": {
+        "binder_use_distance_tokens": 153.9759,
+        "bpe_tokens_per_transition": 12803.6667,
+        "detect_drop_field": 0.25,
+        "detect_swap_records": 0.3333,
+        "identifier_fragmentation": 1.7372,
+        "max_reference_span_tokens": 4263.25,
+        "premise_to_action_distance_tokens": 2732.3
+      },
+      "Probability": {
+        "binder_use_distance_tokens": 209.0424,
+        "bpe_tokens_per_transition": 15742.4,
+        "detect_drop_field": 0.5,
+        "detect_swap_records": 0.6,
+        "identifier_fragmentation": 1.9303,
+        "max_reference_span_tokens": 4594.9,
+        "premise_to_action_distance_tokens": 58.125
+      },
+      "RingTheory": {
+        "binder_use_distance_tokens": 142.2893,
+        "bpe_tokens_per_transition": 20689.9167,
+        "detect_drop_field": 0.1667,
+        "detect_swap_records": 0.4167,
+        "identifier_fragmentation": 1.925,
+        "max_reference_span_tokens": 5950.9167,
+        "premise_to_action_distance_tokens": 1119.863
+      },
+      "SetTheory": {
+        "binder_use_distance_tokens": 312.5189,
+        "bpe_tokens_per_transition": 12462.3333,
+        "detect_drop_field": 0.1667,
+        "detect_swap_records": 0.4167,
+        "identifier_fragmentation": 1.7051,
+        "max_reference_span_tokens": 2550.1667,
+        "premise_to_action_distance_tokens": 3542.371
+      },
+      "Topology": {
+        "binder_use_distance_tokens": 145.8171,
+        "bpe_tokens_per_transition": 15590.4167,
+        "detect_drop_field": 0.25,
+        "detect_swap_records": 0.25,
+        "identifier_fragmentation": 1.8573,
+        "max_reference_span_tokens": 4183.4167,
+        "premise_to_action_distance_tokens": 6811.1667
+      },
+      "packages": {
+        "binder_use_distance_tokens": 186.6918,
+        "bpe_tokens_per_transition": 13642.9167,
+        "detect_drop_field": 0.1667,
+        "detect_swap_records": 0.4167,
+        "identifier_fragmentation": 1.7914,
+        "max_reference_span_tokens": 4346.5833,
+        "premise_to_action_distance_tokens": 714.5333
+      }
+    },
+    "R_37383109997e": {
+      "Algebra": {
+        "binder_use_distance_tokens": 238.8424,
+        "bpe_tokens_per_transition": 6592.9167,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5,
+        "identifier_fragmentation": 1.8865,
+        "max_reference_span_tokens": 2861.4167,
+        "premise_to_action_distance_tokens": 415.9473
+      },
+      "Analysis": {
+        "binder_use_distance_tokens": 433.9444,
+        "bpe_tokens_per_transition": 9255.0833,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.6667,
+        "identifier_fragmentation": 1.9687,
+        "max_reference_span_tokens": 4089.75,
+        "premise_to_action_distance_tokens": 524.8565
+      },
+      "CategoryTheory": {
+        "binder_use_distance_tokens": 197.8244,
+        "bpe_tokens_per_transition": 7876.75,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.4545,
+        "identifier_fragmentation": 1.8957,
+        "max_reference_span_tokens": 3373.9167,
+        "premise_to_action_distance_tokens": 2345.8333
+      },
+      "Combinatorics": {
+        "binder_use_distance_tokens": 287.214,
+        "bpe_tokens_per_transition": 5993.75,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.731,
+        "max_reference_span_tokens": 2658.1667,
+        "premise_to_action_distance_tokens": 97.8333
+      },
+      "Computability": {
+        "binder_use_distance_tokens": 355.5828,
+        "bpe_tokens_per_transition": 7231.5833,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5,
+        "identifier_fragmentation": 1.9563,
+        "max_reference_span_tokens": 3282.3333,
+        "premise_to_action_distance_tokens": 50.5548
+      },
+      "Data": {
+        "binder_use_distance_tokens": 273.4974,
+        "bpe_tokens_per_transition": 6110.4167,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.3636,
+        "identifier_fragmentation": 1.7605,
+        "max_reference_span_tokens": 2745.0833,
+        "premise_to_action_distance_tokens": 323.125
+      },
+      "GroupTheory": {
+        "binder_use_distance_tokens": 225.8019,
+        "bpe_tokens_per_transition": 4776.9,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.4,
+        "identifier_fragmentation": 1.7878,
+        "max_reference_span_tokens": 2631.5,
+        "premise_to_action_distance_tokens": 466.9583
+      },
+      "LinearAlgebra": {
+        "binder_use_distance_tokens": 215.2532,
+        "bpe_tokens_per_transition": 8624.8333,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.8508,
+        "max_reference_span_tokens": 3802.4167,
+        "premise_to_action_distance_tokens": 347.8056
+      },
+      "MeasureTheory": {
+        "binder_use_distance_tokens": 291.4976,
+        "bpe_tokens_per_transition": 8050.3333,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5833,
+        "identifier_fragmentation": 1.887,
+        "max_reference_span_tokens": 3715.5,
+        "premise_to_action_distance_tokens": 17.875
+      },
+      "NumberTheory": {
+        "binder_use_distance_tokens": 477.9287,
+        "bpe_tokens_per_transition": 6180.3333,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5833,
+        "identifier_fragmentation": 1.8728,
+        "max_reference_span_tokens": 3287.3333,
+        "premise_to_action_distance_tokens": 86.9861
+      },
+      "Order": {
+        "binder_use_distance_tokens": 166.5325,
+        "bpe_tokens_per_transition": 4474.9167,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.6667,
+        "identifier_fragmentation": 1.7461,
+        "max_reference_span_tokens": 1678.5833,
+        "premise_to_action_distance_tokens": 1017.9
+      },
+      "Probability": {
+        "binder_use_distance_tokens": 254.1283,
+        "bpe_tokens_per_transition": 6109.3,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.7,
+        "identifier_fragmentation": 1.9407,
+        "max_reference_span_tokens": 2843.9,
+        "premise_to_action_distance_tokens": 282.5
+      },
+      "RingTheory": {
+        "binder_use_distance_tokens": 183.8654,
+        "bpe_tokens_per_transition": 7981.9167,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5833,
+        "identifier_fragmentation": 1.9348,
+        "max_reference_span_tokens": 3259.5,
+        "premise_to_action_distance_tokens": 950.4741
+      },
+      "SetTheory": {
+        "binder_use_distance_tokens": 475.7632,
+        "bpe_tokens_per_transition": 5082.1667,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.6999,
+        "max_reference_span_tokens": 2415.5,
+        "premise_to_action_distance_tokens": 1582.5456
+      },
+      "Topology": {
+        "binder_use_distance_tokens": 185.4208,
+        "bpe_tokens_per_transition": 5582.5,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5833,
+        "identifier_fragmentation": 1.8741,
+        "max_reference_span_tokens": 2471.0833,
+        "premise_to_action_distance_tokens": 1706.5833
+      },
+      "packages": {
+        "binder_use_distance_tokens": 218.8029,
+        "bpe_tokens_per_transition": 5630.0,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5833,
+        "identifier_fragmentation": 1.8041,
+        "max_reference_span_tokens": 3429.3333,
+        "premise_to_action_distance_tokens": 173.2
+      }
+    },
+    "R_8ae4ba2c1f7e": {
+      "Algebra": {
+        "binder_use_distance_tokens": 243.8326,
+        "bpe_tokens_per_transition": 6739.6667,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8914,
+        "max_reference_span_tokens": 2914.8333,
+        "premise_to_action_distance_tokens": 414.4881
+      },
+      "Analysis": {
+        "binder_use_distance_tokens": 445.681,
+        "bpe_tokens_per_transition": 9475.5,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.9711,
+        "max_reference_span_tokens": 4181.0,
+        "premise_to_action_distance_tokens": 525.912
+      },
+      "CategoryTheory": {
+        "binder_use_distance_tokens": 199.8934,
+        "bpe_tokens_per_transition": 7986.0,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9032,
+        "max_reference_span_tokens": 3390.4167,
+        "premise_to_action_distance_tokens": 2370.2083
+      },
+      "Combinatorics": {
+        "binder_use_distance_tokens": 293.8017,
+        "bpe_tokens_per_transition": 6127.5,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.7374,
+        "max_reference_span_tokens": 2703.6667,
+        "premise_to_action_distance_tokens": 88.8333
+      },
+      "Computability": {
+        "binder_use_distance_tokens": 359.449,
+        "bpe_tokens_per_transition": 7325.25,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.9728,
+        "max_reference_span_tokens": 3309.4167,
+        "premise_to_action_distance_tokens": 46.0548
+      },
+      "Data": {
+        "binder_use_distance_tokens": 278.7153,
+        "bpe_tokens_per_transition": 6222.6667,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.7617,
+        "max_reference_span_tokens": 2782.1667,
+        "premise_to_action_distance_tokens": 331.3125
+      },
+      "GroupTheory": {
+        "binder_use_distance_tokens": 230.1214,
+        "bpe_tokens_per_transition": 4876.9,
+        "detect_drop_field": 0.5,
+        "detect_swap_records": 0.8,
+        "identifier_fragmentation": 1.7937,
+        "max_reference_span_tokens": 2665.7,
+        "premise_to_action_distance_tokens": 472.8155
+      },
+      "LinearAlgebra": {
+        "binder_use_distance_tokens": 218.3091,
+        "bpe_tokens_per_transition": 8748.0833,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8529,
+        "max_reference_span_tokens": 3832.5833,
+        "premise_to_action_distance_tokens": 346.3056
+      },
+      "MeasureTheory": {
+        "binder_use_distance_tokens": 297.9912,
+        "bpe_tokens_per_transition": 8249.0,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.8934,
+        "max_reference_span_tokens": 3783.5,
+        "premise_to_action_distance_tokens": 14.875
+      },
+      "NumberTheory": {
+        "binder_use_distance_tokens": 490.7069,
+        "bpe_tokens_per_transition": 6346.5,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.871,
+        "max_reference_span_tokens": 3369.3333,
+        "premise_to_action_distance_tokens": 81.5194
+      },
+      "Order": {
+        "binder_use_distance_tokens": 169.5475,
+        "bpe_tokens_per_transition": 4548.8333,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.7493,
+        "max_reference_span_tokens": 1699.0833,
+        "premise_to_action_distance_tokens": 1068.3
+      },
+      "Probability": {
+        "binder_use_distance_tokens": 258.605,
+        "bpe_tokens_per_transition": 6242.0,
+        "detect_drop_field": 0.5,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9476,
+        "max_reference_span_tokens": 2883.6,
+        "premise_to_action_distance_tokens": 277.625
+      },
+      "RingTheory": {
+        "binder_use_distance_tokens": 186.7571,
+        "bpe_tokens_per_transition": 8103.3333,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9388,
+        "max_reference_span_tokens": 3297.9167,
+        "premise_to_action_distance_tokens": 972.2889
+      },
+      "SetTheory": {
+        "binder_use_distance_tokens": 480.4731,
+        "bpe_tokens_per_transition": 5158.75,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.7059,
+        "max_reference_span_tokens": 2423.75,
+        "premise_to_action_distance_tokens": 1595.379
+      },
+      "Topology": {
+        "binder_use_distance_tokens": 187.9253,
+        "bpe_tokens_per_transition": 5661.9167,
+        "detect_drop_field": 0.9167,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8803,
+        "max_reference_span_tokens": 2491.8333,
+        "premise_to_action_distance_tokens": 1700.0833
+      },
+      "packages": {
+        "binder_use_distance_tokens": 221.3944,
+        "bpe_tokens_per_transition": 5722.3333,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8113,
+        "max_reference_span_tokens": 3455.5833,
+        "premise_to_action_distance_tokens": 169.8
+      }
+    },
+    "R_9044f4984fce": {
+      "Algebra": {
+        "binder_use_distance_tokens": 234.3417,
+        "bpe_tokens_per_transition": 6849.25,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.8882,
+        "max_reference_span_tokens": 3106.25,
+        "premise_to_action_distance_tokens": 22.6616
+      },
+      "Analysis": {
+        "binder_use_distance_tokens": 425.7969,
+        "bpe_tokens_per_transition": 9631.8333,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.9689,
+        "max_reference_span_tokens": 4677.75,
+        "premise_to_action_distance_tokens": 21.9954
+      },
+      "CategoryTheory": {
+        "binder_use_distance_tokens": 211.0526,
+        "bpe_tokens_per_transition": 8073.0,
+        "detect_drop_field": 0.9167,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.9015,
+        "max_reference_span_tokens": 3646.4167,
+        "premise_to_action_distance_tokens": 28.8083
+      },
+      "Combinatorics": {
+        "binder_use_distance_tokens": 261.6502,
+        "bpe_tokens_per_transition": 6225.9167,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.7416,
+        "max_reference_span_tokens": 2899.9167,
+        "premise_to_action_distance_tokens": 17.6667
+      },
+      "Computability": {
+        "binder_use_distance_tokens": 355.1007,
+        "bpe_tokens_per_transition": 7401.6667,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.9688,
+        "max_reference_span_tokens": 3461.0,
+        "premise_to_action_distance_tokens": 22.8048
+      },
+      "Data": {
+        "binder_use_distance_tokens": 236.5834,
+        "bpe_tokens_per_transition": 6316.75,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.7636,
+        "max_reference_span_tokens": 3109.9167,
+        "premise_to_action_distance_tokens": 16.0625
+      },
+      "GroupTheory": {
+        "binder_use_distance_tokens": 208.9395,
+        "bpe_tokens_per_transition": 4960.4,
+        "detect_drop_field": 0.8,
+        "detect_swap_records": 0.9,
+        "identifier_fragmentation": 1.7963,
+        "max_reference_span_tokens": 2432.0,
+        "premise_to_action_distance_tokens": 19.5298
+      },
+      "LinearAlgebra": {
+        "binder_use_distance_tokens": 227.5512,
+        "bpe_tokens_per_transition": 8840.75,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8515,
+        "max_reference_span_tokens": 3855.0,
+        "premise_to_action_distance_tokens": 14.7222
+      },
+      "MeasureTheory": {
+        "binder_use_distance_tokens": 295.1087,
+        "bpe_tokens_per_transition": 8395.0,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.8913,
+        "max_reference_span_tokens": 3712.1667,
+        "premise_to_action_distance_tokens": 16.875
+      },
+      "NumberTheory": {
+        "binder_use_distance_tokens": 476.4094,
+        "bpe_tokens_per_transition": 6458.1667,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8782,
+        "max_reference_span_tokens": 2895.3333,
+        "premise_to_action_distance_tokens": 27.7861
+      },
+      "Order": {
+        "binder_use_distance_tokens": 163.4012,
+        "bpe_tokens_per_transition": 4614.1667,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.7485,
+        "max_reference_span_tokens": 1971.9167,
+        "premise_to_action_distance_tokens": 15.9
+      },
+      "Probability": {
+        "binder_use_distance_tokens": 262.5217,
+        "bpe_tokens_per_transition": 6346.7,
+        "detect_drop_field": 0.7,
+        "detect_swap_records": 0.8,
+        "identifier_fragmentation": 1.9475,
+        "max_reference_span_tokens": 3050.4,
+        "premise_to_action_distance_tokens": 14.125
+      },
+      "RingTheory": {
+        "binder_use_distance_tokens": 179.6512,
+        "bpe_tokens_per_transition": 8205.0,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.94,
+        "max_reference_span_tokens": 3474.75,
+        "premise_to_action_distance_tokens": 20.2704
+      },
+      "SetTheory": {
+        "binder_use_distance_tokens": 447.4155,
+        "bpe_tokens_per_transition": 5236.0833,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.7093,
+        "max_reference_span_tokens": 2309.4167,
+        "premise_to_action_distance_tokens": 19.6885
+      },
+      "Topology": {
+        "binder_use_distance_tokens": 180.8929,
+        "bpe_tokens_per_transition": 5731.4167,
+        "detect_drop_field": 0.5,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.877,
+        "max_reference_span_tokens": 2660.3333,
+        "premise_to_action_distance_tokens": 19.75
+      },
+      "packages": {
+        "binder_use_distance_tokens": 220.5033,
+        "bpe_tokens_per_transition": 5792.25,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.8135,
+        "max_reference_span_tokens": 2970.9167,
+        "premise_to_action_distance_tokens": 15.9333
+      }
+    },
+    "R_9ea6caecfa33": {
+      "Algebra": {
+        "binder_use_distance_tokens": 255.0643,
+        "bpe_tokens_per_transition": 6908.3333,
+        "detect_drop_field": 0.5,
+        "detect_swap_records": 0.9,
+        "identifier_fragmentation": 1.8779,
+        "max_reference_span_tokens": 3013.0833,
+        "premise_to_action_distance_tokens": 15.9473
+      },
+      "Analysis": {
+        "binder_use_distance_tokens": 468.2896,
+        "bpe_tokens_per_transition": 9710.6667,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9586,
+        "max_reference_span_tokens": 4318.5,
+        "premise_to_action_distance_tokens": 17.2176
+      },
+      "CategoryTheory": {
+        "binder_use_distance_tokens": 202.9074,
+        "bpe_tokens_per_transition": 8111.1667,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.9091,
+        "identifier_fragmentation": 1.891,
+        "max_reference_span_tokens": 3070.0833,
+        "premise_to_action_distance_tokens": 23.0583
+      },
+      "Combinatorics": {
+        "binder_use_distance_tokens": 305.3344,
+        "bpe_tokens_per_transition": 6239.8333,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.7281,
+        "max_reference_span_tokens": 2695.4167,
+        "premise_to_action_distance_tokens": 15.6667
+      },
+      "Computability": {
+        "binder_use_distance_tokens": 370.1431,
+        "bpe_tokens_per_transition": 7443.3333,
+        "detect_drop_field": 0.5833,
+        "detect_swap_records": 0.9,
+        "identifier_fragmentation": 1.9506,
+        "max_reference_span_tokens": 3078.25,
+        "premise_to_action_distance_tokens": 20.8048
+      },
+      "Data": {
+        "binder_use_distance_tokens": 293.4469,
+        "bpe_tokens_per_transition": 6344.3333,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.7561,
+        "max_reference_span_tokens": 2689.0833,
+        "premise_to_action_distance_tokens": 14.0625
+      },
+      "GroupTheory": {
+        "binder_use_distance_tokens": 239.5478,
+        "bpe_tokens_per_transition": 4994.0,
+        "detect_drop_field": 0.6,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.7826,
+        "max_reference_span_tokens": 2410.3,
+        "premise_to_action_distance_tokens": 17.5298
+      },
+      "LinearAlgebra": {
+        "binder_use_distance_tokens": 224.9485,
+        "bpe_tokens_per_transition": 8917.25,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8462,
+        "max_reference_span_tokens": 3823.1667,
+        "premise_to_action_distance_tokens": 12.7222
+      },
+      "MeasureTheory": {
+        "binder_use_distance_tokens": 309.746,
+        "bpe_tokens_per_transition": 8457.3333,
+        "detect_drop_field": 0.75,
+        "detect_swap_records": 0.7273,
+        "identifier_fragmentation": 1.8774,
+        "max_reference_span_tokens": 3859.4167,
+        "premise_to_action_distance_tokens": 14.875
+      },
+      "NumberTheory": {
+        "binder_use_distance_tokens": 459.012,
+        "bpe_tokens_per_transition": 6352.5833,
+        "detect_drop_field": 0.8333,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.8695,
+        "max_reference_span_tokens": 2680.3333,
+        "premise_to_action_distance_tokens": 20.7861
+      },
+      "Order": {
+        "binder_use_distance_tokens": 175.9264,
+        "bpe_tokens_per_transition": 4690.3333,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.7427,
+        "max_reference_span_tokens": 1774.9167,
+        "premise_to_action_distance_tokens": 12.1
+      },
+      "Probability": {
+        "binder_use_distance_tokens": 267.3394,
+        "bpe_tokens_per_transition": 6371.7,
+        "detect_drop_field": 0.7,
+        "detect_swap_records": 0.8,
+        "identifier_fragmentation": 1.9329,
+        "max_reference_span_tokens": 2967.0,
+        "premise_to_action_distance_tokens": 12.125
+      },
+      "RingTheory": {
+        "binder_use_distance_tokens": 190.319,
+        "bpe_tokens_per_transition": 8224.75,
+        "detect_drop_field": 0.8333,
+        "detect_swap_records": 1.0,
+        "identifier_fragmentation": 1.9297,
+        "max_reference_span_tokens": 3355.8333,
+        "premise_to_action_distance_tokens": 14.1593
+      },
+      "SetTheory": {
+        "binder_use_distance_tokens": 485.9143,
+        "bpe_tokens_per_transition": 5251.8333,
+        "detect_drop_field": 0.5,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.6992,
+        "max_reference_span_tokens": 1957.25,
+        "premise_to_action_distance_tokens": 18.1409
+      },
+      "Topology": {
+        "binder_use_distance_tokens": 196.6824,
+        "bpe_tokens_per_transition": 5787.5833,
+        "detect_drop_field": 0.6667,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.8673,
+        "max_reference_span_tokens": 2170.75,
+        "premise_to_action_distance_tokens": 11.75
+      },
+      "packages": {
+        "binder_use_distance_tokens": 227.9675,
+        "bpe_tokens_per_transition": 5805.75,
+        "detect_drop_field": 0.3333,
+        "detect_swap_records": 0.8182,
+        "identifier_fragmentation": 1.7997,
+        "max_reference_span_tokens": 2867.3333,
+        "premise_to_action_distance_tokens": 13.9333
+      }
+    },
+    "R_cf8323f05a83": {
+      "Algebra": {
+        "binder_use_distance_tokens": 310.4588,
+        "bpe_tokens_per_transition": 10072.0,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.4545,
+        "identifier_fragmentation": 1.7066,
+        "max_reference_span_tokens": 3365.5,
+        "premise_to_action_distance_tokens": 1062.932
+      },
+      "Analysis": {
+        "binder_use_distance_tokens": 537.3784,
+        "bpe_tokens_per_transition": 13738.4167,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.4167,
+        "identifier_fragmentation": 1.7849,
+        "max_reference_span_tokens": 5336.0,
+        "premise_to_action_distance_tokens": 2470.912
+      },
+      "CategoryTheory": {
+        "binder_use_distance_tokens": 248.381,
+        "bpe_tokens_per_transition": 11909.4167,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.7502,
+        "max_reference_span_tokens": 4255.9167,
+        "premise_to_action_distance_tokens": 3996.3583
+      },
+      "Combinatorics": {
+        "binder_use_distance_tokens": 344.9953,
+        "bpe_tokens_per_transition": 9048.9167,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.9167,
+        "identifier_fragmentation": 1.6373,
+        "max_reference_span_tokens": 3548.5,
+        "premise_to_action_distance_tokens": 143.8333
+      },
+      "Computability": {
+        "binder_use_distance_tokens": 397.8151,
+        "bpe_tokens_per_transition": 10600.6667,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.8498,
+        "max_reference_span_tokens": 3656.8333,
+        "premise_to_action_distance_tokens": 88.7512
+      },
+      "Data": {
+        "binder_use_distance_tokens": 353.3749,
+        "bpe_tokens_per_transition": 8895.3333,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.6751,
+        "max_reference_span_tokens": 3386.25,
+        "premise_to_action_distance_tokens": 216.4375
+      },
+      "GroupTheory": {
+        "binder_use_distance_tokens": 276.7923,
+        "bpe_tokens_per_transition": 7241.2,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.6,
+        "identifier_fragmentation": 1.6694,
+        "max_reference_span_tokens": 3230.9,
+        "premise_to_action_distance_tokens": 204.6726
+      },
+      "LinearAlgebra": {
+        "binder_use_distance_tokens": 323.3153,
+        "bpe_tokens_per_transition": 13175.5,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.7247,
+        "max_reference_span_tokens": 5573.5833,
+        "premise_to_action_distance_tokens": 1206.0556
+      },
+      "MeasureTheory": {
+        "binder_use_distance_tokens": 363.5351,
+        "bpe_tokens_per_transition": 12668.3333,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5,
+        "identifier_fragmentation": 1.6879,
+        "max_reference_span_tokens": 4944.0833,
+        "premise_to_action_distance_tokens": 53.875
+      },
+      "NumberTheory": {
+        "binder_use_distance_tokens": 529.7715,
+        "bpe_tokens_per_transition": 8812.6667,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.75,
+        "identifier_fragmentation": 1.7675,
+        "max_reference_span_tokens": 3262.4167,
+        "premise_to_action_distance_tokens": 153.8528
+      },
+      "Order": {
+        "binder_use_distance_tokens": 238.153,
+        "bpe_tokens_per_transition": 7107.0,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.8333,
+        "identifier_fragmentation": 1.6472,
+        "max_reference_span_tokens": 2756.0833,
+        "premise_to_action_distance_tokens": 733.9
+      },
+      "Probability": {
+        "binder_use_distance_tokens": 318.866,
+        "bpe_tokens_per_transition": 9295.6,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.7,
+        "identifier_fragmentation": 1.7522,
+        "max_reference_span_tokens": 2845.5,
+        "premise_to_action_distance_tokens": 51.125
+      },
+      "RingTheory": {
+        "binder_use_distance_tokens": 265.2494,
+        "bpe_tokens_per_transition": 12023.5,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.5,
+        "identifier_fragmentation": 1.7952,
+        "max_reference_span_tokens": 4761.0833,
+        "premise_to_action_distance_tokens": 257.4926
+      },
+      "SetTheory": {
+        "binder_use_distance_tokens": 520.0903,
+        "bpe_tokens_per_transition": 6777.5833,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.7273,
+        "identifier_fragmentation": 1.6529,
+        "max_reference_span_tokens": 2462.8333,
+        "premise_to_action_distance_tokens": 872.6171
+      },
+      "Topology": {
+        "binder_use_distance_tokens": 237.0782,
+        "bpe_tokens_per_transition": 8362.9167,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.8182,
+        "identifier_fragmentation": 1.7113,
+        "max_reference_span_tokens": 2429.4167,
+        "premise_to_action_distance_tokens": 155.25
+      },
+      "packages": {
+        "binder_use_distance_tokens": 269.4698,
+        "bpe_tokens_per_transition": 8433.25,
+        "detect_drop_field": 0.0,
+        "detect_swap_records": 0.6667,
+        "identifier_fragmentation": 1.7073,
+        "max_reference_span_tokens": 3577.6667,
+        "premise_to_action_distance_tokens": 88.1333
+      }
+    }
+  },
+  "per_domain_sample": 12,
+  "shortlist_reasons": {
+    "R_0412a34e70c7": [
+      "best_on:detect_drop_field"
+    ],
+    "R_043bb2c2cfac": [
+      "best_on:max_reference_span_tokens"
+    ],
+    "R_1a776db1d4c0": [
+      "best_on:binder_use_distance_tokens"
+    ],
+    "R_37383109997e": [
+      "best_on:bpe_tokens_per_transition"
+    ],
+    "R_8ae4ba2c1f7e": [
+      "best_on:detect_swap_records"
+    ],
+    "R_9044f4984fce": [
+      "knee"
+    ],
+    "R_9ea6caecfa33": [
+      "best_on:premise_to_action_distance_tokens"
+    ],
+    "R_cf8323f05a83": [
+      "best_on:identifier_fragmentation"
+    ]
+  }
+}

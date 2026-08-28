@@ -38,6 +38,7 @@ from hml_v3.adapters.lean.runtime_v2 import (  # noqa: E402
     validate_runtime_payload,
 )
 from hml_v3.canonical.delta_v2 import structured_delta  # noqa: E402
+from hml_v3.representation_search.corpus import write_corpus  # noqa: E402
 
 READ_CHUNK = 8 * 1024 * 1024
 
@@ -170,6 +171,13 @@ def main() -> None:
     parser.add_argument("--audit-json", type=Path, default=ROOT / "reports/audits/LEAN_RUNTIME_V2_CORPUS.json")
     parser.add_argument("--audit-md", type=Path, default=ROOT / "reports/audits/LEAN_RUNTIME_V2_CORPUS.md")
     parser.add_argument(
+        "--skip-files-larger-than", type=int, default=0,
+        help="raw documents above this size are excluded and counted without being read. "
+             "Four of the campaign's documents are 6.8-24 GiB because Lean's accumulated "
+             "metavariable inventory is quadratic in some proofs, and each holds a single "
+             "capture that the canonical size budget excludes anyway. Zero means read all.",
+    )
+    parser.add_argument(
         "--max-element-bytes", type=int, default=8 * 1024 * 1024,
         help="raw capture elements larger than this are counted without being decoded",
     )
@@ -220,6 +228,12 @@ def main() -> None:
             "status": "OK",
             "detail": None,
         }
+        if args.skip_files_larger_than and outcome["bytes"] > args.skip_files_larger_than:
+            outcome["status"] = "SKIPPED_OVER_FILE_SIZE_LIMIT"
+            outcome["detail"] = f"{outcome['bytes']} bytes exceeds the declared file limit"
+            counters["files_skipped_over_size_limit"] += 1
+            file_outcomes.append(outcome)
+            continue
         try:
             header, _ = _prefix_header(raw_path)
             direct_imports = header.get("direct_imports", [])
@@ -313,12 +327,10 @@ def main() -> None:
         file_outcomes.append(outcome)
 
     kept.sort(key=lambda row: row["transition_id"])
-    args.corpus.parent.mkdir(parents=True, exist_ok=True)
-    with args.corpus.open("wb") as raw_handle:
-        with gzip.GzipFile(filename="", mode="wb", fileobj=raw_handle, mtime=0) as zipped:
-            for row in kept:
-                zipped.write((json.dumps(row, ensure_ascii=False, sort_keys=True,
-                                         separators=(",", ":")) + "\n").encode())
+    # Written as size-capped shards: the corpus is the object every result is measured on, so
+    # it is committed rather than left external, and the commit guard caps a tracked file at
+    # 5 MiB. Readers concatenate the shards in name order.
+    shards = write_corpus(kept, args.corpus)
 
     process_status = collections.Counter(job["process_status"] for job in job_results)
     audit = {
@@ -327,9 +339,12 @@ def main() -> None:
         "jobs_planned": len(job_results),
         "job_process_status": dict(process_status),
         "max_canonical_bytes": args.max_canonical_bytes,
+        "max_element_bytes": args.max_element_bytes,
+        "skip_files_larger_than": args.skip_files_larger_than,
         "counters": dict(counters),
         "canonical_size_histogram": dict(size_histogram),
         "corpus_transitions": len(kept),
+        "corpus_shards": [path.name for path in shards],
         "corpus_sha256": digest([row["corpus_metadata"]["canonical_sha256"] for row in kept]),
         "domains": dict(domains),
         "tactic_families": dict(tactic_families),

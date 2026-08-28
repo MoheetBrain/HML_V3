@@ -14,11 +14,23 @@ what the later model experiment should optimise, not something static evidence c
 ## Reproducing it
 
 ```sh
+# 1. canonical corpus from one or more Lean runtime campaigns
 PYTHONPATH=src python3 scripts/audit/stream_runtime_v2_corpus.py \
-    --campaign-dir external/runtime_probe/campaign500
-PYTHONPATH=src python3 scripts/search/run_representation_search.py --generations 12
+    --campaign-dir external/runtime_probe/campaign500 \
+    --campaign-dir external/runtime_probe/campaign500b
+
+# 2. the search itself; resumable, never reads the sealed split
+PYTHONPATH=src python3 scripts/search/run_representation_search.py --generations 25
+
+# 3. cross-process reproducibility of every evaluated candidate
+PYTHONPATH=src python3 scripts/search/verify_reproducibility.py
+
+# 4. the single sealed evaluation, on the reported finalists only
 PYTHONPATH=src python3 scripts/search/run_representation_search.py --generations 0 --seal-final
+
+# 5. reports
 PYTHONPATH=src python3 scripts/search/build_search_report.py
+PYTHONPATH=src python3 scripts/search/build_domain_profiles.py
 ```
 
 The second command is resumable: state lives in `data/representation_search/` and re-running
@@ -37,6 +49,7 @@ that stopped on its budget is not described as converged.
 |---|---|
 | These candidates preserve the declared semantic contract exactly | Yes — hard gate, every dev transition |
 | These candidates are deterministic and UTF-8 faithful | Yes — hard gates |
+| A candidate is reproducible from its genome hash in a different process | Yes — `verify_reproducibility.py`, fresh subprocess, different `PYTHONHASHSEED` |
 | Candidate A costs fewer GPT-2 tokens than candidate B on this corpus | Yes — measured |
 | Candidate A costs fewer tokens under any tokenizer | **No** — vocabulary-dependent; see the Qwen3 comparison |
 | Candidate A keeps a binder nearer its use than candidate B | Yes — measured in characters and tokens |

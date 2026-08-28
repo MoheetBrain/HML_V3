@@ -23,6 +23,12 @@ sys.path.insert(0, str(ROOT / "scripts/search"))
 
 from hml_v3.representation_search import adversarial  # noqa: E402
 from hml_v3.representation_search.compiler import CompilerRejection, build  # noqa: E402
+from hml_v3.representation_search.corpus import (  # noqa: E402
+    corpus_sha256,
+    load_corpus,
+    shard_paths,
+    write_corpus,
+)
 from hml_v3.representation_search.controller import SearchConfig, SearchController  # noqa: E402
 from hml_v3.representation_search.document import Lexicon  # noqa: E402
 from hml_v3.representation_search.expressions import (  # noqa: E402
@@ -38,7 +44,11 @@ from hml_v3.representation_search.genome import (  # noqa: E402
     RepresentationGenome,
     default_genome,
 )
-from hml_v3.representation_search.metrics import PARETO_AXES, measure  # noqa: E402
+from hml_v3.representation_search.metrics import (  # noqa: E402
+    PARETO_AXES,
+    measure,
+    token_positions,
+)
 from hml_v3.representation_search.pareto import dominates, non_dominated_sort, select  # noqa: E402
 from hml_v3.representation_search.projection import semantic_core  # noqa: E402
 from hml_v3.representation_search.sealing import (  # noqa: E402
@@ -279,6 +289,20 @@ class MetricTests(unittest.TestCase):
     def test_pretokens_need_no_vocabulary(self) -> None:
         self.assertEqual(pretokens("goal m0"), ["goal", " m", "0"])
 
+    def test_identity_occurrences_respect_token_boundaries(self) -> None:
+        """FM-023: a short identity is a prefix of a longer one and must not match inside it."""
+
+        text = "decl bf1\n  type: (fv bf1)\ndecl bf10\n  type: (fv bf10) (fv bf1)"
+        self.assertEqual(len(token_positions(text, "bf1")), 3)
+        self.assertEqual(len(token_positions(text, "bf10")), 2)
+        self.assertEqual(len(token_positions("Nat.add_comm", "Nat.add")), 0)
+        self.assertEqual(len(token_positions("(sym Nat.add [])", "Nat.add")), 1)
+
+    def test_sigils_do_not_break_token_boundaries(self) -> None:
+        for wrapped in ("[bf1]", "$bf1", " bf1 ", "(fv bf1)"):
+            with self.subTest(wrapped=wrapped):
+                self.assertEqual(len(token_positions(wrapped, "bf1")), 1)
+
     def test_measurement_is_deterministic(self) -> None:
         compiler = build(default_genome())
         first = measure(compiler, FIXTURES)
@@ -401,6 +425,60 @@ class SealingTests(unittest.TestCase):
         sealed = sum(1 for value in split.families.values() if value == SEALED)
         self.assertGreater(sealed, 0)
         self.assertLess(sealed / total, 0.5)
+
+
+class CorpusShardingTests(unittest.TestCase):
+    """Sharding must be invisible: the same rows, in the same order, with the same hash."""
+
+    def setUp(self) -> None:
+        self.directory = Path(tempfile.mkdtemp(prefix="hml-corpus-"))
+
+    def tearDown(self) -> None:
+        shutil.rmtree(self.directory, ignore_errors=True)
+
+    def _rows(self) -> list[dict]:
+        rows = []
+        for index in range(40):
+            row = json.loads(json.dumps(FIXTURES[index % len(FIXTURES)]))
+            row["transition_id"] = f"T{index:03d}"
+            rows.append(row)
+        return rows
+
+    def test_round_trips_through_shards(self) -> None:
+        base = self.directory / "corpus.jsonl.gz"
+        rows = self._rows()
+        shards = write_corpus(rows, base, max_bytes=8 * 1024)
+        self.assertGreater(len(shards), 1, "the cap should have produced several shards")
+        self.assertEqual(load_corpus(base), rows)
+
+    def test_every_shard_respects_the_cap(self) -> None:
+        base = self.directory / "corpus.jsonl.gz"
+        write_corpus(self._rows(), base, max_bytes=8 * 1024)
+        paths = shard_paths(base)
+        self.assertTrue(paths)
+        for path in paths[:-1]:
+            # A shard closes once it reaches the cap, so it may exceed it by one row.
+            self.assertLess(path.stat().st_size, 8 * 1024 * 2, path.name)
+
+    def test_content_hash_is_independent_of_shard_size(self) -> None:
+        rows = self._rows()
+        small = self.directory / "small.jsonl.gz"
+        large = self.directory / "large.jsonl.gz"
+        write_corpus(rows, small, max_bytes=4 * 1024)
+        write_corpus(rows, large, max_bytes=1024 * 1024)
+        self.assertNotEqual(len(shard_paths(small)), len(shard_paths(large)))
+        self.assertEqual(corpus_sha256(small), corpus_sha256(large))
+
+    def test_committed_corpus_loads(self) -> None:
+        base = ROOT / "data/corpus/lean_runtime_v2.canonical.jsonl.gz"
+        if not shard_paths(base):
+            self.skipTest("the canonical corpus is not present in this checkout")
+        rows = load_corpus(base)
+        self.assertGreater(len(rows), 0)
+        self.assertEqual(
+            len(rows), len({row["transition_id"] for row in rows}),
+            "transition ids must be unique across shards",
+        )
 
 
 class ControllerTests(unittest.TestCase):

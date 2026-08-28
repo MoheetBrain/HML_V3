@@ -343,6 +343,61 @@ repeat-size distribution before spending that retry.
 
 ---
 
+## FM-023 — Naive substring matching inflated the locality metric
+
+**Measured by.** Found while the definitive run was in progress, by checking the metric
+against a real rendering rather than trusting it.
+
+Short identity tokens are prefixes of longer ones. Searching for `bf1` with a plain substring
+scan also matches inside `bf10` through `bf19`. On the first transition checked that was
+**80 matches against a true 64 — a 25% overcount** — and every distance derived from those
+positions inherited the error. Premise names had the same defect: `Nat.add` matches inside
+`Nat.add_comm`.
+
+**Disposition:** `METRIC_DEFECT`. Occurrences are now counted with token boundaries on both
+sides. This is `FM-009`'s failure mode repeating in a new place: a locality metric that looks
+reasonable, produces confident numbers, and measures something other than what it claims.
+
+**Consequence, stated plainly.** The pilot run's locality figures were computed before this
+fix and are inflated. The definitive run is **not comparable** to them, and the pilot's
+numbers are retained only as archived history under
+`data/representation_search/archive/`.
+
+---
+
+## FM-024 — Cost and locality rank stably; corruption detection does not
+
+**Measured by.** Two independent checks that agree.
+
+*Across a held-out split selection never read* — the finalists measured on `SEARCH_DEV` and
+on `SEARCH_VALIDATION`, Spearman rho between the two orderings:
+
+| Axis | rho | Same leader? |
+|---|---:|---|
+| `identifier_fragmentation` | +1.000 | yes |
+| `bpe_tokens_per_transition` | +0.976 | yes |
+| `max_reference_span_tokens` | +0.976 | yes |
+| `binder_use_distance_tokens` | +0.952 | yes |
+| `premise_to_action_distance_tokens` | +0.929 | yes |
+| `detect_drop_field` | +0.929 | **no** |
+| `detect_swap_records` | **+0.357** | **no** |
+
+*Across sixteen Mathlib domains* — the share of domains in which one finalist leads the axis:
+100% for token cost, binder distance and identifier fragmentation; 94% for premise distance;
+**38–56%** for the two corruption-detection axes.
+
+**The reading.** Cost and locality are properties of the representation: they rank the same
+way on data selection never saw, and the same way in every branch of mathematics measured.
+Corruption detection depends on what the state happens to contain — how many records there
+are, how much of the text is contract content, whether a dropped line leaves a still-valid
+record.
+
+**Disposition:** `EXPERIMENT_DESIGN_CONSTRAINT`. A corruption-detection claim names its
+sample and carries its cross-split rank correlation. A cost or locality claim may be stated
+for the representation itself.
+
+---
+
 ## Open lessons this search is expected to add
 
 The mission brief lists two further beliefs that this repository has **no local artifact

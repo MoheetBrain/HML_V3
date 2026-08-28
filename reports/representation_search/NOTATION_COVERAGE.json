@@ -1,8 +1,8 @@
 {
   "constructs_checked": 25,
   "constructs_with_a_matching_constant_family": 25,
-  "corpus_transitions": 317,
-  "distinct_corpus_constants": 2415,
+  "corpus_transitions": 608,
+  "distinct_corpus_constants": 3663,
   "epistemic_status": "Lexical correspondence only. A match means the corpus mentions a Mathlib constant whose name contains the fragment; it does not mean the corpus proves anything about the construct, and no MATH solution is promoted to a verified transition.",
   "math_rows_read": 12000,
   "math_subjects": {
@@ -17,7 +17,7 @@
   "rows": [
     {
       "construct": "square root",
-      "corpus_constant_occurrences": 3,
+      "corpus_constant_occurrences": 6,
       "corpus_per_transition": 0.01,
       "covered": true,
       "human_occurrences": 12199,
@@ -33,12 +33,12 @@
     },
     {
       "construct": "trigonometry",
-      "corpus_constant_occurrences": 4,
-      "corpus_per_transition": 0.01,
+      "corpus_constant_occurrences": 28,
+      "corpus_per_transition": 0.05,
       "covered": true,
       "human_occurrences": 10976,
       "human_per_1k_problems": 914.67,
-      "human_to_corpus_intensity": 91467.0,
+      "human_to_corpus_intensity": 18293.4,
       "latex_spellings": [
         "\\sin",
         "\\cos",
@@ -51,12 +51,12 @@
     },
     {
       "construct": "vector / inner product",
-      "corpus_constant_occurrences": 15,
-      "corpus_per_transition": 0.05,
+      "corpus_constant_occurrences": 97,
+      "corpus_per_transition": 0.16,
       "covered": true,
       "human_occurrences": 13657,
       "human_per_1k_problems": 1138.08,
-      "human_to_corpus_intensity": 22761.6,
+      "human_to_corpus_intensity": 7113.0,
       "latex_spellings": [
         "\\vec",
         "\\cdot"
@@ -68,12 +68,12 @@
     },
     {
       "construct": "factorial",
-      "corpus_constant_occurrences": 18,
-      "corpus_per_transition": 0.06,
+      "corpus_constant_occurrences": 29,
+      "corpus_per_transition": 0.05,
       "covered": true,
       "human_occurrences": 2660,
       "human_per_1k_problems": 221.67,
-      "human_to_corpus_intensity": 3694.5,
+      "human_to_corpus_intensity": 4433.4,
       "latex_spellings": [
         "!"
       ],
@@ -84,12 +84,12 @@
     },
     {
       "construct": "binomial coefficient",
-      "corpus_constant_occurrences": 11,
-      "corpus_per_transition": 0.03,
+      "corpus_constant_occurrences": 31,
+      "corpus_per_transition": 0.05,
       "covered": true,
       "human_occurrences": 1330,
       "human_per_1k_problems": 110.83,
-      "human_to_corpus_intensity": 3694.3,
+      "human_to_corpus_intensity": 2216.6,
       "latex_spellings": [
         "\\binom",
         "\\choose"
@@ -100,12 +100,12 @@
     },
     {
       "construct": "logarithm / exponential",
-      "corpus_constant_occurrences": 30,
-      "corpus_per_transition": 0.09,
+      "corpus_constant_occurrences": 75,
+      "corpus_per_transition": 0.12,
       "covered": true,
       "human_occurrences": 1186,
       "human_per_1k_problems": 98.83,
-      "human_to_corpus_intensity": 1098.1,
+      "human_to_corpus_intensity": 823.6,
       "latex_spellings": [
         "\\log",
         "\\ln",
@@ -118,12 +118,12 @@
     },
     {
       "construct": "fraction",
-      "corpus_constant_occurrences": 1302,
-      "corpus_per_transition": 4.11,
+      "corpus_constant_occurrences": 2363,
+      "corpus_per_transition": 3.89,
       "covered": true,
       "human_occurrences": 37843,
       "human_per_1k_problems": 3153.58,
-      "human_to_corpus_intensity": 767.3,
+      "human_to_corpus_intensity": 810.7,
       "latex_spellings": [
         "\\frac",
         "\\dfrac",
@@ -136,47 +136,49 @@
       ]
     },
     {
+      "construct": "congruence / modular",
+      "corpus_constant_occurrences": 567,
+      "corpus_per_transition": 0.93,
+      "covered": true,
+      "human_occurrences": 3051,
+      "human_per_1k_problems": 254.25,
+      "human_to_corpus_intensity": 273.4,
+      "latex_spellings": [
+        "\\pmod",
+        "\\equiv"
+      ],
+      "mathlib_fragments_present": [
+        "Int.ModEq",
+        "Nat.ModEq",
+        "ZMod"
+      ]
+    },
+    {
       "construct": "matrix",
-      "corpus_constant_occurrences": 173,
-      "corpus_per_transition": 0.55,
+      "corpus_constant_occurrences": 634,
+      "corpus_per_transition": 1.04,
       "covered": true,
       "human_occurrences": 2880,
       "human_per_1k_problems": 240.0,
-      "human_to_corpus_intensity": 436.4,
+      "human_to_corpus_intensity": 230.8,
       "latex_spellings": [
         "\\begin{pmatrix}",
         "\\det"
       ],
       "mathlib_fragments_present": [
         "LinearMap",
-        "Matrix"
-      ]
-    },
-    {
-      "construct": "congruence / modular",
-      "corpus_constant_occurrences": 289,
-      "corpus_per_transition": 0.91,
-      "covered": true,
-      "human_occurrences": 3051,
-      "human_per_1k_problems": 254.25,
-      "human_to_corpus_intensity": 279.4,
-      "latex_spellings": [
-        "\\pmod",
-        "\\equiv"
-      ],
-      "mathlib_fragments_present": [
-        "Nat.ModEq",
-        "ZMod"
+        "Matrix",
+        "det"
       ]
     },
     {
       "construct": "finite sum",
-      "corpus_constant_occurrences": 88,
-      "corpus_per_transition": 0.28,
+      "corpus_constant_occurrences": 127,
+      "corpus_per_transition": 0.21,
       "covered": true,
       "human_occurrences": 573,
       "human_per_1k_problems": 47.75,
-      "human_to_corpus_intensity": 170.5,
+      "human_to_corpus_intensity": 227.4,
       "latex_spellings": [
         "\\sum"
       ],
@@ -189,12 +191,12 @@
     },
     {
       "construct": "implication",
-      "corpus_constant_occurrences": 236,
-      "corpus_per_transition": 0.74,
+      "corpus_constant_occurrences": 506,
+      "corpus_per_transition": 0.83,
       "covered": true,
       "human_occurrences": 1216,
       "human_per_1k_problems": 101.33,
-      "human_to_corpus_intensity": 136.9,
+      "human_to_corpus_intensity": 122.1,
       "latex_spellings": [
         "\\implies",
         "\\Rightarrow",
@@ -206,28 +208,29 @@
     },
     {
       "construct": "finite product",
-      "corpus_constant_occurrences": 33,
-      "corpus_per_transition": 0.1,
+      "corpus_constant_occurrences": 118,
+      "corpus_per_transition": 0.19,
       "covered": true,
       "human_occurrences": 44,
       "human_per_1k_problems": 3.67,
-      "human_to_corpus_intensity": 36.7,
+      "human_to_corpus_intensity": 19.3,
       "latex_spellings": [
         "\\prod"
       ],
       "mathlib_fragments_present": [
         "Finset.prod",
+        "List.prod",
         "Multiset.prod"
       ]
     },
     {
       "construct": "set membership",
-      "corpus_constant_occurrences": 986,
-      "corpus_per_transition": 3.11,
+      "corpus_constant_occurrences": 1832,
+      "corpus_per_transition": 3.01,
       "covered": true,
       "human_occurrences": 220,
       "human_per_1k_problems": 18.33,
-      "human_to_corpus_intensity": 5.9,
+      "human_to_corpus_intensity": 6.1,
       "latex_spellings": [
         "\\in",
         "\\notin"
@@ -240,12 +243,12 @@
     },
     {
       "construct": "union / intersection",
-      "corpus_constant_occurrences": 785,
-      "corpus_per_transition": 2.48,
+      "corpus_constant_occurrences": 1150,
+      "corpus_per_transition": 1.89,
       "covered": true,
       "human_occurrences": 137,
       "human_per_1k_problems": 11.42,
-      "human_to_corpus_intensity": 4.6,
+      "human_to_corpus_intensity": 6.0,
       "latex_spellings": [
         "\\cup",
         "\\cap"
@@ -259,29 +262,30 @@
     },
     {
       "construct": "infinity",
-      "corpus_constant_occurrences": 3042,
-      "corpus_per_transition": 9.6,
+      "corpus_constant_occurrences": 5974,
+      "corpus_per_transition": 9.83,
       "covered": true,
       "human_occurrences": 448,
       "human_per_1k_problems": 37.33,
-      "human_to_corpus_intensity": 3.9,
+      "human_to_corpus_intensity": 3.8,
       "latex_spellings": [
         "\\infty"
       ],
       "mathlib_fragments_present": [
         "ENNReal",
+        "EReal",
         "Top",
         "atTop"
       ]
     },
     {
       "construct": "limit",
-      "corpus_constant_occurrences": 25,
-      "corpus_per_transition": 0.08,
+      "corpus_constant_occurrences": 144,
+      "corpus_per_transition": 0.24,
       "covered": true,
       "human_occurrences": 2,
       "human_per_1k_problems": 0.17,
-      "human_to_corpus_intensity": 2.1,
+      "human_to_corpus_intensity": 0.7,
       "latex_spellings": [
         "\\lim"
       ],
@@ -291,26 +295,9 @@
       ]
     },
     {
-      "construct": "subset",
-      "corpus_constant_occurrences": 187,
-      "corpus_per_transition": 0.59,
-      "covered": true,
-      "human_occurrences": 3,
-      "human_per_1k_problems": 0.25,
-      "human_to_corpus_intensity": 0.4,
-      "latex_spellings": [
-        "\\subset",
-        "\\subseteq"
-      ],
-      "mathlib_fragments_present": [
-        "HasSubset",
-        "subset"
-      ]
-    },
-    {
       "construct": "integral",
-      "corpus_constant_occurrences": 89,
-      "corpus_per_transition": 0.28,
+      "corpus_constant_occurrences": 187,
+      "corpus_per_transition": 0.31,
       "covered": true,
       "human_occurrences": 1,
       "human_per_1k_problems": 0.08,
@@ -325,27 +312,26 @@
       ]
     },
     {
-      "construct": "real / complex numbers",
-      "corpus_constant_occurrences": 9151,
-      "corpus_per_transition": 28.87,
+      "construct": "subset",
+      "corpus_constant_occurrences": 472,
+      "corpus_per_transition": 0.78,
       "covered": true,
-      "human_occurrences": 55,
-      "human_per_1k_problems": 4.58,
-      "human_to_corpus_intensity": 0.2,
+      "human_occurrences": 3,
+      "human_per_1k_problems": 0.25,
+      "human_to_corpus_intensity": 0.3,
       "latex_spellings": [
-        "\\mathbb{R}",
-        "\\mathbb{C}"
+        "\\subset",
+        "\\subseteq"
       ],
       "mathlib_fragments_present": [
-        "Complex",
-        "RCLike",
-        "Real"
+        "HasSubset",
+        "subset"
       ]
     },
     {
       "construct": "absolute value",
-      "corpus_constant_occurrences": 2753,
-      "corpus_per_transition": 8.68,
+      "corpus_constant_occurrences": 5216,
+      "corpus_per_transition": 8.58,
       "covered": true,
       "human_occurrences": 7,
       "human_per_1k_problems": 0.58,
@@ -361,8 +347,26 @@
       ]
     },
     {
+      "construct": "real / complex numbers",
+      "corpus_constant_occurrences": 18765,
+      "corpus_per_transition": 30.86,
+      "covered": true,
+      "human_occurrences": 55,
+      "human_per_1k_problems": 4.58,
+      "human_to_corpus_intensity": 0.1,
+      "latex_spellings": [
+        "\\mathbb{R}",
+        "\\mathbb{C}"
+      ],
+      "mathlib_fragments_present": [
+        "Complex",
+        "RCLike",
+        "Real"
+      ]
+    },
+    {
       "construct": "derivative",
-      "corpus_constant_occurrences": 26,
+      "corpus_constant_occurrences": 48,
       "corpus_per_transition": 0.08,
       "covered": true,
       "human_occurrences": 0,
@@ -373,14 +377,15 @@
         "\\partial"
       ],
       "mathlib_fragments_present": [
+        "HasDerivAt",
         "deriv",
         "fderiv"
       ]
     },
     {
       "construct": "universal quantifier",
-      "corpus_constant_occurrences": 101,
-      "corpus_per_transition": 0.32,
+      "corpus_constant_occurrences": 401,
+      "corpus_per_transition": 0.66,
       "covered": true,
       "human_occurrences": 0,
       "human_per_1k_problems": 0.0,
@@ -395,8 +400,8 @@
     },
     {
       "construct": "existential quantifier",
-      "corpus_constant_occurrences": 318,
-      "corpus_per_transition": 1.0,
+      "corpus_constant_occurrences": 599,
+      "corpus_per_transition": 0.99,
       "covered": true,
       "human_occurrences": 0,
       "human_per_1k_problems": 0.0,
@@ -410,8 +415,8 @@
     },
     {
       "construct": "probability",
-      "corpus_constant_occurrences": 991,
-      "corpus_per_transition": 3.13,
+      "corpus_constant_occurrences": 2290,
+      "corpus_per_transition": 3.77,
       "covered": true,
       "human_occurrences": 0,
       "human_per_1k_problems": 0.0,
@@ -428,8 +433,8 @@
     },
     {
       "construct": "integers / naturals",
-      "corpus_constant_occurrences": 18157,
-      "corpus_per_transition": 57.28,
+      "corpus_constant_occurrences": 33096,
+      "corpus_per_transition": 54.43,
       "covered": true,
       "human_occurrences": 7,
       "human_per_1k_problems": 0.58,
@@ -447,123 +452,123 @@
   "top_corpus_constants": [
     [
       "Nat",
-      7673
+      13970
     ],
     [
       "Real",
-      3863
-    ],
-    [
-      "ENNReal",
-      2019
-    ],
-    [
-      "Set",
-      1866
+      8899
     ],
     [
       "OfNat.ofNat",
-      1765
+      3460
     ],
     [
-      "Eq",
-      1705
+      "ENNReal",
+      3327
+    ],
+    [
+      "Set",
+      3273
     ],
     [
       "Int",
-      1621
+      3146
     ],
     [
-      "List",
-      1617
-    ],
-    [
-      "Ordinal",
-      1502
-    ],
-    [
-      "Membership.mem",
-      968
-    ],
-    [
-      "instOfNatNat",
-      824
-    ],
-    [
-      "Prod",
-      812
+      "Eq",
+      2944
     ],
     [
       "CommSemiring.toSemiring",
-      769
+      2215
+    ],
+    [
+      "List",
+      2035
+    ],
+    [
+      "Membership.mem",
+      1783
+    ],
+    [
+      "instOfNatNat",
+      1685
+    ],
+    [
+      "Ordinal",
+      1665
+    ],
+    [
+      "Finset",
+      1597
     ],
     [
       "PartialOrder.toPreorder",
-      767
-    ],
-    [
-      "HMul.hMul",
-      664
-    ],
-    [
-      "CommRing.toCommSemiring",
-      661
-    ],
-    [
-      "Rat",
-      660
-    ],
-    [
-      "instHMul",
-      641
-    ],
-    [
-      "HAdd.hAdd",
-      632
-    ],
-    [
-      "instHAdd",
-      626
-    ],
-    [
-      "Complex",
-      572
-    ],
-    [
-      "Part",
-      515
+      1547
     ],
     [
       "Semiring.toNonAssocSemiring",
-      511
+      1392
     ],
     [
-      "LT.lt",
-      497
+      "Prod",
+      1363
     ],
     [
-      "DFunLike.coe",
-      478
+      "CommRing.toCommSemiring",
+      1262
+    ],
+    [
+      "HAdd.hAdd",
+      1239
+    ],
+    [
+      "instHAdd",
+      1232
+    ],
+    [
+      "HMul.hMul",
+      1115
+    ],
+    [
+      "Polynomial",
+      1098
+    ],
+    [
+      "instHMul",
+      1085
     ],
     [
       "LE.le",
-      466
+      1004
     ],
     [
-      "MvPolynomial",
-      461
+      "Rat",
+      988
+    ],
+    [
+      "LT.lt",
+      963
+    ],
+    [
+      "DFunLike.coe",
+      864
+    ],
+    [
+      "Complex",
+      844
     ],
     [
       "CategoryTheory.Category.toCategoryStruct",
-      438
+      817
     ],
     [
       "HPow.hPow",
-      425
+      758
     ],
     [
-      "instHPow",
-      421
+      "Zero.toOfNat0",
+      752
     ]
   ],
   "under_exercised_constructs": [
@@ -574,8 +579,8 @@
     "binomial coefficient",
     "logarithm / exponential",
     "fraction",
-    "matrix",
     "congruence / modular",
+    "matrix",
     "finite sum",
     "implication"
   ]
