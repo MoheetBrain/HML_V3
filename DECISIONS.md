@@ -156,3 +156,108 @@ driver died. The corpus builder streams each document, excludes any transition w
 canonical form exceeds a declared 256 KiB budget, and counts every exclusion by reason. 317
 of 500 selected transitions were recovered; the other 183 are accounted for in
 `reports/audits/LEAN_RUNTIME_V2_CORPUS.md` rather than quietly dropped.
+
+## D-018 — A saturated instrument is removed from selection by measurement, not by hand
+
+**Status:** ACTIVE
+
+`FM-010`, `FM-019` and `FM-029` are the same defect three times: a metric that read the same
+value on every candidate, entered selection, and was caught only by reading a finished run.
+Each was then corrected by editing the axis tuple by hand.
+
+Selection now runs `enforce_discrimination()` every generation. Any selection axis whose
+spread across the evaluated population is zero is demoted to diagnostic, with the measured
+spread recorded on the generation report and in the search state. Demotion is one-way — an
+axis is never restored because a wider population finally moved it by a rounding error — and
+it will not reduce selection below three axes, because `FM-008` forbids collapsing toward a
+single objective.
+
+`semantic_detect_rate` is removed from the preregistered vector on this evidence: 1.000 on
+all 201 candidates of the first V2 run, and 1.000 on all 16 generation-zero seeds of the
+second. `detect_corrupt_identity` stays out for the same reason. Both are still measured and
+still reported; neither selects.
+
+`detect_drop_field` takes the freed slot. Without it the vector is five axes that are all
+minimised, with nothing in selection rewarding the preservation of information; it is the
+detection family with real spread on the same population (0.000–0.750, twelve distinct
+values, coefficient of variation 1.506).
+
+## D-019 — Samples are stratified by structure, never taken as prefixes
+
+**Status:** ACTIVE
+
+`FM-028` recorded that targeted acquisition closed the measurability gap `FM-020` named: the
+V2 search pool reaches twelve goals per state and is 19.0% multi-goal, against 1.01 mean
+goals and 1.2% before.
+
+The controller then sampled dev, microtest and mutation sets as prefixes of a list sorted by
+transition id. Measured on that pool, no prefix up to 128 rows contains a state with more
+than four goals, `dev[:28]` caps at three, and the twelve-row mutation sample is 8.3%
+multi-goal — near the corpus it replaced. Acquiring the structure and never sampling it is
+indistinguishable from never acquiring it.
+
+`representation_search.sampling.structural_sample` allocates by goal-count stratum,
+proportional to the population with a floor of one per non-empty stratum, deterministic given
+a seed. Every report that claims an axis is measurable states the profile of the **sample**,
+not of the population.
+
+## D-020 — Convergence is structural, and a generation cap is reported as a failure to converge
+
+**Status:** ACTIVE
+
+The first V2 run stopped on its generation budget and reported `STRUCTURAL_CONVERGENCE: NO`.
+That honesty has to survive a controller being asked to "run to convergence", so the two
+outcomes are different return values with different names.
+
+Convergence requires three conditions together for `stall_limit` consecutive generations: the
+frontier did not improve materially on any selection axis; the frontier's **membership** did
+not change, since a frontier swapping candidates at a fixed signature is still exploring; and
+no new axis entered the genome, since a search still growing its own space has not finished
+searching the space it has. Reaching `max_generations` returns
+`GENERATION_CAP_REACHED_NOT_CONVERGED` and says so in the reason string.
+
+## D-021 — Evidence carries a role, and non-Lean material cannot be promoted into formal truth
+
+**Status:** ACTIVE
+
+Two sources are needed for things a Lean trace structurally cannot contain, and both are
+dangerous to hold next to verifier output without a declared boundary.
+
+PRM800K is registered `DISCOVERY_GRAPH_EVIDENCE`. Its value is naming the five discovery
+dimensions — progress, valid-but-useless, dead end, alternative branch, attempt outcome —
+that `DISCOVERY_REPRESENTATION_ANALYSIS.md` measured and found no representation in the
+search space can express, because `CanonicalMathState` carries none of them. A Lean trace
+holds only steps that were kept, so it contains no negative examples at all, while 25.3% of
+PRM800K's rated continuations are dead ends. Its −1/0/+1 are human judgements of usefulness
+and are never verdicts of logical validity.
+
+GSM8K is registered `NATURAL_LANGUAGE_MATH_EVIDENCE` at pinned commit `3101c7d5`, MIT. It is
+evidence about how mathematics is *written*; it carries no proof term, no tactic, no proof
+state and no verifier, so nothing in it can enter a `CanonicalMathTransition`.
+
+`not_lean_truth` is derived from `formal_system`, never asserted independently, and
+`tests/test_registry_and_manifests.py` refuses any dataset carrying it the role
+`LEAN_FORMAL_TRUTH` or a trust tier of A or B.
+
+## D-022 — An invented axis must differ from every axis the genome already has
+
+**Status:** ACTIVE
+
+`D-014`'s observable-effect gate asks whether a new axis does anything. It does not ask
+whether the genome already has an axis that does exactly the same thing, and `FM-033` records
+what that permitted: of the first thirty axes accepted on the 918-transition pool, nine were
+`neighbourhood_capsule` over `NONE/GOAL_LOCAL/ACTION_LOCAL` with empty params, under nine
+different names. They render identically to one another and applying two is idempotent with
+applying one.
+
+Acceptance now also requires behavioural novelty: the candidate axis is rendered at every
+value and rejected if the resulting *set* of renderings equals that of any active axis.
+Comparison is behavioural rather than by `(hook, params, values)` signature, because two axes
+with different hooks or different value names can still reach the same renderings. Rejections
+are recorded as `ACCEPTED_DUPLICATE` with the axis they duplicate, alongside
+`ACCEPTED_UNIMPLEMENTABLE`.
+
+This matters beyond tidiness for two reasons. The reported search-space size is a product over
+axes, so each duplicate multiplied it by three while adding no reachable representation — the
+nine-axis group alone inflated it by 6,561x. And structural convergence (`D-020`) is
+unreachable while a meta-designer can mint a fresh *name* for an axis that already exists.

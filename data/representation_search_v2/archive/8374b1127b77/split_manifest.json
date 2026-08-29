@@ -1,0 +1,25 @@
+{
+  "counts": {
+    "SEALED_FINAL_EVALUATION": 0,
+    "SEARCH_DEV": 717,
+    "SEARCH_VALIDATION": 201
+  },
+  "families_sha256": "8374b1127b77c643bed2f2e3e14de9034e095c1eab7337c2dd97d65b63179b09",
+  "family_counts": {
+    "SEALED_FINAL_EVALUATION": 0,
+    "SEARCH_DEV": 479,
+    "SEARCH_VALIDATION": 133
+  },
+  "split_key": "hml-v3-search-pool-v2-dev-validation",
+  "target_shares": {
+    "SEALED_FINAL_EVALUATION": 0.2,
+    "SEARCH_DEV": 0.7,
+    "SEARCH_VALIDATION": 0.1
+  },
+  "transition_id_sha256": {
+    "SEALED_FINAL_EVALUATION": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "SEARCH_DEV": "8b4416c470ae5e23816c5b01d53ad94511095337b08bc82ff1ed9ca6082e86d4",
+    "SEARCH_VALIDATION": "718eddeed6422a1ffd4100c84908f422a0e18547b2e0345715ce72760dbf159c"
+  },
+  "unit": "MATHLIB_SOURCE_FILE"
+}

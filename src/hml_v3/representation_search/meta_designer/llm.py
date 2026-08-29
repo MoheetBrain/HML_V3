@@ -175,14 +175,41 @@ class Transport(abc.ABC):
         return True
 
 
-class OllamaTransport(Transport):
-    """A locally served frozen model. Inference only: no training, no adaptation, no GPU job."""
+#: Model families that emit a ``<think>`` block before their answer. Measured, not assumed:
+#: on the real meta-designer prompt ``qwen38-rvn`` spent its entire 4096-token budget inside
+#: ``<think>`` and emitted no JSON at all (``done_reason=length``, 216s, zero proposals).
+#: Prefilling an empty think block is the Qwen3 convention for suppressing it, and it works:
+#: the same prompt then returned seven valid proposals in 67s using 1,518 tokens.
+THINKING_MODEL_MARKERS = ("qwen", "deepseek-r1", "qwq")
 
-    def __init__(self, model: str = "gemma3:4b", timeout: int = 240,
-                 num_ctx: int = 16384) -> None:
+#: An assistant turn prefilled with a closed, empty think block. The model continues from
+#: after it, so it cannot open another one.
+EMPTY_THINK_PREFILL = "<think>\n\n</think>\n\n"
+
+THINK_BLOCK = re.compile(r"<think>.*?</think>", re.DOTALL)
+
+
+class OllamaTransport(Transport):
+    """A locally served frozen model. Inference only: no training, no adaptation, no GPU job.
+
+    Uses ``/api/chat`` rather than ``/api/generate``. This is not a stylistic preference:
+    ``/api/generate`` bypasses the model's chat template, and measured against
+    ``qwen38-rvn`` that made the model emit a single token and stop (``eval_count=1``,
+    ``done_reason=stop``, empty response) on every prompt. ``gemma3:4b`` tolerated the raw
+    endpoint, which is exactly why the defect stayed invisible while there was one backend.
+    """
+
+    def __init__(self, model: str = "gemma3:4b", timeout: int = 600,
+                 num_ctx: int = 16384, num_predict: int = 4096,
+                 suppress_thinking: bool | None = None) -> None:
         self.model = model
         self.timeout = timeout
         self.num_ctx = num_ctx
+        self.num_predict = num_predict
+        self.suppress_thinking = (
+            any(marker in model.lower() for marker in THINKING_MODEL_MARKERS)
+            if suppress_thinking is None else suppress_thinking
+        )
         self.name = f"ollama:{model}"
 
     def available(self) -> bool:
@@ -193,16 +220,29 @@ class OllamaTransport(Transport):
             return False
         return listed.returncode == 0 and self.model.split(":")[0] in listed.stdout
 
+    def messages(self, system: str, user: str) -> list[dict[str, str]]:
+        conversation = [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ]
+        if self.suppress_thinking:
+            conversation.append({"role": "assistant", "content": EMPTY_THINK_PREFILL})
+        return conversation
+
     def complete(self, system: str, user: str) -> str:
         payload = {
             "model": self.model,
-            "prompt": f"{system}\n\n{user}",
+            "messages": self.messages(system, user),
             "stream": False,
-            "options": {"temperature": 0.8, "num_ctx": self.num_ctx, "num_predict": 2048},
+            "options": {
+                "temperature": 0.8,
+                "num_ctx": self.num_ctx,
+                "num_predict": self.num_predict,
+            },
         }
         process = subprocess.run(
             ["curl", "-sS", "-m", str(self.timeout),
-             "http://127.0.0.1:11434/api/generate",
+             "http://127.0.0.1:11434/api/chat",
              "-H", "Content-Type: application/json",
              "-d", json.dumps(payload)],
             capture_output=True, text=True, timeout=self.timeout + 30, check=False,
@@ -210,9 +250,21 @@ class OllamaTransport(Transport):
         if process.returncode != 0:
             raise RuntimeError(f"ollama transport failed: {process.stderr[:300]}")
         try:
-            return json.loads(process.stdout)["response"]
-        except (json.JSONDecodeError, KeyError) as error:
+            body = json.loads(process.stdout)
+        except json.JSONDecodeError as error:
             raise RuntimeError(f"unparseable ollama response: {process.stdout[:300]}") from error
+        if body.get("error"):
+            raise RuntimeError(f"ollama error: {str(body['error'])[:300]}")
+        content = (body.get("message") or {}).get("content", "")
+        if not content.strip():
+            # An empty completion is a transport-level defect, not a model that had nothing
+            # to say. Naming the stop reason is what turned a silent zero-proposal backend
+            # into a diagnosable one.
+            raise RuntimeError(
+                f"empty completion from {self.model} "
+                f"(done_reason={body.get('done_reason')}, eval_count={body.get('eval_count')})"
+            )
+        return content
 
 
 class CallableTransport(Transport):
@@ -231,7 +283,11 @@ def extract_proposals(text: str) -> list[Any]:
 
     if not text or not text.strip():
         return []
-    stripped = text.strip()
+    # A reasoning block is not output. Removing it before parsing means a model that thinks
+    # in prose containing brackets cannot corrupt the array match.
+    stripped = THINK_BLOCK.sub("", text).strip()
+    if not stripped:
+        return []
     for candidate in (stripped, *(match.group(0) for match in [JSON_ARRAY.search(stripped)] if match)):
         try:
             parsed = json.loads(candidate)

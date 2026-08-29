@@ -572,6 +572,132 @@
       "note": "The open-ended machinery works: a model-driven meta-designer proposed axes the genome did not have, thirteen bound to executable projection hooks and passed the observable-effect gate, and the space grew from 4.095e19 to 1.548e26 points. But only five were exercised by a candidate that survived to evaluation, sixteen candidates carried one, and none of the six finalists uses one. The honest reading is that the capability is demonstrated and the payoff is not: on these selection axes, on this corpus, recombining existing axes still beat every invented one. Three plausible causes, untested: the invented axes were all layout transformations bound to two of four hooks and so explore a narrow region; new candidates get one generation to prove themselves against elites that have had many; and the corpus averaged 1.01 goals per state during this run, which is the condition FM-020 and FM-028 identify as hiding structural effects.",
       "requirement": "report invented axes by how many reached the frontier, not by how many were accepted; an accepted axis that no surviving candidate uses is machinery working and science not yet paying",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-031",
+      "title": "Prefix sampling hid the corpus structure the acquisition campaign had just bought",
+      "disposition": "INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3, preparing the generation-0 restart on the 918-transition search pool",
+      "numbers": {
+        "pool_transitions": 918,
+        "dev_transitions": 717,
+        "dev_max_goals": 12,
+        "dev_multi_goal_share": 0.19,
+        "prefix_28_max_goals": 3,
+        "prefix_28_multi_goal_share": 0.143,
+        "prefix_12_max_goals": 2,
+        "prefix_12_multi_goal_share": 0.083,
+        "largest_prefix_checked": 128,
+        "prefix_128_max_goals": 4,
+        "stratified_28_max_goals": 6,
+        "stratified_28_multi_goal_share": 0.214
+      },
+      "note": "FM-028 recorded that targeted acquisition closed FM-020's measurability gap: the new pool reaches twelve goals per state and is 19.0% multi-goal, against 1.01 mean goals and 1.2% before. The controller then sampled dev, microtest and mutation sets as PREFIXES of a list sorted by transition id. No prefix up to 128 rows contains a state with more than four goals, and the twelve-row mutation sample used to apply semantic corruption was 8.3% multi-goal -- close to the old corpus it replaced. The search would have been handed a structurally impoverished view of a corpus specifically acquired to be structurally rich, and would have re-derived FM-020 on data that had already fixed it. Caught before the run, by profiling the sample rather than the population.",
+      "requirement": "report the profile of the SAMPLE, never the population, whenever claiming an axis is measurable; sample by structural stratum with a floor of one per non-empty stratum",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-032",
+      "title": "The wrong ollama endpoint made a second meta-designer look like a model with nothing to say",
+      "disposition": "INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3, adding a second zero-cost local meta-designer alongside gemma3:4b",
+      "numbers": {
+        "generate_endpoint_eval_count": 1,
+        "generate_endpoint_proposals": 0,
+        "chat_endpoint_unbounded_thinking_eval_count": 4096,
+        "chat_endpoint_unbounded_thinking_seconds": 216,
+        "chat_endpoint_unbounded_thinking_proposals": 0,
+        "chat_endpoint_with_empty_think_prefill_eval_count": 1518,
+        "chat_endpoint_with_empty_think_prefill_seconds": 67,
+        "chat_endpoint_with_empty_think_prefill_proposals": 7
+      },
+      "note": "Two independent defects, each of which silently produced zero proposals rather than an error. First, OllamaTransport posted to /api/generate, which bypasses the model's chat template; qwen38-rvn responded with a single token and an empty string on every prompt, while gemma3:4b tolerated it -- so the defect was invisible for as long as there was only one backend. Second, on /api/chat the model spent its entire 4096-token budget inside a <think> block and stopped on length before emitting any JSON. Prefilling a closed empty think block fixed it: 7 valid proposals in 67s, including the NEW_PRIMITIVE, INSTRUMENT_FIX and CORPUS_ACQUISITION types the rule-based proposer cannot make.",
+      "requirement": "a backend returning an empty completion must raise with the stop reason and token count, never return an empty string that the loop records as a model with no proposals",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-033",
+      "title": "Nine of thirty invented axes were the same axis under nine different names",
+      "disposition": "SEARCH_SPACE_LIMITATION",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search, first 15 generations on the 918-transition pool, two meta-designer backends",
+      "numbers": {
+        "axes_accepted": 30,
+        "distinct_behaviours": 21,
+        "redundant_registrations": 9,
+        "largest_duplicate_group": 9,
+        "duplicate_group_hook": "neighbourhood_capsule",
+        "duplicate_group_values": [
+          "NONE",
+          "GOAL_LOCAL",
+          "ACTION_LOCAL"
+        ],
+        "nominal_space_inflation_from_that_group": "3^8 = 6561x",
+        "generations_before_detection": 15
+      },
+      "note": "FM-026 rejected axes that change nothing. This is its sibling: an axis that DOES change the rendering, passes the observable-effect gate, and is a perfect copy of one already registered. action_scope, dependency_capsule, goal_id_projection, hash_projection, local_context_fragment, local_dependency_capsule, local_dependency_scope, semantic_context_grouping and semantic_summary were all neighbourhood_capsule with empty params over NONE/GOAL_LOCAL/ACTION_LOCAL. Measured directly: two such axes render identically to each other, and applying both is idempotent with applying one, so they are one dimension registered nine times. Three consequences, all bad. The reported search-space size is a product over axes, so each copy multiplied it by three while adding no reachable rendering -- the space figure was inflated by 6561x from this group alone. The Pareto front fills with candidates that differ by candidate_id and not by output. And structural convergence is unreachable by construction, because a meta-designer can always mint a fresh NAME for an axis that already exists; the run showed no sign of the invention rate declining across 15 generations. The system brief's own worked example is dependency_capsule, which is where the models were copying the shape from.",
+      "requirement": "an invented axis must be rejected unless its set of renderings differs from every axis already in the genome; compare behaviour, not the (hook, params, values) signature, since different hooks or value names can still reach the same renderings",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-034",
+      "title": "Blocking duplicate axes turned FM-030's negative around: an invented axis reached the finalists",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search, 106 generations to structural convergence on the 918-transition pool, three meta-designer backends",
+      "numbers": {
+        "axis_proposals_reaching_the_registry": 289,
+        "accepted_as_new_dimensions": 5,
+        "rejected_as_behavioural_duplicates": 205,
+        "rejected_as_unimplementable": 79,
+        "duplicate_share": 0.709,
+        "finalists": 7,
+        "finalists_using_an_invented_axis": 2,
+        "prior_run_finalists_using_an_invented_axis": 0,
+        "dependency_query_distance_best_finalist": 11.844,
+        "dependency_query_distance_typical_finalist": 27.789
+      },
+      "note": "FM-030 recorded that thirteen invented axes were accepted and none reached the frontier, and offered three untested explanations. With the FM-033 duplicate gate in place the picture inverts. Of 289 axis proposals only 5 were genuinely new dimensions; 205 were behavioural duplicates that the old gate would have registered. Two of the seven finalists now carry an invented axis, both values of `dependency_capsule`: R_159628756bc5 (GOAL_LOCAL) is the cheapest candidate under all four tokenizer vocabularies, and R_fcd13f8d56a5 (ACTION_LOCAL) reaches 11.844 dependency-query token distance against roughly 27.8 for the others, a 57% reduction. The axis that paid is the one the meta-designers kept re-proposing under fresh names; registering it once and blocking the copies is what let it be evaluated on its merits instead of diluting the population with 205 aliases of itself. FM-030's negative is superseded for this configuration; its caution about reporting axes by how many reach the frontier stands.",
+      "requirement": "report invented axes as (accepted, duplicate, unimplementable, reaching the frontier); the first number alone is meaningless",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-035",
+      "title": "A mid-run churn rate is not evidence that a convergence criterion cannot be met",
+      "disposition": "EXPERIMENT_DESIGN_CONSTRAINT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 open-ended search, generations 50-106",
+      "numbers": {
+        "generation_of_pessimistic_reading": 70,
+        "mean_frontier_entrants_per_generation_at_that_point": 2.3,
+        "generations_with_zero_entrants_in_the_preceding_20": 2,
+        "generation_churn_actually_reached_zero": 101,
+        "generation_of_structural_convergence": 106,
+        "generations_the_frontier_position_was_already_frozen_at_gen_70": 10
+      },
+      "note": "At generation 70 the frontier position had been frozen for ten generations and the genome for fifty, but exact frontier membership was still churning at a mean of 2.3 entrants per generation with no visible downward trend. The reading taken from that was that the membership clause was unsatisfiable by construction -- eighteen children and three novelty slots per generation into a 1e19-point space must always yield fresh Pareto-equivalent points -- and a weaker clause based on the stability of the reported shortlist was drafted to replace it. That reading was wrong. Churn kept declining; generations 101 to 105 had no entrant and no departure at all, and the run converged on the original criterion at generation 106. The weaker clause was reverted unused. The general form of the error: a rate observed while a search is still improving does not extrapolate, and a criterion that is merely slow to satisfy is indistinguishable from one that cannot be satisfied until it is satisfied. The duplicate-name case (FM-033) IS genuinely unsatisfiable and the difference is that there the generator is unbounded and the blocking condition never approaches its target; here the quantity was monotonically approaching zero and only the last few steps were missing.",
+      "requirement": "before weakening a stopping criterion, show that the blocking quantity is not trending toward the threshold; a flat extrapolation from a mid-run window is not that showing",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-036",
+      "title": "The reproducibility verifier could not see invented axes, and reported the gap as non-determinism",
+      "disposition": "INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3, verifying the converged 106-generation run",
+      "numbers": {
+        "candidates_in_run": 566,
+        "candidates_carrying_an_invented_axis": 92,
+        "false_mismatches_reported": 2,
+        "mismatches_after_the_fix": 0,
+        "candidates_checked_after_fix": 60,
+        "invented_axis_carriers_among_them": 10
+      },
+      "note": "verify_reproducibility.py renders each candidate in a fresh subprocess under a different PYTHONHASHSEED and compares digests. It built every compiler from the genome alone, with no invented axes and no primitive registry, on BOTH sides -- so for the 92 candidates carrying an invented axis it verified a different object from the one the search evaluated. It also keyed the child's results by the genome's own candidate_id rather than by the record id; an invented-axis candidate shares its base genome with its parent, so the lookup silently returned None and was counted as a mismatch. The visible symptom was 'NOT REPRODUCIBLE: 2 candidates differ across processes', which is the most alarming possible way for a verifier to report its own blind spot. Both candidates were invented-axis carriers. After passing the invented values and the registry to the child and keying by record id, 60 candidates including 10 carriers verify with zero mismatches. Any earlier reproducibility claim covered only candidates without invented axes.",
+      "requirement": "a verifier must construct the object under test the same way the search constructed it, including every layer the search added; and it must key results by the identifier the search uses, not by a derived one that can collide",
+      "blocked_traits": []
     }
   ]
 }

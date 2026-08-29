@@ -37,9 +37,17 @@ from hml_v3.representation_search.meta_designer.base import (
     MetaDesignerBackend,
     ScientistReport,
 )
-from hml_v3.representation_search.metrics import MAXIMISED, PARETO_AXES, measure
+from hml_v3.representation_search.metrics import (
+    MAXIMISED,
+    PARETO_AXES,
+    measure,
+    near_saturated_axes,
+    saturated_axes,
+)
 from hml_v3.representation_search.microtests import SUITES, run_all_suites
 from hml_v3.representation_search.pareto import frontier_signature, select, shortlist
+from hml_v3.representation_search.sampling import profile as sample_profile
+from hml_v3.representation_search.sampling import structural_sample
 from hml_v3.representation_search.primitive_registry import PrimitiveRegistry
 from hml_v3.representation_search.seeds import SEEDS, seed_population
 from hml_v3.representation_search import semantic_mutations
@@ -61,13 +69,35 @@ MICROTEST_AXES = (
     "scope_query_token_distance",
 )
 
+#: The axes selection is computed over. Every one of these must be *measured to discriminate*
+#: on the corpus actually in use; an axis that reads the same on every candidate is removed by
+#: :meth:`OpenEndedController.enforce_discrimination` before it can influence a single choice.
+#:
+#: ``semantic_detect_rate`` is deliberately absent. It was built to replace the text-level
+#: corruption metric FM-019 found saturated, and measured across all 201 candidates of the
+#: first V2 run it was 1.000 everywhere (`FM-029`): its predicate asks whether the rendering
+#: changes when the canonical state is corrupted, and every representation that renders the
+#: state at all fails that test identically. It is still measured and still reported; it does
+#: not select.
+#:
+#: ``detect_drop_field`` takes its place so selection keeps an error-detection dimension
+#: rather than becoming five cost-and-locality axes that are all minimised. It was chosen
+#: because it is the detection family with real spread on the same 201 candidates:
+#: 0.000-0.750, twelve distinct values, coefficient of variation 1.506.
 SELECTION_AXES = (
     "bpe_tokens_per_transition",
     "binder_use_distance_tokens",
-    "semantic_detect_rate",
+    "detect_drop_field",
     "binder_query_token_distance",
     "dependency_query_token_distance",
     "identifier_fragmentation",
+)
+
+#: Measured every generation and reported, but never selected on. An axis lands here either
+#: because it was preregistered as diagnostic-only or because the saturation guard demoted it.
+DIAGNOSTIC_AXES = (
+    "semantic_detect_rate",
+    "detect_corrupt_identity",
 )
 
 
@@ -105,6 +135,8 @@ class GenerationReportV2:
     genome_schema: str
     elapsed_seconds: float
     ladder: dict[str, int] = field(default_factory=dict)
+    selection_axes: list[str] = field(default_factory=list)
+    axis_demotions: list[dict[str, Any]] = field(default_factory=list)
 
     def to_dict(self) -> dict[str, Any]:
         return {
@@ -120,6 +152,8 @@ class GenerationReportV2:
             "frontier_moved": self.frontier_moved,
             "genome_schema": self.genome_schema,
             "ladder": self.ladder,
+            "selection_axes": self.selection_axes,
+            "axis_demotions": self.axis_demotions,
             "elapsed_seconds": round(self.elapsed_seconds, 3),
         }
 
@@ -150,11 +184,28 @@ class OpenEndedController:
         self.history: list[dict[str, Any]] = []
         self.stall_count = 0
         self.last_signature: tuple[float, ...] | None = None
-        self.dev_sample = dev[: self.config.dev_sample]
-        self.validation_sample = validation[: self.config.validation_sample]
-        self.microtest_sample = dev[: self.config.microtest_sample]
-        self.mutation_sample = dev[: self.config.mutation_sample]
+        #: Consecutive generations in which the frontier did not improve, its membership did
+        #: not change, and the genome did not grow. This -- not a generation count -- is what
+        #: the run stops on.
+        self.structural_stall = 0
+        self.last_front: tuple[str, ...] | None = None
+        # Stratified, not prefixed. A prefix of the V2 pool sorted by transition id contains
+        # no state with more than three goals, so a prefix-sampled search would have
+        # re-derived FM-020 on the very corpus that was acquired to fix it. See
+        # representation_search.sampling for the measured comparison.
+        self.dev_sample = structural_sample(dev, self.config.dev_sample, self.config.seed)
+        self.validation_sample = structural_sample(
+            validation, self.config.validation_sample, self.config.seed)
+        self.microtest_sample = structural_sample(
+            dev, self.config.microtest_sample, self.config.seed)
+        self.mutation_sample = structural_sample(
+            dev, self.config.mutation_sample, self.config.seed)
         self.invented: dict[str, dict[str, str]] = {}
+        #: Live selection vector. Starts as the preregistered SELECTION_AXES and can only
+        #: ever shrink, when the saturation guard measures an axis to be non-discriminative.
+        self.selection_axes: list[str] = list(SELECTION_AXES)
+        #: axis -> the measured spread that demoted it, kept as evidence.
+        self.demoted_axes: dict[str, dict[str, float]] = {}
 
     # ----------------------------------------------------------------------- persistence
     def save(self) -> None:
@@ -168,6 +219,8 @@ class OpenEndedController:
             "population": self.population,
             "pinned": self.pinned,
             "stall_count": self.stall_count,
+            "structural_stall": self.structural_stall,
+            "last_front": list(self.last_front) if self.last_front else None,
             "last_signature": list(self.last_signature) if self.last_signature else None,
             "config": self.config.to_dict(),
             "rng_state": _encode_rng(self.rng.getstate()),
@@ -175,7 +228,10 @@ class OpenEndedController:
             "invented": self.invented,
             "quarantine": self.quarantine.summary(),
             "primitives": self.primitives.statistics(),
-            "selection_axes": list(SELECTION_AXES),
+            "selection_axes": list(self.selection_axes),
+            "preregistered_selection_axes": list(SELECTION_AXES),
+            "diagnostic_axes": list(DIAGNOSTIC_AXES),
+            "demoted_axes": self.demoted_axes,
             "backends": [backend.name for backend in self.backends],
         }, ensure_ascii=False, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 
@@ -187,10 +243,14 @@ class OpenEndedController:
         self.population = state["population"]
         self.pinned = state["pinned"]
         self.stall_count = state["stall_count"]
+        self.structural_stall = state.get("structural_stall", 0)
+        self.last_front = tuple(state["last_front"]) if state.get("last_front") else None
         self.last_signature = (
             tuple(state["last_signature"]) if state["last_signature"] else None)
         self.history = state["history"]
         self.invented = state.get("invented", {})
+        self.selection_axes = state.get("selection_axes") or list(SELECTION_AXES)
+        self.demoted_axes = state.get("demoted_axes", {})
         self.rng.setstate(_decode_rng(state["rng_state"]))
         return True
 
@@ -312,6 +372,70 @@ class OpenEndedController:
                     detected += 1
         return detected / attempted if attempted else 0.0
 
+    # ------------------------------------------------------------ instrument saturation
+    #: The guard will not act on fewer candidates than this. Sixteen generation-zero seeds
+    #: were enough to catch FM-019 by hand, but acting on three would demote an axis for
+    #: having had no chance to vary yet.
+    MIN_POPULATION_FOR_DEMOTION = 12
+    #: Selection must never collapse to a single objective; FM-008 forbids it.
+    MIN_SELECTION_AXES = 3
+
+    def enforce_discrimination(self) -> list[dict[str, Any]]:
+        """Demote any selection axis that measured identically on every candidate.
+
+        Three times now a saturated instrument reached selection and was only caught by
+        reading a finished run: `FM-010` (minimal pairs), `FM-019` (identifier corruption)
+        and `FM-029` (semantic corruption). Each was corrected by editing the axis list by
+        hand, after the run it had already influenced. This runs the same check every
+        generation, on the population actually evaluated, and removes the axis before it can
+        influence the next selection.
+
+        Demotion is one-way and recorded. An axis is never restored on a later generation:
+        re-admitting an instrument because a wider population finally moved it by a rounding
+        error is how a saturated axis gets a second life.
+        """
+
+        population = [
+            (record.candidate_id, record.metrics or {})
+            for record in self.registry.accepted()
+            if record.metrics
+        ]
+        if len(population) < self.MIN_POPULATION_FOR_DEMOTION:
+            return []
+        saturated = saturated_axes(population, self.selection_axes)
+        actions: list[dict[str, Any]] = []
+        for axis, spread in sorted(
+                near_saturated_axes(population, self.selection_axes).items()):
+            # Reported, never demoted. A human decides whether a 1% spread is an effect.
+            actions.append({
+                "axis": axis, "action": "REPORTED_NEAR_SATURATED",
+                "reason": "discriminates barely; not demoted, because demotion on a "
+                          "threshold can discard a real but small effect",
+                "spread": {key: round(value, 9) for key, value in spread.items()},
+                "generation": self.generation,
+            })
+        for axis, spread in sorted(saturated.items()):
+            if len(self.selection_axes) <= self.MIN_SELECTION_AXES:
+                actions.append({
+                    "axis": axis, "action": "RETAINED_UNDER_PROTEST",
+                    "reason": "demoting it would drop selection below MIN_SELECTION_AXES",
+                    "spread": {key: round(value, 9) for key, value in spread.items()},
+                    "generation": self.generation,
+                })
+                continue
+            self.selection_axes.remove(axis)
+            self.demoted_axes[axis] = {
+                **{key: round(value, 9) for key, value in spread.items()},
+                "demoted_at_generation": float(self.generation),
+            }
+            actions.append({
+                "axis": axis, "action": "DEMOTED_TO_DIAGNOSTIC",
+                "reason": "non-discriminative: identical on every evaluated candidate",
+                "spread": {key: round(value, 9) for key, value in spread.items()},
+                "generation": self.generation,
+            })
+        return actions
+
     # ---------------------------------------------------------------------- validation
     def validate_children(self, evaluated: list[str]) -> list[dict[str, Any]]:
         verdicts: list[dict[str, Any]] = []
@@ -378,7 +502,7 @@ class OpenEndedController:
                 "invented": self.invented.get(candidate_id, {}),
                 "metrics": {
                     axis: round((record.metrics or {}).get(axis, 0.0), 3)
-                    for axis in SELECTION_AXES
+                    for axis in self.selection_axes
                 },
                 "weaknesses": self._weaknesses(candidate_id, population),
             })
@@ -388,7 +512,7 @@ class OpenEndedController:
             elites=elites,
             metric_directions={
                 axis: ("maximise" if axis in MAXIMISED else "minimise")
-                for axis in SELECTION_AXES
+                for axis in self.selection_axes
             },
             validation_divergence=self.quarantine.summary()["worst_divergences"][:5],
             microtest_failures=self._microtest_failures(front),
@@ -409,7 +533,7 @@ class OpenEndedController:
         if record is None or not record.metrics:
             return []
         weak: list[tuple[float, str]] = []
-        for axis in SELECTION_AXES:
+        for axis in self.selection_axes:
             column = [values.get(axis, 0.0) for _, values in population if values]
             if not column:
                 continue
@@ -449,6 +573,10 @@ class OpenEndedController:
         return {
             "dev_transitions": len(self.dev),
             "validation_transitions": len(self.validation),
+            # The population profile above is not what anything is measured on. These are.
+            "sampling": "STRUCTURALLY_STRATIFIED_BY_GOAL_COUNT",
+            "dev_sample_profile": sample_profile(self.dev_sample),
+            "mutation_sample_profile": sample_profile(self.mutation_sample),
             "mean_goals_per_state": round(sum(goals) / max(1, len(goals)), 3),
             "max_goals_per_state": max(goals) if goals else 0,
             "multi_goal_share": round(
@@ -475,7 +603,7 @@ class OpenEndedController:
             attempts[axis] = attempts.get(axis, 0) + 1
             changed = any(
                 abs(record.metrics.get(key, 0.0) - parent.metrics.get(key, 0.0)) > 1e-9
-                for key in SELECTION_AXES
+                for key in self.selection_axes
             )
             if changed:
                 effective[axis] = effective.get(axis, 0) + 1
@@ -555,13 +683,19 @@ class OpenEndedController:
                     self.population[0]) if self.population else None
                 base_genome = (
                     parent_for_test.genome if parent_for_test else RepresentationGenome({}))
+                factory = lambda invented: build(base_genome, invented, self.primitives)  # noqa: E731
+                probe = self.microtest_sample[:3]
                 observable, evidence = self.primitives.has_observable_effect(
-                    primitive,
-                    lambda invented: build(base_genome, invented, self.primitives),
-                    self.microtest_sample[:3],
-                )
+                    primitive, factory, probe)
                 if not observable:
                     self.primitives.reject_inert(primitive, evidence)
+                    continue
+                # An axis that changes the rendering can still be an axis the genome already
+                # has, under a new name. Nine of the first thirty accepted axes were.
+                duplicate_of, duplicate_evidence = self.primitives.duplicates_an_existing_axis(
+                    primitive, factory, probe)
+                if duplicate_of is not None:
+                    self.primitives.reject_duplicate(primitive, duplicate_evidence)
                     continue
                 known.add(primitive.axis_name)
                 new_axes.append(primitive.axis_name)
@@ -689,6 +823,9 @@ class OpenEndedController:
         ]
         genomes = {record.candidate_id: record.genome for record in self.registry}
         verdicts = self.validate_children(evaluated)
+        # Before anything is selected on, check that every selection axis still separates
+        # candidates. An axis that does not is removed here, not after the run.
+        demotions = self.enforce_discrimination()
 
         eligible = [
             (candidate_id, values) for candidate_id, values in population
@@ -697,9 +834,9 @@ class OpenEndedController:
         selection = select(
             eligible or population, genomes, self.config.population_capacity,
             pinned=[cid for cid in self.pinned if cid in dict(population)],
-            novelty_slots=self.config.novelty_slots, axes=SELECTION_AXES,
+            novelty_slots=self.config.novelty_slots, axes=self.selection_axes,
         )
-        signature = frontier_signature(eligible or population, SELECTION_AXES)
+        signature = frontier_signature(eligible or population, self.selection_axes)
         moved = self.last_signature is None or any(
             old - new > max(1e-9, self.config.material_improvement * abs(old))
             for new, old in zip(signature, self.last_signature)
@@ -711,6 +848,18 @@ class OpenEndedController:
         proposal_summary = self.collect_proposals(report)
         children, new_axes = self.apply_proposals(proposal_summary.pop("proposals", []))
 
+        # Structural convergence, evaluated only once everything that could move this
+        # generation has moved: the frontier's position, its membership, and the size of the
+        # space it was searched in.
+        front_now = tuple(sorted(selection.front))
+        membership_stable = self.last_front is not None and front_now == self.last_front
+        space_stable = not new_axes
+        if (not moved) and membership_stable and space_stable:
+            self.structural_stall += 1
+        else:
+            self.structural_stall = 0
+        self.last_front = front_now
+
         self.population = selection.survivors + children[: self.config.children_per_generation]
         generation_report = GenerationReportV2(
             generation=self.generation, evaluated=evaluated, killed=killed,
@@ -720,12 +869,16 @@ class OpenEndedController:
             frontier_signature=[round(value, 6) for value in signature],
             frontier_moved=moved, genome_schema=self.primitives.schema_version,
             elapsed_seconds=time.monotonic() - started, ladder=ladder,
+            selection_axes=list(self.selection_axes), axis_demotions=demotions,
         )
         self._write_generation(generation_report)
         self.history.append({
             "generation": self.generation, "evaluated": len(evaluated),
             "killed": len(killed), "front": len(selection.front),
             "new_axes": new_axes, "moved": moved, "stall": self.stall_count,
+            "structural_stall": self.structural_stall,
+            "demoted_axes": [item["axis"] for item in demotions
+                             if item["action"] == "DEMOTED_TO_DIAGNOSTIC"],
         })
         self.generation += 1
         self.save()
@@ -745,11 +898,59 @@ class OpenEndedController:
             json.dumps(payload, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
 
     def converged(self) -> tuple[bool, str]:
+        """Has the search structurally converged, or has it merely run out of budget?
+
+        These are different outcomes and the distinction is the whole point of the return
+        value. The first V2 run stopped at its generation budget with the frontier still
+        moving and reported ``STRUCTURAL_CONVERGENCE: NO``; that honesty must survive
+        contact with a controller that is asked to "run to convergence", so the budget is a
+        safety cap whose reason string says, in as many words, that it is not convergence.
+
+        Convergence requires three things to hold together for ``stall_limit`` consecutive
+        generations, because any one of them alone is satisfiable by a search that is still
+        making progress:
+
+        * the frontier did not improve materially on any selection axis;
+        * the frontier's *membership* did not change -- a frontier swapping candidates at a
+          fixed signature is still exploring. Measured: this clause looked unsatisfiable at
+          generation 70, where entrants averaged 2.3 per generation with no visible trend.
+          It was satisfiable; churn kept declining and reached zero. Generations 101-105 had
+          no entrant and no departure, and the search converged at 106. An extrapolation from
+          a mid-run churn rate is not evidence that a criterion cannot be met;
+        * no new axis entered the genome -- a search that is still growing its own space has
+          not finished searching the space it has.
+        """
+
+        if self.structural_stall >= self.config.stall_limit:
+            return True, (
+                f"STRUCTURAL_CONVERGENCE: frontier position, frontier membership and genome "
+                f"size all unchanged for {self.structural_stall} consecutive generations"
+            )
         if self.generation >= self.config.max_generations:
-            return True, "MAX_GENERATIONS_REACHED"
-        if self.stall_count >= self.config.stall_limit:
-            return True, f"FRONTIER_UNMOVED_FOR_{self.stall_count}_GENERATIONS"
+            return True, (
+                f"GENERATION_CAP_REACHED_NOT_CONVERGED: stopped at the safety cap of "
+                f"{self.config.max_generations} generations with structural_stall="
+                f"{self.structural_stall} of {self.config.stall_limit} required; the search "
+                f"had not converged"
+            )
         return False, "SEARCHING"
+
+    def convergence_state(self) -> dict[str, Any]:
+        """Everything a report needs to say whether the stop was convergence or a cap."""
+
+        done, reason = self.converged()
+        return {
+            "generation": self.generation,
+            "stopped": done,
+            "reason": reason,
+            "structurally_converged": self.structural_stall >= self.config.stall_limit,
+            "structural_stall": self.structural_stall,
+            "stall_limit": self.config.stall_limit,
+            "signature_stall": self.stall_count,
+            "max_generations_safety_cap": self.config.max_generations,
+            "selection_axes": list(self.selection_axes),
+            "demoted_axes": self.demoted_axes,
+        }
 
     def run(self, generations: int) -> list[GenerationReportV2]:
         reports: list[GenerationReportV2] = []
@@ -766,7 +967,7 @@ class OpenEndedController:
             for record in self.registry.accepted()
             if not self.quarantine.is_quarantined(record.candidate_id)
         ]
-        return shortlist(population, SELECTION_AXES)
+        return shortlist(population, self.selection_axes)
 
 
 def _target_metric(payload: dict[str, Any]) -> str:

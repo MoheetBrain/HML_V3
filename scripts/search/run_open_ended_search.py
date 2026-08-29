@@ -32,16 +32,37 @@ from hml_v3.representation_search.meta_designer.llm import (  # noqa: E402
     LLMMetaDesigner,
     OllamaTransport,
 )
-from hml_v3.representation_search.sealing import split_corpus  # noqa: E402
+from hml_v3.representation_search.sealing import split_search_pool  # noqa: E402
+
+#: Any corpus whose path matches one of these is the sealed split. The search process must
+#: never open it -- not to count it, not to hash it, not to sanity-check it. The guard is a
+#: path check rather than a convention because SEALED_FINAL_V2's whole value is that it has
+#: been read zero times, and a single accidental read is not recoverable.
+SEALED_PATH_MARKERS = ("sealed_final", "sealed_v2", "SEALED")
+
+
+def refuse_sealed(path: Path) -> None:
+    resolved = str(path.resolve())
+    for marker in SEALED_PATH_MARKERS:
+        if marker in resolved:
+            raise SystemExit(
+                f"REFUSED: {resolved} looks like a sealed split (matched {marker!r}). The "
+                "search process never reads the seal; it is read once, after convergence, on "
+                "the reported finalists only, through the isolated sealed evaluator."
+            )
 
 
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--corpus", type=Path,
-                        default=ROOT / "data/corpus/lean_runtime_v2.canonical.jsonl.gz")
+                        default=ROOT / "data/corpus/search_pool_v2.jsonl.gz",
+                        help="the search pool, with SEALED_FINAL_V2 already removed")
     parser.add_argument("--workspace", type=Path,
                         default=ROOT / "data/representation_search_v2")
-    parser.add_argument("--generations", type=int, default=12)
+    parser.add_argument(
+        "--generations", type=int, default=None,
+        help="stop after this many generations regardless of convergence; omit to run until "
+             "the search structurally converges")
     parser.add_argument("--population", type=int, default=24)
     parser.add_argument("--children", type=int, default=18)
     parser.add_argument("--dev-sample", type=int, default=28)
@@ -50,13 +71,23 @@ def main() -> None:
     parser.add_argument("--mutation-sample", type=int, default=12)
     parser.add_argument("--max-generations", type=int, default=40)
     parser.add_argument("--stall-limit", type=int, default=5)
-    parser.add_argument("--llm-model", default="gemma3:4b")
+    parser.add_argument(
+        "--llm-models", default="gemma3:4b,qwen38-rvn:latest",
+        help="comma-separated locally served models, one meta-designer backend each; "
+             "every one that is not installed is reported and skipped")
+    parser.add_argument("--llm-model", default=None,
+                        help="deprecated alias for a single --llm-models entry")
     parser.add_argument("--no-llm", action="store_true")
     parser.add_argument("--fresh", action="store_true")
     args = parser.parse_args()
 
+    refuse_sealed(args.corpus)
     corpus = load_corpus(args.corpus)
-    split = split_corpus(corpus)
+    # The pool's seal is already a separate file, so this splits dev/validation only. Running
+    # the three-way split here would withhold a fifth of the pool for a second seal nothing
+    # reads -- and that fifth is the multi-goal structure acquired to make goal ordering
+    # measurable in the first place.
+    split = split_search_pool(corpus)
     args.workspace.mkdir(parents=True, exist_ok=True)
 
     manifest_path = args.workspace / "split_manifest.json"
@@ -84,15 +115,24 @@ def main() -> None:
     manifest_path.write_text(json.dumps(manifest, indent=2, sort_keys=True) + "\n")
 
     backends = [DeterministicMetaDesigner()]
+    unavailable: list[str] = []
     if not args.no_llm:
-        transport = OllamaTransport(args.llm_model)
-        backend = LLMMetaDesigner(transport)
-        if backend.available():
-            backends.append(backend)
-            print(f"model-driven meta-designer active: {backend.name}")
-        else:
-            print(f"model-driven meta-designer UNAVAILABLE ({args.llm_model}); "
-                  "running rule-based only")
+        requested = [args.llm_model] if args.llm_model else [
+            name.strip() for name in args.llm_models.split(",") if name.strip()
+        ]
+        # Several independent local proposers, not one. A single model's blind spots become
+        # the search's blind spots; two families disagreeing is the cheapest available
+        # diversity, and neither costs anything beyond local inference.
+        for model in requested:
+            backend = LLMMetaDesigner(OllamaTransport(model))
+            if backend.available():
+                backends.append(backend)
+                print(f"model-driven meta-designer active: {backend.name}")
+            else:
+                unavailable.append(model)
+                print(f"model-driven meta-designer UNAVAILABLE ({model}); skipped")
+    if len(backends) == 1:
+        print("no model-driven proposer is available; running rule-based only")
 
     config = SearchConfigV2(
         population_capacity=args.population, children_per_generation=args.children,
@@ -104,19 +144,25 @@ def main() -> None:
         split.dev, split.validation, args.workspace, backends, config, FailureMemory.load())
     resumed = False if args.fresh else controller.resume()
     print(json.dumps({
+        "corpus": str(args.corpus),
         "corpus_transitions": len(corpus),
         "dev": len(split.dev), "validation": len(split.validation),
-        "sealed_not_read": len(split.sealed),
+        "sealed_in_this_file": len(split.sealed),
+        "sealed_final_v2": "NOT OPENED BY THIS PROCESS",
         "resumed": resumed, "starting_generation": controller.generation,
         "genome_schema": controller.primitives.schema_version,
         "backends": [backend.name for backend in backends],
+        "llm_backends_unavailable": unavailable,
     }, indent=2))
 
     started = time.time()
-    for _ in range(args.generations):
+    budget = args.generations if args.generations is not None else args.max_generations + 1
+    stop_reason = "GENERATIONS_ARGUMENT_EXHAUSTED"
+    for _ in range(budget):
         done, reason = controller.converged()
         if done:
-            print(f"STOP: {reason}")
+            stop_reason = reason
+            print(f"STOP: {reason}", flush=True)
             break
         report = controller.step()
         proposals = report.proposals
@@ -126,10 +172,16 @@ def main() -> None:
             f"moved={report.frontier_moved} newaxes={report.new_axes} "
             f"proposals={proposals['accepted']}/{proposals['accepted'] + proposals['rejected']} "
             f"quarantined={sum(1 for v in report.validation_verdicts if not v['elite_eligible'])} "
+            f"stall={controller.structural_stall}/{controller.config.stall_limit} "
             f"schema={report.genome_schema} {report.elapsed_seconds:.0f}s",
             flush=True,
         )
+        for demotion in report.axis_demotions:
+            print(f"     AXIS {demotion['action']}: {demotion['axis']} -- "
+                  f"{demotion['reason']}", flush=True)
     print(f"total {time.time() - started:.0f}s")
+    print("STOP_REASON:", stop_reason)
+    print(json.dumps(controller.convergence_state(), indent=2))
     print(json.dumps(controller.registry.statistics(), indent=2))
     print(json.dumps(controller.primitives.statistics(), indent=2))
     finalists, reasons = controller.finalists()

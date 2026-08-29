@@ -11,3 +11,8 @@ requires-python = ">=3.10"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+
+[tool.pytest.ini_options]
+# Without this, a bare `pytest` collects the vendored Lean/LeanDojo checkouts under
+# external/ and dies on their imports, which reads as a broken test suite.
+testpaths = ["tests"]

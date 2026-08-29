@@ -548,3 +548,104 @@ and `SEALED_FINAL_V2` are built but a search has not yet been run on them.
 
 **Next intended step.** Remove the saturated axes, re-run on the enlarged corpus where goal
 ordering is measurable, and only then consider reading `SEALED_FINAL_V2`.
+
+## 2026-08-29 — Saturated metrics removed, a second meta-designer, and the search run to structural convergence
+
+**Branch:** `codex/open-ended-search-v2`  **Stage:** `OPEN_ENDED_SEARCH_V2_CONVERGED`
+
+**Objective.** Remove saturated and non-discriminative metrics from selection; add Qwen as a
+second zero-cost MetaDesigner; register PRM800K as DiscoveryGraph evidence and GSM8K as
+natural-language math evidence, neither as Lean truth; restart the open-ended search from
+generation 0 on the 918-transition pool and run it to structural convergence rather than to a
+generation budget; leave `SEALED_FINAL_V2` untouched.
+
+**Selection.** `semantic_detect_rate` is out. Measured across all 201 candidates of the prior
+run it read exactly 1.000, and it reads 1.000 on all sixteen generation-zero seeds of this one
+(`FM-029`). Rather than edit the tuple again — the third time this has been done by hand —
+`enforce_discrimination()` now runs every generation and demotes any selection axis with zero
+spread, recording the measurement. Replayed against the prior run's own registry it reproduces
+FM-029 mechanically. Near-saturation is reported but never demoted on: on the new pool the same
+metric reads 0.9899–1.0, which the strict rule correctly does not fire on. `detect_drop_field`
+takes the freed slot so selection retains an error-detection dimension rather than becoming
+five axes that are all minimised (`D-018`).
+
+**Second meta-designer.** `qwen38-rvn` (27B, local, inference only) alongside `gemma3:4b`. Two
+defects had to be fixed first, both of which produced zero proposals rather than an error
+(`FM-032`): the transport posted to `/api/generate`, which bypasses the chat template and made
+Qwen return a single token and an empty string on every prompt — invisible while there was one
+backend — and on `/api/chat` the model spent its whole 4096-token budget inside `<think>`.
+With an empty-think prefill it returns valid proposals in ~60s.
+
+**Evidence roles.** Registry schema 1.1.0 adds `evidence_role` and `not_lean_truth`. PRM800K is
+`DISCOVERY_GRAPH_EVIDENCE`; GSM8K was acquired at pinned commit `3101c7d5` (MIT, 8,792 rows,
+per-file SHA-256s) and is `NATURAL_LANGUAGE_MATH_EVIDENCE`. `not_lean_truth` is derived from
+`formal_system`, never asserted, and a test refuses any dataset carrying it the role
+`LEAN_FORMAL_TRUTH` or a trust tier of A or B (`D-021`).
+
+**A defect caught before the run.** The controller sampled dev, microtest and mutation sets as
+prefixes. On the new pool no prefix up to 128 rows contains a state with more than four goals,
+and the twelve-row mutation sample was 8.3% multi-goal — near the corpus it replaced. The
+search would have re-derived `FM-020` on the corpus acquired to fix it. Replaced with
+deterministic stratified sampling; every sample now reaches six or more goals (`FM-031`,
+`D-019`).
+
+**A defect caught during the run, which cost a restart.** Fifteen generations in, nine of
+thirty accepted axes were `neighbourhood_capsule` over `NONE/GOAL_LOCAL/ACTION_LOCAL` under
+nine different names. Measured directly: two such axes render identically and stacking them is
+idempotent. They inflated the reported space by 3^8 with no new reachable rendering, filled the
+front with candidates differing by id and not by output, and made convergence unreachable,
+since a fresh *name* is always available. Acceptance now requires the axis's set of renderings
+to differ from every active axis (`FM-033`, `D-022`). The run was restarted from generation 0.
+
+**The run.** 106 generations, 5h03m, three backends, converged — frontier position, frontier
+membership and genome size all unchanged for five consecutive generations. 566 candidates
+registered, 531 evaluated, 33 killed. Of 289 axis proposals, 5 were new dimensions, 205 were
+behavioural duplicates and 79 unimplementable. All sixteen hand-specified seeds were pushed off
+the strict Pareto front. Frontier minima improved 20.5% on tokens and 18–24% on the three
+locality axes between generations 0 and 60, then held.
+
+**A result that reversed a recorded negative.** `FM-030` reported that no invented axis had
+ever reached the frontier. Two of the seven finalists now carry one, both values of
+`dependency_capsule`: the `GOAL_LOCAL` variant is cheapest under all four tokenizer
+vocabularies, and the `ACTION_LOCAL` variant reaches 11.84 dependency-query token distance
+against ~27.8 for the rest. It is the same axis the backends re-proposed 205 times under fresh
+names; registering it once and blocking the aliases is what let it be judged (`FM-034`).
+
+**A judgement I got wrong, and corrected.** At generation 70 the frontier position had been
+frozen for ten generations but membership was churning at 2.3 entrants per generation with no
+visible trend. I read that as unsatisfiable-by-construction, recommended replacing the clause
+with shortlist stability, and drafted the change. It was wrong: churn kept falling, generations
+101–105 had no entrant and no departure, and the run converged on the original criterion. The
+replacement was reverted unused (`FM-035`).
+
+**Verification actually executed.**
+- `.venv/bin/python -m pytest` — **158 tests, 338 subtests, all passing** (was 120 at the start
+  of this session). The repository ships no `.venv` and the system interpreter has no pytest, so
+  the previously quoted `python3 -m pytest` printed `No module named pytest` and exited 0.
+- `scripts/search/build_frontier_v2.py` — 7 finalists, 5 invented axes accepted.
+- `scripts/search/validate_frontier.py` — 5 of 7 axis leaders keep their lead on the validation
+  split selection never read.
+- `scripts/search/verify_reproducibility.py` — 60 candidates including 10 invented-axis
+  carriers re-render byte-identically in a fresh subprocess under a different PYTHONHASHSEED;
+  **0 mismatches**. This required fixing the verifier itself: it built compilers from the
+  genome alone, with no invented axes, and keyed the child's results by the genome id rather
+  than the record id, so it reported its own blind spot as "NOT REPRODUCIBLE: 2 candidates
+  differ" (`FM-036`).
+- Registry reload after the change: `PrimitiveRegistry` crashed on `ACCEPTED_DUPLICATE` rows
+  because the loader enumerated rejection statuses instead of testing positively for a
+  primitive. That broke resume, not the running search, and was found by a report script.
+
+**Failures and unresolved uncertainty.** The prior run's headline space figure (42 → 55 axes,
+1.548e26 points) counted duplicate axes as new dimensions and should not be repeated without
+re-measurement. Two of seven axis leaders do not keep their lead on validation. No model
+evidence exists; every result here is static. The meta-designer brief's worked example is
+`dependency_capsule`, which is what the backends copied 205 times — harmless now, but the brief
+was deliberately left unchanged rather than edited mid-project.
+
+**Effect on the project.** The representation search has, for the first time, converged rather
+than stopped on a budget, on a corpus where locality is measurable, with an instrument set
+whose saturated members are excluded by measurement rather than by hand.
+
+**Next intended step.** Decide whether to read `SEALED_FINAL_V2`. The precondition its policy
+names is met — convergence reached, zero prior reads — but reading it is irreversible and has
+not been authorised, so it remains unread.

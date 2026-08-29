@@ -1,7 +1,7 @@
 {
-  "schema_version": "hml-v3-dataset-registry-1.0.0",
+  "schema_version": "hml-v3-dataset-registry-1.1.0",
   "generated_at": "2026-08-27T00:00:00+01:00",
-  "notes": "JSON syntax is intentionally used because JSON is a YAML 1.2 subset; the registry remains machine-readable with the Python standard library.",
+  "notes": "JSON syntax is intentionally used because JSON is a YAML 1.2 subset; the registry remains machine-readable with the Python standard library. evidence_role and not_lean_truth were added in 1.1.0; tests/test_registry_and_manifests.py enforces the rule mechanically.",
   "datasets": [
     {
       "dataset_id": "hendrycks_math_train_local",
@@ -25,7 +25,9 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "MATH is widely used in model training; license and benchmark contamination require adjudication before use.",
-      "notes": "Fields: problem, level, type, solution. Natural-language solutions are not proof certificates. Redistribution blocked until license is resolved."
+      "notes": "Fields: problem, level, type, solution. Natural-language solutions are not proof certificates. Redistribution blocked until license is resolved.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "amps_khan_local",
@@ -49,7 +51,9 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "3,293 visually dependent rows, 21,094 multiple-choice rows, 1,666 duplicate problems, and 15 duplicate problem/solution pairs.",
-      "notes": "721 topics. Redistribution blocked until source and license are resolved."
+      "notes": "721 topics. Redistribution blocked until source and license are resolved.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "openai_prm800k_official",
@@ -73,7 +77,9 @@
       "train_allowed": true,
       "evaluation_only": false,
       "contamination_notes": "11,293 unique problem texts; 1,085,590 completions and 1,046,365 non-null ratings. Labels combine correctness, progress, relevance, appropriateness, verifiability, explanation quality, and completeness.",
-      "notes": "Useful for action utility, failure, progress, and discovery graphs; never treat -1/0/+1 as Lean validity."
+      "notes": "Registered as DISCOVERY_GRAPH_EVIDENCE. Its five discovery dimensions -- progress, valid-but-useless, dead end, alternative branch, attempt outcome -- are the ones reports/representation_search/DISCOVERY_REPRESENTATION_ANALYSIS.md measured and found that NO representation in the search space can express, because CanonicalMathState carries none of them. That is its whole value here: it names what the formal corpus structurally lacks. A Lean trace records only steps that were kept, so it contains no negative examples at all, while 25.3% of PRM800K's rated continuations are dead ends and 10.1% are valid-but-not-progressing. Never treat -1/0/+1 as Lean validity; the two live in different columns permanently.",
+      "not_lean_truth": true,
+      "evidence_role": "DISCOVERY_GRAPH_EVIDENCE"
     },
     {
       "dataset_id": "gold_10_historical",
@@ -97,7 +103,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Development history; never silently merge into V3 gold truth.",
-      "notes": "Keep manifests, trajectories, rerun reports, and gap triage together."
+      "notes": "Keep manifests, trajectories, rerun reports, and gap triage together.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "gold_25_historical",
@@ -121,7 +129,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Curated development set; historical HML coverage measured against stale core 5688aba.",
-      "notes": "Preserve selection, operation registry, audits, and semantic gaps."
+      "notes": "Preserve selection, operation registry, audits, and semantic gaps.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "gold_125_historical",
@@ -145,7 +155,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Prior ontology/coverage research; not V3 gold and historical coverage pin is stale.",
-      "notes": "Preserve branch audits, dependency graphs, disagreements, selection, and gap reports."
+      "notes": "Preserve branch audits, dependency graphs, disagreements, selection, and gap reports.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "leandojo_benchmark4",
@@ -169,7 +181,9 @@
       "train_allowed": true,
       "evaluation_only": false,
       "contamination_notes": "Official random and novel-premise splits must be preserved; nested tactics are flattened and many states are not independently replayable from theorem entry.",
-      "notes": "Primary current local source of real proof-state trajectories."
+      "notes": "Primary current local source of real proof-state trajectories.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "lean_workbook_pinned",
@@ -193,7 +207,9 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "57,231 Workbook plus 82,893 Workbook Plus rows; proof availability varies and the payload has not been acquired or replayed.",
-      "notes": "Registered as a formalization/proof source, not as verified transitions. Acquisition is metadata-only by default."
+      "notes": "Registered as a formalization/proof source, not as verified transitions. Acquisition is metadata-only by default.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "minif2f_lean4_pinned",
@@ -217,7 +233,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "All benchmark test theorems are protected as evaluation-only; theorem declaration count includes repository helpers and is not asserted as the canonical 488-problem benchmark count.",
-      "notes": "Useful for later evaluation after an explicit split audit and build/replay verification."
+      "notes": "Useful for later evaluation after an explicit split audit and build/replay verification.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "proofnet_lean4_port_pinned",
@@ -241,7 +259,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "185 valid and 186 test rows per pinned README; both splits are protected until a V3 use policy exists. This community port is not the original Lean 3 environment.",
-      "notes": "Potential translation/evaluation source, not current formal-trace evidence."
+      "notes": "Potential translation/evaluation source, not current formal-trace evidence.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "lean_domino_v2_canonical_records",
@@ -265,7 +285,9 @@
       "train_allowed": true,
       "evaluation_only": false,
       "contamination_notes": "Derived source used in prior HML experiments; preserve official theorem split and do not confuse trace provenance with fresh runtime replay.",
-      "notes": "Contains raw tactic and raw before/after states plus parsed hypotheses/target. This is the initial V3 adapter input."
+      "notes": "Contains raw tactic and raw before/after states plus parsed hypotheses/target. This is the initial V3 adapter input.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "lean_attestation_stage100",
@@ -289,7 +311,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Balanced QA sample includes TRAIN/DEV/FINAL source records and must not be used as an unqualified training set.",
-      "notes": "All 32 reached target actions matched both recorded states exactly; Stage100 overall gate failed due nested-state reconstruction coverage."
+      "notes": "All 32 reached target actions matched both recorded states exactly; Stage100 overall gate failed due nested-state reconstruction coverage.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "lean_pipeline_v1",
@@ -313,7 +337,9 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "Contains 995 official train, 3 validation, and 2 test rows plus all Stage100 QA cases. Consumers must filter by attached official split and exclude the QA sample from unqualified training.",
-      "notes": "Balanced across eight observed effect classes; 1,353 official annotated premise references on 578 rows; every transition has exact theorem source and exact before/action/after join."
+      "notes": "Balanced across eight observed effect classes; 1,353 official annotated premise references on 578 rows; every transition has exact theorem source and exact before/action/after join.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "hml50k_final_historical",
@@ -337,7 +363,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "All historical HML model rows contained decoded literal Unicode escape sequences while Neutral rows did not; the prior representation comparison is invalidated. Canonical source is clean.",
-      "notes": "Retain for regression, serializer failure analysis, and source recovery only."
+      "notes": "Retain for regression, serializer failure analysis, and source recovery only.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "semantic_firewall_v1",
@@ -361,7 +389,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "All cases have self-consistent deltas, so the suite cannot detect a missing frame condition.",
-      "notes": "Historical regression asset, not formal mathematical truth."
+      "notes": "Historical regression asset, not formal mathematical truth.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "semantic_firewall_fx2",
@@ -385,7 +415,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Integrator-authored and weaker than external acceptance evidence; one schema-valid malformed fixture crashes the old reference checker.",
-      "notes": "Regression and semantic-gap evidence only."
+      "notes": "Regression and semantic-gap evidence only.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "exp_rep_validity_v1",
@@ -409,7 +441,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Counterfactual labels are HML-verifier labels, not Lean outcomes. Bag-of-words reaches roughly 0.72-0.76 IID macro-F1 and minimal-pair accuracy saturates.",
-      "notes": "Stage 1: Structured English > Lean-like > HML > typed AST on IID; HML led no split. Preserve as negative/uncertain evidence."
+      "notes": "Stage 1: Structured English > Lean-like > HML > typed AST on IID; HML led no split. Preserve as negative/uncertain evidence.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "numinamath_lean_local",
@@ -433,7 +467,9 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "80.7% lack formal ground truth; duplicate UUIDs and alternate formalizations exist; textual completeness is not compilation.",
-      "notes": "Potential formal-statement/proof source after environment pinning and replay verification."
+      "notes": "Potential formal-statement/proof source after environment pinning and replay verification.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "herald_proofs_local",
@@ -457,7 +493,9 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "At least 77 rows have a detected unrelated informal-proof boilerplate; exact Mathlib environment is not yet pinned in V3.",
-      "notes": "Strong source for aligned formal/informal proof research after replay and mismatch filtering."
+      "notes": "Strong source for aligned formal/informal proof research after replay and mismatch filtering.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "state_tactic_pairs_local",
@@ -481,7 +519,9 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "No source ID or after-state; two prompt templates; retrieved-lemma block leaks an answer lemma in about 35% of lemma-citing audited rows.",
-      "notes": "Usable only after stripping prompt/retrieval material, reconstructing theorem keys, and replaying tactics."
+      "notes": "Usable only after stripping prompt/retrieval material, reconstructing theorem keys, and replaying tactics.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "stp_lean_0320_local",
@@ -505,7 +545,9 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "51,273 conjecturing rows are statements rather than proofs; theorem-grouped splits are mandatory; 8,065 exact prompt/target duplicates.",
-      "notes": "Large candidate source. Do not ingest before environment/version recovery and a replay sample."
+      "notes": "Large candidate source. Do not ingest before environment/version recovery and a replay sample.",
+      "not_lean_truth": false,
+      "evidence_role": "LEAN_FORMAL_TRUTH"
     },
     {
       "dataset_id": "vnext_600_historical",
@@ -529,7 +571,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Synthetic development history and input to later VNext builds; not real formal mathematics.",
-      "notes": "Historical regression and failure-analysis source only."
+      "notes": "Historical regression and failure-analysis source only.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "vnext_10k_historical",
@@ -553,7 +597,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Mixed trust classes; source-specific restrictions survive. Later execution comparisons were negative for HML and exposed serializer/emission confounds.",
-      "notes": "Preserve canonical records, all four views, reverse projection, leakage audits, and exact manifest."
+      "notes": "Preserve canonical records, all four views, reverse projection, leakage audits, and exact manifest.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "domino_v1_historical",
@@ -577,7 +623,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Observed move is known good but not uniquely optimal; unobserved distractor utility is unknown.",
-      "notes": "Preserve candidate semantics and the negative/non-diagnostic learning result."
+      "notes": "Preserve candidate semantics and the negative/non-diagnostic learning result.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "pretrained_hml_signal_paired",
@@ -601,7 +649,9 @@
       "train_allowed": false,
       "evaluation_only": true,
       "contamination_notes": "Uses the same source records as lean_domino_v2; several downstream arms collapsed or became equivalent, and later syntax claims were invalidated or negative.",
-      "notes": "Reference for prior paired-rendering methods and failures; do not duplicate the 694MB payload."
+      "notes": "Reference for prior paired-rendering methods and failures; do not duplicate the 694MB payload.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
     },
     {
       "dataset_id": "pythagoras_sft_local",
@@ -625,7 +675,43 @@
       "train_allowed": false,
       "evaluation_only": false,
       "contamination_notes": "Mixture requires row-level source/trust classification before mathematical use.",
-      "notes": "Historical external source; keep referenced until a V3-specific audit determines utility."
+      "notes": "Historical external source; keep referenced until a V3-specific audit determines utility.",
+      "not_lean_truth": true,
+      "evidence_role": "UNASSIGNED"
+    },
+    {
+      "dataset_id": "openai_gsm8k",
+      "name": "OpenAI GSM8K (grade-school-math)",
+      "source_url": "https://github.com/openai/grade-school-math",
+      "source_commit": "3101c7d5072418e28b9008a6636bde82a006892c",
+      "source_version": "official master at 3101c7d",
+      "license": "MIT (LICENSE at the pinned commit: 'MIT License / Copyright (c) 2021 OpenAI')",
+      "local_path": "/Users/moheet/Documents/ChatGPT/HML_V3/external/checkouts/grade-school-math",
+      "acquisition_method": "scripts/acquire/acquire_gsm8k.sh -> clone_pinned.py; detached checkout at the pinned commit, verified clean, tree fingerprint receipt written to data/cache/acquisition_receipts/openai_gsm8k.json",
+      "sha256": "17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465",
+      "formal_system": null,
+      "lean_version": null,
+      "mathlib_version": null,
+      "rows": 8792,
+      "theorems": null,
+      "proof_states": null,
+      "transitions": null,
+      "trust_tier": "D",
+      "verification_status": "NATURAL_LANGUAGE_UNVERIFIED",
+      "train_allowed": false,
+      "evaluation_only": false,
+      "not_lean_truth": true,
+      "evidence_role": "NATURAL_LANGUAGE_MATH_EVIDENCE",
+      "contamination_notes": "GSM8K is among the most heavily reported benchmarks in the literature and must be assumed present in the pretraining data of every public model this project could run. It is therefore unusable as a held-out evaluation of any such model, and is registered for what it says about how mathematics is WRITTEN, not for scoring.",
+      "notes": "Registered as NATURAL_LANGUAGE_MATH_EVIDENCE, explicitly NOT Lean truth. Two columns only, question and answer; the answer is a human arithmetic narrative with <<calculator>> annotations and a '#### n' final line. There is no proof term, no tactic, no proof state and no verifier anywhere in it, so nothing here can enter a CanonicalMathTransition or be compared against one. Files at the pinned commit: example_model_solutions.jsonl rows=1319 bytes=2563513 sha256=4bc62db838f8418365d51c627bd66294cbdca9fb7f01519cb13f0dce8c51580b; test.jsonl rows=1319 bytes=749738 sha256=3730d312f6e3440559ace48831e51066acaca737f6eabec99bccb9e4b3c39d14; test_socratic.jsonl rows=1319 bytes=972978 sha256=c96673362fa7a699f4836a9b6474a067448f95fe58064727501ee63ba4c3fdb6; train.jsonl rows=7473 bytes=4166206 sha256=17f347dc51477c50d4efb83959dbb7c56297aba886e5544ee2aaed3024813465; train_socratic.jsonl rows=7473 bytes=5401739 sha256=153d86551187cfd64ef7afb59bfd0ef75cea3ae9388e7ad31e43920b6dd77872"
     }
-  ]
+  ],
+  "evidence_roles": {
+    "LEAN_FORMAL_TRUTH": "verifier-backed Lean 4 material; the only category admissible as ground truth for a CanonicalMathTransition",
+    "DISCOVERY_GRAPH_EVIDENCE": "human judgements about the SEARCH for a proof -- progress, dead end, valid-but-not-progressing, alternative branch, attempt outcome. Names dimensions a Lean trace structurally cannot contain, because a trace holds only the steps that were kept. Never a verdict of logical validity.",
+    "NATURAL_LANGUAGE_MATH_EVIDENCE": "mathematics written for humans, with no proof term and no verifier. Evidence about how mathematics is phrased and about arithmetic reasoning in prose; never evidence that a statement is true.",
+    "HISTORICAL_INSTRUMENT": "a prior experiment's data, retained so its result can be re-read; not a source of new truth",
+    "UNASSIGNED": "no role adjudicated yet; must not be cited as evidence for anything until one is"
+  },
+  "evidence_role_rule": "evidence_role names what a dataset may be cited FOR. not_lean_truth is derived, not asserted: it is true for every dataset whose formal_system is not exactly 'Lean 4', which includes Lean traces re-rendered through a historical HML layer. A dataset with not_lean_truth true may never carry role LEAN_FORMAL_TRUTH and may never be promoted into trust tier A or B, whatever a later reader believes about its quality."
 }

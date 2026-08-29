@@ -9,8 +9,11 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`OPEN_ENDED_SEARCH_V2`. The closed 42-axis search is frozen and preserved; the loop has been
-rebuilt so a model-driven meta-designer sits inside it and can widen the search space itself.
+`OPEN_ENDED_SEARCH_V2_CONVERGED`. The closed 42-axis search is frozen and preserved. The
+open-ended loop ran from generation 0 on the 918-transition search pool and reached
+**structural convergence at generation 106** — frontier position, frontier membership and
+genome size all unchanged for five consecutive generations. `SEALED_FINAL_V2` has not been
+read.
 
 ## Current Branch
 
@@ -157,6 +160,13 @@ result was measured on is identifiable from the repository alone. The GPT-2 toke
 with a reproducible acquisition script. Raw campaign captures (54 GB and growing) remain
 external and ignored; only the canonical corpus and audits are committed.
 
+Two non-Lean sources are registered with explicit evidence roles (`D-021`). PRM800K is
+`DISCOVERY_GRAPH_EVIDENCE`: it names the five discovery dimensions a Lean trace structurally
+cannot contain, because a trace holds only the steps that were kept. GSM8K is
+`NATURAL_LANGUAGE_MATH_EVIDENCE` at pinned commit `3101c7d5`, MIT, 8,792 rows. Neither may
+carry the role `LEAN_FORMAL_TRUTH` or a trust tier of A or B, and
+`tests/test_registry_and_manifests.py` enforces that mechanically rather than by convention.
+
 ## Decisions and Rationale
 
 `D-001` to `D-009` are inherited. `D-010` to `D-017` were added at this stage and cover: the
@@ -166,45 +176,72 @@ claims, and the size-bounded corpus.
 
 ## Open-Ended Search Results
 
-14 generations on the 608-transition corpus.
+106 generations on the 918-transition search pool (`search_pool_v2`), 5h03m wall clock,
+three meta-designer backends. **Converged**, not stopped on a budget.
 
 | Field | Value |
 |---|---|
-| Genome axes | 42 -> 55 (schema `representation-genome-v2.13.0`) |
-| Search space | 4.095e19 -> 1.548e26 points |
-| Candidates registered / evaluated / killed | 255 / 201 / 14 |
-| Strict Pareto front | 49 |
-| Reported finalists | 6 |
-| Invented axes accepted | 13 |
-| Invented axes reaching the frontier | **0** (`FM-030`) |
-| Proposal types the model produced | `AXIS_MUTATION`, `ARCHITECTURAL_HYPOTHESIS`, `NEW_AXIS`, `NEW_PRIMITIVE`, `CORPUS_ACQUISITION` |
-| Structural convergence | **NO** — stopped on generation budget |
+| Corpus | `search_pool_v2`, 918 transitions, 612 families; dev 717 / validation 201 |
+| Genome axes | 42 -> 47 (schema `representation-genome-v2.5.0`) |
+| Search space | 4.422e21 points |
+| Candidates registered / evaluated / killed | 566 / 531 / 33 |
+| Strict Pareto front | 104 |
+| Reported finalists | 7 |
+| Axis proposals reaching the registry | 289 |
+| — accepted as new dimensions | 5 |
+| — rejected as behavioural duplicates | **205** (`FM-033`) |
+| — rejected as unimplementable | 79 |
+| Finalists using an invented axis | **2 of 7** (`FM-034`) |
+| Quarantined as non-generalising | 12 |
+| Structural convergence | **YES**, generation 106 |
+| Sealed split reads | **0** |
 
-**The corpus gap FM-020 named is closed.** Scanning 250,814 LeanDojo transitions and acquiring
-1,125 targeted ones raised the multi-goal share from 1.2% to 18.1% and the maximum from 2 goals
-to 12. On multi-goal states `graph_serialization` now separates into three distinct rendering
-groups where eleven earlier mutations had changed nothing, and three goal-related semantic
-mutation families went from 3% applicable to 100% (`FM-028`).
+**Every one of the sixteen hand-specified seeds was pushed off the strict Pareto front** —
+prior HML, Structured English, Lean-like, typed AST, canonical S-expression and JSON
+included. None is a finalist.
 
-**`SEALED_FINAL_V2` is frozen and unread**: 232 transitions from 126 families, every one
-acquired after the V1 search, so none influenced the V1 frontier. V1's split is retired as
-`HISTORICAL_SEALED_V1`.
+**The frontier moved a long way and then stopped.** Between generation 0 and generation 60
+the per-axis frontier minima improved by 20.5% on tokens, 18.5% on binder-use distance, 24.3%
+on binder-query distance and 24.1% on dependency-query distance. From generation 60 the
+position was byte-identical on all six axes; from generation 101 no candidate entered or left
+the front at all.
 
-Three defects were found in this project's own instruments, each by checking the instrument
-against a real rendering rather than trusting the number it produced:
+**Locality improved far more than cost.** Token count moved 20.5% while the three locality
+axes moved 18–24%, and on the previous 608-transition corpus locality was the thing that could
+not be optimised at all. This is the acquisition campaign paying off: locality is only
+measurable where states have multiple goals and real dependencies (`FM-020`, `FM-028`).
+
+**An invented axis reached the finalists**, which `FM-030` reported had never happened. Both
+are values of `dependency_capsule`: `R_159628756bc5` (`GOAL_LOCAL`) is the cheapest candidate
+under all four tokenizer vocabularies, and `R_fcd13f8d56a5` (`ACTION_LOCAL`) reaches 11.84
+dependency-query token distance against roughly 27.8 for the rest, a 57% reduction. That axis
+is also the one the meta-designers re-proposed endlessly under fresh names; registering it
+once and blocking 205 aliases is what let it be judged on its merits.
+
+**Multi-tokenizer audit**: four exact BPE vocabularies (`gpt2`, `gptneox`, `qwen25`,
+`starcoder2`) agree on the cheapest finalist. `FM-018` binds the reading: the escaping penalty
+reproduces across vocabularies, the absolute counts do not.
+
+Five defects were found in this project's own instruments during this stage, each by checking
+the instrument against a real measurement rather than trusting the number it produced:
 
 | Lesson | Defect |
 |---|---|
-| `FM-023` | a substring scan overcounted identity mentions by 25% |
-| `FM-025` | a colon heuristic made four of nine microtest suites read 100% unanswerable |
-| `FM-026` | three invented axes were accepted whose nine value combinations rendered identically |
-| `FM-027` | the validation gate blocked candidates that failed consistently rather than divergently |
-| `FM-029` | the semantic corruption metric replaced text-level bias with saturation at 1.000 |
+| `FM-029` | the semantic corruption metric replaced text-level bias with saturation at 1.000; removed from selection (`D-018`) |
+| `FM-031` | prefix sampling hid the multi-goal structure the acquisition campaign had just bought; no prefix up to 128 rows contained a state with more than four goals (`D-019`) |
+| `FM-032` | the wrong ollama endpoint made a second meta-designer return an empty string on every prompt, silently, for as long as there was only one backend |
+| `FM-033` | nine of the first thirty invented axes were one axis under nine names; the space figure was inflated and convergence was unreachable (`D-022`) |
+| `FM-035` | a mid-run churn rate was read as proof a convergence criterion could not be met; it could, and was |
 
 ## Verification and Test Results
 
-- `PYTHONPATH=src python3 -m unittest discover -s tests` — **120 tests, all passing**, of
-  which 64 are the inherited V1 tests, unchanged.
+- `.venv/bin/python -m pytest` — **156 tests, 338 subtests, all passing**. Note that the
+  repository ships no `.venv` and the system interpreter has no pytest, so a bare
+  `python3 -m pytest` prints `No module named pytest` and **exits 0** — a run that looks
+  clean and verifies nothing. `pyproject.toml` now pins `testpaths = ["tests"]`, without
+  which pytest collects the vendored LeanDojo checkouts and dies on their imports.
+- `scripts/search/validate_frontier.py` — 5 of 7 axis leaders keep their lead on the
+  validation split that selection never read.
 - Expression codec: every lossless configuration round-trips (192 configurations).
 - Document codec: 7,776 grammar/lexicon/notation configurations round-trip.
 - Every single-axis genome change either round-trips or is declared lossy, and every declared
@@ -248,11 +285,18 @@ None.
 
 ## Exact Next Actions
 
-1. **Continue the search.** It stopped on its 30-generation budget with a stall count of 1,
-   not on structural convergence — the frontier was still moving. The state resumes exactly:
-   `python3 scripts/search/run_representation_search.py --generations 20`.
-2. **Enlarge the corpus** if the frontier keeps moving. Two more campaigns over untouched
-   Mathlib files would roughly double it again; 50,000 at this fidelity needs ~80.
-3. **Design the model experiment** on the six finalists: matched envelope (`FM-001`), the six
-   lexical controls (`FM-003`), and a task that does not saturate (`FM-010`). Frozen
-   inference first.
+1. **Decide whether to read `SEALED_FINAL_V2`.** The search has converged and the seal has
+   been read zero times, so the precondition its policy names is met. Reading it is a
+   one-shot, irreversible act — after it, no frontier chosen with knowledge of the result is
+   being tested against data that never influenced it. It should be read once, on these seven
+   finalists, through `sealed_service.py`, and only on an explicit decision to do so.
+2. **Re-measure the previous run's space-growth claim.** `FM-033` shows that the 42 -> 55
+   axes / 1.548e26 points figure counted duplicate axes as new dimensions. It should not be
+   repeated without re-measurement.
+3. **Consider revising the meta-designer brief.** Its worked example is `dependency_capsule`,
+   and the backends copied that shape 205 times. The duplicate gate makes this harmless but
+   wasteful; changing the brief would change what the backends propose and should be a
+   recorded decision, not a side effect.
+4. **Design the model experiment** on the seven finalists: matched envelope (`FM-001`), the
+   six lexical controls (`FM-003`), and a task that does not saturate (`FM-010`). Frozen
+   inference first. Ask before any paid GPU run.

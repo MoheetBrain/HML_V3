@@ -58,6 +58,7 @@ class CorpusSplit:
     validation: list[dict[str, Any]]
     sealed: list[dict[str, Any]]
     families: dict[str, str]
+    split_key: str = SPLIT_KEY
 
     def manifest(self) -> dict[str, Any]:
         def digest(rows: list[dict[str, Any]]) -> str:
@@ -66,7 +67,7 @@ class CorpusSplit:
             return hashlib.sha256(payload.encode()).hexdigest()
 
         return {
-            "split_key": SPLIT_KEY,
+            "split_key": self.split_key,
             "unit": "MATHLIB_SOURCE_FILE",
             "target_shares": TARGET_SHARES,
             "counts": {
@@ -146,3 +147,43 @@ class SealedEvaluator:
             with self._log_path.open("a", encoding="utf-8") as handle:
                 handle.write(json.dumps(self.access_log[-1], sort_keys=True) + "\n")
         return result
+
+
+# ------------------------------------------------------------- the already-sealed pool
+
+#: A distinct key, so a pool split can never be mistaken for the three-way split above and
+#: no family can land in the same bucket by coincidence of hashing.
+POOL_SPLIT_KEY = "hml-v3-search-pool-v2-dev-validation"
+POOL_DEV_SHARE = 0.80
+
+
+def _pool_bucket(family: str) -> float:
+    digest = hashlib.sha256(f"{POOL_SPLIT_KEY}|{family}".encode()).hexdigest()
+    return int(digest[:16], 16) / float(1 << 64)
+
+
+def split_search_pool(transitions: Iterable[dict[str, Any]]) -> CorpusSplit:
+    """Split a pool whose seal has *already* been removed into dev and validation only.
+
+    :func:`split_corpus` reserves 20% for a sealed split it computes itself. Applying it to
+    ``search_pool_v2`` would be wrong twice over: the real seal, ``SEALED_FINAL_V2``, already
+    lives in its own file, and the 20% it withheld would be the multi-goal structure that was
+    acquired specifically to make goal-ordering measurable — withheld for a second seal that
+    nothing would ever read.
+
+    Family-level partitioning is preserved exactly: two transitions from one Mathlib module
+    never straddle the dev/validation boundary, so a candidate tuned on one sibling lemma is
+    not validated on another.
+    """
+
+    dev: list[dict[str, Any]] = []
+    validation: list[dict[str, Any]] = []
+    families: dict[str, str] = {}
+    for transition in transitions:
+        family = family_of(transition)
+        split = families.setdefault(
+            family, DEV if _pool_bucket(family) < POOL_DEV_SHARE else VALIDATION)
+        (dev if split == DEV else validation).append(transition)
+    for bucket in (dev, validation):
+        bucket.sort(key=lambda row: row["transition_id"])
+    return CorpusSplit(dev, validation, [], families, split_key=POOL_SPLIT_KEY)

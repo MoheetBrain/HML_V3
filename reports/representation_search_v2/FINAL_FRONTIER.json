@@ -1,19 +1,23 @@
 {
-  "axes_after": 55,
+  "axes_after": 47,
   "axes_before": 42,
   "backends": {
     "deterministic": {
-      "accepted": 315,
+      "accepted": 1527,
       "rejected": 0
     },
     "llm/ollama:gemma3:4b": {
-      "accepted": 69,
-      "rejected": 85
+      "accepted": 508,
+      "rejected": 623
+    },
+    "llm/ollama:qwen38-rvn:latest": {
+      "accepted": 372,
+      "rejected": 527
     }
   },
-  "candidates_evaluated": 201,
-  "candidates_killed": 14,
-  "candidates_registered": 255,
+  "candidates_evaluated": 531,
+  "candidates_killed": 33,
+  "candidates_registered": 566,
   "canonical_state_version": "canonical-math-transition-v2.0.0",
   "claim_of_universal_optimality": false,
   "compiler_version": "representation-compiler-v1.0.0",
@@ -23,12 +27,12 @@
       "finalist": false,
       "label": "SEED_CANONICAL_SEXPR",
       "metrics": {
-        "binder_query_token_distance": 16.32,
-        "binder_use_distance_tokens": 264.8764,
-        "bpe_tokens_per_transition": 7417.7857,
-        "dependency_query_token_distance": 45.0333,
-        "identifier_fragmentation": 1.8898,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 26.9556,
+        "binder_use_distance_tokens": 347.0018,
+        "bpe_tokens_per_transition": 8655.4062,
+        "dependency_query_token_distance": 33.1889,
+        "detect_drop_field": 0.0,
+        "identifier_fragmentation": 1.9265
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -38,12 +42,12 @@
       "finalist": false,
       "label": "SEED_DELTA_FIRST",
       "metrics": {
-        "binder_query_token_distance": 160.6667,
-        "binder_use_distance_tokens": 270.8886,
-        "bpe_tokens_per_transition": 7825.2857,
-        "dependency_query_token_distance": 17.1222,
-        "identifier_fragmentation": 1.953,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 349.0333,
+        "binder_use_distance_tokens": 337.9445,
+        "bpe_tokens_per_transition": 9106.9375,
+        "dependency_query_token_distance": 16.4,
+        "detect_drop_field": 0.4167,
+        "identifier_fragmentation": 1.9807
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -53,12 +57,12 @@
       "finalist": false,
       "label": "SEED_DEPENDENCY_TOPOLOGICAL",
       "metrics": {
-        "binder_query_token_distance": 19.5733,
-        "binder_use_distance_tokens": 282.2461,
-        "bpe_tokens_per_transition": 7825.2857,
-        "dependency_query_token_distance": 53.1889,
-        "identifier_fragmentation": 1.953,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 31.0333,
+        "binder_use_distance_tokens": 367.8945,
+        "bpe_tokens_per_transition": 9106.9375,
+        "dependency_query_token_distance": 38.4556,
+        "detect_drop_field": 0.6667,
+        "identifier_fragmentation": 1.9807
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -68,12 +72,12 @@
       "finalist": false,
       "label": "SEED_EXPLICIT_REDUNDANT",
       "metrics": {
-        "binder_query_token_distance": 1142.28,
-        "binder_use_distance_tokens": 318.9398,
-        "bpe_tokens_per_transition": 8596.0,
-        "dependency_query_token_distance": 69.1,
-        "identifier_fragmentation": 1.9596,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 1331.0889,
+        "binder_use_distance_tokens": 409.6979,
+        "bpe_tokens_per_transition": 9985.9062,
+        "dependency_query_token_distance": 56.6111,
+        "detect_drop_field": 0.3333,
+        "identifier_fragmentation": 1.9753
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -83,12 +87,12 @@
       "finalist": false,
       "label": "SEED_GOAL_LOCAL",
       "metrics": {
-        "binder_query_token_distance": 160.7867,
-        "binder_use_distance_tokens": 298.2938,
-        "bpe_tokens_per_transition": 8052.1071,
-        "dependency_query_token_distance": 15.5667,
-        "identifier_fragmentation": 1.9401,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 347.2444,
+        "binder_use_distance_tokens": 365.2975,
+        "bpe_tokens_per_transition": 9371.1875,
+        "dependency_query_token_distance": 17.1667,
+        "detect_drop_field": 0.5417,
+        "identifier_fragmentation": 1.9694
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -98,12 +102,12 @@
       "finalist": false,
       "label": "SEED_GRAPH_EDGE",
       "metrics": {
-        "binder_query_token_distance": 17.1333,
-        "binder_use_distance_tokens": 254.5233,
-        "bpe_tokens_per_transition": 8297.0,
-        "dependency_query_token_distance": 47.2,
-        "identifier_fragmentation": 1.8833,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 28.2333,
+        "binder_use_distance_tokens": 353.6051,
+        "bpe_tokens_per_transition": 9692.5312,
+        "dependency_query_token_distance": 34.2556,
+        "detect_drop_field": 0.0,
+        "identifier_fragmentation": 1.9242
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -113,12 +117,12 @@
       "finalist": false,
       "label": "SEED_HEADER_PREMISE",
       "metrics": {
-        "binder_query_token_distance": 19.5733,
-        "binder_use_distance_tokens": 273.618,
-        "bpe_tokens_per_transition": 7828.2857,
-        "dependency_query_token_distance": 53.1889,
-        "identifier_fragmentation": 1.9523,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 31.0333,
+        "binder_use_distance_tokens": 363.7746,
+        "bpe_tokens_per_transition": 9109.9375,
+        "dependency_query_token_distance": 38.4556,
+        "detect_drop_field": 0.7083,
+        "identifier_fragmentation": 1.98
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -128,12 +132,12 @@
       "finalist": false,
       "label": "SEED_HYBRID_COMPACT_BLOCK",
       "metrics": {
-        "binder_query_token_distance": 20.4933,
-        "binder_use_distance_tokens": 260.6044,
-        "bpe_tokens_per_transition": 7227.6071,
-        "dependency_query_token_distance": 49.5778,
-        "identifier_fragmentation": 1.9964,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 31.6778,
+        "binder_use_distance_tokens": 334.9638,
+        "bpe_tokens_per_transition": 8347.5,
+        "dependency_query_token_distance": 35.5667,
+        "detect_drop_field": 0.6667,
+        "identifier_fragmentation": 2.0508
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -143,12 +147,12 @@
       "finalist": false,
       "label": "SEED_HYBRID_LOCAL_DAG",
       "metrics": {
-        "binder_query_token_distance": 19.88,
-        "binder_use_distance_tokens": 207.4038,
-        "bpe_tokens_per_transition": 18642.4643,
-        "dependency_query_token_distance": 100.0111,
-        "identifier_fragmentation": 1.8555,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 27.6778,
+        "binder_use_distance_tokens": 255.67,
+        "bpe_tokens_per_transition": 22618.4375,
+        "dependency_query_token_distance": 55.1889,
+        "detect_drop_field": 0.4583,
+        "identifier_fragmentation": 1.9009
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -158,12 +162,12 @@
       "finalist": false,
       "label": "SEED_HYBRID_RPN_MACHINE",
       "metrics": {
-        "binder_query_token_distance": 21.4,
-        "binder_use_distance_tokens": 228.5816,
-        "bpe_tokens_per_transition": 6357.1786,
-        "dependency_query_token_distance": 45.4556,
-        "identifier_fragmentation": 2.0791,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 32.0,
+        "binder_use_distance_tokens": 292.3704,
+        "bpe_tokens_per_transition": 7321.5625,
+        "dependency_query_token_distance": 35.6111,
+        "detect_drop_field": 0.6667,
+        "identifier_fragmentation": 2.1406
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -173,12 +177,12 @@
       "finalist": false,
       "label": "SEED_JSON_BASELINE",
       "metrics": {
-        "binder_query_token_distance": 18.32,
-        "binder_use_distance_tokens": 276.6425,
-        "bpe_tokens_per_transition": 7683.3571,
-        "dependency_query_token_distance": 51.3333,
-        "identifier_fragmentation": 1.9492,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 29.3222,
+        "binder_use_distance_tokens": 365.6345,
+        "bpe_tokens_per_transition": 8955.9375,
+        "dependency_query_token_distance": 37.9444,
+        "detect_drop_field": 0.0,
+        "identifier_fragmentation": 1.9773
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -188,12 +192,12 @@
       "finalist": false,
       "label": "SEED_LEAN_LIKE",
       "metrics": {
-        "binder_query_token_distance": 48.4267,
-        "binder_use_distance_tokens": 354.2384,
-        "bpe_tokens_per_transition": 9550.9643,
-        "dependency_query_token_distance": 66.7444,
-        "identifier_fragmentation": 2.1656,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 93.8111,
+        "binder_use_distance_tokens": 452.2167,
+        "bpe_tokens_per_transition": 11623.0,
+        "dependency_query_token_distance": 69.3111,
+        "detect_drop_field": 0.5417,
+        "identifier_fragmentation": 2.2059
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -203,12 +207,12 @@
       "finalist": false,
       "label": "SEED_MINIMAL_MACHINE",
       "metrics": {
-        "binder_query_token_distance": 17.0533,
-        "binder_use_distance_tokens": 240.9075,
-        "bpe_tokens_per_transition": 6521.3929,
-        "dependency_query_token_distance": 42.1333,
-        "identifier_fragmentation": 1.948,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 27.8111,
+        "binder_use_distance_tokens": 307.4071,
+        "bpe_tokens_per_transition": 7466.625,
+        "dependency_query_token_distance": 30.5667,
+        "detect_drop_field": 0.0,
+        "identifier_fragmentation": 1.9547
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -218,12 +222,12 @@
       "finalist": false,
       "label": "SEED_PRIOR_HML",
       "metrics": {
-        "binder_query_token_distance": 19.5733,
-        "binder_use_distance_tokens": 282.2461,
-        "bpe_tokens_per_transition": 7825.2857,
-        "dependency_query_token_distance": 53.1889,
-        "identifier_fragmentation": 1.953,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 31.0333,
+        "binder_use_distance_tokens": 367.8945,
+        "bpe_tokens_per_transition": 9106.9375,
+        "dependency_query_token_distance": 38.4556,
+        "detect_drop_field": 0.6667,
+        "identifier_fragmentation": 1.9807
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -233,12 +237,12 @@
       "finalist": false,
       "label": "SEED_STRUCTURED_ENGLISH",
       "metrics": {
-        "binder_query_token_distance": 45.48,
-        "binder_use_distance_tokens": 343.51,
-        "bpe_tokens_per_transition": 9295.8929,
-        "dependency_query_token_distance": 62.7556,
-        "identifier_fragmentation": 2.0506,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 88.9,
+        "binder_use_distance_tokens": 439.7644,
+        "bpe_tokens_per_transition": 11346.5,
+        "dependency_query_token_distance": 66.5111,
+        "detect_drop_field": 0.0,
+        "identifier_fragmentation": 2.1052
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -248,12 +252,12 @@
       "finalist": false,
       "label": "SEED_TYPED_AST",
       "metrics": {
-        "binder_query_token_distance": 20.8133,
-        "binder_use_distance_tokens": 328.2027,
-        "bpe_tokens_per_transition": 9126.5357,
-        "dependency_query_token_distance": 57.7778,
-        "identifier_fragmentation": 1.8898,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 31.7778,
+        "binder_use_distance_tokens": 436.9613,
+        "bpe_tokens_per_transition": 10654.8438,
+        "dependency_query_token_distance": 41.2667,
+        "detect_drop_field": 0.6667,
+        "identifier_fragmentation": 1.9265
       },
       "on_strict_front": false,
       "status": "EVALUATED"
@@ -263,68 +267,183 @@
     {
       "all_metrics": {
         "action_argument_query_ambiguity": 1.0,
-        "action_argument_query_token_distance": 137.4783,
+        "action_argument_query_token_distance": 124.1364,
         "action_argument_query_unanswerable": 0.0,
-        "binder_query_ambiguity": 35.3867,
-        "binder_query_token_distance": 116.4933,
+        "binder_query_ambiguity": 77.4222,
+        "binder_query_token_distance": 33.0667,
         "binder_query_unanswerable": 0.0,
-        "binder_use_distance_chars": 430.7888,
-        "binder_use_distance_tokens": 215.2321,
-        "bpe_tokens_per_transition": 6420.5357,
-        "bytes_per_transition": 13121.8571,
-        "chars_per_transition": 13022.3929,
-        "delta_query_ambiguity": 1.5833,
-        "delta_query_token_distance": 20.2083,
+        "binder_use_distance_chars": 683.1756,
+        "binder_use_distance_tokens": 402.1186,
+        "bpe_tokens_per_transition": 11091.5938,
+        "bytes_per_transition": 18494.3438,
+        "chars_per_transition": 18474.125,
+        "delta_query_ambiguity": 1.7037,
+        "delta_query_token_distance": 23.5185,
         "delta_query_unanswerable": 0.0,
-        "dependency_query_ambiguity": 111.5,
-        "dependency_query_token_distance": 14.4778,
+        "dependency_query_ambiguity": 86.5444,
+        "dependency_query_token_distance": 41.0889,
         "dependency_query_unanswerable": 0.0,
         "detect_corrupt_identity": 1.0,
-        "detect_drop_field": 0.5833,
-        "detect_drop_line": 0.6667,
-        "detect_reorder_scope": 0.913,
-        "detect_swap_records": 0.9167,
+        "detect_drop_field": 0.7083,
+        "detect_drop_line": 0.5833,
+        "detect_reorder_scope": 0.85,
+        "detect_swap_records": 0.75,
         "detect_truncate_tail": 0.0,
-        "forward_reference_rate": 1.0,
-        "goal_query_ambiguity": 5.4091,
-        "goal_query_token_distance": 2.5455,
+        "forward_reference_rate": 0.0,
+        "goal_query_ambiguity": 4.7273,
+        "goal_query_token_distance": 2.1818,
         "goal_query_unanswerable": 0.0,
-        "gzip_bytes_per_transition": 1193.5357,
-        "gzip_ratio": 10.9941,
-        "identifier_fragmentation": 1.8958,
-        "max_reference_span_tokens": 2876.8214,
-        "metavar_query_ambiguity": 0.0,
-        "metavar_query_token_distance": 0.0,
+        "gzip_bytes_per_transition": 1321.9062,
+        "gzip_ratio": 13.9907,
+        "identifier_fragmentation": 1.9207,
+        "max_reference_span_tokens": 5303.2188,
+        "metavar_query_ambiguity": 8.5455,
+        "metavar_query_token_distance": 129.3182,
         "metavar_query_unanswerable": 0.0,
-        "premise_query_ambiguity": 1.5455,
-        "premise_query_token_distance": 62.2727,
+        "premise_query_ambiguity": 5.0,
+        "premise_query_token_distance": 20.2414,
         "premise_query_unanswerable": 0.0,
-        "premise_to_action_distance_tokens": 62.7921,
-        "pretokens_per_transition": 4465.3571,
-        "role_vocabulary_entropy": 3.7729,
-        "role_word_fragmentation": 1.8333,
-        "scope_query_ambiguity": 4.8625,
-        "scope_query_token_distance": 258.3125,
+        "premise_to_action_distance_tokens": 2633.3357,
+        "pretokens_per_transition": 6995.5,
+        "role_vocabulary_entropy": 3.9569,
+        "role_word_fragmentation": 1.3333,
+        "scope_query_ambiguity": 3.8,
+        "scope_query_token_distance": 4464.2111,
         "scope_query_unanswerable": 0.0,
         "semantic_detect_rate": 1.0,
-        "structural_density": 2.9014,
-        "type_query_ambiguity": 45.0417,
-        "type_query_token_distance": 109.1667,
+        "structural_density": 1.7587,
+        "type_query_ambiguity": 45.25,
+        "type_query_token_distance": 446.4853,
         "type_query_unanswerable": 0.0
       },
-      "candidate_id": "R_5b2eb732ac8b",
+      "candidate_id": "R_015b8cd926da",
       "genome": {
         "action_encoding": "SOURCE_PLUS_STRUCTURED",
-        "action_position": "HEADER",
+        "action_position": "BETWEEN_STATES",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "CURRIED_BINARY",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "TYPE_AT_USE",
+        "block_delimiter": "INDENT",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "TYPE_GROUPED",
+        "count_assertions": "NONE",
+        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "TAGGED_NESTED",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "SEMANTIC_ID",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SEMANTIC_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "COMPACT_MNEMONIC",
+        "list_syntax": "BRACKET_COMMA",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "HEADER_BLOCK",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "LOW",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "INDENTED_TREE",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "invented_axes": {},
+      "label": "R_015b8cd926da",
+      "metrics": {
+        "binder_query_token_distance": 33.0667,
+        "binder_use_distance_tokens": 402.1186,
+        "bpe_tokens_per_transition": 11091.5938,
+        "dependency_query_token_distance": 41.0889,
+        "detect_drop_field": 0.7083,
+        "identifier_fragmentation": 1.9207
+      },
+      "origin": "AXIS_MUTATION",
+      "parents": [
+        "R_7f639200eb2e"
+      ],
+      "why_shortlisted": [
+        "best_on:detect_drop_field"
+      ]
+    },
+    {
+      "all_metrics": {
+        "action_argument_query_ambiguity": 1.0,
+        "action_argument_query_token_distance": 110.5,
+        "action_argument_query_unanswerable": 0.0,
+        "binder_query_ambiguity": 74.1222,
+        "binder_query_token_distance": 23.7667,
+        "binder_query_unanswerable": 0.0,
+        "binder_use_distance_chars": 577.1266,
+        "binder_use_distance_tokens": 257.1089,
+        "bpe_tokens_per_transition": 6928.0938,
+        "bytes_per_transition": 15240.4688,
+        "chars_per_transition": 15221.9375,
+        "delta_query_ambiguity": 1.7037,
+        "delta_query_token_distance": 20.5185,
+        "delta_query_unanswerable": 0.0,
+        "dependency_query_ambiguity": 81.1333,
+        "dependency_query_token_distance": 29.3222,
+        "dependency_query_unanswerable": 0.0,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.6667,
+        "detect_drop_line": 0.4167,
+        "detect_reorder_scope": 0.95,
+        "detect_swap_records": 0.6957,
+        "detect_truncate_tail": 0.0,
+        "forward_reference_rate": 0.2835,
+        "goal_query_ambiguity": 4.7273,
+        "goal_query_token_distance": 2.1818,
+        "goal_query_unanswerable": 0.0,
+        "gzip_bytes_per_transition": 1251.4062,
+        "gzip_ratio": 12.1787,
+        "identifier_fragmentation": 1.9254,
+        "max_reference_span_tokens": 3228.2188,
+        "metavar_query_ambiguity": 8.5455,
+        "metavar_query_token_distance": 80.0,
+        "metavar_query_unanswerable": 0.0,
+        "premise_query_ambiguity": 5.0,
+        "premise_query_token_distance": 62.7241,
+        "premise_query_unanswerable": 0.0,
+        "premise_to_action_distance_tokens": 955.6244,
+        "pretokens_per_transition": 5008.0312,
+        "role_vocabulary_entropy": 2.2304,
+        "role_word_fragmentation": 1.1667,
+        "scope_query_ambiguity": 3.8,
+        "scope_query_token_distance": 2681.2333,
+        "scope_query_unanswerable": 0.0,
+        "semantic_detect_rate": 1.0,
+        "structural_density": 2.8588,
+        "type_query_ambiguity": 44.7941,
+        "type_query_token_distance": 292.9706,
+        "type_query_unanswerable": 0.0
+      },
+      "candidate_id": "R_03812c646290",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "BETWEEN_STATES",
         "alpha_normalization": "NORMALIZED",
         "application_style": "CURRIED_BINARY",
         "binder_encoding": "DE_BRUIJN",
         "binder_metadata": "FULL",
         "binder_use_reminder": "SHORT_TAG_AT_USE",
         "block_delimiter": "INDENT",
-        "checksum_policy": "NONE",
+        "checksum_policy": "PER_STATE",
         "const_name_form": "FULL_NAME",
-        "context_order": "DECLARATION_INDEX",
+        "context_order": "TYPE_GROUPED",
         "count_assertions": "NONE",
         "delta_visibility": "EXPLICIT_DELTA_BLOCK",
         "dependency_visibility": "INLINE_REFS",
@@ -332,14 +451,14 @@
         "field_marker": "COLON",
         "glyph_policy": "UNICODE_NATIVE",
         "goal_identity_visibility": "SEMANTIC_ID",
-        "goal_position": "FIRST",
+        "goal_position": "AFTER_CONTEXT",
         "graph_serialization": "DFS_PREORDER",
-        "identity_scheme": "SHORT_ID",
+        "identity_scheme": "SEMANTIC_ID",
         "identity_sigil": "NONE",
         "implicit_argument_visibility": "ALL",
         "keyword_case": "LOWER",
-        "lexicon_register": "MATH_NOTATION",
-        "list_syntax": "BRACKET_COMMA",
+        "lexicon_register": "SYMBOLIC_ROLE",
+        "list_syntax": "SPACE_SEPARATED",
         "literal_form": "TAGGED",
         "local_instance_visibility": "MERGED_INTO_CONTEXT",
         "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
@@ -358,77 +477,76 @@
         "universe_visibility": "FULL"
       },
       "invented_axes": {},
-      "label": "R_5b2eb732ac8b",
+      "label": "R_03812c646290",
       "metrics": {
-        "binder_query_token_distance": 116.4933,
-        "binder_use_distance_tokens": 215.2321,
-        "bpe_tokens_per_transition": 6420.5357,
-        "dependency_query_token_distance": 14.4778,
-        "identifier_fragmentation": 1.8958,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 23.7667,
+        "binder_use_distance_tokens": 257.1089,
+        "bpe_tokens_per_transition": 6928.0938,
+        "dependency_query_token_distance": 29.3222,
+        "detect_drop_field": 0.6667,
+        "identifier_fragmentation": 1.9254
       },
       "origin": "AXIS_MUTATION",
       "parents": [
-        "R_6f447a82bc9f"
+        "R_b0a475abb242"
       ],
       "why_shortlisted": [
-        "best_on:dependency_query_token_distance",
         "knee"
       ]
     },
     {
       "all_metrics": {
         "action_argument_query_ambiguity": 1.0,
-        "action_argument_query_token_distance": 113.8261,
+        "action_argument_query_token_distance": 95.5,
         "action_argument_query_unanswerable": 0.0,
-        "binder_query_ambiguity": 33.6667,
-        "binder_query_token_distance": 18.28,
+        "binder_query_ambiguity": 59.3778,
+        "binder_query_token_distance": 21.5778,
         "binder_query_unanswerable": 0.0,
-        "binder_use_distance_chars": 462.3517,
-        "binder_use_distance_tokens": 211.21,
-        "bpe_tokens_per_transition": 5915.3214,
-        "bytes_per_transition": 12890.3929,
-        "chars_per_transition": 12890.3214,
-        "delta_query_ambiguity": 1.5833,
-        "delta_query_token_distance": 16.4583,
+        "binder_use_distance_chars": 608.9493,
+        "binder_use_distance_tokens": 250.6918,
+        "bpe_tokens_per_transition": 5820.4062,
+        "bytes_per_transition": 13563.2812,
+        "chars_per_transition": 13544.9375,
+        "delta_query_ambiguity": 1.7037,
+        "delta_query_token_distance": 15.4074,
         "delta_query_unanswerable": 0.0,
-        "dependency_query_ambiguity": 109.5889,
-        "dependency_query_token_distance": 37.8222,
+        "dependency_query_ambiguity": 80.2444,
+        "dependency_query_token_distance": 27.7889,
         "dependency_query_unanswerable": 0.0,
         "detect_corrupt_identity": 1.0,
         "detect_drop_field": 0.0,
-        "detect_drop_line": 1.0,
-        "detect_reorder_scope": 0.75,
-        "detect_swap_records": 0.875,
+        "detect_drop_line": 0.9167,
+        "detect_reorder_scope": 0.625,
+        "detect_swap_records": 0.5833,
         "detect_truncate_tail": 0.0,
         "forward_reference_rate": 0.0,
-        "goal_query_ambiguity": 5.4091,
-        "goal_query_token_distance": 1.9091,
+        "goal_query_ambiguity": 4.7273,
+        "goal_query_token_distance": 2.1818,
         "goal_query_unanswerable": 0.0,
-        "gzip_bytes_per_transition": 1125.0,
-        "gzip_ratio": 11.4581,
-        "identifier_fragmentation": 1.8852,
-        "max_reference_span_tokens": 2772.6429,
-        "metavar_query_ambiguity": 0.0,
-        "metavar_query_token_distance": 0.0,
+        "gzip_bytes_per_transition": 1177.375,
+        "gzip_ratio": 11.5199,
+        "identifier_fragmentation": 1.9347,
+        "max_reference_span_tokens": 2746.6875,
+        "metavar_query_ambiguity": 8.5455,
+        "metavar_query_token_distance": 60.4545,
         "metavar_query_unanswerable": 0.0,
-        "premise_query_ambiguity": 1.5455,
-        "premise_query_token_distance": 52.1818,
+        "premise_query_ambiguity": 4.6207,
+        "premise_query_token_distance": 50.7241,
         "premise_query_unanswerable": 0.0,
-        "premise_to_action_distance_tokens": 419.6905,
-        "pretokens_per_transition": 4424.2143,
-        "role_vocabulary_entropy": 4.1324,
-        "role_word_fragmentation": 1.3333,
-        "scope_query_ambiguity": 4.8625,
-        "scope_query_token_distance": 1807.5625,
+        "premise_to_action_distance_tokens": 612.1806,
+        "pretokens_per_transition": 4472.8125,
+        "role_vocabulary_entropy": 2.048,
+        "role_word_fragmentation": 1.1667,
+        "scope_query_ambiguity": 3.8,
+        "scope_query_token_distance": 2112.9222,
         "scope_query_unanswerable": 0.0,
-        "semantic_detect_rate": 1.0,
-        "structural_density": 0.7891,
-        "type_query_ambiguity": 42.625,
-        "type_query_token_distance": 17.4583,
+        "semantic_detect_rate": 0.9899,
+        "structural_density": 0.7195,
+        "type_query_ambiguity": 35.3382,
+        "type_query_token_distance": 16.5588,
         "type_query_unanswerable": 0.0
       },
-      "candidate_id": "R_000441b08de4",
+      "candidate_id": "R_159628756bc5",
       "genome": {
         "action_encoding": "SOURCE_PLUS_STRUCTURED",
         "action_position": "BETWEEN_STATES",
@@ -443,18 +561,135 @@
         "context_order": "DECLARATION_INDEX",
         "count_assertions": "NONE",
         "delta_visibility": "EXPLICIT_DELTA_BLOCK",
-        "dependency_visibility": "EXPLICIT_EDGES",
+        "dependency_visibility": "INLINE_REFS",
         "expression_notation": "POSTFIX_RPN",
         "field_marker": "COLON",
         "glyph_policy": "UNICODE_NATIVE",
         "goal_identity_visibility": "SEMANTIC_ID",
         "goal_position": "AFTER_CONTEXT",
-        "graph_serialization": "NODE_LIST_THEN_EDGES",
-        "identity_scheme": "SHORT_ID",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SEMANTIC_ID",
         "identity_sigil": "NONE",
         "implicit_argument_visibility": "ALL",
         "keyword_case": "LOWER",
-        "lexicon_register": "COMPACT_MNEMONIC",
+        "lexicon_register": "SYMBOLIC_ROLE",
+        "list_syntax": "SPACE_SEPARATED",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "ADJACENT_TO_ACTION",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "LOW",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "TAGGED_LINE",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "invented_axes": {
+        "dependency_capsule": "GOAL_LOCAL"
+      },
+      "label": "R_159628756bc5",
+      "metrics": {
+        "binder_query_token_distance": 21.5778,
+        "binder_use_distance_tokens": 250.6918,
+        "bpe_tokens_per_transition": 5820.4062,
+        "dependency_query_token_distance": 27.7889,
+        "detect_drop_field": 0.0,
+        "identifier_fragmentation": 1.9347
+      },
+      "origin": "INVENTED_AXIS",
+      "parents": [
+        "R_68c4ee719254"
+      ],
+      "why_shortlisted": [
+        "best_on:bpe_tokens_per_transition"
+      ]
+    },
+    {
+      "all_metrics": {
+        "action_argument_query_ambiguity": 1.0,
+        "action_argument_query_token_distance": 95.5,
+        "action_argument_query_unanswerable": 0.0,
+        "binder_query_ambiguity": 74.1222,
+        "binder_query_token_distance": 20.4,
+        "binder_query_unanswerable": 0.0,
+        "binder_use_distance_chars": 613.9298,
+        "binder_use_distance_tokens": 253.5139,
+        "bpe_tokens_per_transition": 6483.0312,
+        "bytes_per_transition": 15059.5625,
+        "chars_per_transition": 15041.0312,
+        "delta_query_ambiguity": 1.7037,
+        "delta_query_token_distance": 15.4074,
+        "delta_query_unanswerable": 0.0,
+        "dependency_query_ambiguity": 81.1333,
+        "dependency_query_token_distance": 27.7889,
+        "dependency_query_unanswerable": 0.0,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.0,
+        "detect_drop_line": 0.6667,
+        "detect_reorder_scope": 0.4167,
+        "detect_swap_records": 0.5417,
+        "detect_truncate_tail": 0.0,
+        "forward_reference_rate": 0.0,
+        "goal_query_ambiguity": 4.7273,
+        "goal_query_token_distance": 2.1818,
+        "goal_query_unanswerable": 0.0,
+        "gzip_bytes_per_transition": 1231.625,
+        "gzip_ratio": 12.2274,
+        "identifier_fragmentation": 1.924,
+        "max_reference_span_tokens": 2863.0625,
+        "metavar_query_ambiguity": 8.5455,
+        "metavar_query_token_distance": 74.0,
+        "metavar_query_unanswerable": 0.0,
+        "premise_query_ambiguity": 5.0,
+        "premise_query_token_distance": 50.7241,
+        "premise_query_unanswerable": 0.0,
+        "premise_to_action_distance_tokens": 789.1503,
+        "pretokens_per_transition": 4989.4688,
+        "role_vocabulary_entropy": 2.1705,
+        "role_word_fragmentation": 1.1667,
+        "scope_query_ambiguity": 3.8,
+        "scope_query_token_distance": 2832.3667,
+        "scope_query_unanswerable": 0.0,
+        "semantic_detect_rate": 1.0,
+        "structural_density": 0.8508,
+        "type_query_ambiguity": 44.7941,
+        "type_query_token_distance": 16.5588,
+        "type_query_unanswerable": 0.0
+      },
+      "candidate_id": "R_21f62bd82c7e",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "BETWEEN_STATES",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "CURRIED_BINARY",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "SHORT_TAG_AT_USE",
+        "block_delimiter": "INDENT",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "DECLARATION_INDEX",
+        "count_assertions": "NONE",
+        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "POSTFIX_RPN",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "SEMANTIC_ID",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SEMANTIC_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "SYMBOLIC_ROLE",
         "list_syntax": "SPACE_SEPARATED",
         "literal_form": "TAGGED",
         "local_instance_visibility": "MERGED_INTO_CONTEXT",
@@ -474,133 +709,18 @@
         "universe_visibility": "FULL"
       },
       "invented_axes": {},
-      "label": "R_000441b08de4",
+      "label": "R_21f62bd82c7e",
       "metrics": {
-        "binder_query_token_distance": 18.28,
-        "binder_use_distance_tokens": 211.21,
-        "bpe_tokens_per_transition": 5915.3214,
-        "dependency_query_token_distance": 37.8222,
-        "identifier_fragmentation": 1.8852,
-        "semantic_detect_rate": 1.0
-      },
-      "origin": "AXIS_MUTATION",
-      "parents": [
-        "R_25fbb98544f8"
-      ],
-      "why_shortlisted": [
-        "best_on:semantic_detect_rate"
-      ]
-    },
-    {
-      "all_metrics": {
-        "action_argument_query_ambiguity": 0.0,
-        "action_argument_query_token_distance": 0.0,
-        "action_argument_query_unanswerable": 1.0,
-        "binder_query_ambiguity": 33.96,
-        "binder_query_token_distance": 16.3067,
-        "binder_query_unanswerable": 0.0,
-        "binder_use_distance_chars": 511.5723,
-        "binder_use_distance_tokens": 254.4619,
-        "bpe_tokens_per_transition": 7144.5357,
-        "bytes_per_transition": 14346.7143,
-        "chars_per_transition": 14346.6429,
-        "delta_query_ambiguity": 0.0,
-        "delta_query_token_distance": 0.0,
-        "delta_query_unanswerable": 1.0,
-        "dependency_query_ambiguity": 109.8,
-        "dependency_query_token_distance": 43.6111,
-        "dependency_query_unanswerable": 0.0,
-        "detect_corrupt_identity": 1.0,
+        "binder_query_token_distance": 20.4,
+        "binder_use_distance_tokens": 253.5139,
+        "bpe_tokens_per_transition": 6483.0312,
+        "dependency_query_token_distance": 27.7889,
         "detect_drop_field": 0.0,
-        "detect_drop_line": 0.875,
-        "detect_reorder_scope": 0.625,
-        "detect_swap_records": 0.8696,
-        "detect_truncate_tail": 0.0,
-        "forward_reference_rate": 0.0,
-        "goal_query_ambiguity": 5.4091,
-        "goal_query_token_distance": 1.2727,
-        "goal_query_unanswerable": 0.0,
-        "gzip_bytes_per_transition": 1139.5,
-        "gzip_ratio": 12.5904,
-        "identifier_fragmentation": 1.8925,
-        "max_reference_span_tokens": 3304.0357,
-        "metavar_query_ambiguity": 0.0,
-        "metavar_query_token_distance": 0.0,
-        "metavar_query_unanswerable": 0.0,
-        "premise_query_ambiguity": 1.5455,
-        "premise_query_token_distance": 52.2727,
-        "premise_query_unanswerable": 0.0,
-        "premise_to_action_distance_tokens": 508.0037,
-        "pretokens_per_transition": 5726.9643,
-        "role_vocabulary_entropy": 3.9484,
-        "role_word_fragmentation": 1.3333,
-        "scope_query_ambiguity": 4.8625,
-        "scope_query_token_distance": 2213.0875,
-        "scope_query_unanswerable": 0.0,
-        "semantic_detect_rate": 1.0,
-        "structural_density": 0.6913,
-        "type_query_ambiguity": 42.625,
-        "type_query_token_distance": 20.7917,
-        "type_query_unanswerable": 0.0
-      },
-      "candidate_id": "R_01d4e489af53",
-      "genome": {
-        "action_encoding": "SOURCE_PLUS_STRUCTURED",
-        "action_position": "BETWEEN_STATES",
-        "alpha_normalization": "NORMALIZED",
-        "application_style": "CURRIED_BINARY",
-        "binder_encoding": "DE_BRUIJN",
-        "binder_metadata": "FULL",
-        "binder_use_reminder": "NONE",
-        "block_delimiter": "INDENT",
-        "checksum_policy": "NONE",
-        "const_name_form": "FULL_NAME",
-        "context_order": "DECLARATION_INDEX",
-        "count_assertions": "NONE",
-        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
-        "dependency_visibility": "INLINE_REFS",
-        "expression_notation": "SEXPR_PREFIX",
-        "field_marker": "COLON",
-        "glyph_policy": "UNICODE_NATIVE",
-        "goal_identity_visibility": "SEMANTIC_ID",
-        "goal_position": "AFTER_CONTEXT",
-        "graph_serialization": "DFS_PREORDER",
-        "identity_scheme": "SEMANTIC_ID",
-        "identity_sigil": "NONE",
-        "implicit_argument_visibility": "ALL",
-        "keyword_case": "LOWER",
-        "lexicon_register": "COMPACT_MNEMONIC",
-        "list_syntax": "BRACKET_COMMA",
-        "literal_form": "BARE",
-        "local_instance_visibility": "MERGED_INTO_CONTEXT",
-        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
-        "premise_locality": "TRAILING_BLOCK",
-        "provenance_visibility": "IDENTITY_ONLY",
-        "record_separator": "NEWLINE",
-        "redundancy_level": "NONE",
-        "role_word_length": "FULL",
-        "scope_metadata": "IMPLICIT_BY_NESTING",
-        "shared_subterm_handling": "DUPLICATE",
-        "state_partitioning": "BEFORE_AFTER_FULL",
-        "syntax_family": "SEXPR",
-        "tree_vs_graph_projection": "TREE_NESTED",
-        "type_attachment": "TYPE_FIELD",
-        "type_explicitness": "FULL_TREE",
-        "universe_visibility": "FULL"
-      },
-      "invented_axes": {},
-      "label": "R_01d4e489af53",
-      "metrics": {
-        "binder_query_token_distance": 16.3067,
-        "binder_use_distance_tokens": 254.4619,
-        "bpe_tokens_per_transition": 7144.5357,
-        "dependency_query_token_distance": 43.6111,
-        "identifier_fragmentation": 1.8925,
-        "semantic_detect_rate": 1.0
+        "identifier_fragmentation": 1.924
       },
       "origin": "AXIS_MUTATION",
       "parents": [
-        "R_4ca0cdaf5d9a"
+        "R_68c4ee719254"
       ],
       "why_shortlisted": [
         "best_on:binder_query_token_distance"
@@ -608,57 +728,172 @@
     },
     {
       "all_metrics": {
-        "action_argument_query_ambiguity": 1.0,
-        "action_argument_query_token_distance": 135.4783,
-        "action_argument_query_unanswerable": 0.0,
-        "binder_query_ambiguity": 68.36,
-        "binder_query_token_distance": 20.1067,
+        "action_argument_query_ambiguity": 0.0,
+        "action_argument_query_token_distance": 0.0,
+        "action_argument_query_unanswerable": 1.0,
+        "binder_query_ambiguity": 77.3444,
+        "binder_query_token_distance": 30.2667,
         "binder_query_unanswerable": 0.0,
-        "binder_use_distance_chars": 375.6846,
-        "binder_use_distance_tokens": 205.1331,
-        "bpe_tokens_per_transition": 18552.4643,
-        "bytes_per_transition": 35236.1071,
-        "chars_per_transition": 35236.0357,
-        "delta_query_ambiguity": 1.5833,
-        "delta_query_token_distance": 18.625,
-        "delta_query_unanswerable": 0.0,
-        "dependency_query_ambiguity": 224.9333,
-        "dependency_query_token_distance": 95.1667,
+        "binder_use_distance_chars": 731.196,
+        "binder_use_distance_tokens": 396.4963,
+        "bpe_tokens_per_transition": 10982.5625,
+        "bytes_per_transition": 19664.5938,
+        "chars_per_transition": 19644.375,
+        "delta_query_ambiguity": 0.0,
+        "delta_query_token_distance": 0.0,
+        "delta_query_unanswerable": 1.0,
+        "dependency_query_ambiguity": 86.2556,
+        "dependency_query_token_distance": 42.2667,
         "dependency_query_unanswerable": 0.0,
         "detect_corrupt_identity": 1.0,
-        "detect_drop_field": 0.0417,
-        "detect_drop_line": 0.2917,
-        "detect_reorder_scope": 0.625,
-        "detect_swap_records": 0.4583,
+        "detect_drop_field": 0.0,
+        "detect_drop_line": 0.5833,
+        "detect_reorder_scope": 0.4348,
+        "detect_swap_records": 0.4167,
         "detect_truncate_tail": 0.0,
-        "forward_reference_rate": 0.5497,
-        "goal_query_ambiguity": 5.4091,
-        "goal_query_token_distance": 1.9091,
+        "forward_reference_rate": 0.2842,
+        "goal_query_ambiguity": 4.7273,
+        "goal_query_token_distance": 2.1818,
         "goal_query_unanswerable": 0.0,
-        "gzip_bytes_per_transition": 1998.9643,
-        "gzip_ratio": 17.6272,
-        "identifier_fragmentation": 1.8218,
-        "max_reference_span_tokens": 5126.3214,
-        "metavar_query_ambiguity": 0.0,
-        "metavar_query_token_distance": 0.0,
+        "gzip_bytes_per_transition": 1428.8438,
+        "gzip_ratio": 13.7626,
+        "identifier_fragmentation": 1.7983,
+        "max_reference_span_tokens": 5218.4375,
+        "metavar_query_ambiguity": 8.5455,
+        "metavar_query_token_distance": 123.3182,
         "metavar_query_unanswerable": 0.0,
-        "premise_query_ambiguity": 3.0,
-        "premise_query_token_distance": 60.2727,
+        "premise_query_ambiguity": 5.0,
+        "premise_query_token_distance": 17.2414,
         "premise_query_unanswerable": 0.0,
-        "premise_to_action_distance_tokens": 1280.8755,
-        "pretokens_per_transition": 13778.6786,
-        "role_vocabulary_entropy": 3.6965,
-        "role_word_fragmentation": 1.1667,
-        "scope_query_ambiguity": 4.8625,
-        "scope_query_token_distance": 10077.7,
+        "premise_to_action_distance_tokens": 2620.0782,
+        "pretokens_per_transition": 7195.6562,
+        "role_vocabulary_entropy": 4.0119,
+        "role_word_fragmentation": 1.3333,
+        "scope_query_ambiguity": 3.8,
+        "scope_query_token_distance": 4442.8889,
         "scope_query_unanswerable": 0.0,
         "semantic_detect_rate": 1.0,
-        "structural_density": 2.7622,
-        "type_query_ambiguity": 99.0417,
-        "type_query_token_distance": 1276.0,
+        "structural_density": 0.5113,
+        "type_query_ambiguity": 45.25,
+        "type_query_token_distance": 444.7059,
         "type_query_unanswerable": 0.0
       },
-      "candidate_id": "R_101e806690b0",
+      "candidate_id": "R_a7ef0cd3b92e",
+      "genome": {
+        "action_encoding": "SOURCE_PLUS_STRUCTURED",
+        "action_position": "BETWEEN_STATES",
+        "alpha_normalization": "NORMALIZED",
+        "application_style": "CURRIED_BINARY",
+        "binder_encoding": "DE_BRUIJN",
+        "binder_metadata": "FULL",
+        "binder_use_reminder": "TYPE_AT_USE",
+        "block_delimiter": "INDENT",
+        "checksum_policy": "NONE",
+        "const_name_form": "FULL_NAME",
+        "context_order": "TYPE_GROUPED",
+        "count_assertions": "NONE",
+        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
+        "dependency_visibility": "INLINE_REFS",
+        "expression_notation": "TAGGED_NESTED",
+        "field_marker": "COLON",
+        "glyph_policy": "UNICODE_NATIVE",
+        "goal_identity_visibility": "SEMANTIC_ID",
+        "goal_position": "AFTER_CONTEXT",
+        "graph_serialization": "DFS_PREORDER",
+        "identity_scheme": "SHORT_ID",
+        "identity_sigil": "NONE",
+        "implicit_argument_visibility": "ALL",
+        "keyword_case": "LOWER",
+        "lexicon_register": "COMPACT_MNEMONIC",
+        "list_syntax": "BRACKET_COMMA",
+        "literal_form": "TAGGED",
+        "local_instance_visibility": "MERGED_INTO_CONTEXT",
+        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
+        "premise_locality": "HEADER_BLOCK",
+        "provenance_visibility": "IDENTITY_ONLY",
+        "record_separator": "NEWLINE",
+        "redundancy_level": "ERROR_CORRECTING",
+        "role_word_length": "FULL",
+        "scope_metadata": "IMPLICIT_BY_NESTING",
+        "shared_subterm_handling": "DUPLICATE",
+        "state_partitioning": "BEFORE_AFTER_FULL",
+        "syntax_family": "PROSE",
+        "tree_vs_graph_projection": "TREE_NESTED",
+        "type_attachment": "TYPE_FIELD",
+        "type_explicitness": "FULL_TREE",
+        "universe_visibility": "FULL"
+      },
+      "invented_axes": {},
+      "label": "R_a7ef0cd3b92e",
+      "metrics": {
+        "binder_query_token_distance": 30.2667,
+        "binder_use_distance_tokens": 396.4963,
+        "bpe_tokens_per_transition": 10982.5625,
+        "dependency_query_token_distance": 42.2667,
+        "detect_drop_field": 0.0,
+        "identifier_fragmentation": 1.7983
+      },
+      "origin": "AXIS_MUTATION",
+      "parents": [
+        "R_c8be27b9f6e7"
+      ],
+      "why_shortlisted": [
+        "best_on:identifier_fragmentation"
+      ]
+    },
+    {
+      "all_metrics": {
+        "action_argument_query_ambiguity": 1.0,
+        "action_argument_query_token_distance": 110.5,
+        "action_argument_query_unanswerable": 0.0,
+        "binder_query_ambiguity": 129.1889,
+        "binder_query_token_distance": 23.7667,
+        "binder_query_unanswerable": 0.0,
+        "binder_use_distance_chars": 423.9693,
+        "binder_use_distance_tokens": 199.5784,
+        "bpe_tokens_per_transition": 17023.5625,
+        "bytes_per_transition": 36981.875,
+        "chars_per_transition": 36920.6562,
+        "delta_query_ambiguity": 1.7037,
+        "delta_query_token_distance": 19.5185,
+        "delta_query_unanswerable": 0.0,
+        "dependency_query_ambiguity": 243.2667,
+        "dependency_query_token_distance": 43.4778,
+        "dependency_query_unanswerable": 0.0,
+        "detect_corrupt_identity": 1.0,
+        "detect_drop_field": 0.4583,
+        "detect_drop_line": 0.25,
+        "detect_reorder_scope": 0.619,
+        "detect_swap_records": 0.5833,
+        "detect_truncate_tail": 0.0,
+        "forward_reference_rate": 0.4413,
+        "goal_query_ambiguity": 4.8182,
+        "goal_query_token_distance": 2.1818,
+        "goal_query_unanswerable": 0.0,
+        "gzip_bytes_per_transition": 1962.2812,
+        "gzip_ratio": 18.8464,
+        "identifier_fragmentation": 1.8763,
+        "max_reference_span_tokens": 5681.1875,
+        "metavar_query_ambiguity": 10.5,
+        "metavar_query_token_distance": 594.0909,
+        "metavar_query_unanswerable": 0.0,
+        "premise_query_ambiguity": 10.3103,
+        "premise_query_token_distance": 62.7241,
+        "premise_query_unanswerable": 0.0,
+        "premise_to_action_distance_tokens": 3327.0258,
+        "pretokens_per_transition": 12469.5312,
+        "role_vocabulary_entropy": 2.5222,
+        "role_word_fragmentation": 1.1667,
+        "scope_query_ambiguity": 3.8,
+        "scope_query_token_distance": 9685.4444,
+        "scope_query_unanswerable": 0.0,
+        "semantic_detect_rate": 1.0,
+        "structural_density": 3.2257,
+        "type_query_ambiguity": 102.9412,
+        "type_query_token_distance": 1088.1765,
+        "type_query_unanswerable": 0.0
+      },
+      "candidate_id": "R_bbfdfa5a9249",
       "genome": {
         "action_encoding": "SOURCE_PLUS_STRUCTURED",
         "action_position": "BETWEEN_STATES",
@@ -674,19 +909,19 @@
         "count_assertions": "NONE",
         "delta_visibility": "EXPLICIT_DELTA_BLOCK",
         "dependency_visibility": "INLINE_REFS",
-        "expression_notation": "SEXPR_PREFIX",
-        "field_marker": "ARROW",
+        "expression_notation": "POSTFIX_RPN",
+        "field_marker": "EQUALS",
         "glyph_policy": "UNICODE_NATIVE",
         "goal_identity_visibility": "SEMANTIC_ID",
         "goal_position": "AFTER_CONTEXT",
         "graph_serialization": "DEPENDENCY_LOCAL",
-        "identity_scheme": "SHORT_ID",
+        "identity_scheme": "SEMANTIC_ID",
         "identity_sigil": "NONE",
         "implicit_argument_visibility": "ALL",
         "keyword_case": "LOWER",
         "lexicon_register": "SYMBOLIC_ROLE",
-        "list_syntax": "BRACKET_COMMA",
-        "literal_form": "TAGGED",
+        "list_syntax": "SPACE_SEPARATED",
+        "literal_form": "BARE",
         "local_instance_visibility": "MERGED_INTO_CONTEXT",
         "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
         "premise_locality": "ADJACENT_TO_ACTION",
@@ -701,136 +936,21 @@
         "tree_vs_graph_projection": "HYBRID_NESTED_WITH_EDGES",
         "type_attachment": "TYPE_FIELD",
         "type_explicitness": "FULL_TREE",
-        "universe_visibility": "FULL"
+        "universe_visibility": "ELIDED_WHEN_TRIVIAL"
       },
       "invented_axes": {},
-      "label": "R_101e806690b0",
+      "label": "R_bbfdfa5a9249",
       "metrics": {
-        "binder_query_token_distance": 20.1067,
-        "binder_use_distance_tokens": 205.1331,
-        "bpe_tokens_per_transition": 18552.4643,
-        "dependency_query_token_distance": 95.1667,
-        "identifier_fragmentation": 1.8218,
-        "semantic_detect_rate": 1.0
+        "binder_query_token_distance": 23.7667,
+        "binder_use_distance_tokens": 199.5784,
+        "bpe_tokens_per_transition": 17023.5625,
+        "dependency_query_token_distance": 43.4778,
+        "detect_drop_field": 0.4583,
+        "identifier_fragmentation": 1.8763
       },
       "origin": "AXIS_MUTATION",
       "parents": [
-        "R_9b31f584fdf0"
-      ],
-      "why_shortlisted": [
-        "best_on:identifier_fragmentation"
-      ]
-    },
-    {
-      "all_metrics": {
-        "action_argument_query_ambiguity": 1.0,
-        "action_argument_query_token_distance": 109.7391,
-        "action_argument_query_unanswerable": 0.0,
-        "binder_query_ambiguity": 40.76,
-        "binder_query_token_distance": 17.52,
-        "binder_query_unanswerable": 0.0,
-        "binder_use_distance_chars": 479.6818,
-        "binder_use_distance_tokens": 193.4081,
-        "bpe_tokens_per_transition": 6440.7857,
-        "bytes_per_transition": 16011.5,
-        "chars_per_transition": 16011.4286,
-        "delta_query_ambiguity": 1.5833,
-        "delta_query_token_distance": 16.0417,
-        "delta_query_unanswerable": 0.0,
-        "dependency_query_ambiguity": 122.0222,
-        "dependency_query_token_distance": 38.6333,
-        "dependency_query_unanswerable": 0.0,
-        "detect_corrupt_identity": 1.0,
-        "detect_drop_field": 0.0,
-        "detect_drop_line": 0.4583,
-        "detect_reorder_scope": 0.4583,
-        "detect_swap_records": 0.75,
-        "detect_truncate_tail": 0.0,
-        "forward_reference_rate": 0.0,
-        "goal_query_ambiguity": 5.4091,
-        "goal_query_token_distance": 2.5455,
-        "goal_query_unanswerable": 0.0,
-        "gzip_bytes_per_transition": 1352.5,
-        "gzip_ratio": 11.8384,
-        "identifier_fragmentation": 1.8833,
-        "max_reference_span_tokens": 2614.75,
-        "metavar_query_ambiguity": 0.0,
-        "metavar_query_token_distance": 0.0,
-        "metavar_query_unanswerable": 0.0,
-        "premise_query_ambiguity": 1.5455,
-        "premise_query_token_distance": 49.2727,
-        "premise_query_unanswerable": 0.0,
-        "premise_to_action_distance_tokens": 953.6291,
-        "pretokens_per_transition": 5198.5,
-        "role_vocabulary_entropy": 3.5995,
-        "role_word_fragmentation": 1.1667,
-        "scope_query_ambiguity": 4.8625,
-        "scope_query_token_distance": 1760.175,
-        "scope_query_unanswerable": 0.0,
-        "semantic_detect_rate": 1.0,
-        "structural_density": 1.4156,
-        "type_query_ambiguity": 42.625,
-        "type_query_token_distance": 20.625,
-        "type_query_unanswerable": 0.0
-      },
-      "candidate_id": "R_28b291b5ebe6",
-      "genome": {
-        "action_encoding": "SOURCE_PLUS_STRUCTURED",
-        "action_position": "TRAILER",
-        "alpha_normalization": "NORMALIZED",
-        "application_style": "CURRIED_BINARY",
-        "binder_encoding": "DE_BRUIJN",
-        "binder_metadata": "FULL",
-        "binder_use_reminder": "NONE",
-        "block_delimiter": "INDENT",
-        "checksum_policy": "NONE",
-        "const_name_form": "FULL_NAME",
-        "context_order": "DECLARATION_INDEX",
-        "count_assertions": "NONE",
-        "delta_visibility": "EXPLICIT_DELTA_BLOCK",
-        "dependency_visibility": "EXPLICIT_EDGES",
-        "expression_notation": "POSTFIX_RPN",
-        "field_marker": "ARROW",
-        "glyph_policy": "UNICODE_NATIVE",
-        "goal_identity_visibility": "SEMANTIC_ID",
-        "goal_position": "AFTER_CONTEXT",
-        "graph_serialization": "NODE_LIST_THEN_EDGES",
-        "identity_scheme": "SEMANTIC_ID",
-        "identity_sigil": "NONE",
-        "implicit_argument_visibility": "ALL",
-        "keyword_case": "LOWER",
-        "lexicon_register": "HUMAN_WORDS",
-        "list_syntax": "BRACKET_COMMA",
-        "literal_form": "TAGGED",
-        "local_instance_visibility": "MERGED_INTO_CONTEXT",
-        "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
-        "premise_locality": "ADJACENT_TO_ACTION",
-        "provenance_visibility": "IDENTITY_ONLY",
-        "record_separator": "NEWLINE",
-        "redundancy_level": "LOW",
-        "role_word_length": "FULL",
-        "scope_metadata": "IMPLICIT_BY_NESTING",
-        "shared_subterm_handling": "DUPLICATE",
-        "state_partitioning": "BEFORE_AFTER_FULL",
-        "syntax_family": "TAGGED_LINE",
-        "tree_vs_graph_projection": "GRAPH_EDGE_LIST",
-        "type_attachment": "TYPE_FIELD",
-        "type_explicitness": "FULL_TREE",
-        "universe_visibility": "FULL"
-      },
-      "invented_axes": {},
-      "label": "R_28b291b5ebe6",
-      "metrics": {
-        "binder_query_token_distance": 17.52,
-        "binder_use_distance_tokens": 193.4081,
-        "bpe_tokens_per_transition": 6440.7857,
-        "dependency_query_token_distance": 38.6333,
-        "identifier_fragmentation": 1.8833,
-        "semantic_detect_rate": 1.0
-      },
-      "origin": "AXIS_MUTATION",
-      "parents": [
-        "R_6c7d83089dd4"
+        "R_b30384608f4d"
       ],
       "why_shortlisted": [
         "best_on:binder_use_distance_tokens"
@@ -838,57 +958,57 @@
     },
     {
       "all_metrics": {
-        "action_argument_query_ambiguity": 0.0,
-        "action_argument_query_token_distance": 0.0,
-        "action_argument_query_unanswerable": 1.0,
-        "binder_query_ambiguity": 33.96,
-        "binder_query_token_distance": 17.0533,
+        "action_argument_query_ambiguity": 1.0,
+        "action_argument_query_token_distance": 95.5,
+        "action_argument_query_unanswerable": 0.0,
+        "binder_query_ambiguity": 59.3778,
+        "binder_query_token_distance": 23.3889,
         "binder_query_unanswerable": 0.0,
-        "binder_use_distance_chars": 438.9368,
-        "binder_use_distance_tokens": 201.218,
-        "bpe_tokens_per_transition": 5658.1429,
-        "bytes_per_transition": 12326.7143,
-        "chars_per_transition": 12326.6429,
-        "delta_query_ambiguity": 0.0,
-        "delta_query_token_distance": 0.0,
-        "delta_query_unanswerable": 1.0,
-        "dependency_query_ambiguity": 109.8,
-        "dependency_query_token_distance": 37.0111,
+        "binder_use_distance_chars": 721.3623,
+        "binder_use_distance_tokens": 292.7435,
+        "bpe_tokens_per_transition": 5820.4062,
+        "bytes_per_transition": 13563.2812,
+        "chars_per_transition": 13544.9375,
+        "delta_query_ambiguity": 1.7037,
+        "delta_query_token_distance": 15.4074,
+        "delta_query_unanswerable": 0.0,
+        "dependency_query_ambiguity": 80.2444,
+        "dependency_query_token_distance": 11.8444,
         "dependency_query_unanswerable": 0.0,
         "detect_corrupt_identity": 1.0,
         "detect_drop_field": 0.0,
-        "detect_drop_line": 0.875,
+        "detect_drop_line": 0.9167,
         "detect_reorder_scope": 0.625,
-        "detect_swap_records": 0.8696,
+        "detect_swap_records": 0.5833,
         "detect_truncate_tail": 0.0,
-        "forward_reference_rate": 0.0,
-        "goal_query_ambiguity": 5.4091,
-        "goal_query_token_distance": 1.2727,
+        "forward_reference_rate": 1.0,
+        "goal_query_ambiguity": 4.7273,
+        "goal_query_token_distance": 2.1818,
         "goal_query_unanswerable": 0.0,
-        "gzip_bytes_per_transition": 1104.2857,
-        "gzip_ratio": 11.1626,
-        "identifier_fragmentation": 1.8925,
-        "max_reference_span_tokens": 2597.0,
-        "metavar_query_ambiguity": 0.0,
-        "metavar_query_token_distance": 0.0,
+        "gzip_bytes_per_transition": 1189.6875,
+        "gzip_ratio": 11.4007,
+        "identifier_fragmentation": 1.9347,
+        "max_reference_span_tokens": 2912.4688,
+        "metavar_query_ambiguity": 8.5455,
+        "metavar_query_token_distance": 60.4545,
         "metavar_query_unanswerable": 0.0,
-        "premise_query_ambiguity": 1.5455,
-        "premise_query_token_distance": 52.2727,
+        "premise_query_ambiguity": 4.6207,
+        "premise_query_token_distance": 50.7241,
         "premise_query_unanswerable": 0.0,
-        "premise_to_action_distance_tokens": 402.1886,
-        "pretokens_per_transition": 4455.1071,
-        "role_vocabulary_entropy": 3.9484,
-        "role_word_fragmentation": 1.3333,
-        "scope_query_ambiguity": 4.8625,
-        "scope_query_token_distance": 1736.975,
+        "premise_to_action_distance_tokens": 873.2929,
+        "pretokens_per_transition": 4472.8125,
+        "role_vocabulary_entropy": 2.048,
+        "role_word_fragmentation": 1.1667,
+        "scope_query_ambiguity": 3.8,
+        "scope_query_token_distance": 683.6778,
         "scope_query_unanswerable": 0.0,
-        "semantic_detect_rate": 1.0,
-        "structural_density": 0.873,
-        "type_query_ambiguity": 42.625,
-        "type_query_token_distance": 16.4167,
+        "semantic_detect_rate": 0.9899,
+        "structural_density": 0.7195,
+        "type_query_ambiguity": 35.3382,
+        "type_query_token_distance": 219.1618,
         "type_query_unanswerable": 0.0
       },
-      "candidate_id": "R_54183872d1bd",
+      "candidate_id": "R_fcd13f8d56a5",
       "genome": {
         "action_encoding": "SOURCE_PLUS_STRUCTURED",
         "action_position": "BETWEEN_STATES",
@@ -905,7 +1025,7 @@
         "delta_visibility": "EXPLICIT_DELTA_BLOCK",
         "dependency_visibility": "INLINE_REFS",
         "expression_notation": "POSTFIX_RPN",
-        "field_marker": "EQUALS",
+        "field_marker": "COLON",
         "glyph_policy": "UNICODE_NATIVE",
         "goal_identity_visibility": "SEMANTIC_ID",
         "goal_position": "AFTER_CONTEXT",
@@ -914,48 +1034,50 @@
         "identity_sigil": "NONE",
         "implicit_argument_visibility": "ALL",
         "keyword_case": "LOWER",
-        "lexicon_register": "COMPACT_MNEMONIC",
-        "list_syntax": "BRACKET_COMMA",
-        "literal_form": "BARE",
+        "lexicon_register": "SYMBOLIC_ROLE",
+        "list_syntax": "SPACE_SEPARATED",
+        "literal_form": "TAGGED",
         "local_instance_visibility": "MERGED_INTO_CONTEXT",
         "obligation_visibility": "EXPLICIT_METAVAR_BLOCK",
         "premise_locality": "ADJACENT_TO_ACTION",
         "provenance_visibility": "IDENTITY_ONLY",
         "record_separator": "NEWLINE",
-        "redundancy_level": "NONE",
+        "redundancy_level": "LOW",
         "role_word_length": "FULL",
         "scope_metadata": "IMPLICIT_BY_NESTING",
         "shared_subterm_handling": "DUPLICATE",
         "state_partitioning": "BEFORE_AFTER_FULL",
-        "syntax_family": "SEXPR",
+        "syntax_family": "TAGGED_LINE",
         "tree_vs_graph_projection": "TREE_NESTED",
         "type_attachment": "TYPE_FIELD",
         "type_explicitness": "FULL_TREE",
         "universe_visibility": "FULL"
       },
-      "invented_axes": {},
-      "label": "R_54183872d1bd",
-      "metrics": {
-        "binder_query_token_distance": 17.0533,
-        "binder_use_distance_tokens": 201.218,
-        "bpe_tokens_per_transition": 5658.1429,
-        "dependency_query_token_distance": 37.0111,
-        "identifier_fragmentation": 1.8925,
-        "semantic_detect_rate": 1.0
+      "invented_axes": {
+        "dependency_capsule": "ACTION_LOCAL"
       },
-      "origin": "AXIS_MUTATION",
+      "label": "R_fcd13f8d56a5",
+      "metrics": {
+        "binder_query_token_distance": 23.3889,
+        "binder_use_distance_tokens": 292.7435,
+        "bpe_tokens_per_transition": 5820.4062,
+        "dependency_query_token_distance": 11.8444,
+        "detect_drop_field": 0.0,
+        "identifier_fragmentation": 1.9347
+      },
+      "origin": "INVENTED_AXIS",
       "parents": [
-        "R_6ee23af2c775"
+        "R_159628756bc5"
       ],
       "why_shortlisted": [
-        "best_on:bpe_tokens_per_transition"
+        "best_on:dependency_query_token_distance"
       ]
     }
   ],
   "generations": [
     {
       "evaluated": 16,
-      "front": 7,
+      "front": 12,
       "generation": 0,
       "killed": 0,
       "ladder": {
@@ -967,168 +1089,435 @@
       },
       "moved": true,
       "new_axes": [
-        "context_signature",
-        "dependency_weight",
-        "record_reorder",
-        "goal_context_depth"
+        "dependency_capsule",
+        "delta_explicitness"
       ],
-      "seconds": 62.329
+      "seconds": 208.479
     },
     {
-      "evaluated": 29,
-      "front": 15,
+      "evaluated": 33,
+      "front": 24,
       "generation": 1,
-      "killed": 5,
+      "killed": 1,
       "ladder": {
-        "compile": 2,
+        "compile": 1,
         "microtests": 0,
-        "passed": 13,
-        "semantics": 3,
-        "static": 13
+        "passed": 17,
+        "semantics": 0,
+        "static": 17
       },
-      "moved": true,
+      "moved": false,
       "new_axes": [
-        "goal_context_signature",
-        "dependency_capsule"
+        "record_reorder"
       ],
-      "seconds": 83.879
+      "seconds": 192.547
     },
     {
-      "evaluated": 41,
-      "front": 25,
+      "evaluated": 38,
+      "front": 29,
       "generation": 2,
       "killed": 1,
       "ladder": {
         "compile": 0,
         "microtests": 0,
-        "passed": 17,
+        "passed": 14,
         "semantics": 1,
-        "static": 17
+        "static": 14
       },
-      "moved": true,
-      "new_axes": [
-        "metavariable_grouping"
-      ],
-      "seconds": 111.443
+      "moved": false,
+      "new_axes": [],
+      "seconds": 184.818
     },
     {
-      "evaluated": 40,
+      "evaluated": 30,
       "front": 24,
       "generation": 3,
       "killed": 0,
       "ladder": {
         "compile": 0,
         "microtests": 0,
-        "passed": 16,
+        "passed": 6,
         "semantics": 0,
-        "static": 16
+        "static": 6
       },
-      "moved": false,
-      "new_axes": [
-        "goal_signature"
-      ],
-      "seconds": 99.128
+      "moved": true,
+      "new_axes": [],
+      "seconds": 237.84
     },
     {
-      "evaluated": 40,
+      "evaluated": 31,
       "front": 22,
       "generation": 4,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 1,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 201.831
+    },
+    {
+      "evaluated": 32,
+      "front": 21,
+      "generation": 5,
       "killed": 0,
       "ladder": {
         "compile": 0,
         "microtests": 0,
-        "passed": 16,
+        "passed": 8,
         "semantics": 0,
-        "static": 16
+        "static": 8
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 201.005
+    },
+    {
+      "evaluated": 30,
+      "front": 24,
+      "generation": 6,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 6,
+        "semantics": 0,
+        "static": 6
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 151.845
+    },
+    {
+      "evaluated": 32,
+      "front": 23,
+      "generation": 7,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 8,
+        "semantics": 0,
+        "static": 8
       },
       "moved": true,
       "new_axes": [],
-      "seconds": 101.039
+      "seconds": 140.456
     },
     {
-      "evaluated": 36,
-      "front": 24,
-      "generation": 5,
-      "killed": 1,
-      "ladder": {
-        "compile": 0,
-        "microtests": 0,
-        "passed": 12,
-        "semantics": 1,
-        "static": 12
-      },
-      "moved": false,
-      "new_axes": [],
-      "seconds": 69.378
-    },
-    {
-      "evaluated": 39,
-      "front": 18,
-      "generation": 6,
-      "killed": 2,
-      "ladder": {
-        "compile": 0,
-        "microtests": 0,
-        "passed": 15,
-        "semantics": 2,
-        "static": 15
-      },
-      "moved": false,
-      "new_axes": [],
-      "seconds": 59.487
-    },
-    {
-      "evaluated": 35,
-      "front": 22,
-      "generation": 7,
-      "killed": 1,
-      "ladder": {
-        "compile": 0,
-        "microtests": 0,
-        "passed": 11,
-        "semantics": 1,
-        "static": 11
-      },
-      "moved": false,
-      "new_axes": [],
-      "seconds": 50.13
-    },
-    {
-      "evaluated": 38,
-      "front": 19,
+      "evaluated": 26,
+      "front": 21,
       "generation": 8,
       "killed": 0,
       "ladder": {
         "compile": 0,
         "microtests": 0,
-        "passed": 14,
+        "passed": 2,
         "semantics": 0,
+        "static": 2
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 103.471
+    },
+    {
+      "evaluated": 25,
+      "front": 19,
+      "generation": 9,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 134.452
+    },
+    {
+      "evaluated": 30,
+      "front": 24,
+      "generation": 10,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 6,
+        "semantics": 1,
+        "static": 6
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 164.543
+    },
+    {
+      "evaluated": 28,
+      "front": 21,
+      "generation": 11,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 4,
+        "semantics": 0,
+        "static": 4
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 117.286
+    },
+    {
+      "evaluated": 29,
+      "front": 23,
+      "generation": 12,
+      "killed": 1,
+      "ladder": {
+        "compile": 1,
+        "microtests": 0,
+        "passed": 5,
+        "semantics": 0,
+        "static": 5
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 155.729
+    },
+    {
+      "evaluated": 31,
+      "front": 20,
+      "generation": 13,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 1,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 153.735
+    },
+    {
+      "evaluated": 38,
+      "front": 18,
+      "generation": 14,
+      "killed": 2,
+      "ladder": {
+        "compile": 1,
+        "microtests": 0,
+        "passed": 14,
+        "semantics": 1,
         "static": 14
       },
       "moved": true,
       "new_axes": [],
-      "seconds": 60.964
+      "seconds": 208.184
     },
     {
-      "evaluated": 38,
+      "evaluated": 31,
+      "front": 19,
+      "generation": 15,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 0,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 172.389
+    },
+    {
+      "evaluated": 32,
+      "front": 20,
+      "generation": 16,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 8,
+        "semantics": 0,
+        "static": 8
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 194.492
+    },
+    {
+      "evaluated": 33,
+      "front": 25,
+      "generation": 17,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 9,
+        "semantics": 0,
+        "static": 9
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 168.589
+    },
+    {
+      "evaluated": 33,
+      "front": 25,
+      "generation": 18,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 9,
+        "semantics": 1,
+        "static": 9
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 164.089
+    },
+    {
+      "evaluated": 31,
       "front": 22,
-      "generation": 9,
+      "generation": 19,
+      "killed": 1,
+      "ladder": {
+        "compile": 1,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 0,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 211.82
+    },
+    {
+      "evaluated": 30,
+      "front": 20,
+      "generation": 20,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 6,
+        "semantics": 0,
+        "static": 6
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 221.64
+    },
+    {
+      "evaluated": 39,
+      "front": 24,
+      "generation": 21,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 15,
+        "semantics": 1,
+        "static": 15
+      },
+      "moved": false,
+      "new_axes": [
+        "field_presence_checksum"
+      ],
+      "seconds": 234.453
+    },
+    {
+      "evaluated": 36,
+      "front": 22,
+      "generation": 22,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 12,
+        "semantics": 1,
+        "static": 12
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 282.19
+    },
+    {
+      "evaluated": 31,
+      "front": 24,
+      "generation": 23,
+      "killed": 1,
+      "ladder": {
+        "compile": 1,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 0,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 144.116
+    },
+    {
+      "evaluated": 30,
+      "front": 25,
+      "generation": 24,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 6,
+        "semantics": 0,
+        "static": 6
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 161.425
+    },
+    {
+      "evaluated": 28,
+      "front": 23,
+      "generation": 25,
+      "killed": 1,
+      "ladder": {
+        "compile": 1,
+        "microtests": 0,
+        "passed": 4,
+        "semantics": 0,
+        "static": 4
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 173.455
+    },
+    {
+      "evaluated": 33,
+      "front": 27,
+      "generation": 26,
       "killed": 2,
       "ladder": {
         "compile": 0,
         "microtests": 0,
-        "passed": 14,
+        "passed": 9,
         "semantics": 2,
-        "static": 14
+        "static": 9
       },
-      "moved": true,
+      "moved": false,
       "new_axes": [],
-      "seconds": 60.455
+      "seconds": 172.651
     },
     {
       "evaluated": 35,
-      "front": 21,
-      "generation": 10,
+      "front": 25,
+      "generation": 27,
       "killed": 0,
       "ladder": {
         "compile": 0,
@@ -1137,93 +1526,1279 @@
         "semantics": 0,
         "static": 11
       },
-      "moved": false,
-      "new_axes": [
-        "lexical_cache",
-        "dependency_signature"
-      ],
-      "seconds": 75.568
+      "moved": true,
+      "new_axes": [],
+      "seconds": 177.398
     },
     {
-      "evaluated": 40,
+      "evaluated": 33,
+      "front": 27,
+      "generation": 28,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 9,
+        "semantics": 1,
+        "static": 9
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 144.462
+    },
+    {
+      "evaluated": 31,
+      "front": 22,
+      "generation": 29,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 0,
+        "static": 7
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 196.013
+    },
+    {
+      "evaluated": 28,
+      "front": 20,
+      "generation": 30,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 4,
+        "semantics": 0,
+        "static": 4
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 133.342
+    },
+    {
+      "evaluated": 32,
+      "front": 23,
+      "generation": 31,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 8,
+        "semantics": 1,
+        "static": 8
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 183.51
+    },
+    {
+      "evaluated": 30,
+      "front": 20,
+      "generation": 32,
+      "killed": 3,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 6,
+        "semantics": 3,
+        "static": 6
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 262.849
+    },
+    {
+      "evaluated": 35,
+      "front": 24,
+      "generation": 33,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 11,
+        "semantics": 0,
+        "static": 11
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 254.005
+    },
+    {
+      "evaluated": 31,
+      "front": 20,
+      "generation": 34,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 1,
+        "static": 7
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 145.288
+    },
+    {
+      "evaluated": 35,
+      "front": 23,
+      "generation": 35,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 11,
+        "semantics": 0,
+        "static": 11
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 164.469
+    },
+    {
+      "evaluated": 30,
       "front": 21,
-      "generation": 11,
+      "generation": 36,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 6,
+        "semantics": 0,
+        "static": 6
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 182.125
+    },
+    {
+      "evaluated": 31,
+      "front": 19,
+      "generation": 37,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 0,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 139.534
+    },
+    {
+      "evaluated": 33,
+      "front": 21,
+      "generation": 38,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 9,
+        "semantics": 0,
+        "static": 9
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 183.851
+    },
+    {
+      "evaluated": 29,
+      "front": 18,
+      "generation": 39,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 5,
+        "semantics": 0,
+        "static": 5
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 135.341
+    },
+    {
+      "evaluated": 34,
+      "front": 24,
+      "generation": 40,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 10,
+        "semantics": 1,
+        "static": 10
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 103.543
+    },
+    {
+      "evaluated": 31,
+      "front": 19,
+      "generation": 41,
+      "killed": 1,
+      "ladder": {
+        "compile": 1,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 0,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 188.376
+    },
+    {
+      "evaluated": 34,
+      "front": 20,
+      "generation": 42,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 10,
+        "semantics": 0,
+        "static": 10
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 158.749
+    },
+    {
+      "evaluated": 33,
+      "front": 22,
+      "generation": 43,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 9,
+        "semantics": 1,
+        "static": 9
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 159.586
+    },
+    {
+      "evaluated": 30,
+      "front": 20,
+      "generation": 44,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 6,
+        "semantics": 0,
+        "static": 6
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 239.142
+    },
+    {
+      "evaluated": 33,
+      "front": 19,
+      "generation": 45,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 9,
+        "semantics": 0,
+        "static": 9
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 210.062
+    },
+    {
+      "evaluated": 33,
+      "front": 22,
+      "generation": 46,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 9,
+        "semantics": 0,
+        "static": 9
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 174.459
+    },
+    {
+      "evaluated": 27,
+      "front": 17,
+      "generation": 47,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 3,
+        "semantics": 0,
+        "static": 3
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 184.675
+    },
+    {
+      "evaluated": 28,
+      "front": 14,
+      "generation": 48,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 4,
+        "semantics": 1,
+        "static": 4
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 201.581
+    },
+    {
+      "evaluated": 32,
+      "front": 18,
+      "generation": 49,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 8,
+        "semantics": 0,
+        "static": 8
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 192.878
+    },
+    {
+      "evaluated": 32,
+      "front": 18,
+      "generation": 50,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 8,
+        "semantics": 1,
+        "static": 8
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 144.488
+    },
+    {
+      "evaluated": 32,
+      "front": 20,
+      "generation": 51,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 8,
+        "semantics": 0,
+        "static": 8
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 199.066
+    },
+    {
+      "evaluated": 31,
+      "front": 19,
+      "generation": 52,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 0,
+        "static": 7
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 143.482
+    },
+    {
+      "evaluated": 29,
+      "front": 17,
+      "generation": 53,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 5,
+        "semantics": 0,
+        "static": 5
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 230.912
+    },
+    {
+      "evaluated": 30,
+      "front": 18,
+      "generation": 54,
       "killed": 2,
       "ladder": {
         "compile": 0,
         "microtests": 0,
-        "passed": 16,
+        "passed": 6,
         "semantics": 2,
-        "static": 16
+        "static": 6
       },
       "moved": true,
       "new_axes": [],
-      "seconds": 58.221
+      "seconds": 203.956
     },
     {
-      "evaluated": 36,
-      "front": 15,
-      "generation": 12,
+      "evaluated": 30,
+      "front": 18,
+      "generation": 55,
       "killed": 0,
       "ladder": {
         "compile": 0,
         "microtests": 0,
-        "passed": 12,
+        "passed": 6,
         "semantics": 0,
-        "static": 12
+        "static": 6
       },
       "moved": false,
-      "new_axes": [
-        "action_signature"
-      ],
-      "seconds": 48.927
+      "new_axes": [],
+      "seconds": 202.298
     },
     {
-      "evaluated": 42,
-      "front": 25,
-      "generation": 13,
+      "evaluated": 31,
+      "front": 22,
+      "generation": 56,
       "killed": 0,
       "ladder": {
         "compile": 0,
         "microtests": 0,
-        "passed": 18,
+        "passed": 7,
         "semantics": 0,
-        "static": 18
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 136.294
+    },
+    {
+      "evaluated": 31,
+      "front": 22,
+      "generation": 57,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 0,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 167.153
+    },
+    {
+      "evaluated": 31,
+      "front": 24,
+      "generation": 58,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 7,
+        "semantics": 1,
+        "static": 7
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 142.661
+    },
+    {
+      "evaluated": 26,
+      "front": 20,
+      "generation": 59,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 2,
+        "semantics": 0,
+        "static": 2
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 152.356
+    },
+    {
+      "evaluated": 27,
+      "front": 22,
+      "generation": 60,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 3,
+        "semantics": 0,
+        "static": 3
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 179.442
+    },
+    {
+      "evaluated": 26,
+      "front": 21,
+      "generation": 61,
+      "killed": 2,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 2,
+        "semantics": 2,
+        "static": 2
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 120.127
+    },
+    {
+      "evaluated": 28,
+      "front": 22,
+      "generation": 62,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 4,
+        "semantics": 0,
+        "static": 4
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 175.94
+    },
+    {
+      "evaluated": 28,
+      "front": 21,
+      "generation": 63,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 4,
+        "semantics": 0,
+        "static": 4
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 198.023
+    },
+    {
+      "evaluated": 29,
+      "front": 18,
+      "generation": 64,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 5,
+        "semantics": 0,
+        "static": 5
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 217.786
+    },
+    {
+      "evaluated": 29,
+      "front": 19,
+      "generation": 65,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 5,
+        "semantics": 0,
+        "static": 5
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 160.41
+    },
+    {
+      "evaluated": 27,
+      "front": 17,
+      "generation": 66,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 3,
+        "semantics": 0,
+        "static": 3
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 225.925
+    },
+    {
+      "evaluated": 28,
+      "front": 20,
+      "generation": 67,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 4,
+        "semantics": 0,
+        "static": 4
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 186.395
+    },
+    {
+      "evaluated": 32,
+      "front": 22,
+      "generation": 68,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 8,
+        "semantics": 0,
+        "static": 8
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 232.245
+    },
+    {
+      "evaluated": 26,
+      "front": 19,
+      "generation": 69,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 2,
+        "semantics": 0,
+        "static": 2
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 134.379
+    },
+    {
+      "evaluated": 27,
+      "front": 21,
+      "generation": 70,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 3,
+        "semantics": 0,
+        "static": 3
       },
       "moved": false,
       "new_axes": [
-        "semantic_graph",
-        "precedence_ordering"
+        "metavar_partition"
       ],
-      "seconds": 96.753
+      "seconds": 123.394
+    },
+    {
+      "evaluated": 26,
+      "front": 19,
+      "generation": 71,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 2,
+        "semantics": 0,
+        "static": 2
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 216.264
+    },
+    {
+      "evaluated": 26,
+      "front": 20,
+      "generation": 72,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 2,
+        "semantics": 0,
+        "static": 2
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 185.945
+    },
+    {
+      "evaluated": 25,
+      "front": 19,
+      "generation": 73,
+      "killed": 1,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 1,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 128.996
+    },
+    {
+      "evaluated": 25,
+      "front": 19,
+      "generation": 74,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 147.432
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 75,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 196.164
+    },
+    {
+      "evaluated": 25,
+      "front": 19,
+      "generation": 76,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 241.313
+    },
+    {
+      "evaluated": 25,
+      "front": 20,
+      "generation": 77,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 142.556
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 78,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 144.783
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 79,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 153.339
+    },
+    {
+      "evaluated": 26,
+      "front": 20,
+      "generation": 80,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 2,
+        "semantics": 0,
+        "static": 2
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 154.5
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 81,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 142.959
+    },
+    {
+      "evaluated": 25,
+      "front": 20,
+      "generation": 82,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 166.851
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 83,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 81.548
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 84,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 224.073
+    },
+    {
+      "evaluated": 25,
+      "front": 19,
+      "generation": 85,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 143.79
+    },
+    {
+      "evaluated": 25,
+      "front": 20,
+      "generation": 86,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 192.545
+    },
+    {
+      "evaluated": 26,
+      "front": 20,
+      "generation": 87,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 2,
+        "semantics": 0,
+        "static": 2
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 118.898
+    },
+    {
+      "evaluated": 25,
+      "front": 20,
+      "generation": 88,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 115.189
+    },
+    {
+      "evaluated": 27,
+      "front": 21,
+      "generation": 89,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 3,
+        "semantics": 0,
+        "static": 3
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 200.635
+    },
+    {
+      "evaluated": 27,
+      "front": 22,
+      "generation": 90,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 3,
+        "semantics": 0,
+        "static": 3
+      },
+      "moved": true,
+      "new_axes": [],
+      "seconds": 197.985
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 91,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 132.341
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 92,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 219.574
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 93,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 110.061
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 94,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 128.662
+    },
+    {
+      "evaluated": 26,
+      "front": 19,
+      "generation": 95,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 2,
+        "semantics": 0,
+        "static": 2
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 192.724
+    },
+    {
+      "evaluated": 25,
+      "front": 20,
+      "generation": 96,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 89.853
+    },
+    {
+      "evaluated": 25,
+      "front": 19,
+      "generation": 97,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 173.964
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 98,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 118.882
+    },
+    {
+      "evaluated": 25,
+      "front": 20,
+      "generation": 99,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 134.084
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 100,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 176.487
+    },
+    {
+      "evaluated": 25,
+      "front": 19,
+      "generation": 101,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 130.169
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 102,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 162.279
+    },
+    {
+      "evaluated": 25,
+      "front": 19,
+      "generation": 103,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 1,
+        "semantics": 0,
+        "static": 1
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 157.483
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 104,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 192.157
+    },
+    {
+      "evaluated": 24,
+      "front": 19,
+      "generation": 105,
+      "killed": 0,
+      "ladder": {
+        "compile": 0,
+        "microtests": 0,
+        "passed": 0,
+        "semantics": 0,
+        "static": 0
+      },
+      "moved": false,
+      "new_axes": [],
+      "seconds": 100.204
     }
   ],
-  "generations_completed": 14,
-  "genome_schema": "representation-genome-v2.13.0",
+  "generations_completed": 106,
+  "genome_schema": "representation-genome-v2.5.0",
   "kill_levels": {
-    "compile": 2,
-    "semantics": 12
+    "compile": 7,
+    "semantics": 26
   },
   "name": "PRETRAINING_REPRESENTATION_FRONTIER_V2",
   "primitives": {
-    "accepted": 13,
-    "active": 13,
+    "accepted": 5,
+    "active": 5,
     "axes": [
-      "action_signature",
-      "context_signature",
+      "delta_explicitness",
       "dependency_capsule",
-      "dependency_signature",
-      "dependency_weight",
-      "goal_context_depth",
-      "goal_context_signature",
-      "goal_signature",
-      "lexical_cache",
-      "metavariable_grouping",
-      "precedence_ordering",
-      "record_reorder",
-      "semantic_graph"
+      "field_presence_checksum",
+      "metavar_partition",
+      "record_reorder"
     ],
-    "genome_schema_version": "representation-genome-v2.13.0",
+    "genome_schema_version": "representation-genome-v2.5.0",
     "hooks_available": [
       "duplicate_adjacent",
       "neighbourhood_capsule",
@@ -1231,16 +2806,23 @@
       "section_partition"
     ],
     "registry_version": "primitive-registry-v1.0.0",
-    "unimplementable": 2
+    "rejected_by_status": {
+      "ACCEPTED_DUPLICATE": 205,
+      "ACCEPTED_UNIMPLEMENTABLE": 79
+    },
+    "unimplementable": 284
   },
   "proposal_types_seen": {
-    "AXIS_MUTATION": 27,
-    "CORPUS_ACQUISITION": 12,
-    "NEW_AXIS": 6,
-    "NEW_PRIMITIVE": 6
+    "AXIS_MUTATION": 304,
+    "CORPUS_ACQUISITION": 80,
+    "NEW_AXIS": 165,
+    "NEW_PRIMITIVE": 48
   },
   "quarantine": {
-    "by_verdict": {},
+    "by_verdict": {
+      "NON_GENERALIZING_MUTATION": 8,
+      "VALIDATION_CONTRADICTS_DEV": 4
+    },
     "policy": {
       "noise_floor": 0.01,
       "preregistered": true,
@@ -1248,89 +2830,234 @@
       "rule": "a child enters the elite population only when the improvement it claimed on SEARCH_DEV is reproduced on SEARCH_VALIDATION at >= tolerance x the dev gain; otherwise it is quarantined and recorded as a NON_GENERALIZING_MUTATION",
       "tolerance": 0.5
     },
-    "quarantined": 0,
-    "worst_divergences": []
+    "quarantined": 12,
+    "worst_divergences": [
+      {
+        "candidate_id": "R_46eea753f240",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.90854,
+        "divergence": 0.90854,
+        "elite_eligible": false,
+        "metric": "binder_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_38b3a406961b",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.64464,
+        "divergence": 0.64464,
+        "elite_eligible": false,
+        "metric": "dependency_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_6b9131c32139",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.10505,
+        "divergence": 0.10505,
+        "elite_eligible": false,
+        "metric": "binder_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_2153c5278c81",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.09717,
+        "divergence": 0.09717,
+        "elite_eligible": false,
+        "metric": "dependency_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_22b956f99b0b",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.06755,
+        "divergence": 0.06755,
+        "elite_eligible": false,
+        "metric": "binder_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_73f1057f0c78",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.06753,
+        "divergence": 0.06753,
+        "elite_eligible": false,
+        "metric": "binder_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_99a6112c1010",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.01038,
+        "divergence": 0.01271,
+        "elite_eligible": false,
+        "metric": "binder_use_distance_tokens",
+        "validation_change": -0.00233,
+        "verdict": "VALIDATION_CONTRADICTS_DEV"
+      },
+      {
+        "candidate_id": "R_a1d50edc02b8",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.01174,
+        "divergence": 0.01256,
+        "elite_eligible": false,
+        "metric": "binder_use_distance_tokens",
+        "validation_change": -0.00082,
+        "verdict": "VALIDATION_CONTRADICTS_DEV"
+      },
+      {
+        "candidate_id": "R_37c0bdcc1e87",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.01161,
+        "divergence": 0.01241,
+        "elite_eligible": false,
+        "metric": "binder_use_distance_tokens",
+        "validation_change": -0.0008,
+        "verdict": "VALIDATION_CONTRADICTS_DEV"
+      },
+      {
+        "candidate_id": "R_43cb964a0459",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.01161,
+        "divergence": 0.01241,
+        "elite_eligible": false,
+        "metric": "binder_use_distance_tokens",
+        "validation_change": -0.0008,
+        "verdict": "VALIDATION_CONTRADICTS_DEV"
+      }
+    ]
   },
   "selection_axes": [
     "bpe_tokens_per_transition",
     "binder_use_distance_tokens",
-    "semantic_detect_rate",
+    "detect_drop_field",
     "binder_query_token_distance",
     "dependency_query_token_distance",
     "identifier_fragmentation"
   ],
-  "space_size": "1.548e+26",
+  "space_size": "4.422e+21",
   "split_manifest": {
     "counts": {
-      "SEALED_FINAL_EVALUATION": 120,
-      "SEARCH_DEV": 421,
-      "SEARCH_VALIDATION": 67
+      "SEALED_FINAL_EVALUATION": 0,
+      "SEARCH_DEV": 717,
+      "SEARCH_VALIDATION": 201
     },
-    "families_sha256": "b75c99e6953930693f8cf940a91d092d8f1ce95102c2a065f1f3f241deffcd01",
+    "families_sha256": "8374b1127b77c643bed2f2e3e14de9034e095c1eab7337c2dd97d65b63179b09",
     "family_counts": {
-      "SEALED_FINAL_EVALUATION": 101,
-      "SEARCH_DEV": 323,
-      "SEARCH_VALIDATION": 54
+      "SEALED_FINAL_EVALUATION": 0,
+      "SEARCH_DEV": 479,
+      "SEARCH_VALIDATION": 133
     },
-    "split_key": "hml-v3-representation-search-split-v1",
+    "split_key": "hml-v3-search-pool-v2-dev-validation",
     "target_shares": {
       "SEALED_FINAL_EVALUATION": 0.2,
       "SEARCH_DEV": 0.7,
       "SEARCH_VALIDATION": 0.1
     },
     "transition_id_sha256": {
-      "SEALED_FINAL_EVALUATION": "179fec3e12e24757a8008d148c9ecfa5b3f3247a03a82d8d6f523b5c55711600",
-      "SEARCH_DEV": "275b2762211d7780c5d659e6d6d11b5bfef966d28cd84f132e76cdd717882d6f",
-      "SEARCH_VALIDATION": "143a17da78fa080696579a5589c77c53e526449ebe1cc3d3e9d71f9fa7cdc84f"
+      "SEALED_FINAL_EVALUATION": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "SEARCH_DEV": "8b4416c470ae5e23816c5b01d53ad94511095337b08bc82ff1ed9ca6082e86d4",
+      "SEARCH_VALIDATION": "718eddeed6422a1ffd4100c84908f422a0e18547b2e0345715ce72760dbf159c"
     },
     "unit": "MATHLIB_SOURCE_FILE"
   },
-  "stall_count": 2,
-  "strict_front_size": 49,
-  "structural_convergence": false,
+  "stall_count": 15,
+  "strict_front_size": 104,
+  "structural_convergence": true,
   "tokenizer_agreement": {
     "leaders": {
-      "gpt2": "R_54183872d1bd",
-      "gptneox": "R_54183872d1bd",
-      "qwen25": "R_000441b08de4",
-      "starcoder2": "R_000441b08de4"
+      "gpt2": "R_159628756bc5",
+      "gptneox": "R_159628756bc5",
+      "qwen25": "R_159628756bc5",
+      "starcoder2": "R_159628756bc5"
     },
     "rankings": {
       "gpt2": [
-        "R_54183872d1bd",
-        "R_000441b08de4",
-        "R_28b291b5ebe6",
-        "R_5b2eb732ac8b",
-        "R_01d4e489af53",
-        "R_101e806690b0"
+        "R_159628756bc5",
+        "R_fcd13f8d56a5",
+        "R_21f62bd82c7e",
+        "R_03812c646290",
+        "R_a7ef0cd3b92e",
+        "R_015b8cd926da",
+        "R_bbfdfa5a9249"
       ],
       "gptneox": [
-        "R_54183872d1bd",
-        "R_000441b08de4",
-        "R_5b2eb732ac8b",
-        "R_28b291b5ebe6",
-        "R_01d4e489af53",
-        "R_101e806690b0"
+        "R_159628756bc5",
+        "R_fcd13f8d56a5",
+        "R_21f62bd82c7e",
+        "R_03812c646290",
+        "R_015b8cd926da",
+        "R_a7ef0cd3b92e",
+        "R_bbfdfa5a9249"
       ],
       "qwen25": [
-        "R_000441b08de4",
-        "R_54183872d1bd",
-        "R_5b2eb732ac8b",
-        "R_28b291b5ebe6",
-        "R_01d4e489af53",
-        "R_101e806690b0"
+        "R_159628756bc5",
+        "R_fcd13f8d56a5",
+        "R_21f62bd82c7e",
+        "R_03812c646290",
+        "R_015b8cd926da",
+        "R_a7ef0cd3b92e",
+        "R_bbfdfa5a9249"
       ],
       "starcoder2": [
-        "R_000441b08de4",
-        "R_54183872d1bd",
-        "R_5b2eb732ac8b",
-        "R_28b291b5ebe6",
-        "R_01d4e489af53",
-        "R_101e806690b0"
+        "R_159628756bc5",
+        "R_fcd13f8d56a5",
+        "R_21f62bd82c7e",
+        "R_03812c646290",
+        "R_015b8cd926da",
+        "R_a7ef0cd3b92e",
+        "R_bbfdfa5a9249"
       ]
     },
-    "same_leader_everywhere": false,
+    "same_leader_everywhere": true,
     "vocabularies_compared": 4
   },
-  "unimplementable_proposals": 2
+  "unimplementable_proposals": 284
 }

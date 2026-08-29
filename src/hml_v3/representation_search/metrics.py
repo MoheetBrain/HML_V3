@@ -16,6 +16,7 @@ import gzip
 import math
 import random
 import re
+from collections.abc import Sequence
 from typing import Any
 
 from hml_v3.representation_search.compiler import RepresentationCompiler
@@ -371,3 +372,90 @@ def _role_entropy(compiler: RepresentationCompiler, transitions: list[dict[str, 
     if total == 0:
         return 0.0
     return -sum((count / total) * math.log2(count / total) for count in counts.values())
+
+
+# ------------------------------------------------------------------- instrument saturation
+
+#: An axis is non-discriminative when its spread across the evaluated population is at or
+#: below this, relative to its own magnitude. It is not a tuning knob dressed up as science:
+#: at this threshold an axis separates no two candidates by more than a rounding error, so it
+#: contributes nothing to a Pareto comparison but does make every candidate harder to
+#: dominate.
+SATURATION_RELATIVE_SPREAD = 1e-6
+
+
+def axis_spread(
+    population: Sequence[tuple[str, dict[str, float]]], axis: str,
+) -> dict[str, float] | None:
+    """Observed spread of one axis over an evaluated population.
+
+    Returns ``None`` when no candidate carries the axis, which is a different condition from
+    an axis every candidate carries identically and must not be conflated with it.
+    """
+
+    values = [
+        metrics[axis] for _candidate_id, metrics in population
+        if metrics and axis in metrics
+    ]
+    if not values:
+        return None
+    low, high = min(values), max(values)
+    mean = sum(values) / len(values)
+    scale = max(abs(mean), abs(low), abs(high), 1e-12)
+    return {
+        "n": float(len(values)),
+        "min": low,
+        "max": high,
+        "mean": mean,
+        "distinct": float(len({round(value, 9) for value in values})),
+        "absolute_spread": high - low,
+        "relative_spread": (high - low) / scale,
+    }
+
+
+def saturated_axes(
+    population: Sequence[tuple[str, dict[str, float]]], axes: Sequence[str],
+    threshold: float = SATURATION_RELATIVE_SPREAD,
+) -> dict[str, dict[str, float]]:
+    """Which of ``axes`` measured the same on every candidate.
+
+    This is the mechanical form of the lesson `FM-010`, `FM-019` and `FM-029` each recorded
+    separately: an instrument whose arms all read the same value is reporting
+    non-discrimination, not agreement, and it must not be selected on. Each of those three
+    was caught by hand, after a full run; this function is what makes the fourth one
+    impossible to miss.
+    """
+
+    report: dict[str, dict[str, float]] = {}
+    for axis in axes:
+        spread = axis_spread(population, axis)
+        if spread is None:
+            continue
+        if spread["distinct"] <= 1.0 or spread["relative_spread"] <= threshold:
+            report[axis] = spread
+    return report
+
+
+#: An axis whose relative spread is under this is reported as near-saturated. It is NOT
+#: demoted: demotion is reserved for the unambiguous case of an axis that is identical on
+#: every candidate, because a threshold that fires on judgement can silently discard a real
+#: but small effect. Measured motivation: on the 918-transition pool `semantic_detect_rate`
+#: reads 0.9899-1.0 across 202 candidates -- one candidate differs, by 1% -- so the strict
+#: rule would pass it while it discriminates almost nothing.
+NEAR_SATURATION_RELATIVE_SPREAD = 0.02
+
+
+def near_saturated_axes(
+    population: Sequence[tuple[str, dict[str, float]]], axes: Sequence[str],
+    threshold: float = NEAR_SATURATION_RELATIVE_SPREAD,
+) -> dict[str, dict[str, float]]:
+    """Axes that barely discriminate. Reported for a human to judge, never acted on."""
+
+    report: dict[str, dict[str, float]] = {}
+    for axis in axes:
+        spread = axis_spread(population, axis)
+        if spread is None or spread["distinct"] <= 1.0:
+            continue  # exact saturation is the other function's business
+        if spread["relative_spread"] <= threshold:
+            report[axis] = spread
+    return report

@@ -308,11 +308,16 @@ class PrimitiveRegistry:
                 if not line.strip():
                     continue
                 row = json.loads(line)
-                if row.get("status") == "ACCEPTED_UNIMPLEMENTABLE":
-                    self.unimplementable.append(row)
-                else:
+                # Test positively for a primitive rather than enumerating rejection
+                # statuses. Enumerating them means every new rejection kind added later
+                # crashes the loader on resume, which is exactly what ACCEPTED_DUPLICATE
+                # did: the running search kept its registry in memory and was unaffected,
+                # so the breakage only appeared when something re-read the file.
+                if "values" in row and "hook" in row:
                     primitive = RegisteredPrimitive.from_dict(row)
                     self.primitives[primitive.axis_name] = primitive
+                else:
+                    self.unimplementable.append(row)
 
     @property
     def schema_version(self) -> str:
@@ -392,6 +397,93 @@ class PrimitiveRegistry:
             "transitions_tested": len(transitions),
         }
 
+    def duplicates_an_existing_axis(
+        self, primitive: RegisteredPrimitive, compiler_factory, transitions,
+    ) -> tuple[str | None, dict[str, Any]]:
+        """Does this axis produce renderings an axis already in the genome produces?
+
+        `FM-026` established that an axis changing nothing must be rejected. This is its
+        sibling and it went unnoticed for longer because the axis is *not* inert: it changes
+        the rendering, passes the observable-effect gate, and is a perfect copy of an axis
+        already registered under a different name.
+
+        Measured on the first 15 generations of the pool run, nine of thirty accepted axes --
+        ``action_scope``, ``dependency_capsule``, ``goal_id_projection``, ``hash_projection``,
+        ``local_context_fragment``, ``local_dependency_capsule``, ``local_dependency_scope``,
+        ``semantic_context_grouping`` and ``semantic_summary`` -- were all
+        ``neighbourhood_capsule`` with empty params over ``NONE/GOAL_LOCAL/ACTION_LOCAL``.
+        They render identically to one another, and applying two of them is idempotent, so
+        they are one axis registered nine times. The damage is threefold: the reported space
+        size is a product over axes and each copy multiplied it by three while adding no
+        reachable rendering; the Pareto front fills with candidates that differ by
+        candidate_id and not by output; and structural convergence becomes unreachable,
+        because a meta-designer can always mint a fresh *name* for an axis that already
+        exists. The brief's own worked example is ``dependency_capsule``, which is where the
+        models were copying it from.
+
+        The comparison is behavioural rather than by signature: two axes with different hooks
+        or different value names that produce the same renderings are still the same axis.
+        """
+
+        if not transitions:
+            return None, {"reason": "no transitions to test against"}
+
+        def fingerprint(axis_name: str, values: tuple[str, ...]) -> list[str] | None:
+            texts: list[str] = []
+            for value in values:
+                try:
+                    compiler = compiler_factory({axis_name: value})
+                    texts.append("\n@@\n".join(
+                        compiler.render_text(transition) for transition in transitions))
+                except Exception:  # noqa: BLE001
+                    return None
+            return texts
+
+        mine = fingerprint(primitive.axis_name, primitive.values)
+        if mine is None:
+            return None, {"reason": "candidate axis failed to render"}
+        # Compare as a set: two axes are the same dimension when they reach the same
+        # renderings, whatever order or names their values carry.
+        mine_set = set(mine)
+        for other in self.active():
+            if other.axis_name == primitive.axis_name:
+                continue
+            theirs = fingerprint(other.axis_name, other.values)
+            if theirs is None:
+                continue
+            if set(theirs) == mine_set:
+                return other.axis_name, {
+                    "duplicate_of": other.axis_name,
+                    "hook": primitive.hook,
+                    "other_hook": other.hook,
+                    "values": list(primitive.values),
+                    "other_values": list(other.values),
+                    "distinct_renderings": len(mine_set),
+                    "transitions_tested": len(transitions),
+                }
+        return None, {"distinct_renderings": len(mine_set),
+                      "compared_against": len(self.active())}
+
+    def reject_duplicate(
+        self, primitive: RegisteredPrimitive, evidence: dict[str, Any],
+    ) -> None:
+        """Record an accepted-then-duplicate axis instead of leaving it in the genome."""
+
+        self.primitives.pop(primitive.axis_name, None)
+        self.unimplementable.append({
+            "status": "ACCEPTED_DUPLICATE",
+            "axis_name": primitive.axis_name,
+            "proposal_id": primitive.proposal_id,
+            "generation": primitive.generation,
+            "proposer": primitive.proposer,
+            "reason": (
+                "DUPLICATES_EXISTING_AXIS: renders identically to "
+                f"{evidence.get('duplicate_of')}, so it adds no reachable representation"
+            ),
+            "evidence": evidence,
+            "payload": {"hypothesis": primitive.hypothesis, "mechanism": primitive.mechanism},
+        })
+
     def reject_inert(self, primitive: RegisteredPrimitive, evidence: dict[str, Any]) -> None:
         """Record an accepted-then-inert axis instead of leaving it in the genome."""
 
@@ -419,10 +511,18 @@ class PrimitiveRegistry:
         ]
         self.path.write_text("\n".join(lines) + ("\n" if lines else ""), encoding="utf-8")
 
+    def rejection_counts(self) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for row in self.unimplementable:
+            status = row.get("status", "UNKNOWN")
+            counts[status] = counts.get(status, 0) + 1
+        return dict(sorted(counts.items()))
+
     def statistics(self) -> dict[str, Any]:
         return {
             "registry_version": REGISTRY_VERSION,
             "genome_schema_version": self.schema_version,
+            "rejected_by_status": self.rejection_counts(),
             "accepted": len(self.primitives),
             "active": len(self.active()),
             "unimplementable": len(self.unimplementable),

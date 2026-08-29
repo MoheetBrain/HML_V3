@@ -34,7 +34,7 @@ from hml_v3.representation_search.lineage import CandidateRegistry  # noqa: E402
 from hml_v3.representation_search.metrics import MAXIMISED  # noqa: E402
 from hml_v3.representation_search.pareto import non_dominated_sort, shortlist  # noqa: E402
 from hml_v3.representation_search.primitive_registry import PrimitiveRegistry  # noqa: E402
-from hml_v3.representation_search.sealing import split_corpus  # noqa: E402
+from hml_v3.representation_search.sealing import split_search_pool  # noqa: E402
 from hml_v3.representation_search.seeds import SEEDS  # noqa: E402
 from hml_v3.representation_search.tokenizers import audit, ordering_agreement  # noqa: E402
 
@@ -44,7 +44,8 @@ def main() -> None:
     parser.add_argument("--workspace", type=Path,
                         default=ROOT / "data/representation_search_v2")
     parser.add_argument("--corpus", type=Path,
-                        default=ROOT / "data/corpus/lean_runtime_v2.canonical.jsonl.gz")
+                        default=ROOT / "data/corpus/search_pool_v2.jsonl.gz",
+                        help="the search pool; the seal is a separate file and is not read here")
     parser.add_argument("--out-dir", type=Path,
                         default=ROOT / "reports/representation_search_v2")
     args = parser.parse_args()
@@ -57,7 +58,7 @@ def main() -> None:
     reports = [json.loads(path.read_text()) for path in generations]
 
     rows = load_corpus(args.corpus)
-    split = split_corpus(rows)
+    split = split_search_pool(rows)
     sample = split.dev[:16]
 
     accepted = registry.accepted()

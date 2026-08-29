@@ -1,7 +1,7 @@
 {
   "axes": 7,
   "axes_with_the_same_leader": 5,
-  "dev_sample": 48,
+  "dev_sample": 40,
   "finalists": [
     "R_c8a70a62eebb",
     "R_0412a34e70c7",
@@ -22,12 +22,12 @@
         "R_cf8323f05a83"
       ],
       "same_leader": true,
-      "spearman_rho": 1.0,
+      "spearman_rho": 0.9429,
       "validation_order": [
         "R_9f3eb215d943",
         "R_c8a70a62eebb",
-        "R_9044f4984fce",
         "R_211cd0165db9",
+        "R_9044f4984fce",
         "R_0412a34e70c7",
         "R_cf8323f05a83"
       ]
@@ -97,12 +97,12 @@
         "R_cf8323f05a83",
         "R_9f3eb215d943",
         "R_c8a70a62eebb",
-        "R_9044f4984fce",
         "R_211cd0165db9",
+        "R_9044f4984fce",
         "R_0412a34e70c7"
       ],
       "same_leader": true,
-      "spearman_rho": 0.9429,
+      "spearman_rho": 1.0,
       "validation_order": [
         "R_cf8323f05a83",
         "R_9f3eb215d943",
@@ -175,5 +175,5 @@
       "best_on:identifier_fragmentation"
     ]
   },
-  "validation_sample": 48
+  "validation_sample": 40
 }

@@ -639,3 +639,533 @@ class TokenizerAuditTests(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class InstrumentSaturationTests(unittest.TestCase):
+    """`FM-010`, `FM-019` and `FM-029` were the same defect three times.
+
+    Each was a metric that read the same value on every candidate, reached selection, and was
+    only caught by reading a finished run. These tests are the mechanical form of that
+    lesson: a saturated axis must be removed *before* it influences a choice.
+    """
+
+    def test_a_constant_axis_is_reported_as_non_discriminative(self) -> None:
+        from hml_v3.representation_search.metrics import saturated_axes
+
+        population = [
+            ("a", {"constant": 1.0, "varies": 2.0}),
+            ("b", {"constant": 1.0, "varies": 9.0}),
+        ]
+        report = saturated_axes(population, ["constant", "varies"])
+        self.assertIn("constant", report)
+        self.assertNotIn("varies", report)
+        self.assertEqual(report["constant"]["distinct"], 1.0)
+
+    def test_an_axis_no_candidate_carries_is_not_confused_with_a_saturated_one(self) -> None:
+        from hml_v3.representation_search.metrics import axis_spread, saturated_axes
+
+        population = [("a", {"present": 1.0}), ("b", {"present": 2.0})]
+        self.assertIsNone(axis_spread(population, "absent"))
+        self.assertNotIn("absent", saturated_axes(population, ["absent"]))
+
+    def test_near_saturation_is_reported_but_never_demoted(self) -> None:
+        """A 1% spread is a judgement call, and the guard does not make judgement calls."""
+
+        from hml_v3.representation_search.metrics import (
+            near_saturated_axes,
+            saturated_axes,
+        )
+
+        # semantic_detect_rate as actually measured on the 918-transition pool.
+        population = [(f"c{index}", {"barely": 1.0}) for index in range(201)]
+        population.append(("c201", {"barely": 0.98989898989899}))
+        self.assertNotIn("barely", saturated_axes(population, ["barely"]))
+        self.assertIn("barely", near_saturated_axes(population, ["barely"]))
+
+    def test_the_semantic_detection_metric_does_not_select(self) -> None:
+        """FM-029, as a regression test rather than a note in a report."""
+
+        from hml_v3.representation_search.controller_v2 import (
+            DIAGNOSTIC_AXES,
+            SELECTION_AXES,
+        )
+
+        self.assertNotIn("semantic_detect_rate", SELECTION_AXES)
+        self.assertIn("semantic_detect_rate", DIAGNOSTIC_AXES)
+        # FM-019's instrument stays out too.
+        self.assertNotIn("detect_corrupt_identity", SELECTION_AXES)
+        # Selection keeps an error-detection dimension rather than becoming five axes that
+        # are all minimised.
+        self.assertIn("detect_drop_field", SELECTION_AXES)
+
+    def test_the_measured_v2_run_would_have_had_its_saturated_axis_demoted(self) -> None:
+        """Replay: the guard must reproduce FM-029 from the finished run's own registry.
+
+        Reads the *archived* first V2 run, not the live workspace. The live workspace is
+        whatever search ran last, and pointing a regression test at moving data means it
+        stops testing the thing it was written for.
+        """
+
+        from hml_v3.representation_search.metrics import saturated_axes
+
+        # There is more than one archived run. Identify the 608-transition run FM-029 was
+        # measured on by its split key, not by directory order: on the later 918-transition
+        # pool the same metric reads 0.9899-1.0, which is near-saturated but not constant,
+        # and picking the wrong archive silently tests the wrong claim.
+        registry = None
+        for manifest in (ROOT / "data/representation_search_v2/archive").glob(
+                "*/split_manifest.json"):
+            if json.loads(manifest.read_text()).get("split_key") == \
+                    "hml-v3-representation-search-split-v1":
+                candidate = manifest.parent / "candidate_registry.jsonl"
+                if candidate.exists():
+                    registry = candidate
+                    break
+        if registry is None:
+            self.skipTest("the 608-transition run's archived registry is not present")
+        latest: dict[str, dict] = {}
+        for line in registry.read_text().splitlines():
+            if line.strip():
+                record = json.loads(line)
+                latest[record["candidate_id"]] = record
+        population = [
+            (record["candidate_id"], record["metrics"]) for record in latest.values()
+            if record.get("status") == "EVALUATED" and record.get("metrics")
+        ]
+        self.assertGreater(len(population), 100)
+        saturated = saturated_axes(population, ["semantic_detect_rate"])
+        self.assertIn("semantic_detect_rate", saturated)
+        self.assertEqual(saturated["semantic_detect_rate"]["min"], 1.0)
+        self.assertEqual(saturated["semantic_detect_rate"]["max"], 1.0)
+
+
+class SearchPoolSplitTests(unittest.TestCase):
+    def setUp(self) -> None:
+        from hml_v3.representation_search.corpus import load_corpus, shard_paths
+
+        pool = ROOT / "data/corpus/search_pool_v2.jsonl.gz"
+        # The corpus is stored as size-capped shards, so the base name never exists as a
+        # file. Checking it with Path.exists() silently skips the whole class.
+        if not shard_paths(pool):
+            self.skipTest("the V2 search pool is not present")
+        self.rows = load_corpus(pool)
+
+    def test_the_pool_split_reserves_no_second_seal(self) -> None:
+        from hml_v3.representation_search.sealing import split_search_pool
+
+        split = split_search_pool(self.rows)
+        self.assertEqual(split.sealed, [])
+        self.assertEqual(len(split.dev) + len(split.validation), len(self.rows))
+
+    def test_no_theorem_family_straddles_dev_and_validation(self) -> None:
+        from hml_v3.representation_search.sealing import family_of, split_search_pool
+
+        split = split_search_pool(self.rows)
+        dev = {family_of(row) for row in split.dev}
+        validation = {family_of(row) for row in split.validation}
+        self.assertEqual(dev & validation, set())
+
+    def test_the_pool_split_key_cannot_be_confused_with_the_three_way_split(self) -> None:
+        from hml_v3.representation_search.sealing import SPLIT_KEY, split_search_pool
+
+        split = split_search_pool(self.rows)
+        self.assertNotEqual(split.manifest()["split_key"], SPLIT_KEY)
+
+    def test_the_pool_carries_the_multi_goal_structure_the_old_corpus_lacked(self) -> None:
+        """FM-020/FM-028: goal ordering was unmeasurable at 1.01 goals per state."""
+
+        goals = [len(row["state_before"]["goals"]) for row in self.rows]
+        multi_goal = sum(1 for count in goals if count >= 2) / len(goals)
+        self.assertGreater(multi_goal, 0.10)
+        self.assertGreater(max(goals), 2)
+
+
+class SealedRefusalTests(unittest.TestCase):
+    def test_the_search_driver_refuses_a_sealed_corpus_path(self) -> None:
+        result = subprocess.run(
+            [sys.executable, str(ROOT / "scripts/search/run_open_ended_search.py"),
+             "--corpus", str(ROOT / "data/corpus/sealed_final_v2.jsonl.gz"),
+             "--generations", "1"],
+            capture_output=True, text=True, check=False, cwd=ROOT,
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("REFUSED", result.stdout + result.stderr)
+
+    def test_sealed_final_v2_has_never_been_read(self) -> None:
+        manifest = ROOT / "data/corpus/SEALED_V2_MANIFEST.json"
+        if not manifest.exists():
+            self.skipTest("SEALED_FINAL_V2 has not been created")
+        payload = json.loads(manifest.read_text())
+        self.assertEqual(payload["name"], "SEALED_FINAL_V2")
+        log = ROOT / "data/representation_search_v2/sealed_access_log.jsonl"
+        accesses = 0 if not log.exists() else sum(
+            1 for line in log.read_text().splitlines() if line.strip())
+        self.assertEqual(accesses, 0, "SEALED_FINAL_V2 must be unread until convergence")
+
+
+class ConvergenceTests(unittest.TestCase):
+    """A generation cap is not convergence, and the reason string has to say so."""
+
+    def _controller(self, **overrides):
+        from hml_v3.representation_search.controller_v2 import (
+            OpenEndedController,
+            SearchConfigV2,
+        )
+
+        config = SearchConfigV2(**overrides)
+        workspace = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, workspace, True)
+        return OpenEndedController([], [], workspace, [], config)
+
+    def test_a_search_still_moving_has_not_converged(self) -> None:
+        controller = self._controller(max_generations=40, stall_limit=5)
+        controller.generation = 12
+        controller.structural_stall = 2
+        done, reason = controller.converged()
+        self.assertFalse(done)
+        self.assertEqual(reason, "SEARCHING")
+
+    def test_the_generation_cap_reports_that_it_is_not_convergence(self) -> None:
+        controller = self._controller(max_generations=40, stall_limit=5)
+        controller.generation = 40
+        controller.structural_stall = 1
+        done, reason = controller.converged()
+        self.assertTrue(done)
+        self.assertIn("NOT_CONVERGED", reason)
+        self.assertFalse(controller.convergence_state()["structurally_converged"])
+
+    def test_structural_convergence_is_reported_as_convergence(self) -> None:
+        controller = self._controller(max_generations=40, stall_limit=5)
+        controller.generation = 22
+        controller.structural_stall = 5
+        done, reason = controller.converged()
+        self.assertTrue(done)
+        self.assertIn("STRUCTURAL_CONVERGENCE", reason)
+        self.assertTrue(controller.convergence_state()["structurally_converged"])
+
+    def test_convergence_outranks_the_cap(self) -> None:
+        """Reaching both at once is convergence, not a budget exhaustion."""
+
+        controller = self._controller(max_generations=40, stall_limit=5)
+        controller.generation = 40
+        controller.structural_stall = 5
+        _done, reason = controller.converged()
+        self.assertIn("STRUCTURAL_CONVERGENCE", reason)
+
+
+class OllamaTransportTests(unittest.TestCase):
+    """The defect that made a second backend look like a model with nothing to say."""
+
+    def test_a_thinking_model_gets_an_empty_think_prefill(self) -> None:
+        from hml_v3.representation_search.meta_designer.llm import (
+            EMPTY_THINK_PREFILL,
+            OllamaTransport,
+        )
+
+        transport = OllamaTransport("qwen38-rvn:latest")
+        self.assertTrue(transport.suppress_thinking)
+        messages = transport.messages("sys", "user")
+        self.assertEqual([m["role"] for m in messages], ["system", "user", "assistant"])
+        self.assertEqual(messages[-1]["content"], EMPTY_THINK_PREFILL)
+
+    def test_a_non_thinking_model_is_left_alone(self) -> None:
+        from hml_v3.representation_search.meta_designer.llm import OllamaTransport
+
+        transport = OllamaTransport("gemma3:4b")
+        self.assertFalse(transport.suppress_thinking)
+        self.assertEqual([m["role"] for m in transport.messages("s", "u")], ["system", "user"])
+
+    def test_a_reasoning_block_is_stripped_before_parsing(self) -> None:
+        payloads = extract_proposals(
+            '<think>I will use [brackets] and {braces} while thinking.</think>\n'
+            '[{"proposal_type": "AXIS_MUTATION"}]'
+        )
+        self.assertEqual(payloads, [{"proposal_type": "AXIS_MUTATION"}])
+
+    def test_output_that_is_only_a_reasoning_block_yields_nothing(self) -> None:
+        self.assertEqual(extract_proposals("<think>still thinking</think>"), [])
+
+
+class StructuralSamplingTests(unittest.TestCase):
+    """A corpus the search never sees is a corpus that was not acquired.
+
+    FM-028 recorded that targeted acquisition closed FM-020's measurability gap. These tests
+    guard the step after that: the sample handed to the evaluator has to carry the structure
+    the campaign bought.
+    """
+
+    def setUp(self) -> None:
+        from hml_v3.representation_search.corpus import load_corpus, shard_paths
+
+        pool = ROOT / "data/corpus/search_pool_v2.jsonl.gz"
+        if not shard_paths(pool):
+            self.skipTest("the V2 search pool is not present")
+        from hml_v3.representation_search.sealing import split_search_pool
+
+        self.dev = split_search_pool(load_corpus(pool)).dev
+
+    def test_a_prefix_sample_hides_the_structure_a_stratified_one_shows(self) -> None:
+        from hml_v3.representation_search.sampling import profile, structural_sample
+
+        prefix = profile(self.dev[:28])
+        stratified = profile(structural_sample(self.dev, 28))
+        # The regression this whole module exists to prevent.
+        self.assertLessEqual(prefix["max_goals"], 3)
+        self.assertGreaterEqual(stratified["max_goals"], 6)
+        self.assertGreater(stratified["multi_goal_share"], prefix["multi_goal_share"])
+
+    def test_every_non_empty_stratum_survives_even_a_tiny_sample(self) -> None:
+        from hml_v3.representation_search.sampling import stratify, structural_sample
+
+        population = set(stratify(self.dev))
+        for size in (8, 12, 14, 28):
+            sampled = set(stratify(structural_sample(self.dev, size)))
+            self.assertEqual(sampled, population, f"size={size}")
+
+    def test_the_sample_is_exactly_the_requested_size(self) -> None:
+        from hml_v3.representation_search.sampling import structural_sample
+
+        for size in (1, 4, 8, 12, 28, 64, 200):
+            self.assertEqual(len(structural_sample(self.dev, size)), size, f"size={size}")
+
+    def test_sampling_is_deterministic_for_a_fixed_seed(self) -> None:
+        from hml_v3.representation_search.sampling import structural_sample
+
+        first = [row["transition_id"] for row in structural_sample(self.dev, 28, seed=7)]
+        second = [row["transition_id"] for row in structural_sample(self.dev, 28, seed=7)]
+        other = [row["transition_id"] for row in structural_sample(self.dev, 28, seed=8)]
+        self.assertEqual(first, second)
+        self.assertNotEqual(first, other)
+
+    def test_asking_for_more_than_exists_returns_everything_once(self) -> None:
+        from hml_v3.representation_search.sampling import structural_sample
+
+        everything = structural_sample(self.dev, len(self.dev) + 50)
+        self.assertEqual(len(everything), len(self.dev))
+        ids = [row["transition_id"] for row in everything]
+        self.assertEqual(len(ids), len(set(ids)))
+
+    def test_the_controller_samples_structurally(self) -> None:
+        from hml_v3.representation_search.controller_v2 import (
+            OpenEndedController,
+            SearchConfigV2,
+        )
+        from hml_v3.representation_search.sampling import profile
+
+        workspace = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, workspace, True)
+        controller = OpenEndedController(
+            self.dev, self.dev[:100], workspace, [],
+            SearchConfigV2(dev_sample=28, mutation_sample=12))
+        self.assertGreaterEqual(profile(controller.dev_sample)["max_goals"], 6)
+        self.assertGreaterEqual(profile(controller.mutation_sample)["max_goals"], 6)
+
+
+class DuplicateAxisTests(unittest.TestCase):
+    """`FM-033`: an axis can change the rendering and still already exist.
+
+    The observable-effect gate asks "does this axis do anything". It does not ask "does the
+    genome already have an axis that does exactly this", and nine of the first thirty axes
+    accepted on the pool run were the same `neighbourhood_capsule` dimension under nine
+    different names.
+    """
+
+    VALUES = ("NONE", "GOAL_LOCAL", "ACTION_LOCAL")
+
+    def _registry(self):
+        from hml_v3.representation_search.primitive_registry import PrimitiveRegistry
+
+        workspace = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, workspace, True)
+        return PrimitiveRegistry(workspace / "primitives.jsonl")
+
+    def _primitive(self, name, hook="neighbourhood_capsule", values=None):
+        from hml_v3.representation_search.primitive_registry import RegisteredPrimitive
+
+        return RegisteredPrimitive(
+            axis_name=name, values=values or self.VALUES, hook=hook, params={},
+            proposal_id=f"P_{name}", generation=1, proposer="test",
+            hypothesis="h", mechanism="m", falsification="f",
+            schema_version="representation-genome-v2.1.0")
+
+    def _factory(self, registry):
+        from hml_v3.representation_search.compiler import build
+        from hml_v3.representation_search.genome import RepresentationGenome
+
+        base = RepresentationGenome({})
+        return lambda invented: build(base, invented, registry)
+
+    def _transitions(self):
+        from hml_v3.representation_search.corpus import load_corpus, shard_paths
+        from hml_v3.representation_search.sealing import split_search_pool
+
+        pool = ROOT / "data/corpus/search_pool_v2.jsonl.gz"
+        if not shard_paths(pool):
+            self.skipTest("the V2 search pool is not present")
+        return split_search_pool(load_corpus(pool)).dev[:3]
+
+    def test_a_renamed_copy_of_an_existing_axis_is_rejected(self) -> None:
+        registry = self._registry()
+        transitions = self._transitions()
+        first = self._primitive("dependency_capsule")
+        registry.register(first)
+        second = self._primitive("semantic_summary")
+        registry.register(second)
+        duplicate_of, evidence = registry.duplicates_an_existing_axis(
+            second, self._factory(registry), transitions)
+        self.assertEqual(duplicate_of, "dependency_capsule")
+        registry.reject_duplicate(second, evidence)
+        self.assertNotIn("semantic_summary", registry.primitives)
+        self.assertEqual(
+            registry.unimplementable[-1]["status"], "ACCEPTED_DUPLICATE")
+
+    def test_a_genuinely_different_axis_is_kept(self) -> None:
+        registry = self._registry()
+        transitions = self._transitions()
+        registry.register(self._primitive("dependency_capsule"))
+        other = self._primitive(
+            "metavar_partitioning", hook="section_partition",
+            values=("NONE", "INLINE", "SECTION_BLOCK"))
+        registry.register(other)
+        duplicate_of, _evidence = registry.duplicates_an_existing_axis(
+            other, self._factory(registry), transitions)
+        self.assertIsNone(duplicate_of)
+
+    def test_the_first_axis_of_its_kind_is_not_a_duplicate_of_itself(self) -> None:
+        registry = self._registry()
+        transitions = self._transitions()
+        only = self._primitive("dependency_capsule")
+        registry.register(only)
+        duplicate_of, _evidence = registry.duplicates_an_existing_axis(
+            only, self._factory(registry), transitions)
+        self.assertIsNone(duplicate_of)
+
+    def test_stacking_two_copies_is_idempotent_which_is_why_they_are_redundant(self) -> None:
+        """The measurement that made the verdict unambiguous."""
+
+        registry = self._registry()
+        transitions = self._transitions()
+        registry.register(self._primitive("axis_alpha"))
+        registry.register(self._primitive("axis_beta"))
+        factory = self._factory(registry)
+
+        def render(invented):
+            compiler = factory(invented)
+            return "\n".join(compiler.render_text(row) for row in transitions)
+
+        alpha = render({"axis_alpha": "GOAL_LOCAL"})
+        beta = render({"axis_beta": "GOAL_LOCAL"})
+        both = render({"axis_alpha": "GOAL_LOCAL", "axis_beta": "GOAL_LOCAL"})
+        self.assertNotEqual(alpha, render({}))
+        self.assertEqual(alpha, beta)
+        self.assertEqual(both, alpha)
+
+
+class ConvergenceTrajectoryTests(unittest.TestCase):
+    """The preregistered criterion was satisfiable, and the run satisfied it.
+
+    Mid-run it did not look that way: at generation 70 entrants averaged 2.3 per generation
+    with no visible downward trend, which is the sort of observation that invites weakening a
+    criterion. Churn kept falling and reached zero. This test pins the trajectory so the
+    conclusion rests on the record rather than on anybody's recollection of it.
+    """
+
+    def setUp(self) -> None:
+        self.state_path = ROOT / "data/representation_search_v2/search_state.json"
+        if not self.state_path.exists():
+            self.skipTest("no completed search in the workspace")
+        self.state = json.loads(self.state_path.read_text())
+
+    def test_the_run_converged_on_the_preregistered_criterion(self) -> None:
+        self.assertGreaterEqual(
+            self.state["structural_stall"], self.state["config"]["stall_limit"])
+
+    def test_the_final_generations_had_no_frontier_churn_at_all(self) -> None:
+        generations = sorted(
+            (ROOT / "data/representation_search_v2/generations").glob("generation_*.json"))
+        payloads = [json.loads(path.read_text()) for path in generations]
+        limit = self.state["config"]["stall_limit"]
+        tail = payloads[-(limit + 1):]
+        for earlier, later in zip(tail, tail[1:]):
+            before, after = set(earlier["front"]), set(later["front"])
+            self.assertEqual(after - before, set(), f"gen {later['generation']} gained members")
+            self.assertEqual(before - after, set(), f"gen {later['generation']} lost members")
+            self.assertFalse(later["frontier_moved"], f"gen {later['generation']} moved")
+            self.assertEqual(later["new_axes"], [], f"gen {later['generation']} grew the genome")
+
+    def test_selection_never_had_to_demote_an_axis(self) -> None:
+        """All six preregistered axes discriminated for the whole run."""
+
+        self.assertEqual(self.state["demoted_axes"], {})
+        self.assertEqual(
+            self.state["selection_axes"], self.state["preregistered_selection_axes"])
+
+
+class RegistryReloadTests(unittest.TestCase):
+    def test_a_registry_containing_rejections_reloads(self) -> None:
+        """Resume must survive every rejection kind, including ones added later."""
+
+        from hml_v3.representation_search.primitive_registry import (
+            PrimitiveRegistry,
+            RegisteredPrimitive,
+        )
+
+        workspace = Path(tempfile.mkdtemp())
+        self.addCleanup(shutil.rmtree, workspace, True)
+        path = workspace / "primitive_registry.jsonl"
+        registry = PrimitiveRegistry(path)
+        registry.register(RegisteredPrimitive(
+            axis_name="kept", values=("NONE", "ON"), hook="section_partition", params={},
+            proposal_id="P_1", generation=1, proposer="test",
+            hypothesis="h", mechanism="m", falsification="f",
+            schema_version="representation-genome-v2.1.0"))
+        registry.unimplementable.append(
+            {"status": "ACCEPTED_UNIMPLEMENTABLE", "axis_name": "no_hook"})
+        registry.unimplementable.append(
+            {"status": "ACCEPTED_DUPLICATE", "axis_name": "copy",
+             "evidence": {"duplicate_of": "kept"}})
+        registry.unimplementable.append(
+            {"status": "SOME_FUTURE_REJECTION", "axis_name": "later"})
+        registry.flush()
+
+        reloaded = PrimitiveRegistry(path)
+        self.assertEqual(sorted(reloaded.primitives), ["kept"])
+        self.assertEqual(len(reloaded.unimplementable), 3)
+        self.assertEqual(reloaded.rejection_counts()["ACCEPTED_DUPLICATE"], 1)
+
+    def test_the_completed_run_registry_reloads(self) -> None:
+        from hml_v3.representation_search.primitive_registry import PrimitiveRegistry
+
+        path = ROOT / "data/representation_search_v2/primitive_registry.jsonl"
+        if not path.exists():
+            self.skipTest("no completed search in the workspace")
+        registry = PrimitiveRegistry(path)
+        self.assertGreater(len(registry.primitives), 0)
+        for primitive in registry.primitives.values():
+            self.assertIn("NONE", primitive.values)
+
+
+class InventedAxisIdentityTests(unittest.TestCase):
+    """`FM-036`: an invented-axis candidate does not own its base genome's id.
+
+    Anything that keys results by ``genome.candidate_id()`` rather than by the record id
+    collides for the parent and returns nothing for the child.
+    """
+
+    def test_an_invented_axis_candidate_has_an_id_its_base_genome_does_not(self) -> None:
+        from hml_v3.representation_search.genome import default_genome
+        from hml_v3.representation_search.genome_migrations import ExtendedGenome
+
+        base = default_genome()
+        extended = ExtendedGenome(base, {"dependency_capsule": "GOAL_LOCAL"})
+        self.assertNotEqual(extended.candidate_id(), base.candidate_id())
+        self.assertEqual(
+            ExtendedGenome(base, {}).candidate_id(), base.candidate_id())
+
+    def test_the_completed_run_has_candidates_sharing_a_base_genome(self) -> None:
+        state = ROOT / "data/representation_search_v2/search_state.json"
+        if not state.exists():
+            self.skipTest("no completed search in the workspace")
+        invented = json.loads(state.read_text()).get("invented") or {}
+        self.assertGreater(len(invented), 0,
+                           "the run accepted invented axes, so carriers must exist")

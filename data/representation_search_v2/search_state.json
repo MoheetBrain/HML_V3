@@ -1,290 +1,1514 @@
 {
   "backends": [
     "deterministic",
-    "llm/ollama:gemma3:4b"
+    "llm/ollama:gemma3:4b",
+    "llm/ollama:qwen38-rvn:latest"
   ],
   "config": {
     "children_per_generation": 18,
-    "dev_sample": 28,
+    "dev_sample": 32,
     "llm_every": 1,
     "material_improvement": 0.005,
-    "max_generations": 40,
-    "microtest_sample": 14,
-    "mutation_sample": 12,
+    "max_generations": 120,
+    "microtest_sample": 16,
+    "mutation_sample": 16,
     "novelty_slots": 3,
     "population_capacity": 24,
     "seed": 20260828,
     "stall_limit": 5,
-    "validation_sample": 20
+    "validation_sample": 24
   },
-  "generation": 14,
-  "genome_schema": "representation-genome-v2.13.0",
+  "demoted_axes": {},
+  "diagnostic_axes": [
+    "semantic_detect_rate",
+    "detect_corrupt_identity"
+  ],
+  "generation": 106,
+  "genome_schema": "representation-genome-v2.5.0",
   "history": [
     {
+      "demoted_axes": [],
       "evaluated": 16,
-      "front": 7,
+      "front": 12,
       "generation": 0,
       "killed": 0,
       "moved": true,
       "new_axes": [
-        "context_signature",
-        "dependency_weight",
-        "record_reorder",
-        "goal_context_depth"
+        "dependency_capsule",
+        "delta_explicitness"
       ],
-      "stall": 0
+      "stall": 0,
+      "structural_stall": 0
     },
     {
-      "evaluated": 29,
-      "front": 15,
+      "demoted_axes": [],
+      "evaluated": 33,
+      "front": 24,
       "generation": 1,
-      "killed": 5,
-      "moved": true,
+      "killed": 1,
+      "moved": false,
       "new_axes": [
-        "goal_context_signature",
-        "dependency_capsule"
+        "record_reorder"
       ],
-      "stall": 0
+      "stall": 1,
+      "structural_stall": 0
     },
     {
-      "evaluated": 41,
-      "front": 25,
+      "demoted_axes": [],
+      "evaluated": 38,
+      "front": 29,
       "generation": 2,
       "killed": 1,
-      "moved": true,
-      "new_axes": [
-        "metavariable_grouping"
-      ],
-      "stall": 0
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
     },
     {
-      "evaluated": 40,
+      "demoted_axes": [],
+      "evaluated": 30,
       "front": 24,
       "generation": 3,
       "killed": 0,
-      "moved": false,
-      "new_axes": [
-        "goal_signature"
-      ],
-      "stall": 1
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
     },
     {
-      "evaluated": 40,
+      "demoted_axes": [],
+      "evaluated": 31,
       "front": 22,
       "generation": 4,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 32,
+      "front": 21,
+      "generation": 5,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 24,
+      "generation": 6,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 3,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 32,
+      "front": 23,
+      "generation": 7,
       "killed": 0,
       "moved": true,
       "new_axes": [],
-      "stall": 0
+      "stall": 0,
+      "structural_stall": 0
     },
     {
-      "evaluated": 36,
-      "front": 24,
-      "generation": 5,
-      "killed": 1,
-      "moved": false,
-      "new_axes": [],
-      "stall": 1
-    },
-    {
-      "evaluated": 39,
-      "front": 18,
-      "generation": 6,
-      "killed": 2,
-      "moved": false,
-      "new_axes": [],
-      "stall": 2
-    },
-    {
-      "evaluated": 35,
-      "front": 22,
-      "generation": 7,
-      "killed": 1,
-      "moved": false,
-      "new_axes": [],
-      "stall": 3
-    },
-    {
-      "evaluated": 38,
-      "front": 19,
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 21,
       "generation": 8,
       "killed": 0,
-      "moved": true,
+      "moved": false,
       "new_axes": [],
-      "stall": 0
+      "stall": 1,
+      "structural_stall": 0
     },
     {
-      "evaluated": 38,
-      "front": 22,
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 19,
       "generation": 9,
-      "killed": 2,
-      "moved": true,
-      "new_axes": [],
-      "stall": 0
-    },
-    {
-      "evaluated": 35,
-      "front": 21,
-      "generation": 10,
       "killed": 0,
       "moved": false,
-      "new_axes": [
-        "lexical_cache",
-        "dependency_signature"
-      ],
-      "stall": 1
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
     },
     {
-      "evaluated": 40,
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 24,
+      "generation": 10,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 3,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 28,
       "front": 21,
       "generation": 11,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 4,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 29,
+      "front": 23,
+      "generation": 12,
+      "killed": 1,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 20,
+      "generation": 13,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 38,
+      "front": 18,
+      "generation": 14,
       "killed": 2,
       "moved": true,
       "new_axes": [],
-      "stall": 0
+      "stall": 0,
+      "structural_stall": 0
     },
     {
-      "evaluated": 36,
-      "front": 15,
-      "generation": 12,
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 19,
+      "generation": 15,
       "killed": 0,
       "moved": false,
-      "new_axes": [
-        "action_signature"
-      ],
-      "stall": 1
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
     },
     {
-      "evaluated": 42,
+      "demoted_axes": [],
+      "evaluated": 32,
+      "front": 20,
+      "generation": 16,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 33,
       "front": 25,
-      "generation": 13,
+      "generation": 17,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 3,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 33,
+      "front": 25,
+      "generation": 18,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 4,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 22,
+      "generation": 19,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 5,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 20,
+      "generation": 20,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 39,
+      "front": 24,
+      "generation": 21,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [
+        "field_presence_checksum"
+      ],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 36,
+      "front": 22,
+      "generation": 22,
+      "killed": 1,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 24,
+      "generation": 23,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 25,
+      "generation": 24,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 28,
+      "front": 23,
+      "generation": 25,
+      "killed": 1,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 33,
+      "front": 27,
+      "generation": 26,
+      "killed": 2,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 35,
+      "front": 25,
+      "generation": 27,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 33,
+      "front": 27,
+      "generation": 28,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 22,
+      "generation": 29,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 28,
+      "front": 20,
+      "generation": 30,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 32,
+      "front": 23,
+      "generation": 31,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 20,
+      "generation": 32,
+      "killed": 3,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 35,
+      "front": 24,
+      "generation": 33,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 20,
+      "generation": 34,
+      "killed": 1,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 35,
+      "front": 23,
+      "generation": 35,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 21,
+      "generation": 36,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 19,
+      "generation": 37,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 33,
+      "front": 21,
+      "generation": 38,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 3,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 29,
+      "front": 18,
+      "generation": 39,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 4,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 34,
+      "front": 24,
+      "generation": 40,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 5,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 19,
+      "generation": 41,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 6,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 34,
+      "front": 20,
+      "generation": 42,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 7,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 33,
+      "front": 22,
+      "generation": 43,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 8,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 20,
+      "generation": 44,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 9,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 33,
+      "front": 19,
+      "generation": 45,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 10,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 33,
+      "front": 22,
+      "generation": 46,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 11,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 27,
+      "front": 17,
+      "generation": 47,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 12,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 28,
+      "front": 14,
+      "generation": 48,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 13,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 32,
+      "front": 18,
+      "generation": 49,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 14,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 32,
+      "front": 18,
+      "generation": 50,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 15,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 32,
+      "front": 20,
+      "generation": 51,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 19,
+      "generation": 52,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 29,
+      "front": 17,
+      "generation": 53,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 18,
+      "generation": 54,
+      "killed": 2,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 30,
+      "front": 18,
+      "generation": 55,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 22,
+      "generation": 56,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 22,
+      "generation": 57,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 3,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 31,
+      "front": 24,
+      "generation": 58,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 4,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 20,
+      "generation": 59,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 5,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 27,
+      "front": 22,
+      "generation": 60,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 21,
+      "generation": 61,
+      "killed": 2,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 28,
+      "front": 22,
+      "generation": 62,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 28,
+      "front": 21,
+      "generation": 63,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 3,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 29,
+      "front": 18,
+      "generation": 64,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 4,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 29,
+      "front": 19,
+      "generation": 65,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 5,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 27,
+      "front": 17,
+      "generation": 66,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 6,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 28,
+      "front": 20,
+      "generation": 67,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 7,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 32,
+      "front": 22,
+      "generation": 68,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 8,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 19,
+      "generation": 69,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 9,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 27,
+      "front": 21,
+      "generation": 70,
       "killed": 0,
       "moved": false,
       "new_axes": [
-        "semantic_graph",
-        "precedence_ordering"
+        "metavar_partition"
       ],
-      "stall": 2
+      "stall": 10,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 19,
+      "generation": 71,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 11,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 20,
+      "generation": 72,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 12,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 19,
+      "generation": 73,
+      "killed": 1,
+      "moved": false,
+      "new_axes": [],
+      "stall": 13,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 19,
+      "generation": 74,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 14,
+      "structural_stall": 1
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 75,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 15,
+      "structural_stall": 2
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 19,
+      "generation": 76,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 16,
+      "structural_stall": 3
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 20,
+      "generation": 77,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 17,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 78,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 18,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 79,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 19,
+      "structural_stall": 1
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 20,
+      "generation": 80,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 20,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 81,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 21,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 20,
+      "generation": 82,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 22,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 83,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 23,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 84,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 24,
+      "structural_stall": 1
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 19,
+      "generation": 85,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 25,
+      "structural_stall": 2
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 20,
+      "generation": 86,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 26,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 20,
+      "generation": 87,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 20,
+      "generation": 88,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 27,
+      "front": 21,
+      "generation": 89,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 27,
+      "front": 22,
+      "generation": 90,
+      "killed": 0,
+      "moved": true,
+      "new_axes": [],
+      "stall": 0,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 91,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 1,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 92,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 2,
+      "structural_stall": 1
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 93,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 3,
+      "structural_stall": 2
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 94,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 4,
+      "structural_stall": 3
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 26,
+      "front": 19,
+      "generation": 95,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 5,
+      "structural_stall": 4
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 20,
+      "generation": 96,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 6,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 19,
+      "generation": 97,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 7,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 98,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 8,
+      "structural_stall": 1
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 20,
+      "generation": 99,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 9,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 100,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 10,
+      "structural_stall": 0
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 19,
+      "generation": 101,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 11,
+      "structural_stall": 1
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 102,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 12,
+      "structural_stall": 2
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 25,
+      "front": 19,
+      "generation": 103,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 13,
+      "structural_stall": 3
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 104,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 14,
+      "structural_stall": 4
+    },
+    {
+      "demoted_axes": [],
+      "evaluated": 24,
+      "front": 19,
+      "generation": 105,
+      "killed": 0,
+      "moved": false,
+      "new_axes": [],
+      "stall": 15,
+      "structural_stall": 5
     }
   ],
   "invented": {
-    "R_0b6d1cbab3f7": {
-      "dependency_weight": "NEGATIVE"
+    "R_019095d89727": {
+      "field_presence_checksum": "PER_RECORD"
     },
-    "R_10b08a2857cc": {
-      "semantic_graph": "CONSTRUCT"
-    },
-    "R_146ee6c883bf": {
-      "action_signature": "SEMANTIC_ID"
-    },
-    "R_1b5e2ff7efe1": {
-      "lexical_cache": "TERM_KEY"
-    },
-    "R_1e34e94d02e4": {
-      "context_signature": "TOPOLOGICAL_PATH"
-    },
-    "R_2465cd18f4a4": {
-      "precedence_ordering": "LINEAR"
-    },
-    "R_2517d49ac3e5": {
-      "action_signature": "FULL_NAME"
-    },
-    "R_2ac8e391100b": {
-      "goal_context_depth": "TWO"
-    },
-    "R_2baf36cb1a6f": {
-      "goal_signature": "SEMANTIC"
-    },
-    "R_2cf84ad10fe6": {
-      "metavariable_grouping": "GOAL_LOCAL"
-    },
-    "R_3052beaa42d2": {
-      "context_signature": "TOPOLOGICAL_PATH",
-      "dependency_capsule": "NONE"
-    },
-    "R_384a4e874754": {
-      "goal_context_signature": "TOPOLOGICAL_PATH"
-    },
-    "R_38eae4feb635": {
-      "dependency_signature": "TOPOLOGICAL_PATH"
-    },
-    "R_4a81d8059773": {
-      "dependency_weight": "POSITIVE"
-    },
-    "R_4ee0c01f5a74": {
-      "action_signature": "SHORT_ID"
-    },
-    "R_53782a1bff7e": {
-      "record_reorder": "BY_DEPENDENCY"
-    },
-    "R_581e7121138f": {
-      "goal_context_depth": "ONE"
-    },
-    "R_786b592cb42a": {
-      "context_signature": "TOPOLOGICAL_PATH"
-    },
-    "R_7969c61aa691": {
-      "lexical_cache": "FULL_WORD"
-    },
-    "R_7ed62d0b6d32": {
+    "R_06a4fb5835e6": {
       "dependency_capsule": "GOAL_LOCAL"
     },
-    "R_94b236636a3d": {
-      "dependency_signature": "GOAL_ID"
+    "R_08c3d61b92cc": {
+      "delta_explicitness": "DERIVABLE_ONLY"
     },
-    "R_96b54ee02750": {
-      "goal_signature": "SOURCE"
+    "R_0ce75990972f": {
+      "dependency_capsule": "GOAL_LOCAL"
     },
-    "R_97d5657942ac": {
-      "semantic_graph": "DECORATE"
+    "R_0f044e221865": {
+      "dependency_capsule": "GOAL_LOCAL"
     },
-    "R_9ba9c4dc56a5": {
-      "context_signature": "TOPOLOGICAL_PATH"
+    "R_11d9097673a0": {
+      "dependency_capsule": "GOAL_LOCAL"
     },
-    "R_a756194f34bc": {
-      "metavariable_grouping": "ACTION_LOCAL"
-    },
-    "R_ac4447800fd8": {
-      "context_signature": "TOPOLOGICAL_PATH"
-    },
-    "R_b85b17a0aed1": {
-      "precedence_ordering": "SOURCE_ORDER"
-    },
-    "R_bf43ccfd183c": {
-      "goal_context_signature": "GOAL_ID"
-    },
-    "R_c012fae39ee8": {
-      "context_signature": "GOAL_ID"
-    },
-    "R_c83185e47c17": {
-      "context_signature": "TOPOLOGICAL_PATH"
-    },
-    "R_ce65d5270617": {
-      "precedence_ordering": "RECURSIVE"
-    },
-    "R_d4c11adce9ca": {
-      "record_reorder": "BY_ORDER"
-    },
-    "R_d8b0267111f0": {
-      "goal_signature": "ID"
-    },
-    "R_e01eaed23c27": {
-      "context_signature": "TOPOLOGICAL_PATH"
-    },
-    "R_e966fc53ca6b": {
+    "R_1274f4a3daea": {
       "dependency_capsule": "ACTION_LOCAL"
     },
+    "R_159628756bc5": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_16312f727130": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_1a056d34f961": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_1acd2dd34f82": {
+      "field_presence_checksum": "PER_RECORD"
+    },
+    "R_2153c5278c81": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_228fd9d86d9f": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_27cde09b082e": {
+      "delta_explicitness": "EXPLICIT_DELTA_BLOCK"
+    },
+    "R_289a6bbfde37": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_2b01e1590aef": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_2d8a39352c72": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_325a16f870b7": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_337f7755d9c3": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_34f531922e61": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_38b3a406961b": {
+      "dependency_capsule": "ACTION_LOCAL"
+    },
+    "R_3b6c22cf5b2f": {
+      "record_reorder": "ACTION_LOCAL"
+    },
+    "R_3bf732ea4ac7": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_3e3e162f98ff": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_41d176b1a897": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_457361c78eec": {
+      "record_reorder": "ACTION_LOCAL"
+    },
+    "R_4796a50da3e8": {
+      "dependency_capsule": "GOAL_LOCAL",
+      "field_presence_checksum": "PER_RECORD"
+    },
+    "R_489dcae4790e": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_48a623f1ef11": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_4b0f93803ea6": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_508ed6b13c46": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_51adf425f34a": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_5af540b6dee6": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_5c6adef61959": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_5d1363dc8900": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_5de2a72b4db8": {
+      "dependency_capsule": "ACTION_LOCAL"
+    },
+    "R_62f9e0f6b6c6": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_6342c051e2d0": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_6b6bd8d26773": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_737146efc724": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_74f9a35c48ca": {
+      "field_presence_checksum": "PER_RECORD"
+    },
+    "R_772a03f9ff9c": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_786b592cb42a": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_809050dee7f4": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_83050eaed0da": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_8358d6675b33": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_852d85710522": {
+      "delta_explicitness": "EXPLICIT_DELTA_BLOCK"
+    },
+    "R_8538157b9f54": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_878e42363f0a": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_88acee18a2bd": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_8a755d87edee": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_9044c87957c6": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_923b76d4e341": {
+      "delta_explicitness": "EXPLICIT_DELTA_BLOCK"
+    },
+    "R_92e23e485aa8": {
+      "field_presence_checksum": "PER_RECORD"
+    },
+    "R_9d65fcf6db26": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_a0f3ac5bf9a6": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_a42dc05d0b66": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_a8986c299fe7": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_a8d6ff128c76": {
+      "record_reorder": "GOAL_LOCAL"
+    },
+    "R_a9055152376a": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_a973417565d4": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_a99301ce2b28": {
+      "dependency_capsule": "NONE"
+    },
+    "R_aebde260550e": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_afd9b2429e2a": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_b1c85c953a00": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_b9334f1b7d53": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_bd837f8052a2": {
+      "delta_explicitness": "EXPLICIT_DELTA_BLOCK"
+    },
+    "R_bec5190e5a0d": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_c50c5296a309": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_c7c1d494c82d": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_ca12f27913e6": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_cb11e691f858": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_ccbc823e663a": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_d21b226ebdc9": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_d221deb217e3": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_d34fe86bf17f": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_dbcb228cbd34": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_dd20d5066b40": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_e01eaed23c27": {
+      "dependency_capsule": "ACTION_LOCAL"
+    },
+    "R_e0c964076827": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_e6123c81f400": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_e7cf3e3dbcbb": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_ebc8277f005c": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_f19ad4759f15": {
+      "field_presence_checksum": "PER_RECORD"
+    },
+    "R_f19fcb32e6b5": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
+    "R_f32fa68e05ae": {
+      "dependency_capsule": "ACTION_LOCAL"
+    },
+    "R_f365df5d07eb": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_f6b63e7d395d": {
+      "metavar_partition": "PRE_STATE_BLOCK"
+    },
+    "R_fbe34b7340ab": {
+      "delta_explicitness": "DERIVABLE_ONLY"
+    },
+    "R_fcd13f8d56a5": {
+      "dependency_capsule": "ACTION_LOCAL"
+    },
+    "R_ff1b44558292": {
+      "dependency_capsule": "GOAL_LOCAL"
+    },
     "R_ff46d9bca293": {
-      "context_signature": "TOPOLOGICAL_PATH"
+      "delta_explicitness": "DERIVABLE_ONLY"
     }
   },
+  "last_front": [
+    "R_00292fac34d9",
+    "R_1274f4a3daea",
+    "R_159628756bc5",
+    "R_21f62bd82c7e",
+    "R_3e3e162f98ff",
+    "R_4acbefeb10ce",
+    "R_7943f3bad185",
+    "R_88acee18a2bd",
+    "R_968d365dafcc",
+    "R_99324b858ac7",
+    "R_a7ef0cd3b92e",
+    "R_a8986c299fe7",
+    "R_aab23600d4d5",
+    "R_bbfdfa5a9249",
+    "R_ca96225a3105",
+    "R_d1accb194ad0",
+    "R_d776c96228d6",
+    "R_ea667dd656c3",
+    "R_fcd13f8d56a5"
+  ],
   "last_signature": [
-    5658.142857142857,
-    193.40808025159114,
-    1.0,
-    16.3067,
-    14.4778,
-    1.8218006065526713
+    5820.40625,
+    199.57843235955707,
+    -0.7083333333333334,
+    20.4,
+    11.8444,
+    1.7982722811740124
   ],
   "pinned": [
     "R_699a25a6ae96",
@@ -299,63 +1523,45 @@
     "R_8611f71278fd",
     "R_ca96225a3105",
     "R_d1accb194ad0",
-    "R_4ca0cdaf5d9a",
-    "R_5b2eb732ac8b",
-    "R_6c7d83089dd4",
-    "R_6ee23af2c775",
-    "R_c6def88b7128",
-    "R_db693e659db4",
-    "R_767743825d20",
-    "R_bad3f6a43963",
-    "R_786b592cb42a",
-    "R_e672320373b8",
-    "R_6562eac6618e",
-    "R_0e7e92b007c8",
-    "R_000441b08de4",
-    "R_8f54b4095197",
-    "R_b7a06641e63c",
-    "R_4d8e302e5bbd",
-    "R_fc454b8751ae",
-    "R_e28dde94edac",
-    "R_939e2a4d43f8",
-    "R_4baa017608fb",
-    "R_c683410e334d",
-    "R_84155a567ea9",
-    "R_e7f47905d3ab",
-    "R_ff8e124d1353",
-    "R_67e9a59574c3",
-    "R_fcbc08c700df",
-    "R_8e7e2f648cbe",
-    "R_16e1ed471794",
-    "R_4a88edf8d010",
-    "R_778f2ce4a877",
-    "R_fcb9fe3cf1c6",
-    "R_ca78e9c0c7f1",
-    "R_97d5657942ac",
-    "R_10b08a2857cc",
-    "R_ce65d5270617",
-    "R_2465cd18f4a4",
-    "R_b85b17a0aed1"
+    "R_159628756bc5",
+    "R_21f62bd82c7e",
+    "R_4acbefeb10ce",
+    "R_99324b858ac7",
+    "R_a7ef0cd3b92e",
+    "R_aab23600d4d5",
+    "R_bbfdfa5a9249",
+    "R_fcd13f8d56a5",
+    "R_3e3e162f98ff",
+    "R_00292fac34d9",
+    "R_1274f4a3daea",
+    "R_a8986c299fe7",
+    "R_ea667dd656c3",
+    "R_88acee18a2bd",
+    "R_968d365dafcc",
+    "R_d776c96228d6",
+    "R_45119708f74d",
+    "R_0ce4f69c4840",
+    "R_e485e6fc0075"
+  ],
+  "preregistered_selection_axes": [
+    "bpe_tokens_per_transition",
+    "binder_use_distance_tokens",
+    "detect_drop_field",
+    "binder_query_token_distance",
+    "dependency_query_token_distance",
+    "identifier_fragmentation"
   ],
   "primitives": {
-    "accepted": 13,
-    "active": 13,
+    "accepted": 5,
+    "active": 5,
     "axes": [
-      "action_signature",
-      "context_signature",
+      "delta_explicitness",
       "dependency_capsule",
-      "dependency_signature",
-      "dependency_weight",
-      "goal_context_depth",
-      "goal_context_signature",
-      "goal_signature",
-      "lexical_cache",
-      "metavariable_grouping",
-      "precedence_ordering",
-      "record_reorder",
-      "semantic_graph"
+      "field_presence_checksum",
+      "metavar_partition",
+      "record_reorder"
     ],
-    "genome_schema_version": "representation-genome-v2.13.0",
+    "genome_schema_version": "representation-genome-v2.5.0",
     "hooks_available": [
       "duplicate_adjacent",
       "neighbourhood_capsule",
@@ -363,10 +1569,13 @@
       "section_partition"
     ],
     "registry_version": "primitive-registry-v1.0.0",
-    "unimplementable": 2
+    "unimplementable": 284
   },
   "quarantine": {
-    "by_verdict": {},
+    "by_verdict": {
+      "NON_GENERALIZING_MUTATION": 8,
+      "VALIDATION_CONTRADICTS_DEV": 4
+    },
     "policy": {
       "noise_floor": 0.01,
       "preregistered": true,
@@ -374,8 +1583,149 @@
       "rule": "a child enters the elite population only when the improvement it claimed on SEARCH_DEV is reproduced on SEARCH_VALIDATION at >= tolerance x the dev gain; otherwise it is quarantined and recorded as a NON_GENERALIZING_MUTATION",
       "tolerance": 0.5
     },
-    "quarantined": 0,
-    "worst_divergences": []
+    "quarantined": 12,
+    "worst_divergences": [
+      {
+        "candidate_id": "R_46eea753f240",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.90854,
+        "divergence": 0.90854,
+        "elite_eligible": false,
+        "metric": "binder_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_38b3a406961b",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.64464,
+        "divergence": 0.64464,
+        "elite_eligible": false,
+        "metric": "dependency_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_6b9131c32139",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.10505,
+        "divergence": 0.10505,
+        "elite_eligible": false,
+        "metric": "binder_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_2153c5278c81",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.09717,
+        "divergence": 0.09717,
+        "elite_eligible": false,
+        "metric": "dependency_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_22b956f99b0b",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.06755,
+        "divergence": 0.06755,
+        "elite_eligible": false,
+        "metric": "binder_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_73f1057f0c78",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.06753,
+        "divergence": 0.06753,
+        "elite_eligible": false,
+        "metric": "binder_query_token_distance",
+        "validation_change": -0.0,
+        "verdict": "NON_GENERALIZING_MUTATION"
+      },
+      {
+        "candidate_id": "R_99a6112c1010",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.01038,
+        "divergence": 0.01271,
+        "elite_eligible": false,
+        "metric": "binder_use_distance_tokens",
+        "validation_change": -0.00233,
+        "verdict": "VALIDATION_CONTRADICTS_DEV"
+      },
+      {
+        "candidate_id": "R_a1d50edc02b8",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.01174,
+        "divergence": 0.01256,
+        "elite_eligible": false,
+        "metric": "binder_use_distance_tokens",
+        "validation_change": -0.00082,
+        "verdict": "VALIDATION_CONTRADICTS_DEV"
+      },
+      {
+        "candidate_id": "R_37c0bdcc1e87",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.01161,
+        "divergence": 0.01241,
+        "elite_eligible": false,
+        "metric": "binder_use_distance_tokens",
+        "validation_change": -0.0008,
+        "verdict": "VALIDATION_CONTRADICTS_DEV"
+      },
+      {
+        "candidate_id": "R_43cb964a0459",
+        "detail": {
+          "direction": "minimise",
+          "noise_floor": 0.01,
+          "tolerance": 0.5
+        },
+        "dev_change": 0.01161,
+        "divergence": 0.01241,
+        "elite_eligible": false,
+        "metric": "binder_use_distance_tokens",
+        "validation_change": -0.0008,
+        "verdict": "VALIDATION_CONTRADICTS_DEV"
+      }
+    ]
   },
   "rng_state": [
     3,
@@ -1012,10 +2362,11 @@
   "selection_axes": [
     "bpe_tokens_per_transition",
     "binder_use_distance_tokens",
-    "semantic_detect_rate",
+    "detect_drop_field",
     "binder_query_token_distance",
     "dependency_query_token_distance",
     "identifier_fragmentation"
   ],
-  "stall_count": 2
+  "stall_count": 15,
+  "structural_stall": 5
 }
