@@ -261,3 +261,53 @@ This matters beyond tidiness for two reasons. The reported search-space size is 
 axes, so each duplicate multiplied it by three while adding no reachable representation — the
 nine-axis group alone inflated it by 6,561x. And structural convergence (`D-020`) is
 unreachable while a meta-designer can mint a fresh *name* for an axis that already exists.
+
+## D-023 — A component is judged only through an instrument that has been proved to work
+
+Date: 2026-08-29. Branch: `main` (HML_V3). Status: **ACCEPTED, ENFORCED BY MEASUREMENT.**
+
+Before the certification arms existed, MicroMath Lab V1 reported a per-cell accuracy for each
+representation and ranked targets by the gap to the best control. Every one of those numbers was
+read as a statement about readability. Four of the eight were not.
+
+The rule adopted is that **no component may be reported, ranked, mutated against, or certified
+until its instrument has passed calibration on that same reader.** Calibration runs four arms on
+identical pairs: the relation stated outright (`EXPLICIT_POSITIVE`), the relation destroyed and
+a decoy prepended (`SCRAMBLED_NEGATIVE`), the best general control, and the candidate. The
+thresholds are preregistered in `src/hml_v3/micromath/calibration.py`:
+
+```
+POSITIVE_MUST_EXCEED_CHANCE = 0.15
+NEGATIVE_MAX_ABOVE_CHANCE   = 0.15
+MINIMUM_DYNAMIC_RANGE       = 0.20
+PARITY_MARGIN               = 0.10
+```
+
+An instrument whose negative arm does not return to chance is `INSTRUMENT_INVALID`: the question
+is answerable with the relation destroyed, so it was never testing that relation. An instrument
+whose positive arm cannot lift the reader is `INSTRUMENT_LIMIT`: the reader cannot do the task at
+any readability, and the representation is neither credited nor blamed. Only the remainder yield
+`ADVANTAGE`, `CONTROL_PARITY` or `LANGUAGE_WEAKNESS`.
+
+Three consequences were accepted along with the rule.
+
+**A clean shortcut audit does not license a measurement.** The audit's best dumb rule reaches
+0.509 in aggregate and 0.5625 on any single cell — the benchmark is genuinely immune to
+positional and frequency tricks — and four instruments were still invalid. Transposition
+equalises the token multiset but not semantic plausibility (`FM-041`). Surface controls and
+calibration test different things and neither substitutes for the other.
+
+**Results measured before calibration are withdrawn, not reinterpreted.** The candidate's
+reported 0.741 drew 75.9 % of its items from cells now known to be invalid or limited; on the
+two valid cells it scores 0.500 (`FM-042`). The correct disposition for such a number is
+withdrawal.
+
+**A rejection on an invalid instrument is `VOID`, not `REFUTED`.** Five of seven rejected
+mutations ran on valid instruments and are now readable as `WRONG_CAUSAL_HYPOTHESIS`. Two ran on
+DEPENDENCY and must be re-run; one of those was the only mutation ever to clear the material
+threshold, and it was overruled by a regression measured on `BINDER`, an `INSTRUMENT_LIMIT` cell.
+
+The cost of the rule is one calibration run per component per reader — 8190 s for eight
+components locally, at zero incremental spend. The cost of not having it was three hours of
+probing, a failure gradient that ranked partly noise, and seven mutation evaluations of which
+two must be discarded.

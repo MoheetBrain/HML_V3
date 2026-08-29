@@ -720,3 +720,93 @@ than confirmatory. No targeted mutation cycle has been run yet.
 **Next intended step.** Finish the two-model probe, produce the first heatmap and failure
 gradient, and run the targeted surgical cycles. `MICRO_HIDDEN` stays unread until local
 optimisation stabilises; `SEALED_FINAL_V2` stays unread.
+
+---
+
+## 2026-08-29 — Component certification: 0 of 8 certified, and 6 of 8 instruments were broken
+
+**Branch.** `codex/open-ended-search-v2`.
+**Stage.** `MICROMATH_LAB_V1` → `MICROMATH_LAB_V1_CERTIFIED`.
+
+**Objective.** Run `COMPONENT_CERTIFICATION_V1`: certify each structural component against
+positive and negative control arms before drawing any conclusion about the language, so that
+`INSTRUMENT_LIMIT` can be separated from `LANGUAGE_WEAKNESS`. Then close out MicroMath Lab V1.
+
+**Files and systems changed.** `scripts/micromath/run_component_certification.py` (new, plus an
+`FM-043` fix); `scripts/micromath/run_targeted_search.py`, `src/hml_v3/micromath/calibration.py`,
+`src/hml_v3/micromath/targeted_search.py` (new, previously uncommitted); eight reports under
+`reports/micromath_lab_v1/`; `DECISIONS.md` (`D-023`);
+`research/representation_search/hml_failure_memory.json` (`FM-041`, `FM-042`, `FM-043`);
+`tests/test_micromath_lab.py`; `docs/PROJECT_STATUS.md`.
+
+**What was completed.** All eight components certified on `qwen38-rvn:latest` — 8 components x
+4 arms x 12 pairs = 768 probe items, 8190 s, £0 incremental. **Zero components certified.**
+
+- **Two valid instruments, both CONTROL_PARITY.** MULTI_GOAL: positive 0.958, negative 0.500,
+  candidate = best control = 0.583, normalised readability **0.182**. EXPRESSION_DEPTH: positive
+  0.917, negative 0.458, candidate = best control = 0.500, normalised readability **0.091**.
+  0.375 and 0.417 of dynamic range are reached by no representation, discovered or hand-written.
+- **Four INSTRUMENT_INVALID** — DEPENDENCY, SCOPE, TYPE, PREMISE, negative arms 0.79–0.88. The
+  question is answerable with the relation destroyed.
+- **Two INSTRUMENT_LIMIT** — BINDER (range 0.167) and ACTION_ARGUMENT (positive arm 0.542).
+
+**Decisions made and why.** `D-023`: a component is judged only through an instrument proved to
+work, with thresholds preregistered before the run. Adopted because the alternative — the
+practice in force until this run — produced three hours of measurements of which 76 % were not
+measurements. Two consequences were accepted explicitly: results taken before calibration are
+*withdrawn* rather than reinterpreted, and a rejection on an invalid instrument is `VOID`
+rather than `REFUTED`.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest` — **192 tests, 338 subtests, all passing** (187 before). Five new:
+  four pin the `D-023` verdicts against the arms actually measured, one pins the `FM-043` leak.
+- `scripts/micromath/run_component_certification.py` — completed all 8 components, 8190 s;
+  output `reports/micromath_lab_v1/COMPONENT_CERTIFICATION.json`.
+- Recomputation of `PROBE_micro_dev_qwen38-rvn_latest.json` against the certification: the
+  candidate's reported 0.741 decomposes to **0.500 on 14 calibrated-valid items** and 0.818 on
+  44 invalid or limited ones; 75.9 % of the items came from broken instruments.
+- Replay of `build_targeted_suite` with the run's own arguments, intersecting
+  `base_transition_id` against the reserved splits: **8 of 8 `micro_hidden` and 8 of 8
+  `micro_shadow` base states consumed.** After the fix, re-verified: **0 overlap, and every
+  component still reaches 12 pairs.**
+
+**Results.** The mission asked which component is weakest. The answer is that six of the eight
+test rigs were broken, and on the two that work the discovered representation performs exactly
+as well as a plain typed AST, both at under a fifth of the achievable range. The seven
+previously rejected mutations split five interpretable (`WRONG_CAUSAL_HYPOTHESIS` — surface
+syntax does not move structural readability; five hypotheses moved a combined 0.031) and two
+void.
+
+**Failures and unresolved uncertainty.**
+- `FM-041` — transposition equalises the token multiset but not semantic plausibility. The
+  per-stress shortcut audit is clean (0.509 aggregate, 0.5625 worst cell) and four instruments
+  were still invalid, because the answer stays recoverable from the identifiers. A surface
+  control is necessary and not sufficient.
+- `FM-042` — three hours of probing, one failure gradient and seven mutation evaluations ran
+  uncalibrated. The gradient's top and third picks were valid, its second was not, and its flat
+  Δ +0.000 tail across five cells was absence of measurement read as parity.
+- `FM-043` — **my defect, found by checking rather than assuming.** The certification topped each
+  component up from the shared pool with an exclusion set covering `micro_dev` only, and spent
+  both holdout splits. I asserted in a draft of the dataset card and final report that they were
+  untouched; I withdrew that after intersecting the identifiers. Nothing was fitted on them and
+  no verdict depends on them, but neither can support a generalisation claim. The existing
+  hidden-split guard missed it because it checks the split *name* a script is given, not the
+  base states a run consumes.
+- Not attempted, stated plainly: §16 `PREMISE_V2`, §17–19 the E/D/G ladders, §21–22 the
+  integration matrix, §23 the reasoning ladder.
+- Google Cloud was not used. `compute.instances.list`/`.get` worked earlier in the session and
+  then returned 403; `h3` had already been stopped and could not be restarted, and the `a100`
+  the user started could not be seen or reached. Stopping `h3` before verifying I could start it
+  was my error. All work ran locally at zero incremental cost.
+
+**Effect on the overall project.** `PROJECT_GOAL.md` §18 names as falsifying evidence the
+absence of a measurable readability advantage over existing notations. On every instrument that
+survives calibration, there is no such advantage. This does not settle the question — two
+components, 12 pairs each — but it is the strongest negative evidence to date, and it redirects
+the project from searching to instrument repair.
+
+**Next intended step.** Repair the four invalid instruments so the answer is not recoverable
+from identifiers, re-run calibration until their negative arms return to chance, mint a fresh
+holdout to replace the two that are spent, and only then resume mutation cycles — against
+structural rather than surface hypotheses. No global search until a component is certified.
+`SEALED_FINAL_V2` and `TARGET_HOLDOUT` stay unread.

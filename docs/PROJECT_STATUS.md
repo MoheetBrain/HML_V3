@@ -19,16 +19,20 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`MICROMATH_LAB_V1`. The converged global search is preserved at tag
-`hml-v3-pre-micromath-2026-08-29`; the default loop is being moved from multi-hour global
-evolution to a surgical domain x structural-stress diagnostic that localises a weakness to a
-*structure* before any broad search runs.
+`MICROMATH_LAB_V1_CERTIFIED`. The component certification has run to completion on all eight
+structural components. **Zero of eight components are certified.** Six of the eight instruments
+were shown not to measure the relation they name, and on the two that do, the discovered
+representation is at parity with a plain typed AST and both sit below a fifth of the achievable
+range. This is the strongest negative evidence the project has produced, and it cost nothing.
 
-Previously `OPEN_ENDED_SEARCH_V2_CONVERGED`. The closed 42-axis search is frozen and preserved. The
-open-ended loop ran from generation 0 on the 918-transition search pool and reached
-**structural convergence at generation 106** — frontier position, frontier membership and
-genome size all unchanged for five consecutive generations. `SEALED_FINAL_V2` has not been
-read.
+The consequence for the project's direction is concrete: the next action is **instrument repair**,
+not another mutation cycle and not another global search. See `reports/micromath_lab_v1/FINAL_REPORT.md`.
+
+Previously `MICROMATH_LAB_V1` (lab construction) and before that
+`OPEN_ENDED_SEARCH_V2_CONVERGED`. The converged global search is preserved at tag
+`hml-v3-pre-micromath-2026-08-29`; the closed 42-axis search is frozen at
+`hml-v3-closed-search-v1-2026-08-28`. The open-ended loop reached **structural convergence at
+generation 106**. `SEALED_FINAL_V2` has still not been read.
 
 ## Current Branch
 
@@ -248,9 +252,53 @@ the instrument against a real measurement rather than trusting the number it pro
 | `FM-033` | nine of the first thirty invented axes were one axis under nine names; the space figure was inflated and convergence was unreachable (`D-022`) |
 | `FM-035` | a mid-run churn rate was read as proof a convergence criterion could not be met; it could, and was |
 
+## MicroMath Lab V1 — Certification Results
+
+Reader `qwen38-rvn:latest`, local, zero incremental cost. 8 components x 4 arms x 12 pairs
+(24 items per arm) = 768 probe items in 8190 s. Rule preregistered in
+`src/hml_v3/micromath/calibration.py` before the run (`D-023`).
+
+| Component | Positive | Negative | Best control | Candidate | Norm. read. | Verdict |
+|---|---|---|---|---|---|---|
+| MULTI_GOAL | 0.958 | 0.500 | 0.583 | 0.583 | 0.182 | CONTROL_PARITY |
+| EXPRESSION_DEPTH | 0.917 | 0.458 | 0.500 | 0.500 | 0.091 | CONTROL_PARITY |
+| DEPENDENCY | 0.792 | 0.792 | 0.792 | 0.708 | — | INSTRUMENT_INVALID |
+| SCOPE | 0.833 | 0.792 | 0.750 | 0.833 | — | INSTRUMENT_INVALID |
+| TYPE | 0.833 | 0.833 | 0.833 | 0.833 | — | INSTRUMENT_INVALID |
+| PREMISE | 0.875 | 0.875 | 0.875 | 0.875 | — | INSTRUMENT_INVALID |
+| BINDER | 0.667 | 0.500 | 0.542 | 0.500 | — | INSTRUMENT_LIMIT |
+| ACTION_ARGUMENT | 0.542 | 0.542 | 0.542 | 0.542 | — | INSTRUMENT_LIMIT |
+
+Three findings follow, all measured:
+
+1. **Four instruments are invalid.** Their negative arm — which destroys the relation and
+   prepends a decoy answer — scores 0.79 to 0.88 instead of chance. Transposition equalises the
+   token multiset but not semantic plausibility, and the answer stays recoverable from the
+   identifiers (`FM-041`). The per-stress shortcut audit is clean (best dumb rule 0.509
+   aggregate, 0.5625 on any cell), which shows a surface-statistics control is necessary but
+   not sufficient.
+2. **The previously reported 0.741 is withdrawn.** 75.9 % of its 58 items come from invalid or
+   limited cells; the apparent signal was carried by PREMISE 1.000, TYPE 1.000 and DEPENDENCY
+   0.875. On the two calibrated-valid cells the candidate scores **0.500 — chance** (`FM-042`).
+3. **Five of seven rejected mutations become interpretable; two are void.** Cycles 1–2 ran on
+   valid instruments, so serialisation order, block delimiters, field markers, identity sigils
+   and syntax family are `WRONG_CAUSAL_HYPOTHESIS` — five surface-syntax hypotheses moved a
+   combined 0.031. Cycle 3 ran on DEPENDENCY and returns nothing; its
+   `expression_notation=POSTFIX_RPN` was the only mutation ever to clear the +0.06 threshold
+   and was overruled by a regression measured on `BINDER`, itself an `INSTRUMENT_LIMIT` cell.
+
+Reports: `SPEC.md`, `DATASET_CARD.md`, `SHORTCUT_AUDIT.md`, `NEURAL_PROBES.md`,
+`FAILURE_GRADIENT.md`, `TARGETED_SEARCH_LOG.md`, `COMPONENT_DASHBOARD.md`, `FINAL_REPORT.md`,
+all under `reports/micromath_lab_v1/`.
+
+Sections of the 36-section mission **not attempted**: §16 PREMISE_V2, §17–19 the E/D/G ladders,
+§21–22 the integration matrix, §23 the reasoning ladder.
+
 ## Verification and Test Results
 
-- `.venv/bin/python -m pytest` — **156 tests, 338 subtests, all passing**. Note that the
+- `.venv/bin/python -m pytest` — **192 tests, 338 subtests, all passing** (2026-08-29). Five
+  are new: four pin the `D-023` calibration verdicts against the arms actually measured, and
+  one pins the `FM-043` reserved-base-state leak. Note that the
   repository ships no `.venv` and the system interpreter has no pytest, so a bare
   `python3 -m pytest` prints `No module named pytest` and **exits 0** — a run that looks
   clean and verifies nothing. `pyproject.toml` now pins `testpaths = ["tests"]`, without
@@ -267,6 +315,23 @@ the instrument against a real measurement rather than trusting the number it pro
 
 ## Known Failures and Limitations
 
+- **Six of the eight MicroMath instruments do not work.** DEPENDENCY, SCOPE, TYPE and PREMISE
+  are answerable with the target relation destroyed (`INSTRUMENT_INVALID`, negative arms
+  0.79–0.88). BINDER and ACTION_ARGUMENT are beyond this reader (`INSTRUMENT_LIMIT`;
+  ACTION_ARGUMENT tops out at 0.542 even when told the answer). **The project currently has no
+  valid way to measure six of the eight structural relations it cares about** (`FM-041`).
+- **Both MicroMath holdout splits are spent** (`FM-043`). The certification topped each
+  component up from the shared pool with an exclusion set covering `micro_dev` only, and
+  consumed all 8 base states of `micro_hidden` and all 8 of `micro_shadow`. Nothing was fitted
+  or selected on them and no verdict depends on them, but no generalisation claim can be made
+  from either. The cause is fixed in `scripts/micromath/run_component_certification.py` and
+  pinned by a regression test; the pool was always deep enough to reach 12 pairs per component
+  with zero overlap. The pre-existing hidden-split guard did not catch this because it checks
+  the split *name* passed to a script, not the base states a run actually consumes.
+- **The discovered representation shows no advantage over a plain typed AST** on either
+  instrument that survives calibration, and both sit at 0.500–0.583 against a 0.917–0.958
+  ceiling. `PROJECT_GOAL.md` §18 names this as falsifying evidence against the project's
+  central claim. It is not decisive on two components, but it is not weak either.
 - **The corpus is 608 transitions, not 50,000.** 392 of 1,000 selected transitions were not
   recovered: 272 exceeded the declared canonical size budget, 96 exceeded the raw element
   budget, 9 were duplicate record ids, 7 elaboration jobs failed with Lean memory errors, and
@@ -288,6 +353,12 @@ the instrument against a real measurement rather than trusting the number it pro
 
 ## Risks and Technical Debt
 
+- A failure gradient computed over uncalibrated cells ranks partly noise and gives no warning
+  which entries are which: Δ-vs-control is computed identically for "no difference" and "no
+  measurement" (`FM-042`). Every gradient must now be restricted to calibrated-valid cells,
+  which today means a ranking of length two.
+- The two valid instruments carry 12 pairs each. That is enough to detect a broken instrument
+  and to establish parity, and marginal for resolving small real differences.
 - Strict non-dominated sorting over seven axes puts most of a grown population on the front;
   reporting uses an epsilon-front, which introduces a reported-shortlist parameter.
 - The synthetic adversarial fixtures are a correctness probe, never model evidence (`FM-014`).
@@ -300,18 +371,28 @@ None.
 
 ## Exact Next Actions
 
-1. **Decide whether to read `SEALED_FINAL_V2`.** The search has converged and the seal has
-   been read zero times, so the precondition its policy names is met. Reading it is a
-   one-shot, irreversible act — after it, no frontier chosen with knowledge of the result is
-   being tested against data that never influenced it. It should be read once, on these seven
-   finalists, through `sealed_service.py`, and only on an explicit decision to do so.
-2. **Re-measure the previous run's space-growth claim.** `FM-033` shows that the 42 -> 55
-   axes / 1.548e26 points figure counted duplicate axes as new dimensions. It should not be
-   repeated without re-measurement.
-3. **Consider revising the meta-designer brief.** Its worked example is `dependency_capsule`,
-   and the backends copied that shape 205 times. The duplicate gate makes this harmless but
-   wasteful; changing the brief would change what the backends propose and should be a
-   recorded decision, not a side effect.
-4. **Design the model experiment** on the seven finalists: matched envelope (`FM-001`), the
-   six lexical controls (`FM-003`), and a task that does not saturate (`FM-010`). Frozen
-   inference first. Ask before any paid GPU run.
+1. **Repair the four invalid instruments.** Make the answer unrecoverable from identifiers —
+   anonymise or type-neutralise identifiers within a pair, or move to four choices with
+   distractors equally plausible under the same priors (`PREMISE_V2`, mission §16, is the
+   worked case). An instrument is usable only once its negative arm returns to chance.
+2. **Retire ACTION_ARGUMENT and BINDER for this reader**, or move them to a stronger local
+   model. A positive arm of 0.542 is not a measurement.
+3. **Mint a fresh holdout.** `micro_hidden` and `micro_shadow` are spent (`FM-043`); excluding
+   them from future runs does not make them clean again. Build a new reserved split from base
+   states no prior run has touched.
+4. **Re-run the DEPENDENCY cycle** once its instrument is valid. Its two mutations are
+   untested, not refuted, and the regression guard must be restricted to calibrated-valid cells
+   before it can overrule anything.
+5. **Attack the unclaimed 0.375 / 0.417 of dynamic range with structural hypotheses.** All five
+   properly tested surface-syntax mutations moved a combined 0.031. No tested axis moves
+   multi-goal or expression-depth readability, and identifying one that does is now the
+   project's central open question.
+6. **Do not launch another global search** until at least one component is certified. The last
+   one ran 106 generations over 5 h 03 m and produced a candidate that reads at chance on both
+   valid instruments.
+7. **Leave `SEALED_FINAL_V2` and `TARGET_HOLDOUT` alone.** `TARGET_HOLDOUT` is gated on a
+   component appearing certified; none has. Reading `SEALED_FINAL_V2` remains a one-shot
+   irreversible act requiring an explicit decision, and there is now less reason to spend it:
+   the finalists it would evaluate show no measured advantage.
+8. **Re-measure the previous run's space-growth claim** (`FM-033`): the 42 → 55 axes /
+   1.548e26 figure counted duplicate axes as new dimensions and must not be repeated unmeasured.

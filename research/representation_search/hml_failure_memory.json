@@ -771,6 +771,72 @@
       "note": "Selecting the structurally richest eligible state per cell chose the largest states: median LEAN_LIKE rendering 16,158 pre-tokens, only 11 of 29 fitting a 16k context. A diagnostic no reader can be run on cannot answer the question the lab exists to ask. Adding a size budget fixed that but then concentrated 45 cells onto 17 base states, nine of which spanned two splits, so MICRO_HIDDEN shared its mathematics with MICRO_DEV and could not have measured generalisation. Preferring unused base states restored 45 distinct states for 45 cells, and splits are now assigned by base state so a state cannot straddle one.",
       "requirement": "a microbenchmark has three constraints at once -- the cell must be answerable, the item must fit the reader, and the splits must not share mathematics; optimising any one alone breaks another",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-041",
+      "title": "Transposition equalises the token multiset but not semantic plausibility, so four instruments measured priors instead of structure",
+      "disposition": "INSTRUMENT_INVALID",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V1 component certification, qwen38-rvn:latest, 12 pairs x 4 arms per component",
+      "numbers": {
+        "negative_arm_DEPENDENCY": 0.7917,
+        "negative_arm_SCOPE": 0.7917,
+        "negative_arm_TYPE": 0.8333,
+        "negative_arm_PREMISE": 0.875,
+        "chance": 0.5,
+        "negative_max_above_chance_threshold": 0.15,
+        "best_dumb_rule_aggregate": 0.509,
+        "best_dumb_rule_any_cell": 0.5625,
+        "instruments_invalid": 4,
+        "instruments_limited": 2,
+        "instruments_valid": 2
+      },
+      "note": "Every pair is a permutation of its partner, so length, vocabulary and token frequency are identical by construction, and the per-stress shortcut audit confirms no positional or frequency rule beats 0.5625 on any cell. That control is real but insufficient. The SCRAMBLED_NEGATIVE arm prepends a decoy answer and destroys the relation, and should return to chance; on DEPENDENCY, SCOPE, TYPE and PREMISE it scored 0.79 to 0.88. The reader answers those questions from mathematical priors carried in the identifiers -- a declaration's type is guessable from its name, a premise attaches to the object it plausibly concerns -- which transposition does not disturb and a decoy header cannot override. A clean shortcut audit is necessary, not sufficient; only a calibrated negative arm detects semantic-prior leakage.",
+      "requirement": "a discrimination benchmark must equalise semantic plausibility as well as surface statistics, and only a negative arm that returns to chance proves it did",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-042",
+      "title": "Three hours of probing, heatmaps and mutation cycles ran on uncalibrated instruments and produced an aggregate that was 76 percent non-measurement",
+      "disposition": "UNCALIBRATED_MEASUREMENT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V1, recomputed from PROBE_micro_dev_qwen38-rvn_latest.json against COMPONENT_CERTIFICATION.json",
+      "numbers": {
+        "reported_aggregate_accuracy": 0.741,
+        "accuracy_on_calibrated_valid_cells": 0.5,
+        "accuracy_on_invalid_or_limited_cells": 0.818,
+        "items_total": 58,
+        "items_valid": 14,
+        "items_invalid_or_limited": 44,
+        "share_of_items_from_invalid_instruments": 0.759,
+        "mutations_tested": 7,
+        "mutations_now_interpretable": 5,
+        "mutations_voided": 2,
+        "hours_before_calibration": 3
+      },
+      "note": "The candidate was reported at 0.741, tying TYPED_AST and OLD_HML, with nine of eleven representations above chance under Bonferroni. Recomputed against the certification, 44 of those 58 items come from cells whose instrument is invalid or beyond the reader, and the apparent signal is carried by PREMISE 1.000, TYPE 1.000 and DEPENDENCY 0.875 -- precisely the cells answerable with the relation destroyed. On the two calibrated-valid cells the candidate scores 0.500. The failure gradient built on those numbers ranked DEPENDENCY second and cycle 3 was spent there; the flat Delta +0.000 tail across five cells was read as parity when it was absence of measurement, because Delta-vs-control is computed identically for both.",
+      "requirement": "calibrate the instrument before measuring the artefact, not after; and never rank targets on cells whose negative arm has not been shown to sit at chance",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-043",
+      "title": "The certification top-up minted pairs on reserved base states and spent both holdout splits",
+      "disposition": "HOLDOUT_CONTAMINATION",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3, replaying build_targeted_suite with the run's own arguments and intersecting base_transition_id against the reserved splits",
+      "numbers": {
+        "micro_hidden_pairs": 8,
+        "micro_hidden_base_states_consumed": 8,
+        "micro_shadow_pairs": 8,
+        "micro_shadow_base_states_consumed": 8,
+        "components_topped_up": 8,
+        "pairs_per_component": 12,
+        "overlap_after_fix": 0,
+        "suite_size_after_fix": 12
+      },
+      "note": "micro_dev holds 29 pairs but only 2 to 4 per stress, so the certification topped each component up to 12 by building fresh pairs from the V2 base pool. The exclusion set was initialised from micro_dev alone, so the builder was free to select base states reserved for micro_hidden and micro_shadow, and took all sixteen. Nothing was fitted or selected on them -- no mutation was accepted -- but both splits have now been measured on and are spent as clean holdouts. The pool was deep enough to avoid this entirely: after initialising the exclusion set from all three splits, every component still reaches 12 pairs with zero overlap. I asserted in a draft that the reserved splits were untouched and had to withdraw it after checking.",
+      "requirement": "any routine that mints new items from a shared pool must exclude every reserved split, and a claim that a holdout is untouched must be verified by intersecting identifiers, never assumed from intent",
+      "blocked_traits": []
     }
   ]
 }

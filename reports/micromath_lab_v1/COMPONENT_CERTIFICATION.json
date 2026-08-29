@@ -1,0 +1,103 @@
+{
+  "best_general_control": "TYPED_AST",
+  "candidate": "R_015b8cd926da",
+  "components": {
+    "ACTION_ARGUMENT": {
+      "best_control": 0.5417,
+      "candidate": 0.5417,
+      "dynamic_range": 0.0,
+      "negative": 0.5417,
+      "normalised_readability": null,
+      "pairs": 12,
+      "positive": 0.5417,
+      "reason": "even stating the relation outright only reaches 0.542; this reader cannot do this task at any readability, so the candidate is not to blame",
+      "status": "INSTRUMENT_LIMIT"
+    },
+    "BINDER": {
+      "best_control": 0.5417,
+      "candidate": 0.5,
+      "dynamic_range": 0.1667,
+      "negative": 0.5,
+      "normalised_readability": null,
+      "pairs": 12,
+      "positive": 0.6667,
+      "reason": "dynamic range 0.167 is too small to separate representations",
+      "status": "INSTRUMENT_LIMIT"
+    },
+    "DEPENDENCY": {
+      "best_control": 0.7917,
+      "candidate": 0.7083,
+      "dynamic_range": 0.0,
+      "negative": 0.7917,
+      "normalised_readability": null,
+      "pairs": 12,
+      "positive": 0.7917,
+      "reason": "the negative arm scores 0.792; the question is answerable with the relation destroyed, so it was never testing the relation",
+      "status": "INSTRUMENT_INVALID"
+    },
+    "EXPRESSION_DEPTH": {
+      "best_control": 0.5,
+      "candidate": 0.5,
+      "dynamic_range": 0.4583,
+      "negative": 0.4583,
+      "normalised_readability": 0.0909,
+      "pairs": 12,
+      "positive": 0.9167,
+      "reason": "candidate 0.500 is within 0.1 of the best general control 0.500",
+      "status": "CONTROL_PARITY"
+    },
+    "MULTI_GOAL": {
+      "best_control": 0.5833,
+      "candidate": 0.5833,
+      "dynamic_range": 0.4583,
+      "negative": 0.5,
+      "normalised_readability": 0.1818,
+      "pairs": 12,
+      "positive": 0.9583,
+      "reason": "candidate 0.583 is within 0.1 of the best general control 0.583",
+      "status": "CONTROL_PARITY"
+    },
+    "PREMISE": {
+      "best_control": 0.875,
+      "candidate": 0.875,
+      "dynamic_range": 0.0,
+      "negative": 0.875,
+      "normalised_readability": null,
+      "pairs": 12,
+      "positive": 0.875,
+      "reason": "the negative arm scores 0.875; the question is answerable with the relation destroyed, so it was never testing the relation",
+      "status": "INSTRUMENT_INVALID"
+    },
+    "SCOPE": {
+      "best_control": 0.75,
+      "candidate": 0.8333,
+      "dynamic_range": 0.0417,
+      "negative": 0.7917,
+      "normalised_readability": null,
+      "pairs": 12,
+      "positive": 0.8333,
+      "reason": "the negative arm scores 0.792; the question is answerable with the relation destroyed, so it was never testing the relation",
+      "status": "INSTRUMENT_INVALID"
+    },
+    "TYPE": {
+      "best_control": 0.8333,
+      "candidate": 0.8333,
+      "dynamic_range": 0.0,
+      "negative": 0.8333,
+      "normalised_readability": null,
+      "pairs": 12,
+      "positive": 0.8333,
+      "reason": "the negative arm scores 0.833; the question is answerable with the relation destroyed, so it was never testing the relation",
+      "status": "INSTRUMENT_INVALID"
+    }
+  },
+  "elapsed_seconds": 8190.5,
+  "model": "qwen38-rvn:latest",
+  "rule": {
+    "minimum_dynamic_range": 0.2,
+    "negative_max_above_chance": 0.15,
+    "parity_margin": 0.1,
+    "positive_must_exceed_chance_by": 0.15,
+    "preregistered": true
+  }
+}

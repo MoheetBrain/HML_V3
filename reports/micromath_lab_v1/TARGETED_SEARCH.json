@@ -1,0 +1,163 @@
+{
+  "accepted": [],
+  "cycles": [
+    {
+      "candidate_id": "R_31128f357768",
+      "cycle": 1,
+      "detail": {},
+      "gates_passed": true,
+      "hypothesis": "changing graph_serialization from DFS_PREORDER improves max_reference_span_tokens on this corpus",
+      "mutation": {
+        "axis": "graph_serialization",
+        "value": "DEPENDENCY_LOCAL"
+      },
+      "proposer": "deterministic",
+      "reason": "delta +0.000 below the preregistered 0.06",
+      "regression": {},
+      "shadow_after": null,
+      "shadow_before": null,
+      "targeted_after": 0.5938,
+      "targeted_before": 0.5938,
+      "targeted_delta": 0.0,
+      "verdict": "REJECTED_NO_TARGETED_GAIN",
+      "weakness": "MULTI_GOAL"
+    },
+    {
+      "candidate_id": "R_623e7b0105e4",
+      "cycle": 1,
+      "detail": {},
+      "gates_passed": true,
+      "hypothesis": "changing block_delimiter from None improves detect_drop_line on this corpus",
+      "mutation": {
+        "axis": "block_delimiter",
+        "value": "KEYWORD_END"
+      },
+      "proposer": "deterministic",
+      "reason": "delta -0.031 below the preregistered 0.06",
+      "regression": {},
+      "shadow_after": null,
+      "shadow_before": null,
+      "targeted_after": 0.5625,
+      "targeted_before": 0.5938,
+      "targeted_delta": -0.0312,
+      "verdict": "REJECTED_NO_TARGETED_GAIN",
+      "weakness": "MULTI_GOAL"
+    },
+    {
+      "candidate_id": "R_a85b01a6201d",
+      "cycle": 2,
+      "detail": {},
+      "gates_passed": true,
+      "hypothesis": "changing field_marker from None improves bpe_tokens_per_transition on this corpus",
+      "mutation": {
+        "axis": "field_marker",
+        "value": "EQUALS"
+      },
+      "proposer": "deterministic",
+      "reason": "delta +0.000 below the preregistered 0.06",
+      "regression": {},
+      "shadow_after": null,
+      "shadow_before": null,
+      "targeted_after": 0.5,
+      "targeted_before": 0.5,
+      "targeted_delta": 0.0,
+      "verdict": "REJECTED_NO_TARGETED_GAIN",
+      "weakness": "EXPRESSION_DEPTH"
+    },
+    {
+      "candidate_id": "R_1c0f719cd46b",
+      "cycle": 2,
+      "detail": {},
+      "gates_passed": true,
+      "hypothesis": "changing identity_sigil from None improves identifier_fragmentation on this corpus",
+      "mutation": {
+        "axis": "identity_sigil",
+        "value": "PREFIX_SIGIL"
+      },
+      "proposer": "deterministic",
+      "reason": "delta +0.000 below the preregistered 0.06",
+      "regression": {},
+      "shadow_after": null,
+      "shadow_before": null,
+      "targeted_after": 0.5,
+      "targeted_before": 0.5,
+      "targeted_delta": 0.0,
+      "verdict": "REJECTED_NO_TARGETED_GAIN",
+      "weakness": "EXPRESSION_DEPTH"
+    },
+    {
+      "candidate_id": "R_4ddcacd70f99",
+      "cycle": 2,
+      "detail": {},
+      "gates_passed": true,
+      "hypothesis": "a JSONISH syntax may provide a more concise and accurate representation of expression depth",
+      "mutation": {
+        "axis": "syntax_family",
+        "value": "JSONISH"
+      },
+      "proposer": "llm/ollama:gemma3:4b",
+      "reason": "delta +0.000 below the preregistered 0.06",
+      "regression": {},
+      "shadow_after": null,
+      "shadow_before": null,
+      "targeted_after": 0.5,
+      "targeted_before": 0.5,
+      "targeted_delta": 0.0,
+      "verdict": "REJECTED_NO_TARGETED_GAIN",
+      "weakness": "EXPRESSION_DEPTH"
+    },
+    {
+      "candidate_id": "R_978a44a78cb2",
+      "cycle": 3,
+      "detail": {},
+      "gates_passed": true,
+      "hypothesis": "changing expression_notation from None improves bpe_tokens_per_transition on this corpus",
+      "mutation": {
+        "axis": "expression_notation",
+        "value": "POSTFIX_RPN"
+      },
+      "proposer": "deterministic",
+      "reason": "worst regression -0.250",
+      "regression": {
+        "ACTION_ARGUMENT": 0.0,
+        "BINDER": -0.25,
+        "MULTI_GOAL": 0.0
+      },
+      "shadow_after": 1.0,
+      "shadow_before": 1.0,
+      "targeted_after": 0.6875,
+      "targeted_before": 0.625,
+      "targeted_delta": 0.0625,
+      "verdict": "REJECTED_REGRESSION",
+      "weakness": "DEPENDENCY"
+    },
+    {
+      "candidate_id": "R_69b3118c2826",
+      "cycle": 3,
+      "detail": {},
+      "gates_passed": true,
+      "hypothesis": "changing count_assertions from None improves detect_drop_line on this corpus",
+      "mutation": {
+        "axis": "count_assertions",
+        "value": "PER_BLOCK"
+      },
+      "proposer": "deterministic",
+      "reason": "delta +0.031 below the preregistered 0.06",
+      "regression": {},
+      "shadow_after": null,
+      "shadow_before": null,
+      "targeted_after": 0.6562,
+      "targeted_before": 0.625,
+      "targeted_delta": 0.0312,
+      "verdict": "REJECTED_NO_TARGETED_GAIN",
+      "weakness": "DEPENDENCY"
+    }
+  ],
+  "elapsed_seconds": 4174.7,
+  "final_candidate": "R_015b8cd926da",
+  "material_improvement": 0.06,
+  "model": "qwen38-rvn:latest",
+  "saturated_excluded": [
+    "PREMISE"
+  ]
+}

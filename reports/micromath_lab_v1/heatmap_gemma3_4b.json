@@ -1,0 +1,3646 @@
+{
+  "failure_gradients": {
+    "LEAN_LIKE": {
+      "candidate": "LEAN_LIKE",
+      "cross_domain_structural_gaps": [
+        "PREMISE",
+        "BINDER",
+        "DEPENDENCY"
+      ],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.0,
+        "CALCULUS_ANALYSIS": -0.2,
+        "GEOMETRY": -0.2857,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.25
+      },
+      "recommended_next_mutation_target": "PREMISE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": -0.375,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS",
+            "GEOMETRY",
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.25,
+          "mean_delta_best_control": -0.25,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [
+            "LOGIC_SET_THEORY",
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.25,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS",
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.1667,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.75,
+          "mean_delta_best_control": 0.0,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "PREMISE trails the best control by -0.375 across 4 domains and is weak in 3 of them, which points at the representation of that structure rather than at any one domain",
+      "worst_cell": {
+        "accuracy": 0.0,
+        "delta_best_control": -0.5,
+        "domain": "PROBABILITY_STATISTICS",
+        "stress": "BINDER"
+      },
+      "worst_domain": "GEOMETRY",
+      "worst_structure": "PREMISE"
+    },
+    "OLD_HML": {
+      "candidate": "OLD_HML",
+      "cross_domain_structural_gaps": [],
+      "domain_mean_delta": {
+        "ALGEBRA": -0.125,
+        "CALCULUS_ANALYSIS": -0.1,
+        "GEOMETRY": 0.0,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": 0.0,
+        "PROBABILITY_STATISTICS": -0.0833
+      },
+      "recommended_next_mutation_target": "EXPRESSION_DEPTH",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [
+            "ALGEBRA"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.875,
+          "mean_delta_best_control": -0.125,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.75,
+          "mean_delta_best_control": 0.0,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": 0.0,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.6667,
+          "mean_delta_best_control": 0.0,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "EXPRESSION_DEPTH trails the best control by -0.125 across 4 domains, but is not weak in two or more domains, so the evidence does not yet distinguish a representation problem from a corpus accident",
+      "worst_cell": {
+        "accuracy": 0.0,
+        "delta_best_control": -0.5,
+        "domain": "ALGEBRA",
+        "stress": "EXPRESSION_DEPTH"
+      },
+      "worst_domain": "ALGEBRA",
+      "worst_structure": "EXPRESSION_DEPTH"
+    },
+    "R_015b8cd926da": {
+      "candidate": "R_015b8cd926da",
+      "cross_domain_structural_gaps": [],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.125,
+        "CALCULUS_ANALYSIS": -0.1,
+        "GEOMETRY": 0.0,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.0833
+      },
+      "recommended_next_mutation_target": "SCOPE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.25,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [
+            "LOGIC_SET_THEORY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.1667,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.875,
+          "mean_delta_best_control": -0.125,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": 0.0,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.75,
+          "mean_delta_best_control": 0.25,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "SCOPE trails the best control by -0.250 across 2 domains, but is not weak in two or more domains, so the evidence does not yet distinguish a representation problem from a corpus accident",
+      "worst_cell": {
+        "accuracy": 0.5,
+        "delta_best_control": -0.5,
+        "domain": "LOGIC_SET_THEORY",
+        "stress": "SCOPE"
+      },
+      "worst_domain": "LOGIC_SET_THEORY",
+      "worst_structure": "SCOPE"
+    },
+    "R_03812c646290": {
+      "candidate": "R_03812c646290",
+      "cross_domain_structural_gaps": [
+        "PREMISE"
+      ],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.0,
+        "CALCULUS_ANALYSIS": -0.1,
+        "GEOMETRY": -0.2143,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.25
+      },
+      "recommended_next_mutation_target": "PREMISE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": -0.375,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS",
+            "GEOMETRY",
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.3333,
+          "mean_delta_best_control": -0.3333,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -1.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.25,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [
+            "LOGIC_SET_THEORY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.125,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "PREMISE trails the best control by -0.375 across 4 domains and is weak in 3 of them, which points at the representation of that structure rather than at any one domain",
+      "worst_cell": {
+        "accuracy": 0.0,
+        "delta_best_control": -1.0,
+        "domain": "PROBABILITY_STATISTICS",
+        "stress": "MULTI_GOAL"
+      },
+      "worst_domain": "PROBABILITY_STATISTICS",
+      "worst_structure": "PREMISE"
+    },
+    "R_159628756bc5": {
+      "candidate": "R_159628756bc5",
+      "cross_domain_structural_gaps": [
+        "PREMISE"
+      ],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.0,
+        "CALCULUS_ANALYSIS": -0.2,
+        "GEOMETRY": -0.1429,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.1667
+      },
+      "recommended_next_mutation_target": "PREMISE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": -0.375,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS",
+            "GEOMETRY",
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.25,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [
+            "LOGIC_SET_THEORY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.1667,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.125,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "PREMISE trails the best control by -0.375 across 4 domains and is weak in 3 of them, which points at the representation of that structure rather than at any one domain",
+      "worst_cell": {
+        "accuracy": 0.5,
+        "delta_best_control": -0.5,
+        "domain": "LOGIC_SET_THEORY",
+        "stress": "SCOPE"
+      },
+      "worst_domain": "CALCULUS_ANALYSIS",
+      "worst_structure": "PREMISE"
+    },
+    "R_21f62bd82c7e": {
+      "candidate": "R_21f62bd82c7e",
+      "cross_domain_structural_gaps": [
+        "PREMISE"
+      ],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.0,
+        "CALCULUS_ANALYSIS": -0.2,
+        "GEOMETRY": 0.0,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.1667
+      },
+      "recommended_next_mutation_target": "PREMISE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": -0.375,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS",
+            "GEOMETRY",
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.25,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [
+            "LOGIC_SET_THEORY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.1667,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.125,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": 0.125,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "PREMISE trails the best control by -0.375 across 4 domains and is weak in 3 of them, which points at the representation of that structure rather than at any one domain",
+      "worst_cell": {
+        "accuracy": 0.5,
+        "delta_best_control": -0.5,
+        "domain": "LOGIC_SET_THEORY",
+        "stress": "SCOPE"
+      },
+      "worst_domain": "CALCULUS_ANALYSIS",
+      "worst_structure": "PREMISE"
+    },
+    "R_a7ef0cd3b92e": {
+      "candidate": "R_a7ef0cd3b92e",
+      "cross_domain_structural_gaps": [],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.125,
+        "CALCULUS_ANALYSIS": -0.2,
+        "GEOMETRY": 0.0,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.0833
+      },
+      "recommended_next_mutation_target": "SCOPE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.25,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [
+            "LOGIC_SET_THEORY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.1667,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.125,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.875,
+          "mean_delta_best_control": -0.125,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": 0.125,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "SCOPE trails the best control by -0.250 across 2 domains, but is not weak in two or more domains, so the evidence does not yet distinguish a representation problem from a corpus accident",
+      "worst_cell": {
+        "accuracy": 0.5,
+        "delta_best_control": -0.5,
+        "domain": "LOGIC_SET_THEORY",
+        "stress": "SCOPE"
+      },
+      "worst_domain": "CALCULUS_ANALYSIS",
+      "worst_structure": "SCOPE"
+    },
+    "R_bbfdfa5a9249": {
+      "candidate": "R_bbfdfa5a9249",
+      "cross_domain_structural_gaps": [
+        "PREMISE"
+      ],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.125,
+        "CALCULUS_ANALYSIS": -0.2,
+        "GEOMETRY": 0.0,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.0833
+      },
+      "recommended_next_mutation_target": "PREMISE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.75,
+          "mean_delta_best_control": -0.25,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS",
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.25,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [
+            "LOGIC_SET_THEORY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.125,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": 0.125,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.8333,
+          "mean_delta_best_control": 0.1667,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "PREMISE trails the best control by -0.250 across 4 domains and is weak in 2 of them, which points at the representation of that structure rather than at any one domain",
+      "worst_cell": {
+        "accuracy": 0.5,
+        "delta_best_control": -0.5,
+        "domain": "LOGIC_SET_THEORY",
+        "stress": "SCOPE"
+      },
+      "worst_domain": "CALCULUS_ANALYSIS",
+      "worst_structure": "PREMISE"
+    },
+    "R_fcd13f8d56a5": {
+      "candidate": "R_fcd13f8d56a5",
+      "cross_domain_structural_gaps": [
+        "PREMISE"
+      ],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.125,
+        "CALCULUS_ANALYSIS": 0.0,
+        "GEOMETRY": -0.0714,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": 0.1,
+        "PROBABILITY_STATISTICS": -0.1667
+      },
+      "recommended_next_mutation_target": "PREMISE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.75,
+          "mean_delta_best_control": -0.25,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS",
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.1667,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.75,
+          "mean_delta_best_control": 0.0,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.75,
+          "mean_delta_best_control": 0.125,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": 0.125,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        }
+      ],
+      "why": "PREMISE trails the best control by -0.250 across 4 domains and is weak in 2 of them, which points at the representation of that structure rather than at any one domain",
+      "worst_cell": {
+        "accuracy": 0.0,
+        "delta_best_control": -0.5,
+        "domain": "GEOMETRY",
+        "stress": "TYPE"
+      },
+      "worst_domain": "PROBABILITY_STATISTICS",
+      "worst_structure": "PREMISE"
+    },
+    "STRUCTURED_ENGLISH": {
+      "candidate": "STRUCTURED_ENGLISH",
+      "cross_domain_structural_gaps": [
+        "DEPENDENCY"
+      ],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.0,
+        "CALCULUS_ANALYSIS": -0.1,
+        "GEOMETRY": -0.2143,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.0833
+      },
+      "recommended_next_mutation_target": "DEPENDENCY",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": true,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.25,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS",
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.25,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [
+            "LOGIC_SET_THEORY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.375,
+          "mean_delta_best_control": -0.125,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [
+            "GEOMETRY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.6667,
+          "mean_delta_best_control": 0.0,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 1.0,
+          "mean_delta_best_control": 0.0,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "DEPENDENCY trails the best control by -0.250 across 4 domains and is weak in 2 of them, which points at the representation of that structure rather than at any one domain",
+      "worst_cell": {
+        "accuracy": 0.0,
+        "delta_best_control": -0.5,
+        "domain": "PROBABILITY_STATISTICS",
+        "stress": "BINDER"
+      },
+      "worst_domain": "GEOMETRY",
+      "worst_structure": "DEPENDENCY"
+    },
+    "TYPED_AST": {
+      "candidate": "TYPED_AST",
+      "cross_domain_structural_gaps": [],
+      "domain_mean_delta": {
+        "ALGEBRA": 0.0,
+        "CALCULUS_ANALYSIS": -0.1,
+        "GEOMETRY": 0.0,
+        "LINEAR_ALGEBRA": 0.0,
+        "LOGIC_SET_THEORY": -0.1,
+        "PROBABILITY_STATISTICS": -0.0833
+      },
+      "recommended_next_mutation_target": "SCOPE",
+      "rule": "MICROMATH \u00a742: a low domain score locates a failure; the structure it shares with other domains identifies the cause. Never propose a domain-specific primitive from a single weak domain.",
+      "structural_ranking": [
+        {
+          "cross_domain": false,
+          "domains_measured": 2,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.25,
+          "question": "which goal a given local declaration lives in",
+          "stress": "SCOPE",
+          "weak_domains": [
+            "LOGIC_SET_THEORY"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 3,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": -0.1667,
+          "question": "which goal the action acts on",
+          "stress": "MULTI_GOAL",
+          "weak_domains": [
+            "PROBABILITY_STATISTICS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.875,
+          "mean_delta_best_control": -0.125,
+          "question": "which external premise the action cites",
+          "stress": "PREMISE",
+          "weak_domains": [
+            "CALCULUS_ANALYSIS"
+          ],
+          "worst_delta": -0.5
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration does a given use in the goal refer to",
+          "stress": "BINDER",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.625,
+          "mean_delta_best_control": 0.0,
+          "question": "which declaration the type of another declaration depends on",
+          "stress": "DEPENDENCY",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which type belongs to a given declaration",
+          "stress": "TYPE",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which reference sits deepest in the goal target",
+          "stress": "EXPRESSION_DEPTH",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        },
+        {
+          "cross_domain": false,
+          "domains_measured": 4,
+          "mean_accuracy": 0.5,
+          "mean_delta_best_control": 0.0,
+          "question": "which local declaration the action uses as an argument",
+          "stress": "ACTION_ARGUMENT",
+          "weak_domains": [],
+          "worst_delta": 0.0
+        }
+      ],
+      "why": "SCOPE trails the best control by -0.250 across 2 domains, but is not weak in two or more domains, so the evidence does not yet distinguish a representation problem from a corpus accident",
+      "worst_cell": {
+        "accuracy": 0.5,
+        "delta_best_control": -0.5,
+        "domain": "LOGIC_SET_THEORY",
+        "stress": "SCOPE"
+      },
+      "worst_domain": "LOGIC_SET_THEORY",
+      "worst_structure": "SCOPE"
+    }
+  },
+  "heatmap": {
+    "best_control_per_cell": {
+      "ALGEBRA|BINDER": 0.5,
+      "ALGEBRA|EXPRESSION_DEPTH": 0.5,
+      "ALGEBRA|MULTI_GOAL": 0.5,
+      "ALGEBRA|TYPE": 0.5,
+      "CALCULUS_ANALYSIS|DEPENDENCY": 1.0,
+      "CALCULUS_ANALYSIS|EXPRESSION_DEPTH": 0.5,
+      "CALCULUS_ANALYSIS|PREMISE": 1.0,
+      "CALCULUS_ANALYSIS|SCOPE": 0.5,
+      "CALCULUS_ANALYSIS|TYPE": 0.5,
+      "GEOMETRY|ACTION_ARGUMENT": 0.5,
+      "GEOMETRY|BINDER": 0.5,
+      "GEOMETRY|DEPENDENCY": 0.5,
+      "GEOMETRY|EXPRESSION_DEPTH": 0.5,
+      "GEOMETRY|MULTI_GOAL": 0.5,
+      "GEOMETRY|PREMISE": 1.0,
+      "GEOMETRY|TYPE": 0.5,
+      "LINEAR_ALGEBRA|ACTION_ARGUMENT": 0.5,
+      "LINEAR_ALGEBRA|PREMISE": 1.0,
+      "LOGIC_SET_THEORY|ACTION_ARGUMENT": 0.5,
+      "LOGIC_SET_THEORY|BINDER": 0.5,
+      "LOGIC_SET_THEORY|DEPENDENCY": 0.5,
+      "LOGIC_SET_THEORY|SCOPE": 1.0,
+      "LOGIC_SET_THEORY|TYPE": 0.5,
+      "PROBABILITY_STATISTICS|ACTION_ARGUMENT": 0.5,
+      "PROBABILITY_STATISTICS|BINDER": 0.5,
+      "PROBABILITY_STATISTICS|DEPENDENCY": 0.5,
+      "PROBABILITY_STATISTICS|EXPRESSION_DEPTH": 0.5,
+      "PROBABILITY_STATISTICS|MULTI_GOAL": 1.0,
+      "PROBABILITY_STATISTICS|PREMISE": 1.0
+    },
+    "controls": [
+      "LEAN_LIKE",
+      "OLD_HML",
+      "STRUCTURED_ENGLISH",
+      "TYPED_AST"
+    ],
+    "matrices": {
+      "LEAN_LIKE": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "OLD_HML": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "R_015b8cd926da": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "R_03812c646290": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.0,
+            "delta_best_control": -1.0
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "R_159628756bc5": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "R_21f62bd82c7e": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "R_a7ef0cd3b92e": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "R_bbfdfa5a9249": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "R_fcd13f8d56a5": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "STRUCTURED_ENGLISH": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.0,
+            "delta_best_control": -0.5
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      },
+      "TYPED_AST": {
+        "ACTION_ARGUMENT": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "BINDER": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "DEPENDENCY": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "EXPRESSION_DEPTH": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          }
+        },
+        "MULTI_GOAL": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          }
+        },
+        "PREMISE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "GEOMETRY": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": 1.0,
+            "delta_best_control": 0.0
+          }
+        },
+        "SCOPE": {
+          "ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": -0.5
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        },
+        "TYPE": {
+          "ALGEBRA": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "CALCULUS_ANALYSIS": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "GEOMETRY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "LINEAR_ALGEBRA": {
+            "accuracy": null,
+            "delta_best_control": null
+          },
+          "LOGIC_SET_THEORY": {
+            "accuracy": 0.5,
+            "delta_best_control": 0.0
+          },
+          "PROBABILITY_STATISTICS": {
+            "accuracy": null,
+            "delta_best_control": null
+          }
+        }
+      }
+    },
+    "note": "delta_best_control is the reported signal. A candidate's own accuracy is not evidence of superiority on its own.",
+    "saturation_by_stress": {
+      "ACTION_ARGUMENT": "DISCRIMINATIVE",
+      "BINDER": "DISCRIMINATIVE",
+      "DEPENDENCY": "DISCRIMINATIVE",
+      "EXPRESSION_DEPTH": "DISCRIMINATIVE",
+      "MULTI_GOAL": "DISCRIMINATIVE",
+      "PREMISE": "DISCRIMINATIVE",
+      "SCOPE": "DISCRIMINATIVE",
+      "TYPE": "DISCRIMINATIVE"
+    }
+  },
+  "model": "gemma3:4b",
+  "split": "micro_dev"
+}

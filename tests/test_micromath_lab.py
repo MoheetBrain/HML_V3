@@ -17,6 +17,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+from hml_v3.micromath import calibration  # noqa: E402
 from hml_v3.micromath import counterfactuals as CF  # noqa: E402
 from hml_v3.micromath import deterministic, shortcut_controls, stresses as S  # noqa: E402
 from hml_v3.micromath.candidates import CONTROLS, load_controls  # noqa: E402
@@ -289,6 +290,78 @@ class SequentialTests(unittest.TestCase):
         left = paired_bootstrap([1.0, 0.0, 0.5] * 8, [0.5] * 24, seed="x")
         right = paired_bootstrap([1.0, 0.0, 0.5] * 8, [0.5] * 24, seed="x")
         self.assertEqual(left.to_dict(), right.to_dict())
+
+
+class CalibrationTests(unittest.TestCase):
+    """`D-023`: a component is judged only through an instrument proved to work.
+
+    The four verdicts are pinned against the worked examples that defined them, because
+    the whole value of the arm is that it fires *before* a number is believed.
+    """
+
+    def test_a_negative_arm_above_chance_invalidates_the_instrument(self) -> None:
+        # DEPENDENCY as measured: positive 0.792, negative 0.792.
+        status, reason = calibration.classify(0.792, 0.792, 0.708, 0.792)
+        self.assertEqual(status, calibration.INSTRUMENT_INVALID)
+        self.assertIn("relation destroyed", reason)
+
+    def test_a_positive_arm_that_cannot_lift_the_reader_is_an_instrument_limit(self) -> None:
+        # ACTION_ARGUMENT as measured: every arm 0.542.
+        status, _ = calibration.classify(0.542, 0.542, 0.542, 0.542)
+        self.assertEqual(status, calibration.INSTRUMENT_LIMIT)
+        # BINDER as measured: valid floor, but only 0.167 of range.
+        status, _ = calibration.classify(0.667, 0.500, 0.500, 0.542)
+        self.assertEqual(status, calibration.INSTRUMENT_LIMIT)
+
+    def test_a_valid_instrument_reports_parity_and_weakness(self) -> None:
+        # MULTI_GOAL as measured: 0.958 / 0.500, candidate and control both 0.583.
+        status, _ = calibration.classify(0.958, 0.500, 0.583, 0.583)
+        self.assertEqual(status, calibration.CONTROL_PARITY)
+        status, _ = calibration.classify(0.958, 0.500, 0.417, 0.583)
+        self.assertEqual(status, calibration.LANGUAGE_WEAKNESS)
+        status, _ = calibration.classify(0.958, 0.500, 0.750, 0.583)
+        self.assertEqual(status, calibration.ADVANTAGE)
+
+    def test_normalised_readability_is_none_when_the_range_is_too_small(self) -> None:
+        # MULTI_GOAL from the raw arm counts: 14/24 candidate, 23/24 positive, 12/24
+        # negative -- exactly 2/11 of the range, reported as 0.1818.
+        self.assertAlmostEqual(
+            calibration.normalised_readability(14 / 24, 23 / 24, 12 / 24), 2 / 11, places=6)
+        self.assertIsNone(calibration.normalised_readability(0.542, 0.542, 0.542))
+
+
+class ReservedSplitTests(unittest.TestCase):
+    """`FM-043`: the split-name guard below does not protect base states.
+
+    The certification run topped each component up from the shared pool with an exclusion
+    set covering `micro_dev` only, and consumed every base state of both reserved splits
+    without ever passing their names to anything.
+    """
+
+    def test_topping_up_from_the_pool_excludes_every_reserved_base_state(self) -> None:
+        import collections
+
+        import hml_v3.micromath.targeted_search as TS
+        from hml_v3.micromath.corpus import load_base_pool
+
+        pool, _ = load_base_pool(ROOT / "data/corpus/search_pool_v2.jsonl.gz")
+        dev, shadow, hidden = load("micro_dev"), load("micro_shadow"), load("micro_hidden")
+        reserved = {p.base_transition_id for p in shadow + hidden}
+
+        by_stress = collections.defaultdict(list)
+        for pair in dev:
+            by_stress[pair.stress].append(pair)
+        used = {p.base_transition_id for p in dev} | reserved
+
+        for stress in S.STRESSES:
+            need = 12 - len(by_stress.get(stress, []))
+            if need <= 0:
+                continue
+            extra = TS.build_targeted_suite(pool, stress, used, need)
+            used |= {p.base_transition_id for p in extra}
+            self.assertEqual(
+                {p.base_transition_id for p in extra} & reserved, set(),
+                f"{stress} minted a certification pair on a reserved base state")
 
 
 class HiddenGuardTests(unittest.TestCase):
