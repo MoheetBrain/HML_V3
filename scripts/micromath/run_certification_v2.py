@@ -157,9 +157,23 @@ def main() -> int:
 
             verdict = C.classify_instrument(
                 arms[P.EXPLICIT_POSITIVE], arms[P.ABLATED_NEGATIVE], chance)
-            if verdict.decisive:
-                break
-            print(f"      undecided at n={rung}; escalating", flush=True)
+            if not verdict.decisive:
+                print(f"      instrument undecided at n={rung}; escalating", flush=True)
+                continue
+            # `MISSION §9`: escalate when the COMPARISON is uncertain too, not only the
+            # instrument. A point estimate that clears the parity margin while its interval
+            # contains zero is exactly what more items are for; stopping there would report
+            # "no advantage" when the honest answer is "not yet resolved".
+            if verdict.status == C.INSTRUMENT_VALID:
+                shared = sorted(set(per_item[args.candidate]) & set(per_item[args.control]))
+                _status, _reason, decided = C.compare(
+                    [per_item[args.candidate][i] for i in shared],
+                    [per_item[args.control][i] for i in shared])
+                if not decided and rung < min(C.LADDER[-1], len(available)):
+                    print(f"      comparison unseparated at n={rung}; escalating",
+                          flush=True)
+                    continue
+            break
 
         record: dict = {"chance": round(chance, 4), "items_used": used,
                         "available": len(available),
@@ -170,8 +184,9 @@ def main() -> int:
             shared = sorted(set(per_item[args.candidate]) & set(per_item[args.control]))
             candidate_items = [per_item[args.candidate][i] for i in shared]
             control_items = [per_item[args.control][i] for i in shared]
-            status, reason = C.compare(candidate_items, control_items)
+            status, reason, decided = C.compare(candidate_items, control_items)
             record["paired_items"] = len(shared)
+            record["comparison_decisive"] = decided
             record["status"] = status
             record["reason"] = reason
             record["candidate"] = round(arms[args.candidate].accuracy, 4)

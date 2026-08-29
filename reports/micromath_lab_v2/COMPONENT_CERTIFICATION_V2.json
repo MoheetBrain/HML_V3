@@ -1,0 +1,352 @@
+{
+  "best_general_control": "TYPED_AST",
+  "candidate": "R_015b8cd926da",
+  "components": {
+    "ACTION_ARGUMENT": {
+      "available": 48,
+      "best_control": 0.9167,
+      "candidate": 0.9167,
+      "chance": 0.2639,
+      "instrument": {
+        "chance": 0.2638888888888889,
+        "decisive": true,
+        "dynamic_range": 0.8333,
+        "negative": 0.1667,
+        "negative_lower": 0.0214,
+        "positive": 1.0,
+        "positive_lower": 0.927,
+        "reason": "positive 1.000 (lower 0.927) is above chance 0.264, negative 0.167 is not, and the range is 0.833",
+        "status": "INSTRUMENT_VALID"
+      },
+      "items_used": 12,
+      "normalised_readability": 0.9,
+      "paired_items": 12,
+      "reason": "candidate differs by +0.000, within the 0.10 parity margin (bootstrap -0.167 to +0.167)",
+      "status": "CONTROL_PARITY"
+    },
+    "BINDER": {
+      "available": 47,
+      "best_control": 0.8333,
+      "candidate": 0.9167,
+      "chance": 0.2766,
+      "instrument": {
+        "chance": 0.2765957446808511,
+        "decisive": true,
+        "dynamic_range": 0.25,
+        "negative": 0.75,
+        "negative_lower": 0.4489,
+        "positive": 1.0,
+        "positive_lower": 0.927,
+        "reason": "the negative arm scores 0.750 with a 90% lower bound of 0.449, above chance 0.277; the question is answerable with the relation destroyed, so it never tested the relation",
+        "status": "INSTRUMENT_INVALID"
+      },
+      "items_used": 12,
+      "reason": "the negative arm scores 0.750 with a 90% lower bound of 0.449, above chance 0.277; the question is answerable with the relation destroyed, so it never tested the relation",
+      "status": "INSTRUMENT_INVALID"
+    },
+    "DEPENDENCY": {
+      "available": 46,
+      "best_control": 0.4167,
+      "candidate": 0.5833,
+      "chance": 0.25,
+      "instrument": {
+        "chance": 0.25,
+        "decisive": true,
+        "dynamic_range": 0.75,
+        "negative": 0.25,
+        "negative_lower": 0.0569,
+        "positive": 1.0,
+        "positive_lower": 0.927,
+        "reason": "positive 1.000 (lower 0.927) is above chance 0.250, negative 0.250 is not, and the range is 0.750",
+        "status": "INSTRUMENT_VALID"
+      },
+      "items_used": 12,
+      "normalised_readability": 0.4444,
+      "paired_items": 12,
+      "reason": "candidate differs by +0.167, within the 0.10 parity margin (bootstrap +0.000 to +0.333)",
+      "status": "CONTROL_PARITY"
+    },
+    "EXPRESSION_DEPTH": {
+      "available": 45,
+      "best_control": 0.1667,
+      "candidate": 0.1667,
+      "chance": 0.3037,
+      "instrument": {
+        "chance": 0.3037037037037037,
+        "decisive": true,
+        "dynamic_range": 0.9167,
+        "negative": 0.0833,
+        "negative_lower": 0.0021,
+        "positive": 1.0,
+        "positive_lower": 0.927,
+        "reason": "positive 1.000 (lower 0.927) is above chance 0.304, negative 0.083 is not, and the range is 0.917",
+        "status": "INSTRUMENT_VALID"
+      },
+      "items_used": 12,
+      "normalised_readability": 0.0909,
+      "paired_items": 12,
+      "reason": "candidate differs by +0.000, within the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+      "status": "CONTROL_PARITY"
+    },
+    "MULTI_GOAL": {
+      "reason": "RELATION_NOT_PROJECTED: no axis of the representation space renders which goal the action acts on, so no representation can be scored on it",
+      "status": "UNTESTED"
+    },
+    "PREMISE": {
+      "available": 46,
+      "best_control": 0.8333,
+      "candidate": 0.8333,
+      "chance": 0.25,
+      "instrument": {
+        "chance": 0.25,
+        "decisive": true,
+        "dynamic_range": 1.0,
+        "negative": 0.0,
+        "negative_lower": 0.0,
+        "positive": 1.0,
+        "positive_lower": 0.927,
+        "reason": "positive 1.000 (lower 0.927) is above chance 0.250, negative 0.000 is not, and the range is 1.000",
+        "status": "INSTRUMENT_VALID"
+      },
+      "items_used": 12,
+      "normalised_readability": 0.8333,
+      "paired_items": 12,
+      "reason": "candidate differs by +0.000, within the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+      "status": "CONTROL_PARITY"
+    },
+    "SCOPE": {
+      "available": 21,
+      "best_control": 0.75,
+      "candidate": 0.6667,
+      "chance": 0.4643,
+      "instrument": {
+        "chance": 0.4642857142857143,
+        "decisive": true,
+        "dynamic_range": 0.6667,
+        "negative": 0.25,
+        "negative_lower": 0.0569,
+        "positive": 0.9167,
+        "positive_lower": 0.6428,
+        "reason": "positive 0.917 (lower 0.643) is above chance 0.464, negative 0.250 is not, and the range is 0.667",
+        "status": "INSTRUMENT_VALID"
+      },
+      "items_used": 12,
+      "normalised_readability": 0.625,
+      "paired_items": 12,
+      "reason": "candidate differs by -0.083, within the 0.10 parity margin (bootstrap -0.167 to +0.000)",
+      "status": "CONTROL_PARITY"
+    },
+    "TYPE": {
+      "available": 48,
+      "best_control": 0.9167,
+      "candidate": 0.9167,
+      "chance": 0.3003,
+      "instrument": {
+        "chance": 0.3003472222222222,
+        "decisive": true,
+        "dynamic_range": 0.6667,
+        "negative": 0.3333,
+        "negative_lower": 0.1035,
+        "positive": 1.0,
+        "positive_lower": 0.927,
+        "reason": "positive 1.000 (lower 0.927) is above chance 0.300, negative 0.333 is not, and the range is 0.667",
+        "status": "INSTRUMENT_VALID"
+      },
+      "items_used": 12,
+      "normalised_readability": 0.875,
+      "paired_items": 12,
+      "reason": "candidate differs by +0.000, within the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+      "status": "CONTROL_PARITY"
+    }
+  },
+  "elapsed_seconds": 3975.3,
+  "lab": "micromath-lab-v2.0.0",
+  "model": "qwen38-rvn:latest",
+  "rule": {
+    "comparison_rule": "paired bootstrap over matched items, 10000 resamples",
+    "confidence": 0.9,
+    "fixed_before": "any V2 candidate rendering was scored",
+    "ladder": [
+      12,
+      24,
+      32,
+      48
+    ],
+    "minimum_range": 0.2,
+    "negative_rule": "exact binomial lower bound on N must NOT exceed chance",
+    "parity_margin": 0.1,
+    "positive_rule": "exact binomial lower bound on P must exceed chance",
+    "range_rule": "P - N >= minimum_range",
+    "rule_version": "micromath-calibration-v2.0.0"
+  },
+  "shortcut_audit": {
+    "ACTION_ARGUMENT": {
+      "answer_entropy": 0.4167,
+      "chance": 0.2639,
+      "distinct_answers": 20,
+      "items": 48,
+      "key_aware_most_common_answer": 0.5625,
+      "key_aware_note": "fitted to this cell's own answer key; an upper bound on publication risk, not evidence that a reader can shortcut",
+      "most_common_answer_lower_bound": 0.0672,
+      "most_common_answer_share": 0.1875,
+      "reason": "best of 7 dumb rules is shortest_option at 0.312, lower bound 0.155, not separated from chance 0.264",
+      "scores": {
+        "alphabetically_first": 0.2917,
+        "alphabetically_last": 0.1667,
+        "always_first_option": 0.2917,
+        "always_last_option": 0.2917,
+        "always_second_option": 0.1875,
+        "longest_option": 0.1875,
+        "shortest_option": 0.3125
+      },
+      "status": "CLEAN",
+      "worst_lower_bound": 0.1547,
+      "worst_rule": "shortest_option",
+      "worst_score": 0.3125
+    },
+    "BINDER": {
+      "answer_entropy": 0.383,
+      "chance": 0.2766,
+      "distinct_answers": 18,
+      "items": 47,
+      "key_aware_most_common_answer": 0.4468,
+      "key_aware_note": "fitted to this cell's own answer key; an upper bound on publication risk, not evidence that a reader can shortcut",
+      "most_common_answer_lower_bound": 0.0558,
+      "most_common_answer_share": 0.1702,
+      "reason": "best of 7 dumb rules is alphabetically_last at 0.447, lower bound 0.263, not separated from chance 0.277",
+      "scores": {
+        "alphabetically_first": 0.1702,
+        "alphabetically_last": 0.4468,
+        "always_first_option": 0.2979,
+        "always_last_option": 0.2979,
+        "always_second_option": 0.1915,
+        "longest_option": 0.4043,
+        "shortest_option": 0.1489
+      },
+      "status": "CLEAN",
+      "worst_lower_bound": 0.263,
+      "worst_rule": "alphabetically_last",
+      "worst_score": 0.4468
+    },
+    "DEPENDENCY": {
+      "answer_entropy": 0.3261,
+      "chance": 0.25,
+      "distinct_answers": 15,
+      "items": 46,
+      "key_aware_most_common_answer": 0.587,
+      "key_aware_note": "fitted to this cell's own answer key; an upper bound on publication risk, not evidence that a reader can shortcut",
+      "most_common_answer_lower_bound": 0.1455,
+      "most_common_answer_share": 0.3043,
+      "reason": "best of 7 dumb rules is always_last_option at 0.370, lower bound 0.196, not separated from chance 0.250",
+      "scores": {
+        "alphabetically_first": 0.2609,
+        "alphabetically_last": 0.1957,
+        "always_first_option": 0.2391,
+        "always_last_option": 0.3696,
+        "always_second_option": 0.1957,
+        "longest_option": 0.2174,
+        "shortest_option": 0.2391
+      },
+      "status": "CLEAN",
+      "worst_lower_bound": 0.1964,
+      "worst_rule": "always_last_option",
+      "worst_score": 0.3696
+    },
+    "EXPRESSION_DEPTH": {
+      "answer_entropy": 0.2667,
+      "chance": 0.3037,
+      "distinct_answers": 12,
+      "items": 45,
+      "key_aware_most_common_answer": 0.8889,
+      "key_aware_note": "fitted to this cell's own answer key; an upper bound on publication risk, not evidence that a reader can shortcut",
+      "most_common_answer_lower_bound": 0.2195,
+      "most_common_answer_share": 0.4,
+      "reason": "best of 7 dumb rules is longest_option at 0.422, lower bound 0.238, not separated from chance 0.304",
+      "scores": {
+        "alphabetically_first": 0.1778,
+        "alphabetically_last": 0.4222,
+        "always_first_option": 0.2889,
+        "always_last_option": 0.3778,
+        "always_second_option": 0.2444,
+        "longest_option": 0.4222,
+        "shortest_option": 0.1778
+      },
+      "status": "CLEAN",
+      "worst_lower_bound": 0.2381,
+      "worst_rule": "longest_option",
+      "worst_score": 0.4222
+    },
+    "PREMISE": {
+      "answer_entropy": 0.8261,
+      "chance": 0.25,
+      "distinct_answers": 38,
+      "items": 46,
+      "key_aware_most_common_answer": 0.7609,
+      "key_aware_note": "fitted to this cell's own answer key; an upper bound on publication risk, not evidence that a reader can shortcut",
+      "most_common_answer_lower_bound": 0.0019,
+      "most_common_answer_share": 0.0435,
+      "reason": "best of 7 dumb rules is always_last_option at 0.304, lower bound 0.146, not separated from chance 0.250",
+      "scores": {
+        "alphabetically_first": 0.1087,
+        "alphabetically_last": 0.2174,
+        "always_first_option": 0.2826,
+        "always_last_option": 0.3043,
+        "always_second_option": 0.2609,
+        "longest_option": 0.2174,
+        "shortest_option": 0.087
+      },
+      "status": "CLEAN",
+      "worst_lower_bound": 0.1455,
+      "worst_rule": "always_last_option",
+      "worst_score": 0.3043
+    },
+    "SCOPE": {
+      "answer_entropy": 0.1429,
+      "chance": 0.4643,
+      "distinct_answers": 3,
+      "items": 21,
+      "key_aware_most_common_answer": 0.5238,
+      "key_aware_note": "fitted to this cell's own answer key; an upper bound on publication risk, not evidence that a reader can shortcut",
+      "most_common_answer_lower_bound": 0.2397,
+      "most_common_answer_share": 0.5238,
+      "reason": "best of 7 dumb rules is always_first_option at 0.619, lower bound 0.321, not separated from chance 0.464",
+      "scores": {
+        "alphabetically_first": 0.5238,
+        "alphabetically_last": 0.381,
+        "always_first_option": 0.619,
+        "always_last_option": 0.3333,
+        "always_second_option": 0.381,
+        "longest_option": 0.381,
+        "shortest_option": 0.5238
+      },
+      "status": "CLEAN",
+      "worst_lower_bound": 0.321,
+      "worst_rule": "always_first_option",
+      "worst_score": 0.619
+    },
+    "TYPE": {
+      "answer_entropy": 0.625,
+      "chance": 0.3003,
+      "distinct_answers": 30,
+      "items": 48,
+      "key_aware_most_common_answer": 0.625,
+      "key_aware_note": "fitted to this cell's own answer key; an upper bound on publication risk, not evidence that a reader can shortcut",
+      "most_common_answer_lower_bound": 0.0133,
+      "most_common_answer_share": 0.0833,
+      "reason": "best of 7 dumb rules is longest_option at 0.333, lower bound 0.171, not separated from chance 0.300",
+      "scores": {
+        "alphabetically_first": 0.2917,
+        "alphabetically_last": 0.2708,
+        "always_first_option": 0.2917,
+        "always_last_option": 0.2708,
+        "always_second_option": 0.2917,
+        "longest_option": 0.3333,
+        "shortest_option": 0.25
+      },
+      "status": "CLEAN",
+      "worst_lower_bound": 0.1708,
+      "worst_rule": "longest_option",
+      "worst_score": 0.3333
+    }
+  }
+}

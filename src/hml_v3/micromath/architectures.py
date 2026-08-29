@@ -46,15 +46,24 @@ class Architecture:
                 "falsifier": self.falsifier, "cost": self.cost}
 
 
-# --------------------------------------------------------------------------- MULTI_GOAL
-# Measured: positive 0.958, candidate 0.583. The reader can do this task; the representation
-# is not exposing which goal the action acts on. Every proposal below attacks that link
-# directly rather than restyling the text around it.
+# ------------------------------------------------------------------------ GOAL STRUCTURE
+# These four were written against MULTI_GOAL, which is now withdrawn: the action-to-goal
+# relation is rendered by no axis at all (`FM-044`), so no mutation of the representation
+# could have moved it and testing them there would have measured nothing.
+#
+# They are not discarded, because what they actually attack is **goal structure** -- making
+# ownership explicit, keeping a goal's material contiguous, repeating a goal tag where it is
+# used. SCOPE asks which goal holds a given declaration, is a live instrument, and is exactly
+# the relation these changes are designed to expose. So they are evaluated there.
+#
+# One of them, G_EXPLICIT_SCOPE_IDS, is the closest legal analogue of the explicit positive
+# control for this family, and is the single most direct test of whether stating goal
+# ownership -- rather than leaving it to nesting -- is what a reader needs.
 
-MULTI_GOAL_ARCHITECTURES: tuple[Architecture, ...] = (
+GOAL_STRUCTURE_ARCHITECTURES: tuple[Architecture, ...] = (
     Architecture(
         label="G_INTERLEAVED_PER_GOAL",
-        stress=S.MULTI_GOAL,
+        stress=S.SCOPE,
         hypothesis=(
             "the action-to-goal link is unreadable because the state is serialised as one "
             "flat before/after block, so a goal and the action that touches it are far "
@@ -62,27 +71,27 @@ MULTI_GOAL_ARCHITECTURES: tuple[Architecture, ...] = (
             "material and makes the link local"),
         axes={"state_partitioning": "INTERLEAVED_BY_GOAL",
               "action_position": "HEADER"},
-        prediction="MULTI_GOAL accuracy rises materially above the 0.583 control parity",
+        prediction="SCOPE accuracy rises materially above the control",
         falsifier="no change, or a rise that does not survive the paired bootstrap",
         cost="no new tokens; reorders existing ones"),
     Architecture(
         label="G_EXPLICIT_SCOPE_IDS",
-        stress=S.MULTI_GOAL,
+        stress=S.SCOPE,
         hypothesis=(
             "goal ownership is currently implicit in nesting, which a reader must infer from "
             "indentation depth; naming the owning goal on every declaration and on the "
             "action converts an inferred relation into a stated one"),
         axes={"scope_metadata": "EXPLICIT_SCOPE_IDS",
               "goal_identity_visibility": "BOTH"},
-        prediction="MULTI_GOAL and SCOPE both rise; this is the closest legal analogue of "
-                   "the explicit positive control, so it should capture much of the 0.375 "
-                   "of headroom if the headroom is about stating the link at all",
+        prediction="SCOPE rises substantially; this is the closest legal analogue of the "
+                   "explicit positive control, so it should capture most of whatever gap "
+                   "exists if the gap is about stating ownership at all",
         falsifier="the positive arm stays far above it, which would mean the gap is not "
                   "about naming the link but about where the naming sits",
         cost="one identifier per declaration; measurable token increase"),
     Architecture(
         label="G_GOAL_CENTRED_CONTEXT",
-        stress=S.MULTI_GOAL,
+        stress=S.SCOPE,
         hypothesis=(
             "the declaration order is by declaration index, which cuts across goals; "
             "ordering context by goal and serialising the expression graph goal-first "
@@ -90,13 +99,13 @@ MULTI_GOAL_ARCHITECTURES: tuple[Architecture, ...] = (
         axes={"context_order": "GOAL_CENTRED",
               "graph_serialization": "GOAL_CENTRED",
               "goal_position": "FIRST"},
-        prediction="MULTI_GOAL rises through locality alone, without naming the link",
+        prediction="SCOPE rises through locality alone, without naming ownership",
         falsifier="no change, which would separate 'locality' from 'explicit naming' as "
                   "causes and point at naming",
         cost="reordering only"),
     Architecture(
         label="G_REDUNDANT_GOAL_ANCHOR",
-        stress=S.MULTI_GOAL,
+        stress=S.SCOPE,
         hypothesis=(
             "the link is stated once and then never repeated, so it must be held in memory "
             "across the whole rendering; repeating a short goal tag at each use restates it "
@@ -104,9 +113,9 @@ MULTI_GOAL_ARCHITECTURES: tuple[Architecture, ...] = (
         axes={"redundancy_level": "SELECTIVE",
               "binder_use_reminder": "SHORT_TAG_AT_USE",
               "scope_metadata": "EXPLICIT_SCOPE_IDS"},
-        prediction="MULTI_GOAL rises, and rises more on states with many goals than on "
-                   "states with two -- the long-horizon prediction of PROJECT_GOAL",
-        falsifier="a flat profile across the G1-G5 ladder, which would refute the "
+        prediction="SCOPE rises, and rises more on states with many goals than on states "
+                   "with two -- the long-horizon prediction of PROJECT_GOAL",
+        falsifier="a flat profile across goal count, which would refute the "
                   "horizon-interaction hypothesis for this component",
         cost="highest of the four; repeated tags at every use site"),
 )
@@ -177,9 +186,12 @@ EXPRESSION_ARCHITECTURES: tuple[Architecture, ...] = (
 
 
 ARCHITECTURES: dict[str, tuple[Architecture, ...]] = {
-    S.MULTI_GOAL: MULTI_GOAL_ARCHITECTURES,
+    S.SCOPE: GOAL_STRUCTURE_ARCHITECTURES,
     S.EXPRESSION_DEPTH: EXPRESSION_ARCHITECTURES,
 }
+
+#: Kept under the old name so nothing that imported it breaks silently.
+MULTI_GOAL_ARCHITECTURES = GOAL_STRUCTURE_ARCHITECTURES
 
 
 # ------------------------------------------------------------------------- known-bad set

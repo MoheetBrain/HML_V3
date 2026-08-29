@@ -942,3 +942,60 @@ construction audit and a firewall — so when the numbers arrive they will mean 
 
 **Next intended step.** Complete the seven-component run, then known-bad detection and the
 eight architectural hypotheses, then the dashboard and the mission report.
+
+---
+
+## 2026-08-29 (later still) — V2 certification completes and overturns the V1 conclusion
+
+**Branch.** `codex/open-ended-search-v2`. **Stage.** `INSTRUMENT_REPAIR_V2` →
+`COMPONENT_CERTIFICATION_V2`.
+
+**Objective.** Run the V2 certification to completion on repaired instruments.
+
+**Files and systems changed.** `src/hml_v3/micromath/{ablate,calibration_v2}.py`;
+`scripts/micromath/{run_certification_v2,run_architectures_v2,resolve_unseparated_v2,
+reablate_v2,build_final_report_v2}.py`; `tests/test_micromath_v2.py`;
+`research/representation_search/hml_failure_memory.json` (`FM-049`, `FM-050`);
+`reports/micromath_lab_v2/`; `docs/PROJECT_STATUS.md`.
+
+**What was completed.** Seven components certified in 3975 s. **Six of seven instruments
+valid**, against two of eight in V1.
+
+**Results.** ACTION_ARGUMENT 0.900 readability, TYPE 0.875, PREMISE 0.833, SCOPE 0.625,
+DEPENDENCY 0.444, EXPRESSION_DEPTH 0.091. Five of six are `CONTROL_PARITY`, four exact ties.
+
+**Decisions made and why.** `FM-049`: the ladder now escalates when the *comparison* is
+unresolved, not only the instrument — DEPENDENCY's +0.167 with an interval touching zero is
+exactly what `§9` reserves items for. Disclosed plainly: that change was made after seeing a
+result favourable to the candidate, no threshold moved, and it completes a ladder the mission
+already required.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest` — **246 tests, 338 subtests, all passing**.
+- `run_certification_v2.py` — 7 components, 4 arms, 12 items each, 3975 s, zero spend.
+- `reablate_v2.py --stresses BINDER` — 96 items rewritten in place, 0 lost, splits untouched.
+- Shortcut audit before every run — 21 of 21 cells CLEAN.
+
+**Failures and unresolved uncertainty.**
+- **The V1 conclusion is overturned and I reported it wrongly at the time.** I described V1's
+  result as the language reading at under a fifth of the achievable range on the only two
+  valid instruments. Four of the relations V1 called unmeasurable are read at 0.83–0.90 by
+  *both* representations once identifiers are anonymised and the negative control moved into
+  the state. The instruments were the problem, not the representation.
+- `FM-050` — BINDER is `INSTRUMENT_INVALID` through my defect: the question was changed to
+  remove a counting task and the ablation was not re-derived, so a derangement permuted
+  within the set the question asked about. Negative arm 0.750 against chance 0.277.
+- DEPENDENCY's +0.167 is **unresolved**, not a result. Interval [+0.000, +0.333].
+- Every figure rests on 12 items, and nothing has been reproduced on shadow or holdout.
+- **No component is CERTIFIED.** `§29` requires known-bad detection and reproduction; neither
+  has completed.
+- Defects found this session: seven, all in my own instruments and guards, none in the
+  language. That ratio is the honest summary of the work.
+
+**Effect on the overall project.** The diagnostic now has range: it separates a relation read
+at 0.900 from one read at 0.091, where V1 returned a flat near-chance verdict on everything.
+Expression depth is isolated as the single genuine structural weakness, and it is what the
+architectural hypotheses target.
+
+**Next intended step.** Known-bad detection, the eight architectures, the DEPENDENCY re-run at
+higher n, then the dashboard and final report.

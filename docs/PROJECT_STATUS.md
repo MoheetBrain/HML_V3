@@ -19,23 +19,13 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`INSTRUMENT_REPAIR_V2`. MicroMath Lab V2 is built and its instruments are being calibrated
-under a statistical rule pre-registered before any V2 candidate was scored (`D-023`,
-`D-024`). The V1 holdouts are retired as spent (`FM-043`) and V2 splits are minted behind a
-base-state firewall that a wrong split name cannot bypass.
+`COMPONENT_CERTIFICATION_V2`. The V2 certification has completed on seven components in
+3975 s. **Six of seven instruments are valid** — a reversal of V1, where six of eight were
+broken — and the V1 conclusion is overturned as a result.
 
-Two corrections to the V1 reading were forced by construction work, both recorded:
-
-- **MULTI_GOAL is withdrawn** (`FM-044`). The relation "which goal does the action act on" is
-  not rendered by any axis of the representation space. V1 reported it as the project's
-  largest readable headroom (0.375); that was an absent projection, not a readability gap.
-- **The shortcut audit is now a hard gate** (`D-024`) that runs before any inference and
-  gates certification. It exists because the first V2 build had the answer `g1` on 43 of 43
-  MULTI_GOAL items and it took 277 seconds of inference to notice.
-
-Previously `MICROMATH_LAB_V1_CERTIFIED` (0 of 8 certified, 6 of 8 instruments broken), and
-before that `OPEN_ENDED_SEARCH_V2_CONVERGED` at generation 106. `SEALED_FINAL_V2` has still
-not been read.
+**No component is CERTIFIED**, because `§29` requires reproduction on shadow and holdout plus
+known-bad detection, and neither has completed. Five of six valid instruments report
+`CONTROL_PARITY`; one comparison is unresolved.
 
 ## Current Branch
 
@@ -357,9 +347,46 @@ cosmetic — the five surface mutations properly tested in V1 moved a combined 0
 
 **Eight known-bad representations** are staged to test the tests (`§27`).
 
+## MicroMath Lab V2 — Certification Results
+
+Reader `qwen38-rvn:latest`, 12 items per arm, 3975 s, £0 incremental.
+
+| Component | Chance | Ceiling | Floor | TYPED_AST | Candidate | Readability | Verdict |
+|---|---|---|---|---|---|---|---|
+| ACTION_ARGUMENT | 0.264 | 1.000 | 0.167 | 0.917 | 0.917 | **0.900** | CONTROL_PARITY |
+| TYPE | 0.300 | 1.000 | 0.333 | 0.917 | 0.917 | **0.875** | CONTROL_PARITY |
+| PREMISE | 0.250 | 1.000 | 0.000 | 0.833 | 0.833 | **0.833** | CONTROL_PARITY |
+| SCOPE | 0.464 | 0.917 | 0.250 | 0.750 | 0.667 | 0.625 | CONTROL_PARITY |
+| DEPENDENCY | 0.250 | 1.000 | 0.250 | 0.417 | **0.583** | 0.444 | unresolved (+0.167) |
+| EXPRESSION_DEPTH | 0.304 | 1.000 | 0.083 | 0.167 | 0.167 | **0.091** | CONTROL_PARITY |
+| BINDER | 0.277 | 1.000 | 0.750 | 0.833 | 0.917 | — | INSTRUMENT_INVALID |
+| MULTI_GOAL | — | — | — | — | — | — | UNTESTED (withdrawn) |
+
+**The V1 conclusion is overturned.** V1 found four instruments invalid and reported both
+survivors near chance, which I described as the language reading at under a fifth of the
+achievable range. With identifiers anonymised and the negative control moved into the state,
+**four of those same relations are read at 0.83–0.90 of the achievable range by both
+representations.** On those components the representation was never the problem.
+
+**Expression depth is the one genuine structural weakness.** It is the only valid instrument
+where both representations sit at chance (0.167 against 0.304) while the reader scores 1.000
+when handed the answer. That is an isolated, real failure and it is what the four `E_*`
+architectural hypotheses target.
+
+**No advantage anywhere settled.** Five of six valid instruments are `CONTROL_PARITY`, four of
+them exact ties. DEPENDENCY's +0.167 is the only lead the project has ever produced; its
+bootstrap interval is [+0.000, +0.333], so it is **unresolved, not a result**, and is queued
+for re-run at 24–48 items (`FM-049`).
+
+**BINDER is invalid through my own defect** (`FM-050`), not through the language: the question
+was changed to remove a counting task and its ablation was not re-derived, so a derangement
+permuted within the very set the question asked about. Fixed and queued for re-run.
+
+Every figure above rests on **12 items**.
+
 ## Verification and Test Results
 
-- `.venv/bin/python -m pytest` — **239 tests, 338 subtests, all passing** (2026-08-29).
+- `.venv/bin/python -m pytest` — **246 tests, 338 subtests, all passing** (2026-08-29).
   47 cover MicroMath V2: the firewall refusing a hidden state to a caller that names its own
   compartment, the anonymiser's bijection, every ablation reporting a real change or
   refusing, the pre-registered rule reproducing V1's verdicts, the shortcut audit catching a

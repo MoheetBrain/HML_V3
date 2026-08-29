@@ -81,7 +81,7 @@ def main() -> int:
         if not suite:
             print(f"{stress}: no dev items, skipped", flush=True)
             continue
-        other = S.EXPRESSION_DEPTH if stress == S.MULTI_GOAL else S.MULTI_GOAL
+        other = S.EXPRESSION_DEPTH if stress == S.SCOPE else S.SCOPE
         chance = sum(i.chance for i in suite[:SCREEN]) / len(suite[:SCREEN])
         print(f"\n=== {stress} — {len(proposals)} architectures "
               f"({len(suite)} items, chance {chance:.3f}) ===", flush=True)
@@ -153,7 +153,8 @@ def main() -> int:
                             & {o.probe.item_id for o in base_outcomes})
             left = {o.probe.item_id: o.correct for o in outcomes}
             right = {o.probe.item_id: o.correct for o in base_outcomes}
-            status, reason = C.compare([left[i] for i in shared], [right[i] for i in shared])
+            status, reason, _decided = C.compare(
+                [left[i] for i in shared], [right[i] for i in shared])
             entry.update(level="LEVEL_5_CONFIRM", confirm=round(confirm, 4),
                          confirm_items=trials,
                          candidate_on_same_items=round(

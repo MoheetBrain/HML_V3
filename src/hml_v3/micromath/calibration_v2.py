@@ -245,20 +245,47 @@ def classify_instrument(positive: ArmResult, negative: ArmResult,
                    f"range is {dynamic_range:.3f}")
 
 
-def compare(candidate_items: Sequence[bool], control_items: Sequence[bool]) -> tuple[str, str]:
-    """Candidate against the best general control, on the same items."""
+#: The comparison is undecided rather than parity: the point estimate clears the margin but
+#: the interval still contains zero, so more items would settle it.
+COMPARISON_UNSEPARATED = "COMPARISON_UNSEPARATED"
+
+
+def compare(candidate_items: Sequence[bool],
+            control_items: Sequence[bool]) -> tuple[str, str, bool]:
+    """Candidate against the best general control, on the same items.
+
+    Returns ``(status, reason, decisive)``. ``decisive`` is False only when the point
+    estimate clears the parity margin while the bootstrap interval still contains zero --
+    the case the `MISSION §9` ladder exists for.
+
+    The first version reported that case as CONTROL_PARITY with the words "within the
+    {margin} parity margin", which was simply false for a difference of +0.167 against a
+    margin of 0.10. The verdict was right -- an interval containing zero is not a
+    demonstrated advantage -- but the sentence describing it was not, and a reader of the
+    report would have been misled about what the numbers said.
+
+    Disclosure on ordering: this correction and the escalation it enables were made AFTER
+    seeing DEPENDENCY return +0.167 in the candidate's favour. No threshold changed --
+    PARITY_MARGIN and CONFIDENCE are exactly as pre-registered -- and the change only
+    completes a ladder `§9` already required. It is recorded here so the sequence is visible
+    rather than inferred.
+    """
 
     stats = paired_bootstrap(candidate_items, control_items)
     difference = stats["difference"]
+    span = f"(bootstrap {stats['lower']:+.3f} to {stats['upper']:+.3f})"
     if difference > PARITY_MARGIN and stats["lower"] > 0.0:
-        return ADVANTAGE, (f"candidate leads by {difference:+.3f} "
-                           f"(bootstrap {stats['lower']:+.3f} to {stats['upper']:+.3f})")
+        return ADVANTAGE, f"candidate leads by {difference:+.3f} {span}", True
     if difference < -PARITY_MARGIN and stats["upper"] < 0.0:
-        return LANGUAGE_WEAKNESS, (f"candidate trails by {difference:+.3f} "
-                                   f"(bootstrap {stats['lower']:+.3f} to {stats['upper']:+.3f})")
-    return CONTROL_PARITY, (f"candidate differs by {difference:+.3f}, within the "
-                            f"{PARITY_MARGIN:.2f} parity margin "
-                            f"(bootstrap {stats['lower']:+.3f} to {stats['upper']:+.3f})")
+        return LANGUAGE_WEAKNESS, f"candidate trails by {difference:+.3f} {span}", True
+    if abs(difference) > PARITY_MARGIN:
+        return COMPARISON_UNSEPARATED, (
+            f"candidate differs by {difference:+.3f}, which clears the "
+            f"{PARITY_MARGIN:.2f} margin, but the interval still contains zero {span}; "
+            f"more items would settle it"), False
+    return CONTROL_PARITY, (
+        f"candidate differs by {difference:+.3f}, inside the {PARITY_MARGIN:.2f} parity "
+        f"margin {span}"), True
 
 
 def normalised_readability(candidate: float, positive: float, negative: float) -> float | None:

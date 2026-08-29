@@ -97,19 +97,37 @@ def dependency_relation(transition: dict[str, Any], seed: int) -> dict[str, Any]
 # ----------------------------------------------------------------------------- BINDER
 
 def binder_relation(transition: dict[str, Any], seed: int) -> dict[str, Any]:
-    """Rewire which declaration each use in the goal target refers to."""
+    """Repoint the target's uses at declarations it did not reference.
+
+    The first version deranged the identities among the existing reference sites. That is the
+    right ablation for "which declaration does use number N refer to", and it was -- until
+    the question changed to "which of these declarations is used in the target at all", to
+    remove a counting task the reader should not have been doing. A derangement permutes
+    within the same multiset, so the SET of referenced declarations survives it untouched and
+    the new question stayed answerable with the relation destroyed. The negative arm scored
+    0.750 against a chance of 0.277 and the instrument correctly declared itself invalid.
+
+    The ablation now substitutes referenced identities for in-scope declarations the target
+    does not use, so the set genuinely changes. Every option remains a real declaration in
+    scope, so the option set stays plausible.
+    """
 
     out = copy.deepcopy(transition)
     goal = _goals(out)[0]
     sites = S.local_references(goal.get("target"))
-    if len({identity for _p, identity in sites}) < 2:
-        raise AblationFailed("BINDER ablation needs two distinct referents in the target")
-    identities = [identity for _p, identity in sites]
-    order = _derange(len(sites), seed)
-    for position, (path, _identity) in enumerate(sites):
+    if not sites:
+        raise AblationFailed("BINDER ablation needs a reference in the target")
+    used = {identity for _p, identity in sites}
+    declared = [d["identity"] for d in (goal.get("local_context") or [])
+                if isinstance(d.get("identity"), str)]
+    spare = [d for d in declared if d not in used]
+    if not spare:
+        raise AblationFailed(
+            "BINDER ablation needs an in-scope declaration the target does not use")
+    for index, (path, _identity) in enumerate(sites):
         node = S.get_path(goal.get("target"), path)
         if isinstance(node, dict):
-            node["identity"] = identities[order[position]]
+            node["identity"] = spare[(seed + index) % len(spare)]
     return out
 
 

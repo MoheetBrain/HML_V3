@@ -942,6 +942,48 @@
       "note": "EXPLICIT_POSITIVE prepended the relation to the top of the rendering: 'DEEPEST_REFERENCE = bv91' as line one. Inspecting a single probe showed the reader answering bv11 -- ignoring a header that literally contained the answer, seven thousand characters from the question. The arm scored 0.417 against a chance of 0.304 while being told the answer, so it was measuring whether a reader trusts a distant header rather than what it can do when readability is not the obstacle. MISSION section 25 names this remedy exactly: if the positive arm is not near-trivial, inspect the prompt and the answer format. Moving the stated fact next to the question took the arm to 4/4 on EXPRESSION_DEPTH, TYPE and BINDER. The V1 numbers used the same top-of-document mechanism, so every V1 positive arm is a lower bound on the true ceiling and every V1 dynamic range is understated.",
       "requirement": "a control must be verified to work before it is used to calibrate anything; inspect one raw completion per arm rather than trusting the aggregate",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-049",
+      "title": "A verdict described itself with a sentence that contradicted its own numbers, and the ladder never escalated the comparison",
+      "disposition": "REPORTING_DEFECT_AND_INCOMPLETE_LADDER",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2 certification, DEPENDENCY component, qwen38-rvn:latest, 12 items",
+      "numbers": {
+        "candidate": 0.5833,
+        "best_control": 0.4167,
+        "difference": 0.1667,
+        "parity_margin": 0.1,
+        "bootstrap_lower": 0.0,
+        "bootstrap_upper": 0.3333,
+        "positive": 1.0,
+        "negative": 0.25,
+        "chance": 0.25,
+        "dynamic_range": 0.75,
+        "normalised_readability": 0.4444,
+        "items": 12
+      },
+      "note": "DEPENDENCY produced the first candidate lead the project has seen: 0.583 against the control's 0.417 on a textbook-valid instrument -- ceiling 1.000, floor exactly at chance, range 0.750. The verdict CONTROL_PARITY was correct, because a bootstrap interval of [0.000, +0.333] contains zero and is not a demonstrated advantage. The SENTENCE was wrong: it read 'candidate differs by +0.167, within the 0.10 parity margin', which is false, and a reader of the report would have been misled about what the numbers said. Separately, the sequential ladder escalated only when the INSTRUMENT was undecided, never when the COMPARISON was -- so a difference sitting exactly on the boundary of significance stopped at twelve items and was reported as parity when the honest answer is 'not yet resolved'. Both are fixed: a new COMPARISON_UNSEPARATED status, an accurate sentence, and escalation on comparison ambiguity.",
+      "requirement": "a status string and the sentence that explains it must be derived from the same numbers, and a sequential ladder must escalate on every quantity it is asked to decide, not only the first one",
+      "disclosure": "This correction was made AFTER seeing a result favourable to the candidate. No threshold changed -- PARITY_MARGIN and CONFIDENCE are exactly as pre-registered -- and the change only completes a ladder MISSION section 9 already required. The ordering is recorded so it can be judged rather than inferred.",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-050",
+      "title": "Changing a question without re-checking its ablation left the negative arm permuting within the set the question asked about",
+      "disposition": "QUESTION_ABLATION_MISMATCH",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2 certification, BINDER component, qwen38-rvn:latest, 12 items",
+      "numbers": {
+        "negative": 0.75,
+        "negative_lower": 0.449,
+        "chance": 0.277,
+        "items_affected": 96,
+        "items_lost_to_the_fix": 0
+      },
+      "note": "BINDER originally asked which declaration a numbered use refers to, and the ablation deranged the identities across the reference sites -- correct for that question. The question was then changed to 'which of these declarations is used in the goal target', to remove a counting task that made the reader locate use number forty-one before it could start on the binder relation. The ablation was not revisited. A derangement permutes within a multiset, so the SET of referenced declarations survived it exactly, and the new question stayed fully answerable with the relation supposedly destroyed: the negative arm scored 0.750 with a lower bound of 0.449 against a chance of 0.277, and the instrument declared itself INSTRUMENT_INVALID. The ablation now substitutes referenced identities for in-scope declarations the target does not use, so the set genuinely changes; verified to destroy the answer on every item. All 96 items survive the new ablation, so the ablated state was regenerated in place rather than rebuilding the lab, which would have reshuffled every split and invalidated the components already measured correctly.",
+      "requirement": "a question and its ablation are one unit; changing either requires re-deriving the other, and a negative arm is the only thing that will notice if you do not",
+      "blocked_traits": []
     }
   ]
 }

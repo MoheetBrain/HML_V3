@@ -270,6 +270,28 @@ class CalibrationRuleTests(unittest.TestCase):
         self.assertEqual(verdict.status, C.INSTRUMENT_UNDECIDED)
         self.assertFalse(verdict.decisive)
 
+    def test_an_unseparated_difference_is_not_called_parity(self) -> None:
+        # DEPENDENCY as measured: candidate 7/12, control 5/12. The difference of +0.167
+        # clears the 0.10 margin, so describing it as "within the parity margin" was simply
+        # false -- the verdict was right, the sentence was not.
+        status, reason, decided = C.compare([True] * 7 + [False] * 5,
+                                            [True] * 5 + [False] * 7)
+        self.assertEqual(status, C.COMPARISON_UNSEPARATED)
+        self.assertFalse(decided, "this is exactly what the MISSION section 9 ladder is for")
+        self.assertNotIn("within the", reason)
+        self.assertIn("contains zero", reason)
+
+    def test_a_genuine_tie_is_still_parity_and_decisive(self) -> None:
+        status, _reason, decided = C.compare([True] * 6 + [False] * 6,
+                                             [True] * 6 + [False] * 6)
+        self.assertEqual(status, C.CONTROL_PARITY)
+        self.assertTrue(decided)
+
+    def test_a_separated_lead_is_an_advantage(self) -> None:
+        status, _reason, decided = C.compare([True] * 11 + [False], [False] * 12)
+        self.assertEqual(status, C.ADVANTAGE)
+        self.assertTrue(decided)
+
     def test_the_paired_comparison_is_deterministic(self) -> None:
         left = [True, False, True, True, False, True]
         right = [False, False, True, False, False, True]
