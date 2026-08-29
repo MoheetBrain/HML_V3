@@ -101,6 +101,23 @@ def main() -> int:
             f"| {cell(record.get('normalised_readability'))} | {detected} "
             f"| **{record.get('status', '?')}** |")
 
+    # A negative arm significantly BELOW chance is worth naming. It means the ablation did
+    # not erase the relation but inverted it: the reader follows the damaged structure
+    # confidently to the answer the damage created, which is not the original one. That still
+    # satisfies the pre-registered rule -- the requirement is only that the negative is not
+    # ABOVE chance -- so no verdict changes here. But the dynamic range it produces is wider
+    # than the honest floor of "a reader with no information guesses", and any normalised
+    # readability computed against it flatters the denominator. This is a reporting
+    # observation, added after the fact and marked as such; the rule itself is untouched
+    # (`MISSION §8`).
+    anti = []
+    for name, record in components.items():
+        instrument = record.get("instrument") or {}
+        negative, chance = instrument.get("negative"), record.get("chance")
+        if isinstance(negative, (int, float)) and isinstance(chance, (int, float)):
+            if negative < chance - 0.15:
+                anti.append(name)
+
     valid = [n for n, r in components.items()
              if (r.get("instrument") or {}).get("status") == C.INSTRUMENT_VALID]
     invalid = [n for n, r in components.items()
@@ -124,6 +141,14 @@ def main() -> int:
         f"- ADVANTAGE: **{len(advantage)}** {sorted(advantage)}",
         f"- CONTROL_PARITY: **{len(parity)}** {sorted(parity)}",
         f"- LANGUAGE_WEAKNESS: **{len(weakness)}** {sorted(weakness)}",
+        "",
+        (f"**Negative arm below chance: {sorted(anti)}.** The ablation for these inverted "
+         f"the relation rather than erasing it -- the reader follows the damaged structure "
+         f"to the answer the damage created. The pre-registered rule only requires the "
+         f"negative not to be ABOVE chance, so no verdict changes, but the dynamic range is "
+         f"wider than an honest guessing floor and any normalised readability against it "
+         f"flatters its denominator. Read those figures with that in mind."
+         if anti else "No negative arm fell materially below chance."),
         "",
         "**CERTIFIED requires all of** `§29`: valid instrument, perfect semantic "
         "preservation, at least control parity, reproduction on fresh shadow/holdout, "
@@ -189,6 +214,7 @@ def main() -> int:
         "LANGUAGE_WEAKNESSES": sorted(weakness),
         "CONTROL_PARITY_COMPONENTS": sorted(parity),
         "ADVANTAGE_COMPONENTS": sorted(advantage),
+        "NEGATIVE_ARM_BELOW_CHANCE": sorted(anti),
         "INSTRUMENTS": {name: {
             "chance": record.get("chance"),
             "positive": (record.get("instrument") or {}).get("positive"),

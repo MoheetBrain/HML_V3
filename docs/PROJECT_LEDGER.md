@@ -880,3 +880,65 @@ not notation — the next real obstacle.
 
 **Next intended step.** Finish certification, add SCOPE, run known-bad detection, run the
 eight architectural hypotheses through the kill-early funnel, and publish the dashboard.
+
+---
+
+## 2026-08-29 (later) — Four construction defects, and a positive control that was not one
+
+**Branch.** `codex/open-ended-search-v2`. **Stage.** `INSTRUMENT_REPAIR_V2` (continuing).
+
+**Objective.** Get a V2 certification run whose arms mean what they claim, after the first
+three attempts each surfaced a defect that would have made the numbers uninterpretable.
+
+**Files and systems changed.** `src/hml_v3/micromath/{instruments_v2,shortcut_v2,probe_v2,
+ladders}.py`; `tests/test_micromath_v2.py`; `research/representation_search/
+hml_failure_memory.json` (`FM-047`, `FM-048`); `docs/PROJECT_STATUS.md`.
+
+**What was completed.** Four defects found and fixed, three of them in my own guards rather
+than in the lab:
+
+1. `FM-045` — one seed drove two decisions and correlated them perfectly; the answer landed
+   first on every two-goal SCOPE item.
+2. `FM-046` — the shortcut audit re-sorted the options the model actually sees, used a flat
+   tolerance that made its verdict a function of n, and measured constant answers in a way
+   that would have condemned every small-vocabulary cell at scale.
+3. `FM-047` — EXPRESSION_DEPTH was ill-posed. "Which reference sits deepest" has no single
+   answer when one identity occurs at depths 11, 9, 9 and 8. It **passed the pre-registered
+   calibration rule** and returned `INSTRUMENT_VALID` with `CONTROL_PARITY` at a normalised
+   readability of 0.000 — which reads as "both representations are maximally unreadable".
+4. `FM-048` — the positive control was prepended to the top of a 7000-character rendering and
+   the reader ignored it, scoring 0.417 against chance 0.304 while being handed the answer.
+
+**Decisions made and why.** EXPRESSION_DEPTH now requires a **strictly unique deepest**
+reference. A two-level margin would have been safer but costs 88% of the corpus (7.6% of
+states qualify against 62.8%); that is a difficulty preference dressed as a correctness rule,
+so the lead size is recorded per item and used to stratify difficulty instead. The positive
+control is now placed **beside the question** rather than at the top of the document, which is
+the remedy `MISSION §25` names explicitly.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest` — **243 tests, 338 subtests, all passing** (239 before).
+- Direct inspection of one raw completion: header `DEEPEST_REFERENCE = bv91`, reply `bv11`.
+- Positive arm after the fix: **4/4 on EXPRESSION_DEPTH, TYPE and BINDER**.
+- Shortcut audit after every rebuild: **21 of 21 cells CLEAN** across all three splits,
+  SCOPE included once its measure was corrected.
+- Lab rebuilt: 611 items, 301/135/175, base-state overlap 0.
+
+**Failures and unresolved uncertainty.**
+- `FM-047` and `FM-048` were both caught by a number looking wrong, not by a test. Three arms
+  at exactly 0/12, and a positive arm at 0.417 while being told the answer. Neither the
+  calibration rule nor the shortcut audit could see either, and I have added a reading-time
+  check for the first and a placement fix for the second, but the general lesson is that
+  automated guards did not substitute for looking at one raw completion.
+- **Every V1 dynamic range is understated** because V1 used the same distant-header positive
+  control. The V1 verdicts of INSTRUMENT_INVALID stand — those turned on negative arms, not
+  positive ones — but the V1 normalised-readability figures should not be compared with V2.
+- Four restarts of the certification run. Each was the right call and each cost roughly
+  twenty minutes of local inference, at zero incremental spend.
+
+**Effect on the overall project.** No component has completed V2 certification yet. What has
+changed is that the instruments now have a demonstrated ceiling, a state-level floor, a clean
+construction audit and a firewall — so when the numbers arrive they will mean something.
+
+**Next intended step.** Complete the seven-component run, then known-bad detection and the
+eight architectural hypotheses, then the dashboard and the mission report.

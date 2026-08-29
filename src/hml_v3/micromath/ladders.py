@@ -38,6 +38,13 @@ PREREGISTERED_LADDERS = LADDERS
 #: A secondary cut taken from the observed distribution, reported separately and clearly
 #: marked post-hoc. It exists so the horizon question can be asked at all on EXPRESSION_DEPTH
 #: and DEPENDENCY; it may not be used to claim a result the pre-registered ladder did not.
+#: EXPRESSION_DEPTH's real difficulty axis turned out to be the LEAD -- how far the deepest
+#: reference outranks the runner-up -- not the absolute depth. A one-level lead is the hard
+#: case and covers most of the corpus; a large lead is nearly visible. That is a better
+#: ladder than absolute depth, and it is available because the lead is recorded per item.
+LEAD_LADDER: tuple[tuple[str, int, int], ...] = (
+    ("L1", 1, 2), ("L2", 2, 4), ("L3", 4, 8), ("L4", 8, 10**9))
+
 ADAPTED_LADDERS: dict[str, tuple[tuple[str, int, int], ...]] = {
     S.EXPRESSION_DEPTH: (("E*1", 0, 5), ("E*2", 5, 9), ("E*3", 9, 13), ("E*4", 13, 10**9)),
     S.DEPENDENCY: (("D*1", 0, 20), ("D*2", 20, 40), ("D*3", 40, 80), ("D*4", 80, 10**9)),

@@ -35,6 +35,14 @@ LAB_VERSION = "micromath-lab-v2.0.0"
 TARGET_OPTIONS = 4
 MINIMUM_OPTIONS = 2
 
+#: The deepest reference must STRICTLY lead the runner-up, so "deepest" names exactly one
+#: declaration and no tie-break the reader cannot see decides the answer. A margin of one is
+#: what makes the question well posed; requiring two would be a difficulty preference dressed
+#: as a correctness rule, and it costs 88% of the corpus (7.6% of states qualify against
+#: 62.8%). The size of the lead is recorded instead, so it can stratify difficulty rather
+#: than silently filter it.
+DEPTH_MARGIN = 1
+
 #: How the positive control states the relation outright. `MISSION §25` wants this arm to be
 #: close to trivial, so the phrasing is a bare machine-style fact, not a sentence.
 POSITIVE_HEADER: dict[str, str] = {
@@ -360,18 +368,46 @@ def build_multi_goal(transition: dict[str, Any], seed: int) -> tuple:
 
 
 def build_expression_depth(transition: dict[str, Any], seed: int) -> tuple:
+    """Which declaration is referenced at the greatest nesting depth in the goal target.
+
+    The first version asked "which reference sits deepest" and keyed the answer on the single
+    deepest occurrence. That question is not well posed: a target with twenty-one reference
+    sites has the same identity at depths 11, 9, 9 and 8, so no identity "sits" at a depth,
+    and the answer came down to an arbitrary tie-break. All three real arms scored exactly
+    0/12 against a chance of 0.304 -- three independent arms at exact zero is a mis-keyed
+    question, not an unreadable representation, and the calibration rule could not see it
+    because the positive arm was fed the answer in its header.
+
+    The question now compares each candidate identity by its DEEPEST occurrence, and the item
+    is only built when the winner leads the runner-up by a clear margin. That is a question
+    with one defensible answer.
+    """
+
     goal = _goal(transition)
     sites = S.local_references(goal.get("target"))
     if len(sites) < MINIMUM_OPTIONS:
         raise NotEligible("EXPRESSION_DEPTH needs two references in the target")
-    deepest = max(sites, key=lambda entry: (len(entry[0]), entry[0]))
-    answer = deepest[1]
-    pool = sorted({identity for _p, identity in sites})
-    if len(pool) < MINIMUM_OPTIONS:
+
+    deepest: dict[str, int] = {}
+    for path, identity in sites:
+        deepest[identity] = max(deepest.get(identity, 0), len(path))
+    if len(deepest) < MINIMUM_OPTIONS:
         raise NotEligible("EXPRESSION_DEPTH needs two distinct references")
-    options = _choose_distractors(answer, pool, seed)
-    return ("Which reference sits deepest in the goal target?", options, answer,
-            "DEEPEST_REFERENCE", {"depth": len(deepest[0]), "references": len(sites)})
+
+    ranked = sorted(deepest.items(), key=lambda entry: (-entry[1], entry[0]))
+    lead = ranked[0][1] - ranked[1][1]
+    if lead < DEPTH_MARGIN:
+        raise NotEligible(
+            f"EXPRESSION_DEPTH needs a unique deepest reference: {ranked[0][1]} ties the "
+            f"runner-up at {ranked[1][1]}")
+    answer = ranked[0][0]
+    # Distractors are the next-deepest identities, so every option is genuinely somewhere in
+    # the target and the question cannot be answered by spotting the one that appears at all.
+    options = _choose_distractors(answer, [identity for identity, _d in ranked], seed)
+    return ("Which of these declarations is referenced at the greatest nesting depth in the "
+            "goal target?", options, answer, "DEEPEST_REFERENCE",
+            {"depth": ranked[0][1], "runner_up_depth": ranked[1][1], "lead": lead,
+             "references": len(sites), "distinct": len(deepest)})
 
 
 BUILDERS: dict[str, Callable[[dict[str, Any], int], tuple]] = {

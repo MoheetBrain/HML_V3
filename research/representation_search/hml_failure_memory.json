@@ -896,6 +896,52 @@
       "note": "Two defects in the guard itself. First, the positional rules read sorted(item.options) while the model is shown a rotated order, so the audit measured an ordering no reader ever sees and reported BINDER leaking at 0.447 while its presented positions were close to uniform. Second, a flat 0.15 tolerance made the verdict depend on n: the same construction produced CLEAN on one split and LEAKS on another, because at fourteen items a rule landing 0.43 against chance 0.25 is ordinary noise. The rules are now scored on the presented order and judged by an exact binomial lower bound with a Bonferroni correction for the seven rules tested, which is the same discipline D-023 applies to instrument arms.",
       "requirement": "a guard must test exactly what the reader sees, and must judge by an interval rather than a margin, or it will condemn and clear the same construction on different samples",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-047",
+      "title": "An ill-posed question passed calibration and reported both representations as maximally unreadable",
+      "disposition": "BENCHMARK_QUESTION_ILL_POSED",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2 certification, qwen38-rvn:latest, 12 items",
+      "numbers": {
+        "chance": 0.3037,
+        "explicit_positive": 0.8333,
+        "ablated_negative": 0.0,
+        "best_control": 0.0,
+        "candidate": 0.0,
+        "probability_of_zero_of_twelve_at_chance": 0.006,
+        "reference_sites_in_one_target": 21,
+        "depths_of_one_identity": [
+          11,
+          9,
+          9,
+          8
+        ],
+        "yield_at_unique_maximum": 0.628,
+        "yield_at_two_level_margin": 0.076
+      },
+      "note": "EXPRESSION_DEPTH asked 'which reference sits deepest in the goal target' and keyed the answer on the single deepest occurrence. With twenty-one reference sites, one identity occurs at depths 11, 9, 9 and 8, so no identity sits at a depth and the answer came down to a tie-break invisible to the reader. The instrument passed the pre-registered rule -- positive 0.833, negative 0.000, range 0.833 -- and returned INSTRUMENT_VALID with CONTROL_PARITY at a normalised readability of 0.000, which reads as 'both representations are maximally unreadable'. The tell was that all THREE real arms scored exactly 0/12 against a chance of 0.304, which has probability 0.006 under guessing; three independent arms at exact zero is a mis-keyed question, not a language finding. The positive arm could not detect it because the header hands over the answer, and the shortcut audit could not detect it because no positional rule wins. The question now compares identities by their deepest occurrence and requires a strictly unique maximum.",
+      "requirement": "a negative arm at or below chance is not sufficient; when the control and candidate arms also collapse to a single extreme value, suspect the answer key before concluding anything about a representation",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-048",
+      "title": "The positive control was placed where the reader ignored it, so the ceiling it measured was not a ceiling",
+      "disposition": "CONTROL_PLACEMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2, qwen38-rvn:latest, direct inspection of one probe plus a 4-item recheck on three components",
+      "numbers": {
+        "positive_arm_header_at_top": 0.4167,
+        "chance": 0.3037,
+        "positive_arm_beside_question_EXPRESSION_DEPTH": 1.0,
+        "positive_arm_beside_question_TYPE": 1.0,
+        "positive_arm_beside_question_BINDER": 1.0,
+        "distance_from_header_to_question_chars": 7000,
+        "v1_multi_goal_positive_same_mechanism": 0.958
+      },
+      "note": "EXPLICIT_POSITIVE prepended the relation to the top of the rendering: 'DEEPEST_REFERENCE = bv91' as line one. Inspecting a single probe showed the reader answering bv11 -- ignoring a header that literally contained the answer, seven thousand characters from the question. The arm scored 0.417 against a chance of 0.304 while being told the answer, so it was measuring whether a reader trusts a distant header rather than what it can do when readability is not the obstacle. MISSION section 25 names this remedy exactly: if the positive arm is not near-trivial, inspect the prompt and the answer format. Moving the stated fact next to the question took the arm to 4/4 on EXPRESSION_DEPTH, TYPE and BINDER. The V1 numbers used the same top-of-document mechanism, so every V1 positive arm is a lower bound on the true ceiling and every V1 dynamic range is understated.",
+      "requirement": "a control must be verified to work before it is used to calibrate anything; inspect one raw completion per arm rather than trusting the aggregate",
+      "blocked_traits": []
     }
   ]
 }

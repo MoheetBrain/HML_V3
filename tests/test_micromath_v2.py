@@ -348,6 +348,48 @@ class ShortcutAuditTests(unittest.TestCase):
                              f"unexpected leaky cells: {SC.failing(report)}")
 
 
+class WellPosednessTests(unittest.TestCase):
+    """`FM-047`: a question with no single defensible answer passes calibration."""
+
+    def test_expression_depth_requires_a_strictly_unique_deepest_reference(self) -> None:
+        dev = items("micro_dev_v2")
+        if not dev:
+            self.skipTest("lab v2 not built")
+        for item in dev:
+            if item.stress != S.EXPRESSION_DEPTH:
+                continue
+            self.assertGreaterEqual(item.detail["lead"], IV2.DEPTH_MARGIN, item.item_id)
+            self.assertGreater(item.detail["depth"], item.detail["runner_up_depth"],
+                               f"{item.item_id}: 'deepest' must name exactly one declaration")
+
+    def test_a_tied_deepest_reference_refuses_to_build(self) -> None:
+        tied = {"transition_id": "t", "state_before": {"goals": [{
+            "identity": "g", "local_context": [
+                {"identity": "a", "type": {"node": "symbol", "identity": "T"}},
+                {"identity": "b", "type": {"node": "symbol", "identity": "T"}}],
+            # Both references sit at the same depth, so "deepest" has two answers.
+            "target": {"node": "application",
+                       "function": {"node": "local_reference", "identity": "a"},
+                       "argument": {"node": "local_reference", "identity": "b"}}}]},
+            "state_after": {"goals": []}, "action": {}}
+        with self.assertRaises(IV2.NotEligible):
+            IV2.build(tied, S.EXPRESSION_DEPTH, "MIXED")
+
+    def test_every_option_is_a_declaration_the_target_actually_references(self) -> None:
+        # Distractors drawn from outside the target would let a reader answer by spotting
+        # the one that appears at all, which is not the depth relation.
+        dev = items("micro_dev_v2")
+        if not dev:
+            self.skipTest("lab v2 not built")
+        for item in dev:
+            if item.stress != S.EXPRESSION_DEPTH:
+                continue
+            referenced = {identity for _p, identity in S.local_references(
+                item.state["state_before"]["goals"][0].get("target"))}
+            for option in item.options:
+                self.assertIn(option, referenced, item.item_id)
+
+
 class LadderTests(unittest.TestCase):
     """`MISSION §15`, `§16`."""
 
@@ -355,6 +397,17 @@ class LadderTests(unittest.TestCase):
         self.assertIs(L.PREREGISTERED_LADDERS, L.LADDERS)
         self.assertEqual([label for label, _l, _h in L.LADDERS[S.EXPRESSION_DEPTH]],
                          ["E1", "E2", "E3", "E4", "E5"])
+
+    def test_the_lead_ladder_stratifies_the_real_difficulty_axis(self) -> None:
+        # FM-047: absolute depth was not the difficulty axis; how far the deepest reference
+        # leads the runner-up is. 35 of 45 dev items lead by exactly one level.
+        dev = [i for i in items("micro_dev_v2") if i.stress == S.EXPRESSION_DEPTH]
+        if not dev:
+            self.skipTest("lab v2 not built")
+        leads = [i.detail["lead"] for i in dev]
+        self.assertTrue(all(lead >= 1 for lead in leads))
+        self.assertEqual([label for label, _l, _h in L.LEAD_LADDER],
+                         ["L1", "L2", "L3", "L4"])
 
     def test_the_adapted_ladder_is_labelled_as_secondary(self) -> None:
         for ladder in L.ADAPTED_LADDERS.values():

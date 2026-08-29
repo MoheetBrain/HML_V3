@@ -326,6 +326,26 @@ Base-state overlap between all three splits: **0**.
   rules are tested, and an `INSTRUMENT_UNDECIDED` verdict that escalates the ladder rather
   than blaming a reader for a sample size.
 
+**Four further defects were found in construction, each of which invalidated measurement
+before it was fixed** — and two of them only surfaced because a number looked wrong rather
+than because a test failed:
+
+- `FM-045` — one seed drove both the content choice and the option ordering, so on two-goal
+  SCOPE items the answer landed first every time and "always take the first option" scored
+  1.000.
+- `FM-046` — the audit re-sorted the options the model is shown, used a flat tolerance that
+  made its verdict depend on sample size, and measured constant answers as distinct-over-total
+  (which would have condemned every small-vocabulary cell at scale).
+- `FM-047` — EXPRESSION_DEPTH asked "which reference sits deepest" when one identity occurred
+  at depths 11, 9, 9 and 8. The question had no single answer. It **passed calibration** and
+  returned `INSTRUMENT_VALID` / `CONTROL_PARITY` at a normalised readability of 0.000. The tell
+  was all three real arms scoring exactly 0/12 against chance 0.304.
+- `FM-048` — the positive control was prepended to the top of the rendering, seven thousand
+  characters from the question, and the reader ignored it: 0.417 against chance 0.304 **while
+  being told the answer**. Moving the stated fact beside the question took it to 4/4 on three
+  components. Every V1 positive arm used the same mechanism, so **every V1 dynamic range is
+  understated**.
+
 **Shortcut audit, all three splits: 21 of 21 cells CLEAN** against seven rules that read only
 the options as presented. The audit itself shipped with two defects, both fixed and pinned
 (`FM-046`): it re-sorted the options the model is shown, and used a flat tolerance that made

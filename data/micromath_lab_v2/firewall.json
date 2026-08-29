@@ -2,6 +2,7 @@
   "firewall_version": "micromath-firewall-v2.0.0",
   "registries": {
     "DEV": [
+      "002504def5867ee4c2bb96977405ea2c",
       "03feadfe15438fd2874e0647ce4adc97",
       "056e6d0314ff75ae1f6b296c81947b79",
       "064be990c13ddebd42ead7d4426a493c",
@@ -18,6 +19,7 @@
       "335a0463eabbe59f82789407ed56c612",
       "3565bb66058eadf88c19c6746f6bcee6",
       "3ab81f93dd7e4f640bb250f589868de3",
+      "3c270c28a36e14ec721728e396957aa2",
       "3dc9a24d2cdede5e26fb1c88312818cd",
       "41399a3da025d112883bfbfd883edf40",
       "4191f50edb2c7bf301eb828ee8d34cca",
@@ -101,7 +103,6 @@
       "ff741b01b9ba14cd5ec5648b76d4ea51"
     ],
     "HIDDEN": [
-      "002504def5867ee4c2bb96977405ea2c",
       "0122703700438772d0122574820b2285",
       "03a444fcb7bd288e2bfcb98734194081",
       "092114ceadfbf00eb6c89fbb6fdd1be3",
@@ -114,6 +115,7 @@
       "32eae0c6118da85ffa30149ffe7ba8e7",
       "3644adb2a8deb0ba5b53b9d05ce0ec5f",
       "3df54fd6f729eda1a9a79978aa8b146b",
+      "4056ab045cacd12f73f5558a3c7aa937",
       "4389bf6cc96235930b221f9c84416ba6",
       "4d446dcfc96a8ae374eae66629fc74fa",
       "5c97857b911d560406efa3d3769cd260",
@@ -133,6 +135,7 @@
       "8ba6889c11b3486a530367bc81c21ec6",
       "918c0d94b0b869318d02c6028f7ba153",
       "91c801c0f11557612a505cbdc8176c1a",
+      "95e52d35051f490441822a2d5516dc66",
       "9df3bd623dde4972b76ebce29dc82598",
       "a0a4068d7a5f385dacdba8012fefc77f",
       "a1e3ed11ca7784c763a5886e1786dd27",
@@ -159,6 +162,7 @@
     "SHADOW": [
       "04af60c6a9f505a1c6afa48df59135e1",
       "103f9ef974de497db0bd7b4d01d46ef0",
+      "16cfaadcd8653d454feac7db6b81fc09",
       "21db20489788b76b3319f3547d83290d",
       "22db78b3153dd83fd8d7644e0ecf95eb",
       "2a091366f5f300842671239d5b59dfa5",
@@ -200,6 +204,7 @@
       "e10b3985feb0734260eb838381b9f0a3",
       "e6519f644481830e548f961a4d3de032",
       "f12e1eae9ca34ab5b6a328df1387a119",
+      "f30208c79d63f92574e93f5a911cbc16",
       "f7868c7669dccedaba44e6b5845b1cc1",
       "f93e430c412dd3116c8162203514a6e6",
       "fd26dc501bbc20e79dd5b2cd44140ac3",
@@ -258,9 +263,9 @@
     ]
   },
   "counts": {
-    "DEV": 97,
-    "HIDDEN": 54,
-    "SHADOW": 47
+    "DEV": 99,
+    "HIDDEN": 55,
+    "SHADOW": 49
   },
   "retired_counts": {
     "V1_MICRO_DEV": 28,

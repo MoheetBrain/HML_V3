@@ -3,7 +3,7 @@
 V1 probed a 2-alternative forced choice over a transposition pair. V2 items carry up to four
 plausible options and a state-level ablation, so the arms are built differently:
 
-    EXPLICIT_POSITIVE  the relation is stated outright above the rendering
+    EXPLICIT_POSITIVE  the relation is stated outright, beside the question
     ABLATED_NEGATIVE   the relation is destroyed in the state itself
     <control>          the strongest general control representation
     <candidate>        the representation under test
@@ -45,6 +45,8 @@ class Probe:
     question: str
     options: tuple[str, ...]
     answer: str
+    #: For the positive arm: the relation stated outright, placed ADJACENT to the question.
+    stated: str | None = None
 
 
 @dataclass
@@ -93,22 +95,29 @@ def build_probes(compiler, items, arm_label: str, *, use_ablated: bool = False,
         if encoded is None:
             continue
         answer = encoded[list(item.options).index(item.answer)]
-        text = rendered.text
+        stated = None
         if positive_header is not None:
-            # The positive arm states the relation above the rendering. It is the ceiling
-            # this reader can reach when readability is not the obstacle -- not a
-            # representation, and never reported as one.
-            text = f"{positive_header} = {answer}\n\n{text}"
+            # `MISSION §25`: the positive arm must be nearly trivial. Putting the stated fact
+            # at the TOP of the document did not achieve that -- it sat seven thousand
+            # characters from the question and the reader ignored it, answering bv11 when the
+            # header read "DEEPEST_REFERENCE = bv91". The arm scored 0.417 against a chance of
+            # 0.304 while literally being told the answer, which measures whether a reader
+            # trusts a distant header, not what it can do when readability is not the
+            # obstacle. The fact is now placed immediately beside the question.
+            stated = f"{positive_header} = {answer}"
         probes.append(Probe(
             item_id=item.item_id, stress=item.stress, domain=item.domain, arm=arm_label,
-            rendering=text, question=item.question, options=tuple(encoded), answer=answer))
+            rendering=rendered.text, question=item.question, options=tuple(encoded),
+            answer=answer, stated=stated))
     return probes
 
 
 def ask(model: str, probe: Probe, timeout: int = 180) -> Outcome:
     listed = "\n".join(f"- {option}" for option in probe.options)
-    user = (f"{probe.rendering}\n\nQUESTION: {probe.question}\n\nOPTIONS:\n{listed}\n\n"
-            f"Answer with exactly one option, copied verbatim.")
+    stated = (f"\n\nSTATED FACT (authoritative, use it): {probe.stated}"
+              if probe.stated else "")
+    user = (f"{probe.rendering}\n\nQUESTION: {probe.question}{stated}\n\n"
+            f"OPTIONS:\n{listed}\n\nAnswer with exactly one option, copied verbatim.")
     messages = [{"role": "system", "content": SYSTEM},
                 {"role": "user", "content": user}]
     if any(marker in model.lower() for marker in THINKING_MARKERS):
