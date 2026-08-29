@@ -2,6 +2,16 @@
 
 ## Project Objective
 
+**The permanent objective is [`PROJECT_GOAL.md`](../PROJECT_GOAL.md), which outranks this
+document and every roadmap, milestone and report in the repository.** In one sentence:
+discover a mathematical representation that lets Moheet + AI solve problems more accurately,
+more quickly and over longer reasoning horizons than conventional notation, while preserving
+exact mathematical meaning and subjecting every claimed advantage to controlled testing.
+Section 14 of that document lists what does *not* count as success — a converged search, a
+metric improving, or beating one weak control among them. Everything below is instrumental to
+that goal and is measured against it.
+
+
 Discover, by evidence rather than by design taste, which machine-facing representation of
 mathematical state best supports verified mathematical reasoning. Mathematical truth is held
 fixed as a `CanonicalMathState` derived from Lean; the representation `R_phi(M)` is the
@@ -9,7 +19,12 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`OPEN_ENDED_SEARCH_V2_CONVERGED`. The closed 42-axis search is frozen and preserved. The
+`MICROMATH_LAB_V1`. The converged global search is preserved at tag
+`hml-v3-pre-micromath-2026-08-29`; the default loop is being moved from multi-hour global
+evolution to a surgical domain x structural-stress diagnostic that localises a weakness to a
+*structure* before any broad search runs.
+
+Previously `OPEN_ENDED_SEARCH_V2_CONVERGED`. The closed 42-axis search is frozen and preserved. The
 open-ended loop ran from generation 0 on the 918-transition search pool and reached
 **structural convergence at generation 106** — frontier position, frontier membership and
 genome size all unchanged for five consecutive generations. `SEALED_FINAL_V2` has not been

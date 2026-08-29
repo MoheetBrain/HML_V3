@@ -698,6 +698,79 @@
       "note": "verify_reproducibility.py renders each candidate in a fresh subprocess under a different PYTHONHASHSEED and compares digests. It built every compiler from the genome alone, with no invented axes and no primitive registry, on BOTH sides -- so for the 92 candidates carrying an invented axis it verified a different object from the one the search evaluated. It also keyed the child's results by the genome's own candidate_id rather than by the record id; an invented-axis candidate shares its base genome with its parent, so the lookup silently returned None and was counted as a mismatch. The visible symptom was 'NOT REPRODUCIBLE: 2 candidates differ across processes', which is the most alarming possible way for a verifier to report its own blind spot. Both candidates were invented-axis carriers. After passing the invented values and the registry to the child and keying by record id, 60 candidates including 10 carriers verify with zero mismatches. Any earlier reproducibility claim covered only candidates without invented axes.",
       "requirement": "a verifier must construct the object under test the same way the search constructed it, including every layer the search added; and it must key results by the identifier the search uses, not by a derived one that can collide",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-037",
+      "title": "Two microtest stresses were built on an ordering the semantic contract declares to be a set",
+      "disposition": "MICROTEST_INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V1 construction",
+      "numbers": {
+        "stresses_affected": 2,
+        "cells_affected": 12,
+        "representations_reporting_the_false_failure": 11,
+        "action_argument_renders_differ": false,
+        "premise_parse_recovers": false
+      },
+      "note": "PREMISE and ACTION_ARGUMENT were first built by permuting action.external_premise_refs and action.local_context_refs. projection.semantic_core stores both as sorted() -- the declared contract treats them as SETS and order carries no meaning. Every one of the eleven representations, all four controls included, therefore 'failed' those cells: ACTION_ARGUMENT rendered byte-identically for A and B, and PREMISE rendered differently but decoded to the same object. Read naively that was a spectacular finding, a universal representation weakness across the whole space. It was a benchmark bug. Both stresses were rebuilt on set MEMBERSHIP, which is semantic, and all eleven then scored 29/29 expressible.",
+      "requirement": "a counterfactual must change projection.semantic_core; assert it, because a transposition the contract calls a no-op produces a question with no ground truth and reports it as a representation failure",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-038",
+      "title": "An aggregate shortcut audit hid two cells that a dumb rule solved perfectly",
+      "disposition": "MICROBENCHMARK_LEAKAGE",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V1, per-stress shortcut audit",
+      "numbers": {
+        "aggregate_best_dumb_rule": 0.62,
+        "aggregate_limit": 0.65,
+        "multi_goal_earlier_option": 1.0,
+        "premise_earlier_option": 1.0,
+        "premise_more_frequent_option": 0.938,
+        "cells_leaking": 2,
+        "cells_total": 8,
+        "after_repair_worst_cell": 0.562
+      },
+      "note": "The audit reported 0.62 against a 0.65 limit and read as a pass. Split by stress it was not: MULTI_GOAL and PREMISE both scored 1.000 for 'pick whichever option appears earlier'. MULTI_GOAL leaked because the counterfactual swapped the goals' positions as well as the focus, so the focused goal was always written first; PREMISE leaked because the replacement premise was drawn from source metadata no renderer emits, so presence alone answered the question. Six of eight cells were sound and their soundness diluted the two that were not. MICROMATH section 8 says the cell is the primitive diagnostic unit; that applies to the audit as much as to the results.",
+      "requirement": "audit shortcuts per cell, never only in aggregate; a benchmark is only as valid as its weakest cell",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-039",
+      "title": "The audit and the probe disagreed about how an identity is spelled, and the audit read clean because of it",
+      "disposition": "MICROTEST_INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V1",
+      "numbers": {
+        "raw_option_present_in_rendering": "21/29 pairs",
+        "encoded_option_present": "29/29 pairs",
+        "false_clean_aggregate": 0.509,
+        "items_actually_scored_before_fix": 0
+      },
+      "note": "Identities reach the page through the candidate's identity codec: canonical m3 is written bm3, and declarations can appear under display names. The shortcut audit counted occurrences of the RAW canonical ids. Those are absent from the rendering, so both counts were zero, every item scored as undecided, and the audit returned a spotless 0.509 for a benchmark it had not examined at all. The same mismatch would have handed the model a choice between two strings not present in the text it was shown. Both the audit and the probe now encode options through the same codec.",
+      "requirement": "whatever an instrument counts must be the same string the subject is shown; a clean score from an instrument that matched nothing is indistinguishable from a clean score from an instrument that worked",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-040",
+      "title": "Ranking base states by richness made the benchmark unprobeable and collapsed its diversity",
+      "disposition": "MICROBENCHMARK_SATURATION",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V1 construction",
+      "numbers": {
+        "median_rendering_pretokens_before": 16158,
+        "fitting_16k_context_before": "11/29",
+        "median_rendering_pretokens_after": 2740,
+        "fitting_7k_context_after": "28/29",
+        "distinct_base_states_before": 17,
+        "pairs": 45,
+        "distinct_base_states_after": 45,
+        "base_states_spanning_two_splits_before": 9
+      },
+      "note": "Selecting the structurally richest eligible state per cell chose the largest states: median LEAN_LIKE rendering 16,158 pre-tokens, only 11 of 29 fitting a 16k context. A diagnostic no reader can be run on cannot answer the question the lab exists to ask. Adding a size budget fixed that but then concentrated 45 cells onto 17 base states, nine of which spanned two splits, so MICRO_HIDDEN shared its mathematics with MICRO_DEV and could not have measured generalisation. Preferring unused base states restored 45 distinct states for 45 cells, and splits are now assigned by base state so a state cannot straddle one.",
+      "requirement": "a microbenchmark has three constraints at once -- the cell must be answerable, the item must fit the reader, and the splits must not share mathematics; optimising any one alone breaks another",
+      "blocked_traits": []
     }
   ]
 }

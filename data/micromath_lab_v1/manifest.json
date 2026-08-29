@@ -1,0 +1,140 @@
+{
+  "cells_populated": 45,
+  "cells_total": 48,
+  "cells_unpopulated": [
+    {
+      "candidate_base_states": 0,
+      "domain": "GEOMETRY",
+      "reason": "NO_ELIGIBLE_BASE_STATE",
+      "stress": "SCOPE"
+    },
+    {
+      "candidate_base_states": 0,
+      "domain": "LINEAR_ALGEBRA",
+      "reason": "NO_ELIGIBLE_BASE_STATE",
+      "stress": "SCOPE"
+    },
+    {
+      "candidate_base_states": 0,
+      "domain": "LINEAR_ALGEBRA",
+      "reason": "NO_ELIGIBLE_BASE_STATE",
+      "stress": "MULTI_GOAL"
+    }
+  ],
+  "distinct_base_states": 45,
+  "domain_confidence": {
+    "HIGH": 45
+  },
+  "domains": [
+    "ALGEBRA",
+    "GEOMETRY",
+    "CALCULUS_ANALYSIS",
+    "PROBABILITY_STATISTICS",
+    "LOGIC_SET_THEORY",
+    "LINEAR_ALGEBRA"
+  ],
+  "lab_version": "micromath-lab-v1.0.0",
+  "pairs": 45,
+  "provenance": {
+    "available_base_states": 862,
+    "corpus": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/search_pool_v2.jsonl.gz",
+    "excluded_because_the_global_search_measured_them": 56,
+    "pool_transitions": 918,
+    "sealed_final_v2": "NOT OPENED"
+  },
+  "split": {
+    "balance": {
+      "MICRO_DEV": {
+        "by_domain": {
+          "ALGEBRA": 4,
+          "CALCULUS_ANALYSIS": 5,
+          "GEOMETRY": 7,
+          "LINEAR_ALGEBRA": 2,
+          "LOGIC_SET_THEORY": 5,
+          "PROBABILITY_STATISTICS": 6
+        },
+        "by_stress": {
+          "ACTION_ARGUMENT": 4,
+          "BINDER": 4,
+          "DEPENDENCY": 4,
+          "EXPRESSION_DEPTH": 4,
+          "MULTI_GOAL": 3,
+          "PREMISE": 4,
+          "SCOPE": 2,
+          "TYPE": 4
+        }
+      },
+      "MICRO_HIDDEN": {
+        "by_domain": {
+          "ALGEBRA": 2,
+          "CALCULUS_ANALYSIS": 1,
+          "LINEAR_ALGEBRA": 2,
+          "LOGIC_SET_THEORY": 2,
+          "PROBABILITY_STATISTICS": 1
+        },
+        "by_stress": {
+          "ACTION_ARGUMENT": 1,
+          "BINDER": 1,
+          "DEPENDENCY": 1,
+          "EXPRESSION_DEPTH": 1,
+          "MULTI_GOAL": 1,
+          "PREMISE": 1,
+          "SCOPE": 1,
+          "TYPE": 1
+        }
+      },
+      "MICRO_SHADOW": {
+        "by_domain": {
+          "ALGEBRA": 2,
+          "CALCULUS_ANALYSIS": 2,
+          "LINEAR_ALGEBRA": 2,
+          "LOGIC_SET_THEORY": 1,
+          "PROBABILITY_STATISTICS": 1
+        },
+        "by_stress": {
+          "ACTION_ARGUMENT": 1,
+          "BINDER": 1,
+          "DEPENDENCY": 1,
+          "EXPRESSION_DEPTH": 1,
+          "MULTI_GOAL": 1,
+          "PREMISE": 1,
+          "SCOPE": 1,
+          "TYPE": 1
+        }
+      }
+    },
+    "counts": {
+      "MICRO_DEV": 29,
+      "MICRO_HIDDEN": 8,
+      "MICRO_SHADOW": 8
+    },
+    "pair_id_sha256": {
+      "MICRO_DEV": "ec64cf2dbb9a1ba9d1a7117b285d73ca8cee64ca2f749907f0608a2a3b641a6f",
+      "MICRO_HIDDEN": "1716bc2ee68c62044ef250ad8c807c89064208986995c9dcdd3907cf4e1c5dd7",
+      "MICRO_SHADOW": "65813599f8bdb68b573b1e224646436a7e921da11c80b5fd9a436b9e3d055378"
+    },
+    "split_key": "hml-v3-micromath-lab-v1",
+    "states": {
+      "MICRO_DEV": 58,
+      "MICRO_HIDDEN": 16,
+      "MICRO_SHADOW": 16
+    },
+    "target_shares": {
+      "MICRO_DEV": 0.5,
+      "MICRO_HIDDEN": 0.25,
+      "MICRO_SHADOW": 0.25
+    },
+    "unit": "MATCHED_PAIR"
+  },
+  "states": 90,
+  "stresses": [
+    "BINDER",
+    "SCOPE",
+    "DEPENDENCY",
+    "TYPE",
+    "MULTI_GOAL",
+    "EXPRESSION_DEPTH",
+    "PREMISE",
+    "ACTION_ARGUMENT"
+  ]
+}

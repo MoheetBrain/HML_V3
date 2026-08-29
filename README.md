@@ -1,5 +1,11 @@
 # HML V3 — Mathematical Representation Discovery System
 
+> **Read [`PROJECT_GOAL.md`](PROJECT_GOAL.md) first.** It states the permanent objective and
+> outranks every roadmap, milestone and report here. The short version: the project succeeds
+> only if a discovered representation measurably improves a human-plus-AI system's
+> mathematical reasoning — not because a metric improved, a search converged, or the syntax
+> looks clean.
+
 HML V3 is an evidence-first research system for discovering which machine-facing
 representation best supports verified mathematical reasoning.
 

@@ -649,3 +649,74 @@ whose saturated members are excluded by measurement rather than by hand.
 **Next intended step.** Decide whether to read `SEALED_FINAL_V2`. The precondition its policy
 names is met — convergence reached, zero prior reads — but reading it is irreversible and has
 not been authorised, so it remains unread.
+
+## 2026-08-29 — The permanent goal is written down, and MicroMath Lab V1 is built
+
+**Branch:** `codex/open-ended-search-v2`  **Stage:** `MICROMATH_LAB_V1`
+
+**Objective.** Record the project's permanent objective so it cannot drift, and replace the
+multi-hour global search as the default experiment with a cheap surgical diagnostic that
+finds *which structure* a representation handles badly before any broad search is run.
+
+**`PROJECT_GOAL.md`.** Written verbatim from the user's statement and pinned by
+`tests/test_project_goal.py`, which requires the one-sentence goal, the falsification section
+and the "what does not count as success" list to survive intact, and requires `README.md` to
+point at it. That last section matters most here: it names a converged search, an improving
+metric and beating one weak control as things that are *not* success, and this repository has
+recently produced all three.
+
+**Checkpoint.** `hml-v3-pre-micromath-2026-08-29` tags the converged 106-generation search and
+is pushed, so that result is recoverable exactly regardless of what follows.
+
+**MicroMath Lab V1.** 45 matched pairs / 90 states over 45 of 48 domain x structural-stress
+cells, from 45 distinct base states drawn from the 862 transitions the converged search never
+measured on. `SEALED_FINAL_V2` was not opened, and a path guard refuses it.
+
+Every counterfactual is a **transposition**: B is a permutation of A, so the canonical token
+multiset is identical by construction rather than by hope. Measured, the best dumb rule scores
+**0.509 against 0.500 chance**, per stress and per candidate, across all eleven
+representations.
+
+**Five defects found in this project's own instruments while building it**, each by measuring
+rather than assuming:
+
+- `FM-037` — PREMISE and ACTION_ARGUMENT were built on list *order*, which
+  `projection.semantic_core` stores `sorted()`. All eleven representations "failed" those
+  twelve cells. It read as a universal representation weakness and was a benchmark bug; both
+  stresses were rebuilt on set membership.
+- `FM-038` — the shortcut audit was aggregate-only and reported 0.62 against a 0.65 limit.
+  Split by stress, MULTI_GOAL and PREMISE both scored **1.000** for "pick whichever option
+  appears earlier". Six sound cells were diluting two broken ones.
+- `FM-039` — the audit counted raw canonical ids while renderings write codec-encoded ones, so
+  both counts were zero, every item scored undecided, and it returned a spotless 0.509 having
+  examined nothing.
+- `FM-040` — ranking base states by structural richness produced a median item of 16,158
+  pre-tokens that no local model could read; adding a size budget then collapsed 45 cells onto
+  17 base states, nine spanning two splits, so MICRO_HIDDEN shared mathematics with MICRO_DEV.
+- A strided char-n-gram feature that reported a difference on every sound pair and would have
+  condemned a valid benchmark.
+
+**Three cells cannot be populated and are recorded as acquisition requests, not guesses.**
+LinearAlgebra has zero multi-goal states in the entire non-sealed pool and Geometry has no
+state whose two goals hold different scopes.
+
+**Verification actually executed.**
+- `.venv/bin/python -m pytest` — **187 tests, 338 subtests, all passing** (158 before this
+  stage). Includes mutation tests that require the lab to catch a representation which hides
+  the relation, and to fail a benchmark that leaks the answer.
+- `scripts/micromath/build_lab_v1.py` — 45 pairs, 45 distinct base states, all 8 stresses
+  present in each of MICRO_DEV / MICRO_SHADOW / MICRO_HIDDEN.
+- `scripts/micromath/audit_lab_v1.py` — SHORTCUT_AUDIT **PASS** for all 11 representations;
+  deterministic Level A reports 29/29 expressible for every one, which is **SATURATED** and
+  therefore cannot guide selection.
+
+**Failures and unresolved uncertainty.** The Level A deterministic layer is saturated: every
+representation expresses every relation, so it works as a gate and not as a discriminator.
+The first neural probe (`gemma3:4b`) is scoring 0.40-0.60 across all eleven representations
+including controls, which is chance; if that holds it is an INSTRUMENT_LIMIT of a 4B reader
+rather than a result about any representation, and the second model becomes necessary rather
+than confirmatory. No targeted mutation cycle has been run yet.
+
+**Next intended step.** Finish the two-model probe, produce the first heatmap and failure
+gradient, and run the targeted surgical cycles. `MICRO_HIDDEN` stays unread until local
+optimisation stabilises; `SEALED_FINAL_V2` stays unread.
