@@ -1,0 +1,192 @@
+{
+  "lab_version": "micromath-lab-v2.0.0",
+  "built_seconds": 9.4,
+  "corpus_provenance": {
+    "corpus": "/Users/moheet/Documents/ChatGPT/HML_V3/data/corpus/lean_runtime_v2_full.canonical.jsonl.gz",
+    "pool_transitions": 1150,
+    "excluded_because_the_global_search_measured_them": 56,
+    "available_base_states": 1094,
+    "sealed_final_v2": "NOT OPENED"
+  },
+  "retired_v1_base_states": {
+    "micro_dev": 28,
+    "micro_shadow": 8,
+    "micro_hidden": 7
+  },
+  "retired_reason": "FM-043: consumed by the V1 certification top-up; spent as holdouts",
+  "available_after_retirement": 1051,
+  "size_budget_chars": 14000,
+  "within_budget": 456,
+  "premise_pool_cap": 40,
+  "premise_pools": {
+    "ALGEBRA": 40,
+    "CALCULUS_ANALYSIS": 40,
+    "GEOMETRY": 40,
+    "LINEAR_ALGEBRA": 40,
+    "LOGIC_SET_THEORY": 40,
+    "MIXED": 40,
+    "PROBABILITY_STATISTICS": 40
+  },
+  "splits": {
+    "micro_dev_v2": {
+      "count": 300,
+      "by_stress": {
+        "ACTION_ARGUMENT": 48,
+        "BINDER": 47,
+        "DEPENDENCY": 46,
+        "EXPRESSION_DEPTH": 45,
+        "PREMISE": 46,
+        "SCOPE": 20,
+        "TYPE": 48
+      },
+      "by_domain": {
+        "ALGEBRA": 131,
+        "CALCULUS_ANALYSIS": 43,
+        "GEOMETRY": 9,
+        "LOGIC_SET_THEORY": 21,
+        "MIXED": 95,
+        "PROBABILITY_STATISTICS": 1
+      },
+      "by_options": {
+        "2": 35,
+        "3": 27,
+        "4": 238
+      },
+      "distinct_base_states": 97
+    },
+    "micro_shadow_v2": {
+      "count": 135,
+      "by_stress": {
+        "ACTION_ARGUMENT": 24,
+        "BINDER": 20,
+        "DEPENDENCY": 21,
+        "EXPRESSION_DEPTH": 22,
+        "PREMISE": 19,
+        "SCOPE": 10,
+        "TYPE": 19
+      },
+      "by_domain": {
+        "ALGEBRA": 31,
+        "CALCULUS_ANALYSIS": 25,
+        "GEOMETRY": 6,
+        "LOGIC_SET_THEORY": 14,
+        "MIXED": 58,
+        "PROBABILITY_STATISTICS": 1
+      },
+      "by_options": {
+        "2": 16,
+        "3": 12,
+        "4": 107
+      },
+      "distinct_base_states": 47
+    },
+    "micro_hidden_v2": {
+      "count": 176,
+      "by_stress": {
+        "ACTION_ARGUMENT": 24,
+        "BINDER": 29,
+        "DEPENDENCY": 29,
+        "EXPRESSION_DEPTH": 29,
+        "PREMISE": 31,
+        "SCOPE": 5,
+        "TYPE": 29
+      },
+      "by_domain": {
+        "ALGEBRA": 71,
+        "CALCULUS_ANALYSIS": 28,
+        "GEOMETRY": 5,
+        "LOGIC_SET_THEORY": 16,
+        "MIXED": 56
+      },
+      "by_options": {
+        "2": 5,
+        "3": 20,
+        "4": 151
+      },
+      "distinct_base_states": 54
+    }
+  },
+  "base_state_overlap": {
+    "dev_shadow": 0,
+    "dev_hidden": 0,
+    "shadow_hidden": 0
+  },
+  "sealed_final_v2": "NOT OPENED",
+  "top_rejections": [
+    {
+      "stress": "MULTI_GOAL",
+      "reason": "RELATION_NOT_PROJECTED: no axis of the represent",
+      "count": 456
+    },
+    {
+      "stress": "SCOPE",
+      "reason": "SCOPE needs a declaration owned by exactly one o",
+      "count": 421
+    },
+    {
+      "stress": "ACTION_ARGUMENT",
+      "reason": "ACTION_ARGUMENT needs a resolved argument among ",
+      "count": 78
+    },
+    {
+      "stress": "ACTION_ARGUMENT",
+      "reason": "the option set alone identifies the answer",
+      "count": 60
+    },
+    {
+      "stress": "PREMISE",
+      "reason": "PREMISE needs a citation",
+      "count": 50
+    },
+    {
+      "stress": "EXPRESSION_DEPTH",
+      "reason": "EXPRESSION_DEPTH needs two references in the tar",
+      "count": 40
+    },
+    {
+      "stress": "BINDER",
+      "reason": "BINDER needs a target reference resolving to a d",
+      "count": 33
+    },
+    {
+      "stress": "BINDER",
+      "reason": "negative control unavailable: BINDER ablation ne",
+      "count": 17
+    },
+    {
+      "stress": "DEPENDENCY",
+      "reason": "negative control unavailable: DEPENDENCY ablatio",
+      "count": 15
+    },
+    {
+      "stress": "EXPRESSION_DEPTH",
+      "reason": "EXPRESSION_DEPTH needs two distinct references",
+      "count": 10
+    },
+    {
+      "stress": "DEPENDENCY",
+      "reason": "DEPENDENCY needs a type that references another ",
+      "count": 5
+    },
+    {
+      "stress": "TYPE",
+      "reason": "TYPE needs two typed declarations",
+      "count": 3
+    },
+    {
+      "stress": "EXPRESSION_DEPTH",
+      "reason": "the ablation left the state unchanged; the negat",
+      "count": 1
+    },
+    {
+      "stress": "BINDER",
+      "reason": "BINDER needs in-scope declarations the target do",
+      "count": 1
+    },
+    {
+      "stress": "BINDER",
+      "reason": "the ablation left the state unchanged; the negat",
+      "count": 1
+    }
+  ]
+}

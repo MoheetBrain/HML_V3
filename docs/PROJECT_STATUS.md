@@ -19,20 +19,23 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`MICROMATH_LAB_V1_CERTIFIED`. The component certification has run to completion on all eight
-structural components. **Zero of eight components are certified.** Six of the eight instruments
-were shown not to measure the relation they name, and on the two that do, the discovered
-representation is at parity with a plain typed AST and both sit below a fifth of the achievable
-range. This is the strongest negative evidence the project has produced, and it cost nothing.
+`INSTRUMENT_REPAIR_V2`. MicroMath Lab V2 is built and its instruments are being calibrated
+under a statistical rule pre-registered before any V2 candidate was scored (`D-023`,
+`D-024`). The V1 holdouts are retired as spent (`FM-043`) and V2 splits are minted behind a
+base-state firewall that a wrong split name cannot bypass.
 
-The consequence for the project's direction is concrete: the next action is **instrument repair**,
-not another mutation cycle and not another global search. See `reports/micromath_lab_v1/FINAL_REPORT.md`.
+Two corrections to the V1 reading were forced by construction work, both recorded:
 
-Previously `MICROMATH_LAB_V1` (lab construction) and before that
-`OPEN_ENDED_SEARCH_V2_CONVERGED`. The converged global search is preserved at tag
-`hml-v3-pre-micromath-2026-08-29`; the closed 42-axis search is frozen at
-`hml-v3-closed-search-v1-2026-08-28`. The open-ended loop reached **structural convergence at
-generation 106**. `SEALED_FINAL_V2` has still not been read.
+- **MULTI_GOAL is withdrawn** (`FM-044`). The relation "which goal does the action act on" is
+  not rendered by any axis of the representation space. V1 reported it as the project's
+  largest readable headroom (0.375); that was an absent projection, not a readability gap.
+- **The shortcut audit is now a hard gate** (`D-024`) that runs before any inference and
+  gates certification. It exists because the first V2 build had the answer `g1` on 43 of 43
+  MULTI_GOAL items and it took 277 seconds of inference to notice.
+
+Previously `MICROMATH_LAB_V1_CERTIFIED` (0 of 8 certified, 6 of 8 instruments broken), and
+before that `OPEN_ENDED_SEARCH_V2_CONVERGED` at generation 106. `SEALED_FINAL_V2` has still
+not been read.
 
 ## Current Branch
 
@@ -294,11 +297,53 @@ all under `reports/micromath_lab_v1/`.
 Sections of the 36-section mission **not attempted**: §16 PREMISE_V2, §17–19 the E/D/G ladders,
 §21–22 the integration matrix, §23 the reasoning ladder.
 
+## MicroMath Lab V2 — Instrument Repair
+
+Built from 1051 base states after retiring the 43 spent by the V1 certification.
+
+| Split | Items | Base states |
+|---|---|---|
+| `micro_dev_v2` | 300 | 97 |
+| `micro_shadow_v2` | 135 | 47 |
+| `micro_hidden_v2` | 176 | 54 |
+
+Base-state overlap between all three splits: **0**.
+
+**What changed from V1, and why each change was forced.**
+
+- **Anonymised identifiers** (`MISSION §4`). Declarations become `v17`/`h4`, types `t23`,
+  premises `p8`. `n : Nat` was answerable without the TYPE relation; that is `FM-041`.
+- **Four plausible distractors** (`§5`, `§6`). 238 of 300 dev items are 4-choice, drawn from
+  the same state and the same tag family as the answer. Chance falls from 0.500 to ~0.27.
+- **State-level negative controls** (`§7`). The relation is destroyed *in the state* by
+  `ablate`, preferring a derangement over a deletion so the token multiset survives. V1
+  prepended a decoy to the prompt and left the relation in the text, which is why four
+  negative arms sat at 0.79–0.88.
+- **A split firewall keyed on provenance hash** (`§10`, `§11`). `FM-043` was a run that never
+  named a split and still consumed both holdouts, so the check is on the base state, fails
+  closed, and refuses retired states permanently.
+- **A statistical calibration rule** (`§8`). Exact binomial bounds, Bonferroni where several
+  rules are tested, and an `INSTRUMENT_UNDECIDED` verdict that escalates the ladder rather
+  than blaming a reader for a sample size.
+
+**Shortcut audit, all three splits: 21 of 21 cells CLEAN** against seven rules that read only
+the options as presented. The audit itself shipped with two defects, both fixed and pinned
+(`FM-046`): it re-sorted the options the model is shown, and used a flat tolerance that made
+its verdict a function of sample size.
+
+**Eight architectural hypotheses** are staged for the two components whose instruments work
+(`§13`, `§14`), each with a causal hypothesis, a prediction and a falsifier, and none of them
+cosmetic — the five surface mutations properly tested in V1 moved a combined 0.031.
+
+**Eight known-bad representations** are staged to test the tests (`§27`).
+
 ## Verification and Test Results
 
-- `.venv/bin/python -m pytest` — **192 tests, 338 subtests, all passing** (2026-08-29). Five
-  are new: four pin the `D-023` calibration verdicts against the arms actually measured, and
-  one pins the `FM-043` reserved-base-state leak. Note that the
+- `.venv/bin/python -m pytest` — **239 tests, 338 subtests, all passing** (2026-08-29).
+  47 cover MicroMath V2: the firewall refusing a hidden state to a caller that names its own
+  compartment, the anonymiser's bijection, every ablation reporting a real change or
+  refusing, the pre-registered rule reproducing V1's verdicts, the shortcut audit catching a
+  constant answer while clearing a balanced cell, and MULTI_GOAL refusing to build. Note that the
   repository ships no `.venv` and the system interpreter has no pytest, so a bare
   `python3 -m pytest` prints `No module named pytest` and **exits 0** — a run that looks
   clean and verifies nothing. `pyproject.toml` now pins `testpaths = ["tests"]`, without
@@ -315,6 +360,22 @@ Sections of the 36-section mission **not attempted**: §16 PREMISE_V2, §17–19
 
 ## Known Failures and Limitations
 
+- **MULTI_GOAL is unmeasurable in this representation space** (`FM-044`). No axis renders
+  which goal the action acts on: `_action_section` never names a goal, and the delta section
+  names goals as `_uniq.*` ids the codec leaves unmapped while the goal section renders
+  `m3`/`m7`. V1's reported 0.375 of MULTI_GOAL headroom is withdrawn — it was an absent
+  projection, not a readability gap, and nothing a better notation could have claimed.
+- **SCOPE is underpowered by the corpus.** Only 35 items exist across all splits (20 in dev)
+  because most states carry two goals, so the owning-goal question has little variety. It
+  passes the shortcut audit but any verdict from it will rest on ~20 items.
+- **The pre-registered difficulty ladders are largely unpopulated.** `MISSION §15` fixes the
+  rungs; on this corpus G4 holds one item, G5 and D1–D2 hold none, and D5 holds 39 of 46.
+  The boundaries are kept as written rather than re-cut after seeing the data, and a
+  secondary post-hoc ladder is reported separately and marked as such. **The long-horizon
+  prediction cannot be tested for MULTI_GOAL at all, and only weakly elsewhere**, because the
+  corpus does not contain the deep structures the hypothesis is about.
+- **595 of 1051 available base states exceed the rendering budget** and are excluded, so the
+  lab is built from the smaller half of the corpus.
 - **Six of the eight MicroMath instruments do not work.** DEPENDENCY, SCOPE, TYPE and PREMISE
   are answerable with the target relation destroyed (`INSTRUMENT_INVALID`, negative arms
   0.79–0.88). BINDER and ACTION_ARGUMENT are beyond this reader (`INSTRUMENT_LIMIT`;
@@ -371,28 +432,19 @@ None.
 
 ## Exact Next Actions
 
-1. **Repair the four invalid instruments.** Make the answer unrecoverable from identifiers —
-   anonymise or type-neutralise identifiers within a pair, or move to four choices with
-   distractors equally plausible under the same priors (`PREMISE_V2`, mission §16, is the
-   worked case). An instrument is usable only once its negative arm returns to chance.
-2. **Retire ACTION_ARGUMENT and BINDER for this reader**, or move them to a stronger local
-   model. A positive arm of 0.542 is not a measurement.
-3. **Mint a fresh holdout.** `micro_hidden` and `micro_shadow` are spent (`FM-043`); excluding
-   them from future runs does not make them clean again. Build a new reserved split from base
-   states no prior run has touched.
-4. **Re-run the DEPENDENCY cycle** once its instrument is valid. Its two mutations are
-   untested, not refuted, and the regression guard must be restricted to calibrated-valid cells
-   before it can overrule anything.
-5. **Attack the unclaimed 0.375 / 0.417 of dynamic range with structural hypotheses.** All five
-   properly tested surface-syntax mutations moved a combined 0.031. No tested axis moves
-   multi-goal or expression-depth readability, and identifying one that does is now the
-   project's central open question.
-6. **Do not launch another global search** until at least one component is certified. The last
-   one ran 106 generations over 5 h 03 m and produced a candidate that reads at chance on both
-   valid instruments.
-7. **Leave `SEALED_FINAL_V2` and `TARGET_HOLDOUT` alone.** `TARGET_HOLDOUT` is gated on a
-   component appearing certified; none has. Reading `SEALED_FINAL_V2` remains a one-shot
-   irreversible act requiring an explicit decision, and there is now less reason to spend it:
-   the finalists it would evaluate show no measured advantage.
-8. **Re-measure the previous run's space-growth claim** (`FM-033`): the 42 → 55 axes /
-   1.548e26 figure counted duplicate axes as new dimensions and must not be repeated unmeasured.
+1. **Finish the V2 certification run** now in flight over six components, then run SCOPE —
+   it was gated out by a defective constant-answer measure that has since been corrected, and
+   the results file now merges rather than overwrites.
+2. **Run the known-bad detection** (`§27`). An instrument that cannot rank a representation
+   built to hide its relation below a competent control has not been shown to see the
+   relation, whatever its calibration says.
+3. **Run the eight architectural hypotheses** (`§13`, `§14`) through the kill-early funnel.
+   None is cosmetic; all five surface mutations properly tested in V1 moved 0.031 combined.
+4. **Report the ladder result honestly**, including that the corpus cannot populate most of
+   the pre-registered rungs.
+5. **Acquire or generate deeper base states** if the long-horizon hypothesis is to be tested
+   at all — states with more than four goals, and expression depth beyond sixteen. This is
+   now the binding constraint on `PROJECT_GOAL` §18, not the representation.
+6. **Do not launch a global search and do not train.** No component is certified.
+7. **Leave `SEALED_FINAL_V2` alone.** `micro_hidden_v2` stays unread until a component is
+   certified on dev and reproduced on shadow.

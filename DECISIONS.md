@@ -311,3 +311,48 @@ The cost of the rule is one calibration run per component per reader — 8190 s 
 components locally, at zero incremental spend. The cost of not having it was three hours of
 probing, a failure gradient that ranked partly noise, and seven mutation evaluations of which
 two must be discarded.
+
+## D-024 — The shortcut audit is a hard gate that runs before any inference
+
+Date: 2026-08-29. Branch: `codex/open-ended-search-v2`. Status: **ACCEPTED, ENFORCED IN CODE.**
+
+`D-023` established that a component may only be judged through a calibrated instrument. It is
+not sufficient. Calibration asks whether a reader can recover the relation when told it and
+loses it when the relation is destroyed. It cannot see a question that is answerable without
+reading anything at all.
+
+The first MicroMath Lab V2 build had `g1` as the answer to every one of its 43 MULTI_GOAL
+items. Calibration reported the negative arm at 0.833 against a chance of 0.440 — the right
+signal, arrived at the wrong way, after 277 seconds of Qwen inference. Counting distinct
+answers would have said the same thing in milliseconds.
+
+So the audit runs first, on every item of every split, and gates certification:
+
+- Seven rules that read only the option strings and their order — first, second, last,
+  shortest, longest, alphabetically first, alphabetically last — none of which look at the
+  mathematics. A cell any of them can solve is not an instrument.
+- **Answer entropy.** Below one distinct answer per four items the cell is `CONSTANT_ANSWER`
+  regardless of what the rules score.
+- A cell that fails is `BENCHMARK_DEFECT`. It is not calibrated, not probed, and not reported
+  as a fact about any representation.
+
+Three properties of the rule were fixed by things that went wrong while building it.
+
+**The rules read the order the model is shown.** The first version sorted the options and
+scored position against that, which measured an ordering no reader sees; it reported BINDER
+leaking at 0.447 while the presented positions were 17/11/10/9 across four slots (`FM-046`).
+
+**Judgement is by interval, not by margin.** A flat 0.15 tolerance made the verdict a function
+of sample size — the same construction came out CLEAN on one split and LEAKS on another,
+because at fourteen items a rule at 0.43 against chance 0.25 is noise. The best of seven rules
+is now tested by an exact binomial lower bound at a Bonferroni-corrected confidence, the same
+discipline `D-023` applies to instrument arms.
+
+**A key-aware rule is reported but never used to condemn.** "Pick the globally most common
+answer" is fitted to the answer key of the cell it scores, so on forty items it approaches
+reading the answers off the page. It measures the risk of publishing the benchmark beside its
+key — a real risk, and a different one from "a reader can shortcut this" — so it is reported
+separately and carries no verdict.
+
+The cost is a few milliseconds per build. The cost of not having it was a component reported
+to the user as the project's most important measurement when its answer never varied.

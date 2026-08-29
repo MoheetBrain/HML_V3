@@ -810,3 +810,73 @@ from identifiers, re-run calibration until their negative arms return to chance,
 holdout to replace the two that are spent, and only then resume mutation cycles — against
 structural rather than surface hypotheses. No global search until a component is certified.
 `SEALED_FINAL_V2` and `TARGET_HOLDOUT` stay unread.
+
+---
+
+## 2026-08-29 — Instrument repair V2: a firewall, a free guard, and one component withdrawn
+
+**Branch.** `codex/open-ended-search-v2`.
+**Stage.** `MICROMATH_LAB_V1_CERTIFIED` → `INSTRUMENT_REPAIR_V2`.
+
+**Objective.** Execute `COMPONENT_CERTIFICATION_V2`: repair the six instruments V1 showed to
+be broken or beyond the reader, mint fresh splits behind a firewall that a wrong split name
+cannot bypass, and stage architectural rather than cosmetic hypotheses for the components
+whose instruments work.
+
+**Files and systems changed.** New: `src/hml_v3/micromath/{firewall,anonymise,ablate,
+calibration_v2,instruments_v2,probe_v2,shortcut_v2,architectures,ladders}.py`;
+`scripts/micromath/{build_lab_v2,run_certification_v2,run_known_bad_v2,run_architectures_v2,
+build_dashboard_v2}.py`; `tests/test_micromath_v2.py`; `data/micromath_lab_v2/`. Modified:
+`DECISIONS.md` (`D-024`), `research/representation_search/hml_failure_memory.json`
+(`FM-044`–`FM-046`), `docs/PROJECT_STATUS.md`.
+
+**What was completed.** MicroMath Lab V2: 611 items over seven stresses, split
+300 / 135 / 176 across dev, shadow and hidden with **zero base-state overlap**, built from
+1051 base states after retiring the 43 the V1 certification spent. 238 of 300 dev items are
+four-choice with same-family distractors drawn from the same state. Negative controls are now
+state-level ablations that destroy the target relation by derangement, so the token multiset
+survives and the relation does not.
+
+**Decisions made and why.** `D-024`: the shortcut audit is a hard gate that runs before any
+inference. Calibration cannot see a question answerable without reading anything, and the
+first V2 build proved it — 43 of 43 MULTI_GOAL items had the answer `g1`, and it cost 277
+seconds of Qwen inference to notice what counting answers says instantly.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest` — **239 tests, 338 subtests, all passing** (192 before).
+- `scripts/micromath/build_lab_v2.py` — 611 items, 0 base-state overlap between splits.
+- Shortcut audit over all three splits — **21 of 21 cells CLEAN** against seven key-free
+  rules judged by Bonferroni-corrected exact binomial bounds.
+- V2 certification in flight; `EXPLICIT_POSITIVE` reached 12/12 on the withdrawn MULTI_GOAL
+  and 10/12 on EXPRESSION_DEPTH at chance 0.304.
+- Verified against `projection.py` that no axis renders the action-to-goal relation.
+
+**Failures and unresolved uncertainty.**
+- `FM-044` — **a correction to what I reported to the user.** I called V1's MULTI_GOAL result
+  the most important number the project had produced: 0.958 positive, 0.500 negative,
+  candidate and control both 0.583, leaving 0.375 of headroom. It is not headroom. The
+  relation is absent from the projection — the action section never names a goal, and the
+  delta section names goals in a `_uniq.*` namespace the codec leaves unmapped. Both
+  representations sat near chance because neither could answer. MULTI_GOAL is withdrawn.
+- `FM-045` — one seed drove both the content choice and the option ordering, making them
+  perfectly correlated; on two-goal SCOPE items the answer landed first every time and
+  "always take the first option" scored 1.000.
+- `FM-046` — the audit shipped with two defects of its own: it re-sorted the options the
+  model is shown, and used a flat tolerance that made its verdict a function of sample size,
+  so one construction came out CLEAN on one split and LEAKS on another. A third defect,
+  measuring constant answers as distinct-over-total, would have condemned every cell with a
+  small option vocabulary at scale; all three are fixed and pinned by tests.
+- SCOPE was gated out of this certification run by that third defect before it was found. It
+  passes the corrected audit and will be run separately; the results file now merges.
+- The pre-registered ladders are largely unpopulated on this corpus — G5 and D1–D2 are empty.
+  The boundaries are kept as written and the emptiness reported.
+
+**Effect on the overall project.** The binding constraint has moved. After V1 it looked like
+the representation was the problem; the V2 work says the instruments were, and that one of the
+two components V1 called valid was measuring a relation no representation carries. What
+remains testable is EXPRESSION_DEPTH and five repaired components. The long-horizon
+prediction in `PROJECT_GOAL` §18 cannot be tested on this corpus, which makes corpus depth —
+not notation — the next real obstacle.
+
+**Next intended step.** Finish certification, add SCOPE, run known-bad detection, run the
+eight architectural hypotheses through the kill-early funnel, and publish the dashboard.

@@ -837,6 +837,65 @@
       "note": "micro_dev holds 29 pairs but only 2 to 4 per stress, so the certification topped each component up to 12 by building fresh pairs from the V2 base pool. The exclusion set was initialised from micro_dev alone, so the builder was free to select base states reserved for micro_hidden and micro_shadow, and took all sixteen. Nothing was fitted or selected on them -- no mutation was accepted -- but both splits have now been measured on and are spent as clean holdouts. The pool was deep enough to avoid this entirely: after initialising the exclusion set from all three splits, every component still reaches 12 pairs with zero overlap. I asserted in a draft that the reserved splits were untouched and had to withdraw it after checking.",
       "requirement": "any routine that mints new items from a shared pool must exclude every reserved split, and a claim that a holdout is untouched must be verified by intersecting identifiers, never assumed from intent",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-044",
+      "title": "The MULTI_GOAL relation is absent from the projection, so V1's largest reported headroom was never readable by anything",
+      "disposition": "RELATION_NOT_PROJECTED",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2 construction, verified against projection.py and the identity codec",
+      "numbers": {
+        "v1_positive_arm": 0.958,
+        "v1_negative_arm": 0.5,
+        "v1_candidate": 0.5833,
+        "v1_best_control": 0.5833,
+        "v1_reported_normalised_readability": 0.1818,
+        "v1_reported_headroom": 0.375,
+        "v2_answer_entropy": 0.023,
+        "v2_items_with_answer_g1": 43,
+        "v2_items_total": 43,
+        "always_first_option_accuracy": 1.0
+      },
+      "note": "V1 reported MULTI_GOAL as the project's largest readable headroom: the reader reached 0.958 when told the answer, 0.500 when the relation was destroyed, and both candidate and control sat at 0.583. I called the 0.375 gap the most important number the project had produced. It is not headroom. Two independent checks against the code show the relation is not in any rendering: projection._action_section emits source, kind, elaborator, premises and local refs and never names a goal; and the delta section names goals as _uniq.* ids that the identity codec leaves unmapped, while the goal section renders m3/m7/m11 -- the two namespaces never meet on the page. The positive arm was high only because it stated the answer in a prepended header. Candidate and control sat near chance because neither could answer a question the projection does not carry. Defining the answer positionally, the only option left, produced g1 on 43 of 43 items.",
+      "requirement": "before reporting a readability gap, confirm the relation is actually rendered by some axis; a high positive arm proves the reader can use the relation when told it, not that any representation expresses it",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-045",
+      "title": "One seed driving two decisions made them perfectly correlated and put the answer first every time",
+      "disposition": "BENCHMARK_CONSTRUCTION_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2 shortcut audit over 300 dev items",
+      "numbers": {
+        "scope_always_first_option": 1.0,
+        "scope_chance": 0.463,
+        "binder_alphabetically_last_before": 0.447,
+        "binder_chance": 0.277,
+        "scope_goals_per_state": 2,
+        "owner_index_formula": "seed % 2",
+        "rotation_offset_formula": "seed % 2"
+      },
+      "note": "Options were presented sorted, which let position carry information: BINDER answers tend to hold higher tags, so taking the last option scored 0.447 against a chance of 0.277. Rotating the option order fixed that -- until SCOPE, where the owning goal was chosen as owners[seed % len(owners)] and the rotation offset was seed % len(options). On two-goal states both are seed % 2, so the answer landed at position zero on every item and 'always take the first option' scored 1.000. Two independent decisions drawn from one seed are not independent. The rotation now uses a separate hash of the seed.",
+      "requirement": "any two construction decisions that must be uncorrelated need two independently derived draws, and the shortcut audit must be run after every construction change rather than once at the end",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-046",
+      "title": "The shortcut audit re-sorted the options the model is shown, and used a fixed tolerance that made its verdict a function of sample size",
+      "disposition": "AUDIT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2, comparing audit verdicts across three splits built by one construction",
+      "numbers": {
+        "binder_reported_leak_on_sorted_order": 0.447,
+        "binder_presented_positions": "17/11/10/9 over four slots",
+        "cells_flipping_verdict_between_splits": 4,
+        "shadow_items_per_cell_min": 14,
+        "rules_tested": 7,
+        "family_confidence": 0.9
+      },
+      "note": "Two defects in the guard itself. First, the positional rules read sorted(item.options) while the model is shown a rotated order, so the audit measured an ordering no reader ever sees and reported BINDER leaking at 0.447 while its presented positions were close to uniform. Second, a flat 0.15 tolerance made the verdict depend on n: the same construction produced CLEAN on one split and LEAKS on another, because at fourteen items a rule landing 0.43 against chance 0.25 is ordinary noise. The rules are now scored on the presented order and judged by an exact binomial lower bound with a Bonferroni correction for the seven rules tested, which is the same discipline D-023 applies to instrument arms.",
+      "requirement": "a guard must test exactly what the reader sees, and must judge by an interval rather than a margin, or it will condemn and clear the same construction on different samples",
+      "blocked_traits": []
     }
   ]
 }
