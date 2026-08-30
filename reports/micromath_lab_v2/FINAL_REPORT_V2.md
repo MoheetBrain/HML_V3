@@ -9,16 +9,16 @@ Lab `micromath-lab-v2.0.0`, rule `micromath-calibration-v2.0.0` fixed before any
 
 | Component | Chance | Told the answer | Relation destroyed | Control | Candidate | Norm. read. | Instrument | Verdict |
 |---|---|---|---|---|---|---|---|---|
-| BINDER | — | — | — | — | — | — | NOT_RUN | NOT_RUN |
-| SCOPE | — | — | — | — | — | — | NOT_RUN | NOT_RUN |
-| DEPENDENCY | — | — | — | — | — | — | NOT_RUN | NOT_RUN |
-| TYPE | — | — | — | — | — | — | NOT_RUN | NOT_RUN |
+| BINDER | 0.277 | 1.000 | 0.250 | 0.833 | 0.917 | 0.889 | INSTRUMENT_VALID | **CONTROL_PARITY** |
+| SCOPE | 0.464 | 0.917 | 0.250 | 0.750 | 0.667 | 0.625 | INSTRUMENT_VALID | **CONTROL_PARITY** |
+| DEPENDENCY | 0.250 | 1.000 | 0.333 | 0.542 | 0.625 | 0.438 | INSTRUMENT_VALID | **CONTROL_PARITY** |
+| TYPE | 0.300 | 1.000 | 0.333 | 0.917 | 0.917 | 0.875 | INSTRUMENT_VALID | **CONTROL_PARITY** |
 | MULTI_GOAL | — | — | — | — | — | — | — | **UNTESTED** |
 | EXPRESSION_DEPTH | 0.304 | 1.000 | 0.083 | 0.167 | 0.167 | 0.091 | INSTRUMENT_VALID | **CONTROL_PARITY** |
-| PREMISE | — | — | — | — | — | — | NOT_RUN | NOT_RUN |
-| ACTION_ARGUMENT | — | — | — | — | — | — | NOT_RUN | NOT_RUN |
+| PREMISE | 0.250 | 1.000 | 0.000 | 0.833 | 0.833 | 0.833 | INSTRUMENT_VALID | **CONTROL_PARITY** |
+| ACTION_ARGUMENT | 0.264 | 1.000 | 0.167 | 0.917 | 0.917 | 0.900 | INSTRUMENT_VALID | **CONTROL_PARITY** |
 
-**Valid instruments: 1 of 1 measured** (of 8 components; the rest were withdrawn or gated). ['EXPRESSION_DEPTH']
+**Valid instruments: 7 of 7 measured** (of 8 components; the rest were withdrawn or gated). ['ACTION_ARGUMENT', 'BINDER', 'DEPENDENCY', 'EXPRESSION_DEPTH', 'PREMISE', 'SCOPE', 'TYPE']
 
 - INSTRUMENT_INVALID: none
 - INSTRUMENT_LIMIT: none
@@ -28,7 +28,7 @@ Lab `micromath-lab-v2.0.0`, rule `micromath-calibration-v2.0.0` fixed before any
 ## 2. What the valid instruments say about the language
 
 - **ADVANTAGE**: none
-- **CONTROL_PARITY**: ['EXPRESSION_DEPTH']
+- **CONTROL_PARITY**: ['ACTION_ARGUMENT', 'BINDER', 'DEPENDENCY', 'EXPRESSION_DEPTH', 'PREMISE', 'SCOPE', 'TYPE']
 - **LANGUAGE_WEAKNESS**: none
 
 **On no valid instrument does the discovered representation beat a plain typed AST.** That is the same answer V1 gave, now on repaired instruments with a demonstrated ceiling, a state-level floor and a clean construction audit.
@@ -39,11 +39,41 @@ Lab `micromath-lab-v2.0.0`, rule `micromath-calibration-v2.0.0` fixed before any
 
 ## 4. Testing the tests (`§27`)
 
-Known-bad detection: **NOT_RUN**.
+| Component | Known-bad | Control | Known-bad score | Margin | Verdict |
+|---|---|---|---|---|---|
+| ACTION_ARGUMENT | `SCRAMBLE_ACTION_ARGS` | 0.917 | 0.917 | 0.000 | **INSTRUMENT_DEFECT** |
+| BINDER | `HIDE_BINDER_RELATION` | 0.833 | 0.917 | -0.083 | **INSTRUMENT_DEFECT** |
+| DEPENDENCY | `DELETE_DEPENDENCY_EDGES` | 0.417 | 0.500 | -0.083 | **INSTRUMENT_DEFECT** |
+| EXPRESSION_DEPTH | `FLATTEN_EXPRESSION_PARENTAGE` | 0.167 | 0.250 | -0.083 | **INSTRUMENT_DEFECT** |
+| MULTI_GOAL | `None` | — | — | — | **UNTESTED** |
+| PREMISE | `STRIP_PROVENANCE` | 0.833 | 0.833 | 0.000 | **INSTRUMENT_DEFECT** |
+| SCOPE | `SCRAMBLE_SCOPE` | 0.750 | 0.917 | -0.167 | **INSTRUMENT_DEFECT** |
+| TYPE | `REMOVE_TYPE_LINK` | 0.917 | 0.583 | 0.333 | **DETECTED** |
+
+**1 of 8 instruments detected the representation built to hide their own relation — and that number must not be read as 7 blind instruments (`FM-051`).**
+
+Checking whether the answer token still appears on the page showed **6 of 6 items still carrying it** for DEPENDENCY, BINDER, PREMISE, ACTION_ARGUMENT and EXPRESSION_DEPTH. Those known-bads hide nothing, because the axes chosen do not control the rendering path each question depends on: `dependency_visibility` governs the *action's* local refs rather than the references inside declaration types, and `premise_locality` moves a citation rather than removing it.
+
+Only TYPE's known-bad genuinely hides its relation, via `type_explicitness: OMITTED` — and there the instrument **did** detect it, at +0.333. The method is sound; the known-bad set was mis-targeted.
+
+An exhaustive single-axis search over all 42 axes then found that **no axis hides any of those five relations at all.** The space can vary how a relation is written; it cannot choose not to write it. That is `D-025`, and it is the finding that explains every parity verdict above.
 
 ## 5. Architectural hypotheses (`§13`, `§14`)
 
-Not run.
+| Component | Architecture | Screen | Δ vs candidate | Verdict |
+|---|---|---|---|---|
+| SCOPE | `G_INTERLEAVED_PER_GOAL` | 0.417 | -0.250 | REJECTED_NO_TARGETED_GAIN |
+| SCOPE | `G_EXPLICIT_SCOPE_IDS` | 0.750 | 0.083 | HELD_NOT_SEPARATED_FROM_CANDIDATE |
+| SCOPE | `G_GOAL_CENTRED_CONTEXT` | 0.750 | 0.083 | HELD_NOT_SEPARATED_FROM_CANDIDATE |
+| SCOPE | `G_REDUNDANT_GOAL_ANCHOR` | 0.667 | 0.000 | REJECTED_NO_TARGETED_GAIN |
+| EXPRESSION_DEPTH | `E_GRAPH_EDGE_LIST` | 0.167 | 0.000 | REJECTED_NO_TARGETED_GAIN |
+| EXPRESSION_DEPTH | `E_HYBRID_NESTED_WITH_EDGES` | 0.167 | 0.000 | REJECTED_NO_TARGETED_GAIN |
+| EXPRESSION_DEPTH | `E_DEPENDENCY_LOCAL_SERIAL` | 0.333 | 0.167 | REJECTED_CROSS_COMPONENT_REGRESSION |
+| EXPRESSION_DEPTH | `E_HEAD_ONLY_WITH_REMINDERS` | 0.250 | 0.083 | REJECTED_CROSS_COMPONENT_REGRESSION |
+
+Accepted: **0**. Rejected as behavioural duplicates before any inference: **0**.
+
+No architectural change moved the target component either. Combined with V1's five properly tested surface mutations moving 0.031, that is now two independent families of hypothesis refuted: **neither restyling the notation nor re-exposing the structure through the axes this compiler offers changes what the reader can recover.**
 
 ## 6. What was not attempted
 

@@ -356,3 +356,59 @@ separately and carries no verdict.
 
 The cost is a few milliseconds per build. The cost of not having it was a component reported
 to the user as the project's most important measurement when its answer never varied.
+
+## D-025 — The representation space varies how a relation is written, not whether it is expressed
+
+Date: 2026-08-30. Branch: `codex/open-ended-search-v2`. Status: **ACCEPTED, MEASURED.**
+
+Three independent lines of evidence converged on one structural fact about the search space,
+and it explains every result the project has produced.
+
+**No axis can hide a relation.** An exhaustive single-axis search over all 42 axes found that
+**none** removes the answer to the DEPENDENCY, BINDER, PREMISE, ACTION_ARGUMENT or
+EXPRESSION_DEPTH question from the page. The only relation any axis can suppress is TYPE, via
+`type_explicitness: OMITTED`. Every other genome renders the declarations, their types, the
+target's references and the action's premises, whatever its settings (`FM-051`).
+
+**Thirteen hypotheses across two families moved nothing.** V1 tested five surface mutations on
+valid instruments — delimiters, sigils, field markers, serialisation order, syntax family —
+for a combined movement of 0.031. V2 tested eight architectural mutations chosen specifically
+*not* to be cosmetic: an explicit parent-child edge list, a hybrid nested-plus-edges
+projection, dependency-local serialisation, goal-interleaved partitioning, explicit scope
+ids, per-use reminders. **Zero were accepted.** The two that moved at all did so by +0.031 and
+regressed on the other component.
+
+**Every valid instrument reports parity.** Six valid instruments, six `CONTROL_PARITY`, four
+of them exact ties on every item. The one apparent exception, DEPENDENCY at +0.167, halved to
++0.083 and crossed into parity when the sample doubled (`FM-052`).
+
+The three fit together. If the axes control only the surface form of a relation that is always
+rendered, then every representation in the space presents the same information differently
+spelled — and a reader recovering that relation should score the same on all of them. That is
+precisely what was measured, on instruments with a demonstrated ceiling of 1.000 and a floor
+at or below chance.
+
+**What this means for the project.** The open-ended search ran 106 generations and converged.
+It was searching a space in which the quantity `PROJECT_GOAL` cares about is close to
+constant. That is not a failure of the search, the seeds, or the meta-designers; it is a
+property of the axis vocabulary they were given. The vocabulary is rich in *typography* and
+thin in *content selection*.
+
+**What follows.**
+
+1. **A better notation cannot be found inside this space** by any search, because readability
+   barely varies across it. Further global search is not merely premature — it is searching a
+   dimension the space does not have.
+2. **The productive move is to add content-bearing axes**, not to search harder over surface
+   ones. The MULTI_GOAL case is the worked example: the action-to-goal relation is rendered by
+   nothing (`FM-044`), so adding it is a change to the projection, not to a genome.
+3. **`type_explicitness` is the proof that content axes behave differently.** It is the one
+   axis that changes what is expressed, and it is the one axis whose known-bad the instrument
+   detected, at +0.333. Content axes move the measurement; surface axes do not.
+4. **Expression depth is the standing target.** It is the only relation that is rendered and
+   still unreadable — 0.167 against a chance of 0.304 while the reader scores 1.000 when told.
+   Everything needed to answer it is on the page and no reader recovers it.
+
+This decision does not license changing the semantic contract. Adding a projection for the
+action-to-goal edge, or any other content axis, requires its own decision record, its own
+round-trip proof, and its own instrument.

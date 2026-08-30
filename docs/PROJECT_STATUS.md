@@ -19,13 +19,17 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`COMPONENT_CERTIFICATION_V2`. The V2 certification has completed on seven components in
-3975 s. **Six of seven instruments are valid** — a reversal of V1, where six of eight were
-broken — and the V1 conclusion is overturned as a result.
+`COMPONENT_CERTIFICATION_V2_COMPLETE`. All seven measurable components have been certified on
+repaired instruments. **Seven of seven instruments are valid** — against two of eight in V1 —
+and **all seven report `CONTROL_PARITY`.**
 
-**No component is CERTIFIED**, because `§29` requires reproduction on shadow and holdout plus
-known-bad detection, and neither has completed. Five of six valid instruments report
-`CONTROL_PARITY`; one comparison is unresolved.
+The session's central result is `D-025`: **the representation space varies how a relation is
+written, not whether it is expressed.** Three independent lines of evidence converge on it,
+and it explains every parity verdict.
+
+**No component is CERTIFIED**, because `§29` additionally requires known-bad detection and
+reproduction on shadow and holdout. The known-bad set was mis-targeted (`FM-051`) and neither
+`micro_shadow_v2` nor `micro_hidden_v2` has been read.
 
 ## Current Branch
 
@@ -349,40 +353,38 @@ cosmetic — the five surface mutations properly tested in V1 moved a combined 0
 
 ## MicroMath Lab V2 — Certification Results
 
-Reader `qwen38-rvn:latest`, 12 items per arm, 3975 s, £0 incremental.
+Reader `qwen38-rvn:latest`, 12 items per arm (24 where the ladder escalated), £0 incremental.
 
 | Component | Chance | Ceiling | Floor | TYPED_AST | Candidate | Readability | Verdict |
 |---|---|---|---|---|---|---|---|
 | ACTION_ARGUMENT | 0.264 | 1.000 | 0.167 | 0.917 | 0.917 | **0.900** | CONTROL_PARITY |
+| BINDER | 0.277 | 1.000 | 0.250 | 0.833 | 0.917 | **0.889** | CONTROL_PARITY |
 | TYPE | 0.300 | 1.000 | 0.333 | 0.917 | 0.917 | **0.875** | CONTROL_PARITY |
 | PREMISE | 0.250 | 1.000 | 0.000 | 0.833 | 0.833 | **0.833** | CONTROL_PARITY |
 | SCOPE | 0.464 | 0.917 | 0.250 | 0.750 | 0.667 | 0.625 | CONTROL_PARITY |
-| DEPENDENCY | 0.250 | 1.000 | 0.250 | 0.417 | **0.583** | 0.444 | unresolved (+0.167) |
+| DEPENDENCY | 0.250 | 1.000 | 0.333 | 0.542 | 0.625 | 0.438 | CONTROL_PARITY |
 | EXPRESSION_DEPTH | 0.304 | 1.000 | 0.083 | 0.167 | 0.167 | **0.091** | CONTROL_PARITY |
-| BINDER | 0.277 | 1.000 | 0.750 | 0.833 | 0.917 | — | INSTRUMENT_INVALID |
-| MULTI_GOAL | — | — | — | — | — | — | UNTESTED (withdrawn) |
+| MULTI_GOAL | — | — | — | — | — | — | UNTESTED (withdrawn, `FM-044`) |
 
 **The V1 conclusion is overturned.** V1 found four instruments invalid and reported both
 survivors near chance, which I described as the language reading at under a fifth of the
-achievable range. With identifiers anonymised and the negative control moved into the state,
-**four of those same relations are read at 0.83–0.90 of the achievable range by both
-representations.** On those components the representation was never the problem.
+achievable range. Four of those same relations are read at 0.83–0.90 by **both**
+representations once identifiers are anonymised and the negative control is moved into the
+state. On those components the representation was never the problem.
 
-**Expression depth is the one genuine structural weakness.** It is the only valid instrument
-where both representations sit at chance (0.167 against 0.304) while the reader scores 1.000
-when handed the answer. That is an isolated, real failure and it is what the four `E_*`
-architectural hypotheses target.
+**The only lead the project produced was noise.** DEPENDENCY showed +0.167 at 12 items — the
+first and only time the candidate led a control. At 24 items it is +0.083, inside the parity
+margin, interval spanning zero (`FM-052`). Without the escalation added in `FM-049` the run
+would have stopped at 12 items and that artefact would have been the headline result.
 
-**No advantage anywhere settled.** Five of six valid instruments are `CONTROL_PARITY`, four of
-them exact ties. DEPENDENCY's +0.167 is the only lead the project has ever produced; its
-bootstrap interval is [+0.000, +0.333], so it is **unresolved, not a result**, and is queued
-for re-run at 24–48 items (`FM-049`).
+**Expression depth is the one standing target.** It is the only relation that is rendered and
+still unreadable: 0.167 against a chance of 0.304, while the reader scores 1.000 when handed
+the answer. Everything needed is on the page and no representation surfaces it.
 
-**BINDER is invalid through my own defect** (`FM-050`), not through the language: the question
-was changed to remove a counting task and its ablation was not re-derived, so a derangement
-permuted within the very set the question asked about. Fixed and queued for re-run.
-
-Every figure above rests on **12 items**.
+**Thirteen hypotheses across two families moved nothing.** V1's five surface mutations moved
+0.031 combined. V2's eight architectural mutations — explicit parent-child edge lists, a
+hybrid nested-plus-edges projection, dependency-local serialisation, goal-interleaved
+partitioning, explicit scope ids, per-use reminders — produced **zero acceptances**.
 
 ## Verification and Test Results
 

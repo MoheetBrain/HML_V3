@@ -153,10 +153,27 @@ def main() -> int:
                 f"| {fmt(entry.get('known_bad_score'))} | {fmt(entry.get('margin'))} "
                 f"| **{entry.get('status')}** |")
         detected = [n for n, e in detection.items() if e.get("status") == "DETECTED"]
-        lines += ["", f"**{len(detected)} of {len(detection)} instruments detected the "
-                      f"representation built to hide their own relation.** An instrument "
-                      f"that cannot is not measuring what it claims, whatever its "
-                      f"calibration says."]
+        lines += [
+            "",
+            f"**{len(detected)} of {len(detection)} instruments detected the representation "
+            f"built to hide their own relation — and that number must not be read as "
+            f"{len(detection) - len(detected)} blind instruments (`FM-051`).**",
+            "",
+            "Checking whether the answer token still appears on the page showed **6 of 6 "
+            "items still carrying it** for DEPENDENCY, BINDER, PREMISE, ACTION_ARGUMENT and "
+            "EXPRESSION_DEPTH. Those known-bads hide nothing, because the axes chosen do not "
+            "control the rendering path each question depends on: `dependency_visibility` "
+            "governs the *action's* local refs rather than the references inside declaration "
+            "types, and `premise_locality` moves a citation rather than removing it.",
+            "",
+            "Only TYPE's known-bad genuinely hides its relation, via "
+            "`type_explicitness: OMITTED` — and there the instrument **did** detect it, at "
+            "+0.333. The method is sound; the known-bad set was mis-targeted.",
+            "",
+            "An exhaustive single-axis search over all 42 axes then found that **no axis "
+            "hides any of those five relations at all.** The space can vary how a relation "
+            "is written; it cannot choose not to write it. That is `D-025`, and it is the "
+            "finding that explains every parity verdict above."]
 
     lines += ["", "## 5. Architectural hypotheses (`§13`, `§14`)", ""]
     if not proposals:

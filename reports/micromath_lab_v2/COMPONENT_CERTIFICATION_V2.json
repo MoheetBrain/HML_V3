@@ -29,41 +29,45 @@
       "best_control": 0.8333,
       "candidate": 0.9167,
       "chance": 0.2766,
+      "comparison_decisive": true,
       "instrument": {
         "chance": 0.2765957446808511,
-        "decisive": true,
-        "dynamic_range": 0.25,
-        "negative": 0.75,
-        "negative_lower": 0.4489,
-        "positive": 1.0,
-        "positive_lower": 0.927,
-        "reason": "the negative arm scores 0.750 with a 90% lower bound of 0.449, above chance 0.277; the question is answerable with the relation destroyed, so it never tested the relation",
-        "status": "INSTRUMENT_INVALID"
-      },
-      "items_used": 12,
-      "reason": "the negative arm scores 0.750 with a 90% lower bound of 0.449, above chance 0.277; the question is answerable with the relation destroyed, so it never tested the relation",
-      "status": "INSTRUMENT_INVALID"
-    },
-    "DEPENDENCY": {
-      "available": 46,
-      "best_control": 0.4167,
-      "candidate": 0.5833,
-      "chance": 0.25,
-      "instrument": {
-        "chance": 0.25,
         "decisive": true,
         "dynamic_range": 0.75,
         "negative": 0.25,
         "negative_lower": 0.0569,
         "positive": 1.0,
         "positive_lower": 0.927,
-        "reason": "positive 1.000 (lower 0.927) is above chance 0.250, negative 0.250 is not, and the range is 0.750",
+        "reason": "positive 1.000 (lower 0.927) is above chance 0.277, negative 0.250 is not, and the range is 0.750",
         "status": "INSTRUMENT_VALID"
       },
       "items_used": 12,
-      "normalised_readability": 0.4444,
+      "normalised_readability": 0.8889,
       "paired_items": 12,
-      "reason": "candidate differs by +0.167, within the 0.10 parity margin (bootstrap +0.000 to +0.333)",
+      "reason": "candidate differs by +0.083, inside the 0.10 parity margin (bootstrap -0.167 to +0.333)",
+      "status": "CONTROL_PARITY"
+    },
+    "DEPENDENCY": {
+      "available": 46,
+      "best_control": 0.5417,
+      "candidate": 0.625,
+      "chance": 0.25,
+      "comparison_decisive": true,
+      "instrument": {
+        "chance": 0.25,
+        "decisive": true,
+        "dynamic_range": 0.6667,
+        "negative": 0.3333,
+        "negative_lower": 0.1635,
+        "positive": 1.0,
+        "positive_lower": 0.9634,
+        "reason": "positive 1.000 (lower 0.963) is above chance 0.250, negative 0.333 is not, and the range is 0.667",
+        "status": "INSTRUMENT_VALID"
+      },
+      "items_used": 24,
+      "normalised_readability": 0.4375,
+      "paired_items": 24,
+      "reason": "candidate differs by +0.083, inside the 0.10 parity margin (bootstrap -0.042 to +0.208)",
       "status": "CONTROL_PARITY"
     },
     "EXPRESSION_DEPTH": {
@@ -159,7 +163,7 @@
       "status": "CONTROL_PARITY"
     }
   },
-  "elapsed_seconds": 3975.3,
+  "elapsed_seconds": 542.9,
   "lab": "micromath-lab-v2.0.0",
   "model": "qwen38-rvn:latest",
   "rule": {

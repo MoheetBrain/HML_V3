@@ -984,6 +984,57 @@
       "note": "BINDER originally asked which declaration a numbered use refers to, and the ablation deranged the identities across the reference sites -- correct for that question. The question was then changed to 'which of these declarations is used in the goal target', to remove a counting task that made the reader locate use number forty-one before it could start on the binder relation. The ablation was not revisited. A derangement permutes within a multiset, so the SET of referenced declarations survived it exactly, and the new question stayed fully answerable with the relation supposedly destroyed: the negative arm scored 0.750 with a lower bound of 0.449 against a chance of 0.277, and the instrument declared itself INSTRUMENT_INVALID. The ablation now substitutes referenced identities for in-scope declarations the target does not use, so the set genuinely changes; verified to destroy the answer on every item. All 96 items survive the new ablation, so the ablated state was regenerated in place rather than rebuilding the lab, which would have reshuffled every split and invalidated the components already measured correctly.",
       "requirement": "a question and its ablation are one unit; changing either requires re-deriving the other, and a negative arm is the only thing that will notice if you do not",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-051",
+      "title": "Seven of eight known-bad representations hid nothing, and no single axis in the space can hide five of the relations at all",
+      "disposition": "KNOWN_BAD_MIS_TARGETED_AND_SPACE_LIMIT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2 known-bad run plus an exhaustive single-axis search over all 42 axes",
+      "numbers": {
+        "instruments_detecting_their_known_bad": 1,
+        "instruments_tested": 8,
+        "known_bads_that_still_render_the_answer": "6/6 items for DEPENDENCY, BINDER, PREMISE, ACTION_ARGUMENT, EXPRESSION_DEPTH",
+        "type_known_bad_margin": 0.333,
+        "axes_searched": 42,
+        "axes_that_hide_DEPENDENCY": 0,
+        "axes_that_hide_BINDER": 0,
+        "axes_that_hide_PREMISE": 0,
+        "axes_that_hide_ACTION_ARGUMENT": 0,
+        "axes_that_hide_EXPRESSION_DEPTH": 0
+      },
+      "note": "The known-bad run reported 1 of 8 instruments detecting the representation built to hide their relation, which reads as seven blind instruments. It is not that. Checking whether the answer token still appears on the page showed 6 of 6 items still carrying it for DEPENDENCY, BINDER, PREMISE, ACTION_ARGUMENT and EXPRESSION_DEPTH -- the known-bads hide nothing, because I chose axes that do not control the rendering path each question depends on. dependency_visibility governs the ACTION's local refs, not the references inside declaration types; premise_locality moves the citation rather than removing it. Only TYPE's known-bad genuinely hides, via type_explicitness=OMITTED, and there the instrument DID detect it at +0.333 -- which shows the method is sound. An exhaustive single-axis search over all 42 axes then found that NO axis hides any of those five relations. The space can vary how a relation is written; it cannot choose not to write it.",
+      "requirement": "a known-bad must be verified to remove the answer from the page before it is used to judge an instrument, and an instrument that fails against one that hides nothing has been slandered rather than tested",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-052",
+      "title": "The only candidate lead the project produced halved and crossed into parity when the sample doubled",
+      "disposition": "SMALL_SAMPLE_ARTEFACT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "HML V3 MicroMath Lab V2, DEPENDENCY, qwen38-rvn:latest, 12 then 24 items",
+      "numbers": {
+        "candidate_at_12": 0.5833,
+        "control_at_12": 0.4167,
+        "difference_at_12": 0.1667,
+        "bootstrap_at_12": [
+          0.0,
+          0.3333
+        ],
+        "candidate_at_24": 0.625,
+        "control_at_24": 0.5417,
+        "difference_at_24": 0.0833,
+        "bootstrap_at_24": [
+          -0.042,
+          0.208
+        ],
+        "parity_margin": 0.1,
+        "positive_at_24": 1.0,
+        "negative_at_24": 0.3333
+      },
+      "note": "DEPENDENCY at twelve items showed the candidate at 0.583 against the control's 0.417, a lead of +0.167 -- the first and only time the discovered representation has led a control on a valid instrument. At twenty-four items the same comparison gives 0.625 against 0.542, a lead of +0.083, inside the parity margin with a bootstrap interval spanning zero. The lead halved and the verdict settled to CONTROL_PARITY. This is what the MISSION section 9 ladder is for, and it is the direct payoff of FM-049: without escalation on comparison ambiguity the run would have stopped at twelve items and a noise artefact would have been the project's headline positive result.",
+      "requirement": "never report a favourable difference from the first rung of a sequential design; the ladder exists precisely because the first rung is where a lucky sample looks like a finding",
+      "blocked_traits": []
     }
   ]
 }
