@@ -1,0 +1,202 @@
+{
+  "cells": {
+    "depth10_sites16": {
+      "accuracy": 0.95,
+      "depth": 10,
+      "items": 20,
+      "mean_characters": 211,
+      "mean_recurrence": 1.83,
+      "sites": 16,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.550 (bootstrap +0.350 to +0.750)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth10_sites2": {
+      "accuracy": 0.45,
+      "depth": 10,
+      "items": 20,
+      "mean_characters": 126,
+      "mean_recurrence": 1.0,
+      "sites": 2,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate differs by +0.050, inside the 0.10 parity margin (bootstrap -0.250 to +0.350)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "depth10_sites24": {
+      "accuracy": 1.0,
+      "depth": 10,
+      "items": 20,
+      "mean_characters": 271,
+      "mean_recurrence": 3.5,
+      "sites": 24,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.600 (bootstrap +0.400 to +0.800)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth10_sites32": {
+      "accuracy": 1.0,
+      "depth": 10,
+      "items": 20,
+      "mean_characters": 331,
+      "mean_recurrence": 5.17,
+      "sites": 32,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.600 (bootstrap +0.400 to +0.800)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth10_sites4": {
+      "accuracy": 0.35,
+      "depth": 10,
+      "items": 20,
+      "mean_characters": 166,
+      "mean_recurrence": 1.0,
+      "sites": 4,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate differs by -0.050, inside the 0.10 parity margin (bootstrap -0.300 to +0.200)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "depth10_sites48": {
+      "accuracy": 1.0,
+      "depth": 10,
+      "items": 20,
+      "mean_characters": 391,
+      "mean_recurrence": 6.83,
+      "sites": 48,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.600 (bootstrap +0.400 to +0.800)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth10_sites8": {
+      "accuracy": 0.9,
+      "depth": 10,
+      "items": 20,
+      "mean_characters": 208,
+      "mean_recurrence": 1.33,
+      "sites": 8,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.500 (bootstrap +0.300 to +0.700)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth6_sites16": {
+      "accuracy": 0.9,
+      "depth": 6,
+      "items": 20,
+      "mean_characters": 223,
+      "mean_recurrence": 2.17,
+      "sites": 16,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.500 (bootstrap +0.300 to +0.700)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth6_sites2": {
+      "accuracy": 0.4,
+      "depth": 6,
+      "items": 20,
+      "mean_characters": 106,
+      "mean_recurrence": 1.0,
+      "sites": 2,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "depth6_sites24": {
+      "accuracy": 1.0,
+      "depth": 6,
+      "items": 20,
+      "mean_characters": 289,
+      "mean_recurrence": 4.0,
+      "sites": 24,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.600 (bootstrap +0.400 to +0.800)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth6_sites32": {
+      "accuracy": 1.0,
+      "depth": 6,
+      "items": 20,
+      "mean_characters": 331,
+      "mean_recurrence": 5.17,
+      "sites": 32,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.600 (bootstrap +0.400 to +0.800)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth6_sites4": {
+      "accuracy": 0.3,
+      "depth": 6,
+      "items": 20,
+      "mean_characters": 146,
+      "mean_recurrence": 1.0,
+      "sites": 4,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate differs by -0.100, inside the 0.10 parity margin (bootstrap -0.350 to +0.100)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "depth6_sites48": {
+      "accuracy": 1.0,
+      "depth": 6,
+      "items": 20,
+      "mean_characters": 433,
+      "mean_recurrence": 8.0,
+      "sites": 48,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.600 (bootstrap +0.400 to +0.800)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "depth6_sites8": {
+      "accuracy": 0.85,
+      "depth": 6,
+      "items": 20,
+      "mean_characters": 187,
+      "mean_recurrence": 1.17,
+      "sites": 8,
+      "vs_sparsest": {
+        "decisive": true,
+        "reason": "candidate leads by +0.450 (bootstrap +0.200 to +0.700)",
+        "status": "ADVANTAGE"
+      }
+    }
+  },
+  "depths": [
+    6,
+    10
+  ],
+  "elapsed_seconds": 233.6,
+  "items": 20,
+  "model": "qwen38-rvn:latest",
+  "sites": [
+    2,
+    4,
+    8,
+    16,
+    24,
+    32,
+    48
+  ]
+}

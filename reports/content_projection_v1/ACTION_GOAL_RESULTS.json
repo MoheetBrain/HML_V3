@@ -1,0 +1,170 @@
+{
+  "answer_position_distribution": {
+    "0": 9,
+    "1": 8,
+    "2": 13,
+    "3": 10
+  },
+  "arms": {
+    "ABSENT_NEGATIVE": {
+      "accuracy": 0.4,
+      "exposure": "ABSENT",
+      "items": 40,
+      "label": "ABSENT_NEGATIVE",
+      "mean_characters": 110
+    },
+    "EXPLICIT_EDGE": {
+      "accuracy": 1.0,
+      "exposure": "EXPLICIT",
+      "items": 40,
+      "label": "EXPLICIT_EDGE",
+      "mean_characters": 178,
+      "vs_implicit": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "EXPLICIT_POSITIVE": {
+      "accuracy": 1.0,
+      "exposure": "IMPLICIT_RECOVERABLE",
+      "items": 40,
+      "label": "EXPLICIT_POSITIVE",
+      "mean_characters": 129
+    },
+    "GOAL_LOCAL_ACTION": {
+      "accuracy": 1.0,
+      "exposure": "EXPLICIT",
+      "items": 40,
+      "label": "GOAL_LOCAL_ACTION",
+      "mean_characters": 228,
+      "vs_implicit": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "IMPLICIT_ADJACENCY": {
+      "accuracy": 1.0,
+      "exposure": "IMPLICIT_RECOVERABLE",
+      "items": 40,
+      "label": "IMPLICIT_ADJACENCY",
+      "mean_characters": 129
+    },
+    "SCRAMBLED_NEGATIVE": {
+      "accuracy": 0.0,
+      "exposure": "IMPLICIT_RECOVERABLE",
+      "items": 40,
+      "label": "SCRAMBLED_NEGATIVE",
+      "mean_characters": 129
+    }
+  },
+  "chance": 0.25,
+  "elapsed_seconds": 187.5,
+  "exposure_audit": {
+    "failing": [],
+    "status": "PASS",
+    "views": [
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['action'] but not stated",
+            "relation": "ACTION_GOAL",
+            "verified": "IMPLICIT_RECOVERABLE"
+          }
+        ],
+        "source_id": "AG_56134db657bd",
+        "status": "PASS",
+        "view": "IMPLICIT_ADJACENCY"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "EXPLICIT",
+            "detail": "stated by block(s) ['action_goal_edge']",
+            "relation": "ACTION_GOAL",
+            "verified": "EXPLICIT"
+          }
+        ],
+        "source_id": "AG_56134db657bd",
+        "status": "PASS",
+        "view": "EXPLICIT_EDGE"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "EXPLICIT",
+            "detail": "stated by block(s) ['goals_with_local_action']",
+            "relation": "ACTION_GOAL",
+            "verified": "EXPLICIT"
+          }
+        ],
+        "source_id": "AG_56134db657bd",
+        "status": "PASS",
+        "view": "GOAL_LOCAL_ACTION"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['action'] but not stated",
+            "relation": "ACTION_GOAL",
+            "verified": "IMPLICIT_RECOVERABLE"
+          }
+        ],
+        "source_id": "AG_56134db657bd",
+        "status": "PASS",
+        "view": "SCRAMBLED_NEGATIVE"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "ABSENT",
+            "detail": "no block carries this relation in any form",
+            "relation": "ACTION_GOAL",
+            "verified": "ABSENT"
+          }
+        ],
+        "source_id": "AG_56134db657bd",
+        "status": "PASS",
+        "view": "ABSENT_NEGATIVE"
+      }
+    ]
+  },
+  "generator": "synthetic-action-goal-v1.0.0",
+  "goals": 4,
+  "instrument": {
+    "chance": 0.25,
+    "negative_absent": 0.4,
+    "negative_scrambled": 0.0,
+    "positive": 1.0
+  },
+  "items": 40,
+  "known_bad": {
+    "detail": "no block carries this relation in any form",
+    "hides_the_relation": true,
+    "note": "",
+    "relation": "ACTION_GOAL",
+    "status": "VALID_KNOWN_BAD",
+    "verified": "ABSENT",
+    "view": "ABSENT_NEGATIVE"
+  },
+  "model": "qwen38-rvn:latest",
+  "target_distribution": {
+    "g1": 14,
+    "g2": 10,
+    "g3": 7,
+    "g4": 9
+  }
+}

@@ -1058,3 +1058,88 @@ still pay.
 **Next intended step.** Rebuild the known-bad set against axes that actually remove each
 relation, reproduce the parity findings on `micro_shadow_v2`, and — as a separate decision —
 consider adding content-bearing axes, starting with the action-to-goal edge.
+
+---
+
+## 2026-09-05 — REAL_LEAN_GAP_V1: the collapse is reproduced, and the cause is inside the target
+
+**Branch.** `codex/open-ended-search-v2`. **Stage.** `COMPONENT_CERTIFICATION_V2_COMPLETE` →
+`REAL_LEAN_GAP_V1_REPRODUCED`.
+
+**Objective.** Establish why the same question, reader and nested rendering score 0.933 on
+clean synthetic states and 0.167 on real Lean states, after nine clutter factors and five
+iso-token fillers had failed to reproduce it.
+
+**Files and systems changed.** New: `src/hml_v3/projection/{real_target,dense,realism,
+selective}.py`; `scripts/projection/{audit_real_items,run_dense_v2,run_hard_regime,
+run_realistic_factorial,build_gap_report}.py`. Modified:
+`src/hml_v3/projection/expression.py` (`_candidates`);
+`research/representation_search/hml_failure_memory.json` (`FM-054`, `FM-055`);
+`docs/PROJECT_STATUS.md`. New reports: `REAL_ITEM_AUDIT.json`, `DENSE_TARGET_V2.json`,
+`HARD_REGIME.json`, `REAL_LEAN_GAP_V1.txt`.
+
+**What was completed.**
+
+1. **The real task was audited and is valid.** 45 of 45 items pass; 0 ambiguous, 0 invalid;
+   `CORRECTED_REAL_ACCURACY` 0.167, unchanged. Uniqueness was confirmed under three
+   independent depth notions and the rendered-minus-key offset is one constant (+1) across
+   all 45, so there is no codec or parser mismatch. The instrument is not the explanation.
+2. **The collapse was reproduced from internal target density alone.** 19 cells, 19 of 19
+   `INSTRUMENT_VALID`. `d10_n5_r4_l1` scores 0.250 [0.10, 0.45], containing the real 0.167,
+   with normalised readability 0.053 against the real task's 0.091.
+3. **The driver is recurrence** — occurrences per identity — at a spread of 0.448, against
+   0.120 for distinct-identity count and 0.047 for lead. Reference-site count is not an
+   independent factor. Both recurrence and depth are non-monotonic.
+4. **`HARD_REGIME_V1` was frozen and seven views compared in it.** `PATH_TO_ROOT` is the only
+   `ADVANTAGE` (0.500 vs nested 0.292) at 1.6x tokens. `EXPLICIT_EDGE_LIST` is
+   `LANGUAGE_WEAKNESS` at 0.083 — below its own regime's ablated negative arm.
+5. **Minimum sufficient context is `TARGET_ONLY` at 175 characters**, flat across a 7.4x token
+   range; 87% of the document is droppable with no measurable loss.
+
+**Decisions made and why.** The `§5` factorial was re-specified over factors the audit
+actually measured (lead, recurrence, target copies, deeper-in-context types) rather than the
+pre-registered `competing_expressions` and `dependency_clutter`, which the first sweep had
+already measured at -0.208 and -0.125 with neutral filler at zero. `context_size` was kept as
+the control so the pre-registered factor is still represented. This is a deviation from the
+letter of the plan and is recorded as one. `HARD_REGIME_V1` was set to the cell matching the
+real corpus medians, not to the lowest-scoring cell; they coincide, which is reported rather
+than relied upon.
+
+**Tests and verification actually executed.**
+- `audit_real_items.py` — 45 items, 0 ambiguous, 0 invalid.
+- `run_dense_v2.py` — 19 cells x 3 arms x 24 items = 1,368 probes, 1,065 s, all valid.
+- `run_hard_regime.py` — 2 regimes x 9 arms + a 5-rung ladder, 1,080 s, both regimes valid.
+- `pytest tests/test_representation_search.py -k evidence_status` — **FAILS**, on the
+  pre-existing `FM-053` `REASONING_ERROR` status only; `FM-054` and `FM-055` conform.
+- The full suite was **not** run in this session.
+
+**Failures and unresolved uncertainty.**
+- `FM-054` — the first dense generator recorded intended rather than derived depths and
+  attached distractors as siblings of the spine. On 14 to 20 of every 20 items in all 14 cells
+  the recorded answer was not the unique deepest reference. **`DENSE_TARGET.json` is
+  withdrawn**, and it pointed the wrong way: it appeared to show denser targets are easier.
+- `FM-055` — `_candidates` mapped each option to one arbitrary occurrence, which would have
+  made `PATH_TO_ROOT` and `LOCAL_SUBTREE` unanswerable in the hard regime and reported them as
+  unreadable. Caught before measurement. The first fix was worse than the bug: ordering rows
+  by node id would have put the answer first on every item, since both generators build the
+  answer's deepest occurrence as `n1`.
+- `DEPTH_ADAPTIVE` and `DUAL_VIEW` render byte-identically at depth 10 and are one arm, not
+  two. Their agreement is not corroboration.
+- `d6_n5_r4_l1` has a negative arm at 0.417 (lower bound 0.231, passing the rule only
+  marginally) and normalised readability -0.21. It is treated as noise, not evidence.
+- Every figure is **one reader (`qwen38-rvn`), one relation, 24 items per cell**. The
+  synthetic-to-real match is overlapping intervals, not a demonstrated identity.
+- The 32-cell realistic factorial was still running when this entry was written.
+- Defects found this session: two, both in my own generators and builders, none in the
+  language.
+
+**Effect on the overall project.** The question "why does ordinary mathematical
+representation break" now has a measured answer for this relation: not depth, not context
+size, not unrelated clutter, but repeated occurrences of the same identity at several depths
+with a one-level winning margin. `PROJECT_GOAL` §18's long-horizon framing is not what is
+being tested by depth alone, as `FM-053` already recorded. The north star's first half is
+met; the second half — whether any representation prevents the breakdown — has exactly one
+non-null result and it needs replication.
+
+**Next intended step.** Finish the realistic factorial, then replicate the `PATH_TO_ROOT`
+hard-regime advantage at higher n and on a second reader before treating it as a finding.

@@ -1035,6 +1035,60 @@
       "note": "DEPENDENCY at twelve items showed the candidate at 0.583 against the control's 0.417, a lead of +0.167 -- the first and only time the discovered representation has led a control on a valid instrument. At twenty-four items the same comparison gives 0.625 against 0.542, a lead of +0.083, inside the parity margin with a bootstrap interval spanning zero. The lead halved and the verdict settled to CONTROL_PARITY. This is what the MISSION section 9 ladder is for, and it is the direct payoff of FM-049: without escalation on comparison ambiguity the run would have stopped at twelve items and a noise artefact would have been the project's headline positive result.",
       "requirement": "never report a favourable difference from the first rung of a sequential design; the ladder exists precisely because the first rung is where a lucky sample looks like a finding",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-053",
+      "title": "I generalised a narrow negative result into a falsification of the project's central hypothesis",
+      "disposition": "OVERCLAIMED_INFERENCE",
+      "evidence_status": "REASONING_ERROR",
+      "measured_by": "HML V3 content projection Experiment 1, reviewed against what the data supports",
+      "numbers": {
+        "clean_synthetic_nested": 0.933,
+        "depths_tested_low": 1,
+        "depths_tested_high": 17,
+        "accuracy_at_E1": 0.9167,
+        "accuracy_at_E5": 0.9167,
+        "real_lean_nested": 0.167,
+        "items": 60,
+        "readers": 1,
+        "relations_tested": 1
+      },
+      "note": "Experiment 1 showed accuracy flat across expression depth 1 to 17 on clean synthetic states, and I reported that as PROJECT_GOAL section 18's central long-horizon prediction being falsified. It is not. What was measured is one relation, one reader, one synthetic generator, clean states only, and a single structural dimension. The supported claim is exactly: expression depth alone, on clean synthetic states from depth 1 to 17, did not degrade Qwen structural recovery. The long-horizon hypothesis is about reasoning horizon in general -- context size, chain length, goal count, working-memory pressure -- and almost none of that was varied. Worse, the same experiment showed the clean regime scores 0.933 where real states score 0.167, which means the experiment was run in a regime where nothing was failing, and a flat curve in a regime with no failure is close to uninformative about degradation.",
+      "requirement": "state the scope of a negative result in the same sentence as the result: which relation, which reader, which states, which dimension varied; a hypothesis about reasoning horizon is not tested by varying one structural parameter in a regime where accuracy is already at ceiling",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-054",
+      "title": "The first dense-target generator recorded the depth it intended instead of the depth it built",
+      "disposition": "MEASUREMENT_INVALID",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "re-derivation of every generated tree by an independent walk, 20 items per cell, 14 cells",
+      "numbers": {
+        "cells_measured": 14,
+        "items_per_cell": 20,
+        "cells_where_the_recorded_answer_was_not_the_unique_deepest_reference": 14,
+        "worst_cell_bad_items": 20,
+        "best_cell_bad_items": 14,
+        "withdrawn_report": "reports/content_projection_v1/DENSE_TARGET.json"
+      },
+      "note": "synthetic.generate_dense wrote depth_of[pick] = this_level for each distractor it attached, and never re-derived depth from the finished tree. It attached the first distractor of every level as a sibling of the spine node, which sits at the SAME depth as the spine continues to, so the deepest distractor tied or beat the recorded answer. On 14 to 20 of every 20 items in all 14 cells the recorded answer was not the unique deepest reference. The reported curve -- 0.30 to 0.45 at two and four sites rising to 1.000 at 24 sites and above -- is therefore a measurement of a mis-keyed question, and it reads exactly backwards: it appeared to show that DENSER targets are EASIER, which is the opposite of the real-corpus direction. Every number in DENSE_TARGET.json is withdrawn. The replacement generator verifies depth, uniqueness, lead, recurrence and identity count by walking the finished tree and refuses to emit an item that disagrees with its own construction.",
+      "requirement": "a generator may not record a structural fact it did not re-derive from the artefact it produced; construction is a plan, and the plan is not the evidence",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-055",
+      "title": "Two views were about to be judged in a regime their builder could not represent",
+      "disposition": "NEAR_MISS_CAUGHT_BEFORE_MEASUREMENT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "inspection of projection.expression._candidates against dense targets",
+      "numbers": {
+        "occurrences_per_identity_clean": 1,
+        "occurrences_per_identity_dense": 4,
+        "views_affected": 2
+      },
+      "note": "_candidates mapped each option to ONE node id by setdefault over the sorted node reference map. On the clean ladder every identity occurs exactly once so this is exact, but a dense target has an identity at depths 11, 9, 9 and 8, and the builder silently picked an arbitrary occurrence. LOCAL_SUBTREE and PATH_TO_ROOT would then have described a reference the question was not about, could not have answered it, and would have been reported as unreadable in the hard regime -- FM-051 a second time, with the defect in my builder rather than in the view. Caught before the comparison ran. The fix lists every occurrence of every option. The first attempt at the fix ordered rows by node id, which was worse than the bug: both generators build the answer's deepest occurrence first so it always holds n1, and sorting by node id would have put the answer in row one on every single item. The order is the option order, which is already a rotation keyed on the state id.",
+      "requirement": "before comparing representations in a new regime, check that every builder can represent that regime; and check any ordering introduced by a fix for the leak the old ordering did not have",
+      "blocked_traits": []
     }
   ]
 }

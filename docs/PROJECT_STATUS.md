@@ -19,7 +19,11 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`COMPONENT_CERTIFICATION_V2_COMPLETE`. All seven measurable components have been certified on
+`REAL_LEAN_GAP_V1_REPRODUCED`. The real-Lean EXPRESSION_DEPTH failure has been **reproduced
+in synthetic states**, and the cause is internal to the target expression rather than in
+anything surrounding it. See the section `REAL_LEAN_GAP_V1` below.
+
+Previously `COMPONENT_CERTIFICATION_V2_COMPLETE`. All seven measurable components have been certified on
 repaired instruments. **Seven of seven instruments are valid** — against two of eight in V1 —
 and **all seven report `CONTROL_PARITY`.**
 
@@ -386,6 +390,116 @@ the answer. Everything needed is on the page and no representation surfaces it.
 hybrid nested-plus-edges projection, dependency-local serialisation, goal-interleaved
 partitioning, explicit scope ids, per-use reminders — produced **zero acceptances**.
 
+## REAL_LEAN_GAP_V1 — why ordinary notation breaks
+
+The same question, reader and nested rendering scored **0.933 on clean synthetic states and
+0.167 on real Lean states**. Nine kinds of surrounding clutter were swept and none reproduced
+it; neutral filler at 6,400 characters cost nothing. This section records what did.
+
+### The real task is valid; the instrument is not the explanation
+
+All 45 real `EXPRESSION_DEPTH` dev items were audited mechanically against the document the
+reader actually saw (`reports/content_projection_v1/REAL_ITEM_AUDIT.json`).
+
+| Field | Value |
+|---|---|
+| `REAL_ITEMS_AUDITED` | 45 (the 0.167 was scored on the first 12) |
+| `AMBIGUOUS_ITEMS` | 0 |
+| `INVALID_ITEMS` | 0 |
+| `CORRECTED_REAL_ACCURACY` | 0.167 — unchanged, no item withdrawn |
+
+Each item was checked for answer occurrence, strict uniqueness of the deepest reference under
+**three independent depth notions** (canonical key path, brace nesting in the rendered
+TYPED_AST text, parenthesis nesting in an equivalent re-render), option presence in the
+rendered target, distinct codec encodings, answer-parser round-trip, and the presence of
+nested structure. The rendered-minus-key depth offset is exactly `+1` on all 45 items — a
+single constant, so there is no codec or parser mismatch.
+
+### The regime the real items occupy
+
+Medians over the 12 scored items: 19.5 reference sites, 5 distinct identities, **3.59
+occurrences per identity**, 7.5 occurrences of the answer identity, depth 9, **lead 1**
+(the answer beats the runner-up by one level on 35 of 45 items), the goal target reprinted
+verbatim **2 times** elsewhere in a 9,441-character document. Clean synthetic states carried
+6 sites, one occurrence per identity, and lead 2.
+
+### Internal target density reproduces the collapse
+
+`reports/content_projection_v1/DENSE_TARGET_V2.json` — 19 cells, **19 of 19
+`INSTRUMENT_VALID`**, every cell carrying its own positive and negative arm.
+
+| distinct | lead | rec 1 | rec 2 | rec 4 | rec 8 | rec 12 |
+|---|---|---|---|---|---|---|
+| 3 | 1 | 0.917 | 0.500 | 0.500 | 0.375 | — |
+| 5 | 1 | 0.792 | 0.333 | **0.250** | 0.292 | 0.500 |
+| 5 | 2 | 0.792 | 0.375 | 0.458 | 0.375 | — |
+
+`d10_n5_r4_l1` reaches **0.250** with a 90% interval of [0.10, 0.45] containing the real
+0.167, and it is the cell matching the real corpus medians rather than a cherry-picked
+minimum. Normalised readability — `(nested − negative) / (positive − negative)` — is **0.053**
+there against the real task's **0.091**, while the recurrence-1 cells sit at 0.75–0.90.
+
+`STRONGEST_DENSITY_FACTOR` is **repeated occurrences per identity**, mean accuracy 0.844 at
+recurrence 1 against 0.396–0.417 above it, a spread of 0.448. Distinct-identity count moves
+0.120 and lead 0.047. **Reference-site count is not an independent factor**: 16 sites gives
+0.500 while 24 gives 0.250 and 72 gives 0.500.
+
+Both recurrence and depth are **non-monotonic**. Recurrence peaks in difficulty at 4 and eases
+to 0.500 by 12; depth gives 0.292 / 0.250 / 0.500 at 6 / 10 / 14. Neither is a dose-response
+curve, and "more density is harder" is false as stated.
+
+The mechanism this implies: the clean task was *"four identities, each appearing once, one
+wins by two levels"* — a lookup. The real task is *"four identities, each appearing about four
+times at four different depths, one wins by one level"* — a comparison of maxima over
+multisets. That is a different operation and it is entirely internal to the expression, which
+is why 3,500 characters of neutral filler never mattered.
+
+### HARD_REGIME_V1 and the view comparison
+
+`HARD_REGIME_V1` = depth 10, 5 distinct identities, recurrence 4, lead 1, plus 2 verbatim
+target copies, 3 context types embedding an option deeper than the answer, and 16 filler
+declarations. Both regimes are `INSTRUMENT_VALID`.
+
+| View | EASY | HARD | DROP | vs NESTED in HARD | chars |
+|---|---|---|---|---|---|
+| PATH_TO_ROOT | 1.000 | **0.500** | +0.500 | **ADVANTAGE** | 2104 |
+| LOCAL_SUBTREE | 0.833 | 0.333 | +0.500 | CONTROL_PARITY | 2709 |
+| NESTED_ONLY | 0.792 | 0.292 | +0.500 | (reference) | 1301 |
+| SELECTIVE_LOCAL_CONTEXT | 0.667 | 0.250 | **+0.417** | CONTROL_PARITY | 175 |
+| DUAL_VIEW | 0.917 | 0.208 | +0.708 | CONTROL_PARITY | 2476 |
+| DEPTH_ADAPTIVE | 0.917 | 0.208 | +0.708 | CONTROL_PARITY | 2476 |
+| EXPLICIT_EDGE_LIST | 0.875 | 0.083 | +0.792 | **LANGUAGE_WEAKNESS** | 2300 |
+
+`DEPTH_ADAPTIVE` renders **byte-identically** to `DUAL_VIEW` at depth 10 — its threshold is 5,
+so it always takes the explicit branch. They are one arm run twice here, not two views.
+
+`SELECTIVE_LOCAL_CONTEXT` has the smallest drop, but that is partly because it also has the
+lowest EASY score; on hard accuracy it is at parity with nested. **`PATH_TO_ROOT` is the only
+view with a decisive advantage in the hard regime**, at nearly double the tokens. Materialising
+each candidate's ancestor chain converts the depth comparison into row counting.
+
+`EXPLICIT_EDGE_LIST` is the one clear negative result: at 0.083 it scores **below its own
+regime's ablated negative arm (0.208)**. An unordered edge table is actively worse than
+nesting once identities recur.
+
+### Minimum sufficient context
+
+Measured over the surrounding document, because the tree-hop ladder is degenerate — with four
+options recurring, the union of the candidates' ancestor chains is the whole target, so depth
+has no prunable neighbourhood.
+
+| Level | Accuracy | Chars |
+|---|---|---|
+| TARGET_ONLY | 0.250 | 175 |
+| PLUS_DECLARATIONS | 0.208 | 297 |
+| PLUS_REFERENCING_TYPES | 0.250 | 552 |
+| PLUS_STATE_COPIES | 0.292 | 917 |
+| FULL_STATE | 0.292 | 1301 |
+
+Flat across a 7.4x token range. `MINIMUM_SUFFICIENT_CONTEXT` is **TARGET_ONLY at 175
+characters** — 87% of the document can be dropped with no measurable loss. This is consistent
+with every earlier clutter null and confirms the difficulty was never load.
+
 ## Verification and Test Results
 
 - `.venv/bin/python -m pytest` — **246 tests, 338 subtests, all passing** (2026-08-29).
@@ -481,7 +595,15 @@ None.
 
 ## Exact Next Actions
 
-1. **Finish the V2 certification run** now in flight over six components, then run SCOPE —
+0. **The binding question has moved.** The failure is reproduced and its cause is internal
+   target density, so the next question is whether any representation prevents it. The only
+   decisive hard-regime result so far is `PATH_TO_ROOT` (+0.208 over nested, at 1.6x tokens);
+   that is one reader, 24 items, and needs replication before it is a finding.
+1. **Finish the 32-cell realistic factorial** (`REALISTIC_FACTORIAL.json`, in flight) to
+   separate the internal factors from the realism factors and estimate interactions.
+2. **Replicate `PATH_TO_ROOT`'s hard-regime advantage** at higher n and on a second reader
+   before treating it as real.
+3. **Finish the V2 certification run** now in flight over six components, then run SCOPE —
    it was gated out by a defective constant-answer measure that has since been corrected, and
    the results file now merges rather than overwrites.
 2. **Run the known-bad detection** (`§27`). An instrument that cannot rank a representation

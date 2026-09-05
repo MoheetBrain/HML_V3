@@ -1,0 +1,1005 @@
+{
+  "arms": {
+    "ABLATED_NEGATIVE": {
+      "accuracy": 0.1833,
+      "by_rung": {
+        "E1": 0.1667,
+        "E2": 0.1667,
+        "E3": 0.25,
+        "E4": 0.1667,
+        "E5": 0.1667
+      },
+      "items": 60,
+      "items_by_rung": {
+        "E1": 12,
+        "E2": 12,
+        "E3": 12,
+        "E4": 12,
+        "E5": 12
+      },
+      "label": "ABLATED_NEGATIVE",
+      "mean_characters": 221,
+      "per_item": {
+        "E1": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true
+        ],
+        "E2": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false
+        ],
+        "E3": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false
+        ],
+        "E4": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false
+        ],
+        "E5": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false
+        ]
+      }
+    },
+    "DEPTH_ADAPTIVE": {
+      "accuracy": 0.9333,
+      "by_rung": {
+        "E1": 0.9167,
+        "E2": 0.9167,
+        "E3": 1.0,
+        "E4": 0.9167,
+        "E5": 0.9167
+      },
+      "items": 60,
+      "items_by_rung": {
+        "E1": 12,
+        "E2": 12,
+        "E3": 12,
+        "E4": 12,
+        "E5": 12
+      },
+      "label": "DEPTH_ADAPTIVE",
+      "mean_characters": 458,
+      "per_item": {
+        "E1": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E2": [
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E3": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E4": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E5": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "vs_nested": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "DUAL_VIEW": {
+      "accuracy": 0.9333,
+      "by_rung": {
+        "E1": 0.9167,
+        "E2": 0.9167,
+        "E3": 1.0,
+        "E4": 0.9167,
+        "E5": 0.9167
+      },
+      "items": 60,
+      "items_by_rung": {
+        "E1": 12,
+        "E2": 12,
+        "E3": 12,
+        "E4": 12,
+        "E5": 12
+      },
+      "label": "DUAL_VIEW",
+      "mean_characters": 511,
+      "per_item": {
+        "E1": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E2": [
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E3": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E4": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E5": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "vs_nested": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap -0.033 to +0.033)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "EXPLICIT_EDGE_LIST": {
+      "accuracy": 0.6833,
+      "by_rung": {
+        "E1": 0.5,
+        "E2": 0.4167,
+        "E3": 0.8333,
+        "E4": 0.9167,
+        "E5": 0.75
+      },
+      "items": 60,
+      "items_by_rung": {
+        "E1": 12,
+        "E2": 12,
+        "E3": 12,
+        "E4": 12,
+        "E5": 12
+      },
+      "label": "EXPLICIT_EDGE_LIST",
+      "mean_characters": 430,
+      "per_item": {
+        "E1": [
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true,
+          false,
+          true
+        ],
+        "E2": [
+          false,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          false,
+          false
+        ],
+        "E3": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E4": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E5": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          false,
+          true,
+          true,
+          false
+        ]
+      },
+      "vs_nested": {
+        "decisive": true,
+        "reason": "candidate trails by -0.250 (bootstrap -0.350 to -0.150)",
+        "status": "LANGUAGE_WEAKNESS"
+      }
+    },
+    "EXPLICIT_POSITIVE": {
+      "accuracy": 1.0,
+      "by_rung": {
+        "E1": 1.0,
+        "E2": 1.0,
+        "E3": 1.0,
+        "E4": 1.0,
+        "E5": 1.0
+      },
+      "items": 60,
+      "items_by_rung": {
+        "E1": 12,
+        "E2": 12,
+        "E3": 12,
+        "E4": 12,
+        "E5": 12
+      },
+      "label": "EXPLICIT_POSITIVE",
+      "mean_characters": 202,
+      "per_item": {
+        "E1": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E2": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E3": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E4": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E5": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    },
+    "LOCAL_SUBTREE": {
+      "accuracy": 0.8833,
+      "by_rung": {
+        "E1": 0.75,
+        "E2": 1.0,
+        "E3": 1.0,
+        "E4": 0.8333,
+        "E5": 0.8333
+      },
+      "items": 60,
+      "items_by_rung": {
+        "E1": 12,
+        "E2": 12,
+        "E3": 12,
+        "E4": 12,
+        "E5": 12
+      },
+      "label": "LOCAL_SUBTREE",
+      "mean_characters": 513,
+      "per_item": {
+        "E1": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          false,
+          false,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E2": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E3": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E4": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "E5": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          false
+        ]
+      },
+      "vs_nested": {
+        "decisive": true,
+        "reason": "candidate differs by -0.050, inside the 0.10 parity margin (bootstrap -0.100 to +0.000)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "NESTED_ONLY": {
+      "accuracy": 0.9333,
+      "by_rung": {
+        "E1": 0.9167,
+        "E2": 0.9167,
+        "E3": 1.0,
+        "E4": 0.9167,
+        "E5": 0.9167
+      },
+      "items": 60,
+      "items_by_rung": {
+        "E1": 12,
+        "E2": 12,
+        "E3": 12,
+        "E4": 12,
+        "E5": 12
+      },
+      "label": "NESTED_ONLY",
+      "mean_characters": 202,
+      "per_item": {
+        "E1": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E2": [
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E3": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E4": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E5": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true
+        ]
+      },
+      "vs_nested": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "PATH_TO_ROOT": {
+      "accuracy": 0.95,
+      "by_rung": {
+        "E1": 0.9167,
+        "E2": 1.0,
+        "E3": 1.0,
+        "E4": 1.0,
+        "E5": 0.8333
+      },
+      "items": 60,
+      "items_by_rung": {
+        "E1": 12,
+        "E2": 12,
+        "E3": 12,
+        "E4": 12,
+        "E5": 12
+      },
+      "label": "PATH_TO_ROOT",
+      "mean_characters": 373,
+      "per_item": {
+        "E1": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E2": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E3": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E4": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "E5": [
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          false,
+          true,
+          true,
+          false,
+          true,
+          true
+        ]
+      },
+      "vs_nested": {
+        "decisive": true,
+        "reason": "candidate differs by +0.017, inside the 0.10 parity margin (bootstrap -0.050 to +0.083)",
+        "status": "CONTROL_PARITY"
+      }
+    }
+  },
+  "elapsed_seconds": 427.5,
+  "exposure_audit": {
+    "failing": [],
+    "status": "PASS",
+    "views": [
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['goal_target'] but not stated",
+            "relation": "EXPRESSION_PARENT",
+            "verified": "IMPLICIT_RECOVERABLE"
+          },
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['goal_target'] but not stated",
+            "relation": "EXPRESSION_DEPTH",
+            "verified": "IMPLICIT_RECOVERABLE"
+          }
+        ],
+        "source_id": "SX_817582544286",
+        "status": "PASS",
+        "view": "NESTED_ONLY"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "EXPLICIT",
+            "detail": "stated by block(s) ['expression_edges']",
+            "relation": "EXPRESSION_PARENT",
+            "verified": "EXPLICIT"
+          },
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['expression_edges'] but not stated",
+            "relation": "EXPRESSION_DEPTH",
+            "verified": "IMPLICIT_RECOVERABLE"
+          }
+        ],
+        "source_id": "SX_817582544286",
+        "status": "PASS",
+        "view": "EXPLICIT_EDGE_LIST"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "EXPLICIT",
+            "detail": "stated by block(s) ['local_neighbourhood']",
+            "relation": "EXPRESSION_PARENT",
+            "verified": "EXPLICIT"
+          },
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['goal_target', 'local_neighbourhood'] but not stated",
+            "relation": "EXPRESSION_DEPTH",
+            "verified": "IMPLICIT_RECOVERABLE"
+          }
+        ],
+        "source_id": "SX_817582544286",
+        "status": "PASS",
+        "view": "LOCAL_SUBTREE"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "EXPLICIT",
+            "detail": "stated by block(s) ['expression_edges']",
+            "relation": "EXPRESSION_PARENT",
+            "verified": "EXPLICIT"
+          },
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['expression_edges', 'goal_target'] but not stated",
+            "relation": "EXPRESSION_DEPTH",
+            "verified": "IMPLICIT_RECOVERABLE"
+          }
+        ],
+        "source_id": "SX_817582544286",
+        "status": "PASS",
+        "view": "DUAL_VIEW"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "EXPLICIT",
+            "detail": "stated by block(s) ['ancestry']",
+            "relation": "EXPRESSION_PARENT",
+            "verified": "EXPLICIT"
+          },
+          {
+            "agrees": true,
+            "declared": "EXPLICIT",
+            "detail": "stated by block(s) ['ancestry']",
+            "relation": "EXPRESSION_DEPTH",
+            "verified": "EXPLICIT"
+          }
+        ],
+        "source_id": "SX_817582544286",
+        "status": "PASS",
+        "view": "PATH_TO_ROOT"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['goal_target'] but not stated",
+            "relation": "EXPRESSION_PARENT",
+            "verified": "IMPLICIT_RECOVERABLE"
+          },
+          {
+            "agrees": true,
+            "declared": "IMPLICIT_RECOVERABLE",
+            "detail": "recoverable from ['goal_target'] but not stated",
+            "relation": "EXPRESSION_DEPTH",
+            "verified": "IMPLICIT_RECOVERABLE"
+          }
+        ],
+        "source_id": "SX_817582544286",
+        "status": "PASS",
+        "view": "DEPTH_ADAPTIVE"
+      },
+      {
+        "disagreements": [],
+        "relations": [
+          {
+            "agrees": true,
+            "declared": "ABSENT",
+            "detail": "no block carries this relation in any form",
+            "relation": "EXPRESSION_PARENT",
+            "verified": "ABSENT"
+          },
+          {
+            "agrees": true,
+            "declared": "ABSENT",
+            "detail": "no block carries this relation in any form",
+            "relation": "EXPRESSION_DEPTH",
+            "verified": "ABSENT"
+          }
+        ],
+        "source_id": "SX_817582544286",
+        "status": "PASS",
+        "view": "FLATTENED_BAG"
+      }
+    ]
+  },
+  "exposure_matrix": {
+    "DEPTH_ADAPTIVE": {
+      "EXPRESSION_DEPTH": "IMPLICIT_RECOVERABLE",
+      "EXPRESSION_PARENT": "IMPLICIT_RECOVERABLE"
+    },
+    "DUAL_VIEW": {
+      "EXPRESSION_DEPTH": "IMPLICIT_RECOVERABLE",
+      "EXPRESSION_PARENT": "EXPLICIT"
+    },
+    "EXPLICIT_EDGE_LIST": {
+      "EXPRESSION_DEPTH": "IMPLICIT_RECOVERABLE",
+      "EXPRESSION_PARENT": "EXPLICIT"
+    },
+    "FLATTENED_BAG": {
+      "EXPRESSION_DEPTH": "ABSENT",
+      "EXPRESSION_PARENT": "ABSENT"
+    },
+    "LOCAL_SUBTREE": {
+      "EXPRESSION_DEPTH": "IMPLICIT_RECOVERABLE",
+      "EXPRESSION_PARENT": "EXPLICIT"
+    },
+    "NESTED_ONLY": {
+      "EXPRESSION_DEPTH": "IMPLICIT_RECOVERABLE",
+      "EXPRESSION_PARENT": "IMPLICIT_RECOVERABLE"
+    },
+    "PATH_TO_ROOT": {
+      "EXPRESSION_DEPTH": "EXPLICIT",
+      "EXPRESSION_PARENT": "EXPLICIT"
+    }
+  },
+  "generator": "synthetic-expression-v1.0.0",
+  "instrument": {
+    "chance": 0.25,
+    "negative": 0.1833,
+    "positive": 1.0
+  },
+  "known_bad": {
+    "detail": "no block carries this relation in any form",
+    "hides_the_relation": true,
+    "note": "",
+    "relation": "EXPRESSION_PARENT",
+    "status": "VALID_KNOWN_BAD",
+    "verified": "ABSENT",
+    "view": "FLATTENED_BAG"
+  },
+  "ladder": [
+    [
+      "E1",
+      1,
+      2
+    ],
+    [
+      "E2",
+      3,
+      4
+    ],
+    [
+      "E3",
+      5,
+      8
+    ],
+    [
+      "E4",
+      9,
+      16
+    ],
+    [
+      "E5",
+      17,
+      32
+    ]
+  ],
+  "model": "qwen38-rvn:latest",
+  "per_rung": 12
+}

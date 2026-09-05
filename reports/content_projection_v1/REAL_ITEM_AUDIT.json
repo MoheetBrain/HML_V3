@@ -1,0 +1,2911 @@
+{
+  "items_audited": 45,
+  "verdicts": {
+    "VALID": 45,
+    "AMBIGUOUS": 0,
+    "INVALID": 0
+  },
+  "certification_items_audited": 12,
+  "certification_verdicts": {
+    "VALID": 12,
+    "AMBIGUOUS": 0,
+    "INVALID": 0
+  },
+  "rendered_minus_key_offsets_seen": [
+    1
+  ],
+  "items_with_an_option_deeper_in_context_types": 33,
+  "items_with_lead_1": 35,
+  "regime_profile_all": {
+    "document_chars": {
+      "min": 3797,
+      "median": 9289,
+      "max": 13871,
+      "mean": 9032.24
+    },
+    "target_chars": {
+      "min": 67,
+      "median": 843,
+      "max": 3192,
+      "mean": 1078.96
+    },
+    "target_copies_in_document": {
+      "min": 2,
+      "median": 2,
+      "max": 6,
+      "mean": 2.67
+    },
+    "sites": {
+      "min": 2,
+      "median": 18,
+      "max": 103,
+      "mean": 20.67
+    },
+    "distinct_identities": {
+      "min": 2,
+      "median": 4,
+      "max": 11,
+      "mean": 4.78
+    },
+    "recurrence": {
+      "min": 1.0,
+      "median": 3.67,
+      "max": 10.17,
+      "mean": 4.03
+    },
+    "max_occurrences_one_identity": {
+      "min": 1,
+      "median": 8,
+      "max": 45,
+      "mean": 10.16
+    },
+    "answer_occurrences": {
+      "min": 1,
+      "median": 7,
+      "max": 45,
+      "mean": 9.58
+    },
+    "depth": {
+      "min": 2,
+      "median": 9,
+      "max": 21,
+      "mean": 9.22
+    },
+    "lead": {
+      "min": 1,
+      "median": 1,
+      "max": 12,
+      "mean": 1.8
+    }
+  },
+  "regime_profile_certification_12": {
+    "document_chars": {
+      "min": 4234,
+      "median": 9441.5,
+      "max": 13871,
+      "mean": 9287.0
+    },
+    "target_chars": {
+      "min": 67,
+      "median": 844.5,
+      "max": 2751,
+      "mean": 1125.67
+    },
+    "target_copies_in_document": {
+      "min": 2,
+      "median": 2.0,
+      "max": 5,
+      "mean": 2.83
+    },
+    "sites": {
+      "min": 3,
+      "median": 19.5,
+      "max": 42,
+      "mean": 20.25
+    },
+    "distinct_identities": {
+      "min": 3,
+      "median": 5.0,
+      "max": 8,
+      "mean": 5.25
+    },
+    "recurrence": {
+      "min": 1.0,
+      "median": 3.585,
+      "max": 9.33,
+      "mean": 4.11
+    },
+    "max_occurrences_one_identity": {
+      "min": 1,
+      "median": 7.5,
+      "max": 32,
+      "mean": 10.58
+    },
+    "answer_occurrences": {
+      "min": 1,
+      "median": 7.5,
+      "max": 32,
+      "mean": 10.33
+    },
+    "depth": {
+      "min": 3,
+      "median": 9.0,
+      "max": 21,
+      "mean": 10.17
+    },
+    "lead": {
+      "min": 1,
+      "median": 1.0,
+      "max": 12,
+      "mean": 2.5
+    }
+  },
+  "items": [
+    {
+      "item_id": "MI_0bd3e977c49a",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v88",
+        "v91",
+        "v92",
+        "v11"
+      ],
+      "options_encoded": [
+        "bv88",
+        "bv91",
+        "bv92",
+        "bv11"
+      ],
+      "key_depth_by_option": {
+        "v88": 6,
+        "v91": 9,
+        "v92": 8,
+        "v11": 1
+      },
+      "rendered_depth_by_option": {
+        "v88": 7,
+        "v91": 10,
+        "v92": 9,
+        "v11": 2
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        8,
+        8,
+        7,
+        7,
+        6,
+        6
+      ],
+      "regime": {
+        "document_chars": 13871,
+        "target_chars": 739,
+        "target_copies_in_document": 4,
+        "paren_target_chars": 392,
+        "sites": 14,
+        "distinct_identities": 5,
+        "recurrence": 2.8,
+        "max_occurrences_one_identity": 7,
+        "answer_occurrences": 7,
+        "depth": 9,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 12
+      }
+    },
+    {
+      "item_id": "MI_12ba9e13fa61",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v84",
+        "v91",
+        "v35",
+        "v56"
+      ],
+      "options_encoded": [
+        "bv84",
+        "bv91",
+        "bv35",
+        "bv56"
+      ],
+      "key_depth_by_option": {
+        "v84": 7,
+        "v91": 11,
+        "v35": 4,
+        "v56": 10
+      },
+      "rendered_depth_by_option": {
+        "v84": 8,
+        "v91": 12,
+        "v35": 5,
+        "v56": 11
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        11,
+        9,
+        9,
+        8,
+        7
+      ],
+      "regime": {
+        "document_chars": 11082,
+        "target_chars": 533,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 201,
+        "sites": 21,
+        "distinct_identities": 8,
+        "recurrence": 2.62,
+        "max_occurrences_one_identity": 5,
+        "answer_occurrences": 5,
+        "depth": 11,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91",
+          "v56"
+        ],
+        "answer_max_depth_in_context_types": 16
+      }
+    },
+    {
+      "item_id": "MI_133d80ef5814",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v47",
+        "v56",
+        "v91",
+        "v26"
+      ],
+      "options_encoded": [
+        "bv47",
+        "bv56",
+        "bv91",
+        "bv26"
+      ],
+      "key_depth_by_option": {
+        "v47": 3,
+        "v56": 11,
+        "v91": 12,
+        "v26": 4
+      },
+      "rendered_depth_by_option": {
+        "v47": 4,
+        "v56": 12,
+        "v91": 13,
+        "v26": 5
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        12,
+        11,
+        10,
+        9,
+        9,
+        8,
+        8,
+        8,
+        7,
+        7,
+        7,
+        6,
+        6,
+        5,
+        5,
+        4,
+        4
+      ],
+      "regime": {
+        "document_chars": 6866,
+        "target_chars": 972,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 474,
+        "sites": 23,
+        "distinct_identities": 4,
+        "recurrence": 5.75,
+        "max_occurrences_one_identity": 17,
+        "answer_occurrences": 17,
+        "depth": 12,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v56",
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 14
+      }
+    },
+    {
+      "item_id": "MI_19ad6742dffd",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v56",
+        "v11",
+        "v26"
+      ],
+      "options_encoded": [
+        "bv56",
+        "bv11",
+        "bv26"
+      ],
+      "key_depth_by_option": {
+        "v56": 12,
+        "v11": 5,
+        "v26": 3
+      },
+      "rendered_depth_by_option": {
+        "v56": 13,
+        "v11": 6,
+        "v26": 4
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        12,
+        12,
+        12,
+        11,
+        11,
+        11,
+        11,
+        11,
+        11,
+        10,
+        10,
+        10,
+        10,
+        9,
+        9,
+        9,
+        9,
+        9,
+        8,
+        8,
+        8,
+        8,
+        6,
+        4
+      ],
+      "regime": {
+        "document_chars": 9156,
+        "target_chars": 2463,
+        "target_copies_in_document": 3,
+        "paren_target_chars": 1318,
+        "sites": 28,
+        "distinct_identities": 3,
+        "recurrence": 9.33,
+        "max_occurrences_one_identity": 24,
+        "answer_occurrences": 24,
+        "depth": 12,
+        "lead": 7,
+        "options_deeper_in_context_types": [
+          "v56"
+        ],
+        "answer_max_depth_in_context_types": 12
+      }
+    },
+    {
+      "item_id": "MI_1bbcd095d195",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v91",
+        "v92",
+        "v27",
+        "v53"
+      ],
+      "options_encoded": [
+        "bv91",
+        "bv92",
+        "bv27",
+        "bv53"
+      ],
+      "key_depth_by_option": {
+        "v91": 9,
+        "v92": 8,
+        "v27": 7,
+        "v53": 6
+      },
+      "rendered_depth_by_option": {
+        "v91": 10,
+        "v92": 9,
+        "v27": 8,
+        "v53": 7
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        9,
+        9,
+        8,
+        8,
+        8,
+        7,
+        7
+      ],
+      "regime": {
+        "document_chars": 13111,
+        "target_chars": 2751,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 1444,
+        "sites": 18,
+        "distinct_identities": 4,
+        "recurrence": 4.5,
+        "max_occurrences_one_identity": 8,
+        "answer_occurrences": 8,
+        "depth": 9,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91",
+          "v92"
+        ],
+        "answer_max_depth_in_context_types": 12
+      }
+    },
+    {
+      "item_id": "MI_206ad71c314c",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v84",
+        "v26",
+        "v47",
+        "v56"
+      ],
+      "options_encoded": [
+        "bv84",
+        "bv26",
+        "bv47",
+        "bv56"
+      ],
+      "key_depth_by_option": {
+        "v84": 7,
+        "v26": 6,
+        "v47": 5,
+        "v56": 8
+      },
+      "rendered_depth_by_option": {
+        "v84": 8,
+        "v26": 7,
+        "v47": 6,
+        "v56": 9
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        8,
+        6
+      ],
+      "regime": {
+        "document_chars": 9289,
+        "target_chars": 955,
+        "target_copies_in_document": 4,
+        "paren_target_chars": 385,
+        "sites": 8,
+        "distinct_identities": 4,
+        "recurrence": 2.0,
+        "max_occurrences_one_identity": 2,
+        "answer_occurrences": 2,
+        "depth": 8,
+        "lead": 1,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 7
+      }
+    },
+    {
+      "item_id": "MI_22e8d2158446",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v35",
+      "answer_encoded": "bv35",
+      "options": [
+        "v35",
+        "v88",
+        "v92"
+      ],
+      "options_encoded": [
+        "bv35",
+        "bv88",
+        "bv92"
+      ],
+      "key_depth_by_option": {
+        "v35": 3,
+        "v88": 1,
+        "v92": 2
+      },
+      "rendered_depth_by_option": {
+        "v35": 4,
+        "v88": 2,
+        "v92": 3
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        3
+      ],
+      "regime": {
+        "document_chars": 4901,
+        "target_chars": 67,
+        "target_copies_in_document": 5,
+        "paren_target_chars": 20,
+        "sites": 3,
+        "distinct_identities": 3,
+        "recurrence": 1.0,
+        "max_occurrences_one_identity": 1,
+        "answer_occurrences": 1,
+        "depth": 3,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v35"
+        ],
+        "answer_max_depth_in_context_types": 8
+      }
+    },
+    {
+      "item_id": "MI_3360b772f2a2",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v92",
+        "v11",
+        "v47",
+        "v56"
+      ],
+      "options_encoded": [
+        "bv92",
+        "bv11",
+        "bv47",
+        "bv56"
+      ],
+      "key_depth_by_option": {
+        "v92": 4,
+        "v11": 6,
+        "v47": 5,
+        "v56": 9
+      },
+      "rendered_depth_by_option": {
+        "v92": 5,
+        "v11": 7,
+        "v47": 6,
+        "v56": 10
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        7,
+        6,
+        4
+      ],
+      "regime": {
+        "document_chars": 12472,
+        "target_chars": 416,
+        "target_copies_in_document": 4,
+        "paren_target_chars": 220,
+        "sites": 11,
+        "distinct_identities": 8,
+        "recurrence": 1.38,
+        "max_occurrences_one_identity": 4,
+        "answer_occurrences": 4,
+        "depth": 9,
+        "lead": 2,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 7
+      }
+    },
+    {
+      "item_id": "MI_3bba61618511",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v37",
+        "v56",
+        "v26",
+        "v35"
+      ],
+      "options_encoded": [
+        "bv37",
+        "bv56",
+        "bv26",
+        "bv35"
+      ],
+      "key_depth_by_option": {
+        "v37": 8,
+        "v56": 21,
+        "v26": 6,
+        "v35": 7
+      },
+      "rendered_depth_by_option": {
+        "v37": 9,
+        "v56": 22,
+        "v26": 7,
+        "v35": 8
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        21,
+        20,
+        19,
+        18,
+        18,
+        17,
+        14,
+        14,
+        14,
+        13,
+        12,
+        12,
+        12,
+        12,
+        12,
+        11,
+        11,
+        11,
+        10,
+        10,
+        9,
+        9,
+        8,
+        8,
+        8,
+        7,
+        7,
+        7,
+        6,
+        6,
+        6,
+        5
+      ],
+      "regime": {
+        "document_chars": 7075,
+        "target_chars": 2332,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 1130,
+        "sites": 42,
+        "distinct_identities": 5,
+        "recurrence": 8.4,
+        "max_occurrences_one_identity": 32,
+        "answer_occurrences": 32,
+        "depth": 21,
+        "lead": 12,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 1
+      }
+    },
+    {
+      "item_id": "MI_4203243a6c94",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v84",
+        "v92",
+        "v56",
+        "v67"
+      ],
+      "options_encoded": [
+        "bv84",
+        "bv92",
+        "bv56",
+        "bv67"
+      ],
+      "key_depth_by_option": {
+        "v84": 6,
+        "v92": 3,
+        "v56": 7,
+        "v67": 2
+      },
+      "rendered_depth_by_option": {
+        "v84": 7,
+        "v92": 4,
+        "v56": 8,
+        "v67": 3
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        7,
+        7,
+        7,
+        7,
+        6,
+        5,
+        5,
+        5,
+        5,
+        4
+      ],
+      "regime": {
+        "document_chars": 9594,
+        "target_chars": 591,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 237,
+        "sites": 15,
+        "distinct_identities": 5,
+        "recurrence": 3.0,
+        "max_occurrences_one_identity": 10,
+        "answer_occurrences": 10,
+        "depth": 7,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v84",
+          "v56"
+        ],
+        "answer_max_depth_in_context_types": 12
+      }
+    },
+    {
+      "item_id": "MI_43642e8c09bc",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v84",
+        "v26",
+        "v35",
+        "v56"
+      ],
+      "options_encoded": [
+        "bv84",
+        "bv26",
+        "bv35",
+        "bv56"
+      ],
+      "key_depth_by_option": {
+        "v84": 8,
+        "v26": 8,
+        "v35": 5,
+        "v56": 9
+      },
+      "rendered_depth_by_option": {
+        "v84": 9,
+        "v26": 9,
+        "v35": 6,
+        "v56": 10
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        9,
+        8,
+        8,
+        7,
+        5
+      ],
+      "regime": {
+        "document_chars": 4234,
+        "target_chars": 750,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 337,
+        "sites": 25,
+        "distinct_identities": 6,
+        "recurrence": 4.17,
+        "max_occurrences_one_identity": 6,
+        "answer_occurrences": 6,
+        "depth": 9,
+        "lead": 1,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 4
+      }
+    },
+    {
+      "item_id": "MI_490a7ea1da4d",
+      "used_in_certification": true,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v86",
+      "answer_encoded": "bv86",
+      "options": [
+        "v11",
+        "v60",
+        "v79",
+        "v86"
+      ],
+      "options_encoded": [
+        "bv11",
+        "bv60",
+        "bv79",
+        "bv86"
+      ],
+      "key_depth_by_option": {
+        "v11": 4,
+        "v60": 5,
+        "v79": 10,
+        "v86": 12
+      },
+      "rendered_depth_by_option": {
+        "v11": 5,
+        "v60": 6,
+        "v79": 11,
+        "v86": 13
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        12,
+        11,
+        10,
+        9,
+        8,
+        8,
+        7,
+        7
+      ],
+      "regime": {
+        "document_chars": 9793,
+        "target_chars": 939,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 372,
+        "sites": 35,
+        "distinct_identities": 8,
+        "recurrence": 4.38,
+        "max_occurrences_one_identity": 11,
+        "answer_occurrences": 8,
+        "depth": 12,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v79",
+          "v86"
+        ],
+        "answer_max_depth_in_context_types": 19
+      }
+    },
+    {
+      "item_id": "MI_4eb25c7e7c7a",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v26",
+      "answer_encoded": "bv26",
+      "options": [
+        "v47",
+        "v26"
+      ],
+      "options_encoded": [
+        "bv47",
+        "bv26"
+      ],
+      "key_depth_by_option": {
+        "v47": 2,
+        "v26": 6
+      },
+      "rendered_depth_by_option": {
+        "v47": 3,
+        "v26": 7
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        6,
+        4
+      ],
+      "regime": {
+        "document_chars": 9395,
+        "target_chars": 1057,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 651,
+        "sites": 3,
+        "distinct_identities": 2,
+        "recurrence": 1.5,
+        "max_occurrences_one_identity": 2,
+        "answer_occurrences": 2,
+        "depth": 6,
+        "lead": 4,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 3
+      }
+    },
+    {
+      "item_id": "MI_56b56387d792",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v79",
+      "answer_encoded": "bv79",
+      "options": [
+        "v121",
+        "v38",
+        "v79",
+        "v80"
+      ],
+      "options_encoded": [
+        "bv121",
+        "bv38",
+        "bv79",
+        "bv80"
+      ],
+      "key_depth_by_option": {
+        "v121": 9,
+        "v38": 7,
+        "v79": 10,
+        "v80": 9
+      },
+      "rendered_depth_by_option": {
+        "v121": 10,
+        "v38": 8,
+        "v79": 11,
+        "v80": 10
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        10,
+        9,
+        6
+      ],
+      "regime": {
+        "document_chars": 11849,
+        "target_chars": 672,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 256,
+        "sites": 24,
+        "distinct_identities": 10,
+        "recurrence": 2.4,
+        "max_occurrences_one_identity": 5,
+        "answer_occurrences": 3,
+        "depth": 10,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v79",
+          "v80"
+        ],
+        "answer_max_depth_in_context_types": 11
+      }
+    },
+    {
+      "item_id": "MI_5cb58204a7d6",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v48",
+        "v88",
+        "v91",
+        "v37"
+      ],
+      "options_encoded": [
+        "bv48",
+        "bv88",
+        "bv91",
+        "bv37"
+      ],
+      "key_depth_by_option": {
+        "v48": 3,
+        "v88": 7,
+        "v91": 12,
+        "v37": 9
+      },
+      "rendered_depth_by_option": {
+        "v48": 4,
+        "v88": 8,
+        "v91": 13,
+        "v37": 10
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        12,
+        12,
+        11,
+        11,
+        11,
+        11,
+        11,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        9,
+        9,
+        9,
+        9,
+        8,
+        8,
+        8,
+        8,
+        7
+      ],
+      "regime": {
+        "document_chars": 13647,
+        "target_chars": 3192,
+        "target_copies_in_document": 3,
+        "paren_target_chars": 1668,
+        "sites": 103,
+        "distinct_identities": 11,
+        "recurrence": 9.36,
+        "max_occurrences_one_identity": 25,
+        "answer_occurrences": 25,
+        "depth": 12,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 12
+      }
+    },
+    {
+      "item_id": "MI_681b2a90dd37",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v91",
+        "v56"
+      ],
+      "options_encoded": [
+        "bv91",
+        "bv56"
+      ],
+      "key_depth_by_option": {
+        "v91": 2,
+        "v56": 1
+      },
+      "rendered_depth_by_option": {
+        "v91": 3,
+        "v56": 2
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        2
+      ],
+      "regime": {
+        "document_chars": 5363,
+        "target_chars": 85,
+        "target_copies_in_document": 6,
+        "paren_target_chars": 45,
+        "sites": 2,
+        "distinct_identities": 2,
+        "recurrence": 1.0,
+        "max_occurrences_one_identity": 1,
+        "answer_occurrences": 1,
+        "depth": 2,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91",
+          "v56"
+        ],
+        "answer_max_depth_in_context_types": 8
+      }
+    },
+    {
+      "item_id": "MI_6d8b53038fe3",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v67",
+        "v92",
+        "v11",
+        "v56"
+      ],
+      "options_encoded": [
+        "bv67",
+        "bv92",
+        "bv11",
+        "bv56"
+      ],
+      "key_depth_by_option": {
+        "v67": 7,
+        "v92": 8,
+        "v11": 7,
+        "v56": 10
+      },
+      "rendered_depth_by_option": {
+        "v67": 8,
+        "v92": 9,
+        "v11": 8,
+        "v56": 11
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        10,
+        10,
+        9,
+        9
+      ],
+      "regime": {
+        "document_chars": 11326,
+        "target_chars": 1065,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 429,
+        "sites": 31,
+        "distinct_identities": 6,
+        "recurrence": 5.17,
+        "max_occurrences_one_identity": 15,
+        "answer_occurrences": 4,
+        "depth": 10,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v56"
+        ],
+        "answer_max_depth_in_context_types": 11
+      }
+    },
+    {
+      "item_id": "MI_7643c61ec8cf",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v92",
+        "v67",
+        "v88",
+        "v91"
+      ],
+      "options_encoded": [
+        "bv92",
+        "bv67",
+        "bv88",
+        "bv91"
+      ],
+      "key_depth_by_option": {
+        "v92": 8,
+        "v67": 6,
+        "v88": 7,
+        "v91": 9
+      },
+      "rendered_depth_by_option": {
+        "v92": 9,
+        "v67": 7,
+        "v88": 8,
+        "v91": 10
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        9,
+        8,
+        8,
+        7,
+        6,
+        5
+      ],
+      "regime": {
+        "document_chars": 13818,
+        "target_chars": 843,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 372,
+        "sites": 15,
+        "distinct_identities": 4,
+        "recurrence": 3.75,
+        "max_occurrences_one_identity": 7,
+        "answer_occurrences": 7,
+        "depth": 9,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v92",
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 10
+      }
+    },
+    {
+      "item_id": "MI_7b7c437cce0a",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v37",
+        "v47",
+        "v56",
+        "v91"
+      ],
+      "options_encoded": [
+        "bv37",
+        "bv47",
+        "bv56",
+        "bv91"
+      ],
+      "key_depth_by_option": {
+        "v37": 6,
+        "v47": 6,
+        "v56": 12,
+        "v91": 13
+      },
+      "rendered_depth_by_option": {
+        "v37": 7,
+        "v47": 7,
+        "v56": 13,
+        "v91": 14
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        13,
+        13,
+        12,
+        12,
+        11,
+        11,
+        10,
+        10,
+        9,
+        9,
+        9,
+        9,
+        8,
+        7,
+        7
+      ],
+      "regime": {
+        "document_chars": 11575,
+        "target_chars": 1388,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 698,
+        "sites": 23,
+        "distinct_identities": 5,
+        "recurrence": 4.6,
+        "max_occurrences_one_identity": 15,
+        "answer_occurrences": 15,
+        "depth": 13,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v56",
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 16
+      }
+    },
+    {
+      "item_id": "MI_7cb0a705710b",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v91",
+        "v92",
+        "v88"
+      ],
+      "options_encoded": [
+        "bv91",
+        "bv92",
+        "bv88"
+      ],
+      "key_depth_by_option": {
+        "v91": 6,
+        "v92": 5,
+        "v88": 4
+      },
+      "rendered_depth_by_option": {
+        "v91": 7,
+        "v92": 6,
+        "v88": 5
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        6,
+        5
+      ],
+      "regime": {
+        "document_chars": 8742,
+        "target_chars": 242,
+        "target_copies_in_document": 4,
+        "paren_target_chars": 117,
+        "sites": 4,
+        "distinct_identities": 3,
+        "recurrence": 1.33,
+        "max_occurrences_one_identity": 2,
+        "answer_occurrences": 2,
+        "depth": 6,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91",
+          "v92"
+        ],
+        "answer_max_depth_in_context_types": 18
+      }
+    },
+    {
+      "item_id": "MI_8118e55fbce2",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v56",
+        "v91",
+        "v92",
+        "v26"
+      ],
+      "options_encoded": [
+        "bv56",
+        "bv91",
+        "bv92",
+        "bv26"
+      ],
+      "key_depth_by_option": {
+        "v56": 12,
+        "v91": 13,
+        "v92": 6,
+        "v26": 4
+      },
+      "rendered_depth_by_option": {
+        "v56": 13,
+        "v91": 14,
+        "v92": 7,
+        "v26": 5
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        13,
+        12,
+        12,
+        11,
+        11,
+        10,
+        10,
+        9,
+        9,
+        9,
+        9,
+        8,
+        8,
+        8,
+        7,
+        6,
+        6,
+        4
+      ],
+      "regime": {
+        "document_chars": 10249,
+        "target_chars": 2241,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 995,
+        "sites": 25,
+        "distinct_identities": 4,
+        "recurrence": 6.25,
+        "max_occurrences_one_identity": 18,
+        "answer_occurrences": 18,
+        "depth": 13,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v56",
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 15
+      }
+    },
+    {
+      "item_id": "MI_83dcce8e870b",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v35",
+      "answer_encoded": "bv35",
+      "options": [
+        "v47",
+        "v26",
+        "v35"
+      ],
+      "options_encoded": [
+        "bv47",
+        "bv26",
+        "bv35"
+      ],
+      "key_depth_by_option": {
+        "v47": 3,
+        "v26": 3,
+        "v35": 4
+      },
+      "rendered_depth_by_option": {
+        "v47": 4,
+        "v26": 4,
+        "v35": 5
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        4
+      ],
+      "regime": {
+        "document_chars": 10685,
+        "target_chars": 485,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 196,
+        "sites": 4,
+        "distinct_identities": 3,
+        "recurrence": 1.33,
+        "max_occurrences_one_identity": 2,
+        "answer_occurrences": 1,
+        "depth": 4,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v26"
+        ],
+        "answer_max_depth_in_context_types": 1
+      }
+    },
+    {
+      "item_id": "MI_862275a12a27",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v84",
+        "v26",
+        "v56"
+      ],
+      "options_encoded": [
+        "bv84",
+        "bv26",
+        "bv56"
+      ],
+      "key_depth_by_option": {
+        "v84": 4,
+        "v26": 5,
+        "v56": 6
+      },
+      "rendered_depth_by_option": {
+        "v84": 5,
+        "v26": 6,
+        "v56": 7
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        6,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
+      ],
+      "regime": {
+        "document_chars": 6036,
+        "target_chars": 494,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 185,
+        "sites": 11,
+        "distinct_identities": 3,
+        "recurrence": 3.67,
+        "max_occurrences_one_identity": 7,
+        "answer_occurrences": 7,
+        "depth": 6,
+        "lead": 1,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": null
+      }
+    },
+    {
+      "item_id": "MI_8e9d933c5831",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v26",
+        "v47",
+        "v53",
+        "v56"
+      ],
+      "options_encoded": [
+        "bv26",
+        "bv47",
+        "bv53",
+        "bv56"
+      ],
+      "key_depth_by_option": {
+        "v26": 11,
+        "v47": 9,
+        "v53": 5,
+        "v56": 13
+      },
+      "rendered_depth_by_option": {
+        "v26": 12,
+        "v47": 10,
+        "v53": 6,
+        "v56": 14
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        13,
+        12,
+        12,
+        11,
+        10,
+        10
+      ],
+      "regime": {
+        "document_chars": 11125,
+        "target_chars": 923,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 361,
+        "sites": 22,
+        "distinct_identities": 7,
+        "recurrence": 3.14,
+        "max_occurrences_one_identity": 10,
+        "answer_occurrences": 6,
+        "depth": 13,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v26",
+          "v56"
+        ],
+        "answer_max_depth_in_context_types": 15
+      }
+    },
+    {
+      "item_id": "MI_8f0f03f3e58f",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v26",
+        "v47",
+        "v56",
+        "v67"
+      ],
+      "options_encoded": [
+        "bv26",
+        "bv47",
+        "bv56",
+        "bv67"
+      ],
+      "key_depth_by_option": {
+        "v26": 8,
+        "v47": 5,
+        "v56": 15,
+        "v67": 12
+      },
+      "rendered_depth_by_option": {
+        "v26": 9,
+        "v47": 6,
+        "v56": 16,
+        "v67": 13
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        15,
+        14,
+        14,
+        14,
+        13,
+        13,
+        13,
+        13,
+        13,
+        12,
+        12,
+        12,
+        12,
+        12,
+        12,
+        11,
+        11,
+        11,
+        11,
+        10,
+        8,
+        7,
+        3
+      ],
+      "regime": {
+        "document_chars": 7648,
+        "target_chars": 1989,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 898,
+        "sites": 49,
+        "distinct_identities": 7,
+        "recurrence": 7.0,
+        "max_occurrences_one_identity": 23,
+        "answer_occurrences": 23,
+        "depth": 15,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v56"
+        ],
+        "answer_max_depth_in_context_types": 15
+      }
+    },
+    {
+      "item_id": "MI_94498eda3f4b",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v47",
+      "answer_encoded": "bv47",
+      "options": [
+        "v47",
+        "v37"
+      ],
+      "options_encoded": [
+        "bv47",
+        "bv37"
+      ],
+      "key_depth_by_option": {
+        "v47": 9,
+        "v37": 7
+      },
+      "rendered_depth_by_option": {
+        "v47": 10,
+        "v37": 8
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        8,
+        4
+      ],
+      "regime": {
+        "document_chars": 5528,
+        "target_chars": 1574,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 684,
+        "sites": 6,
+        "distinct_identities": 2,
+        "recurrence": 3.0,
+        "max_occurrences_one_identity": 3,
+        "answer_occurrences": 3,
+        "depth": 9,
+        "lead": 2,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": null
+      }
+    },
+    {
+      "item_id": "MI_976fb03b23d3",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v37",
+      "answer_encoded": "bv37",
+      "options": [
+        "v37",
+        "v88"
+      ],
+      "options_encoded": [
+        "bv37",
+        "bv88"
+      ],
+      "key_depth_by_option": {
+        "v37": 5,
+        "v88": 4
+      },
+      "rendered_depth_by_option": {
+        "v37": 6,
+        "v88": 5
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        5
+      ],
+      "regime": {
+        "document_chars": 7952,
+        "target_chars": 619,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 344,
+        "sites": 2,
+        "distinct_identities": 2,
+        "recurrence": 1.0,
+        "max_occurrences_one_identity": 1,
+        "answer_occurrences": 1,
+        "depth": 5,
+        "lead": 1,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 4
+      }
+    },
+    {
+      "item_id": "MI_ac632a496227",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v88",
+        "v91",
+        "v27",
+        "v67"
+      ],
+      "options_encoded": [
+        "bv88",
+        "bv91",
+        "bv27",
+        "bv67"
+      ],
+      "key_depth_by_option": {
+        "v88": 11,
+        "v91": 12,
+        "v27": 4,
+        "v67": 6
+      },
+      "rendered_depth_by_option": {
+        "v88": 12,
+        "v91": 13,
+        "v27": 5,
+        "v67": 7
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        12,
+        11,
+        11,
+        10,
+        10,
+        9,
+        8,
+        8,
+        7,
+        7,
+        7,
+        7,
+        6,
+        5
+      ],
+      "regime": {
+        "document_chars": 5265,
+        "target_chars": 1095,
+        "target_copies_in_document": 3,
+        "paren_target_chars": 450,
+        "sites": 33,
+        "distinct_identities": 4,
+        "recurrence": 8.25,
+        "max_occurrences_one_identity": 14,
+        "answer_occurrences": 14,
+        "depth": 12,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 12
+      }
+    },
+    {
+      "item_id": "MI_b11808327eb7",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v49",
+      "answer_encoded": "bv49",
+      "options": [
+        "v49",
+        "v61"
+      ],
+      "options_encoded": [
+        "bv49",
+        "bv61"
+      ],
+      "key_depth_by_option": {
+        "v49": 4,
+        "v61": 2
+      },
+      "rendered_depth_by_option": {
+        "v49": 5,
+        "v61": 3
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        4
+      ],
+      "regime": {
+        "document_chars": 12690,
+        "target_chars": 2644,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 1272,
+        "sites": 2,
+        "distinct_identities": 2,
+        "recurrence": 1.0,
+        "max_occurrences_one_identity": 1,
+        "answer_occurrences": 1,
+        "depth": 4,
+        "lead": 2,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": null
+      }
+    },
+    {
+      "item_id": "MI_b49a157044ad",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v92",
+        "v88",
+        "v91"
+      ],
+      "options_encoded": [
+        "bv92",
+        "bv88",
+        "bv91"
+      ],
+      "key_depth_by_option": {
+        "v92": 2,
+        "v88": 1,
+        "v91": 3
+      },
+      "rendered_depth_by_option": {
+        "v92": 3,
+        "v88": 2,
+        "v91": 4
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        3
+      ],
+      "regime": {
+        "document_chars": 5752,
+        "target_chars": 75,
+        "target_copies_in_document": 5,
+        "paren_target_chars": 34,
+        "sites": 3,
+        "distinct_identities": 3,
+        "recurrence": 1.0,
+        "max_occurrences_one_identity": 1,
+        "answer_occurrences": 1,
+        "depth": 3,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v92",
+          "v88",
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 11
+      }
+    },
+    {
+      "item_id": "MI_b91067400399",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v88",
+      "answer_encoded": "bv88",
+      "options": [
+        "v88",
+        "v26",
+        "v37",
+        "v84"
+      ],
+      "options_encoded": [
+        "bv88",
+        "bv26",
+        "bv37",
+        "bv84"
+      ],
+      "key_depth_by_option": {
+        "v88": 7,
+        "v26": 6,
+        "v37": 4,
+        "v84": 5
+      },
+      "rendered_depth_by_option": {
+        "v88": 8,
+        "v26": 7,
+        "v37": 5,
+        "v84": 6
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        7
+      ],
+      "regime": {
+        "document_chars": 7544,
+        "target_chars": 919,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 402,
+        "sites": 10,
+        "distinct_identities": 8,
+        "recurrence": 1.25,
+        "max_occurrences_one_identity": 2,
+        "answer_occurrences": 1,
+        "depth": 7,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v26",
+          "v37",
+          "v84"
+        ],
+        "answer_max_depth_in_context_types": 4
+      }
+    },
+    {
+      "item_id": "MI_bcc6f6bfaf63",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v26",
+      "answer_encoded": "bv26",
+      "options": [
+        "v26",
+        "v27",
+        "v92"
+      ],
+      "options_encoded": [
+        "bv26",
+        "bv27",
+        "bv92"
+      ],
+      "key_depth_by_option": {
+        "v26": 9,
+        "v27": 6,
+        "v92": 4
+      },
+      "rendered_depth_by_option": {
+        "v26": 10,
+        "v27": 7,
+        "v92": 5
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        9,
+        8,
+        7,
+        5,
+        4,
+        4,
+        4,
+        3,
+        3
+      ],
+      "regime": {
+        "document_chars": 12333,
+        "target_chars": 523,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 226,
+        "sites": 12,
+        "distinct_identities": 3,
+        "recurrence": 4.0,
+        "max_occurrences_one_identity": 10,
+        "answer_occurrences": 10,
+        "depth": 9,
+        "lead": 3,
+        "options_deeper_in_context_types": [
+          "v26"
+        ],
+        "answer_max_depth_in_context_types": 11
+      }
+    },
+    {
+      "item_id": "MI_c03f1f164960",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v91",
+        "v37",
+        "v56",
+        "v65"
+      ],
+      "options_encoded": [
+        "bv91",
+        "bv37",
+        "bv56",
+        "bv65"
+      ],
+      "key_depth_by_option": {
+        "v91": 9,
+        "v37": 4,
+        "v56": 8,
+        "v65": 5
+      },
+      "rendered_depth_by_option": {
+        "v91": 10,
+        "v37": 5,
+        "v56": 9,
+        "v65": 6
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        7,
+        5
+      ],
+      "regime": {
+        "document_chars": 3797,
+        "target_chars": 475,
+        "target_copies_in_document": 3,
+        "paren_target_chars": 182,
+        "sites": 18,
+        "distinct_identities": 6,
+        "recurrence": 3.0,
+        "max_occurrences_one_identity": 4,
+        "answer_occurrences": 3,
+        "depth": 9,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 9
+      }
+    },
+    {
+      "item_id": "MI_c4917af53e0a",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v56",
+        "v84",
+        "v37"
+      ],
+      "options_encoded": [
+        "bv56",
+        "bv84",
+        "bv37"
+      ],
+      "key_depth_by_option": {
+        "v56": 6,
+        "v84": 5,
+        "v37": 4
+      },
+      "rendered_depth_by_option": {
+        "v56": 7,
+        "v84": 6,
+        "v37": 5
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        6,
+        6,
+        6,
+        6,
+        5,
+        5,
+        5,
+        5,
+        4
+      ],
+      "regime": {
+        "document_chars": 8099,
+        "target_chars": 609,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 251,
+        "sites": 11,
+        "distinct_identities": 3,
+        "recurrence": 3.67,
+        "max_occurrences_one_identity": 9,
+        "answer_occurrences": 9,
+        "depth": 6,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v56",
+          "v84"
+        ],
+        "answer_max_depth_in_context_types": 10
+      }
+    },
+    {
+      "item_id": "MI_c8c4cbf35743",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v35",
+        "v37",
+        "v56",
+        "v91"
+      ],
+      "options_encoded": [
+        "bv35",
+        "bv37",
+        "bv56",
+        "bv91"
+      ],
+      "key_depth_by_option": {
+        "v35": 4,
+        "v37": 5,
+        "v56": 6,
+        "v91": 7
+      },
+      "rendered_depth_by_option": {
+        "v35": 5,
+        "v37": 6,
+        "v56": 7,
+        "v91": 8
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        7,
+        7,
+        7,
+        7,
+        7,
+        6,
+        6,
+        6,
+        6
+      ],
+      "regime": {
+        "document_chars": 11349,
+        "target_chars": 796,
+        "target_copies_in_document": 4,
+        "paren_target_chars": 321,
+        "sites": 19,
+        "distinct_identities": 5,
+        "recurrence": 3.8,
+        "max_occurrences_one_identity": 9,
+        "answer_occurrences": 9,
+        "depth": 7,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 7
+      }
+    },
+    {
+      "item_id": "MI_c9657349b0aa",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v86",
+      "answer_encoded": "bv86",
+      "options": [
+        "v67",
+        "v86",
+        "v11",
+        "v60"
+      ],
+      "options_encoded": [
+        "bv67",
+        "bv86",
+        "bv11",
+        "bv60"
+      ],
+      "key_depth_by_option": {
+        "v67": 8,
+        "v86": 10,
+        "v11": 4,
+        "v60": 5
+      },
+      "rendered_depth_by_option": {
+        "v67": 9,
+        "v86": 11,
+        "v11": 5,
+        "v60": 6
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        10,
+        9,
+        8,
+        8,
+        7,
+        7
+      ],
+      "regime": {
+        "document_chars": 8558,
+        "target_chars": 703,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 262,
+        "sites": 27,
+        "distinct_identities": 7,
+        "recurrence": 3.86,
+        "max_occurrences_one_identity": 9,
+        "answer_occurrences": 6,
+        "depth": 10,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v67",
+          "v86"
+        ],
+        "answer_max_depth_in_context_types": 17
+      }
+    },
+    {
+      "item_id": "MI_ce92d7994132",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v84",
+      "answer_encoded": "bv84",
+      "options": [
+        "v92",
+        "v67",
+        "v84"
+      ],
+      "options_encoded": [
+        "bv92",
+        "bv67",
+        "bv84"
+      ],
+      "key_depth_by_option": {
+        "v92": 8,
+        "v67": 4,
+        "v84": 9
+      },
+      "rendered_depth_by_option": {
+        "v92": 9,
+        "v67": 5,
+        "v84": 10
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        9,
+        8,
+        8,
+        7,
+        7,
+        7,
+        7,
+        7,
+        6,
+        6,
+        6,
+        6,
+        5,
+        5,
+        4,
+        4
+      ],
+      "regime": {
+        "document_chars": 5005,
+        "target_chars": 1002,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 434,
+        "sites": 22,
+        "distinct_identities": 3,
+        "recurrence": 7.33,
+        "max_occurrences_one_identity": 16,
+        "answer_occurrences": 16,
+        "depth": 9,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v92",
+          "v84"
+        ],
+        "answer_max_depth_in_context_types": 10
+      }
+    },
+    {
+      "item_id": "MI_cec6417bb7f5",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v26",
+        "v47",
+        "v56",
+        "v91"
+      ],
+      "options_encoded": [
+        "bv26",
+        "bv47",
+        "bv56",
+        "bv91"
+      ],
+      "key_depth_by_option": {
+        "v26": 13,
+        "v47": 5,
+        "v56": 13,
+        "v91": 14
+      },
+      "rendered_depth_by_option": {
+        "v26": 14,
+        "v47": 6,
+        "v56": 14,
+        "v91": 15
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        14,
+        14,
+        13,
+        11,
+        11,
+        10,
+        9,
+        9,
+        9,
+        5
+      ],
+      "regime": {
+        "document_chars": 6211,
+        "target_chars": 1610,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 717,
+        "sites": 41,
+        "distinct_identities": 5,
+        "recurrence": 8.2,
+        "max_occurrences_one_identity": 10,
+        "answer_occurrences": 10,
+        "depth": 14,
+        "lead": 1,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 7
+      }
+    },
+    {
+      "item_id": "MI_d6da1e51f78b",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v67",
+      "answer_encoded": "bv67",
+      "options": [
+        "v92",
+        "v67"
+      ],
+      "options_encoded": [
+        "bv92",
+        "bv67"
+      ],
+      "key_depth_by_option": {
+        "v92": 1,
+        "v67": 3
+      },
+      "rendered_depth_by_option": {
+        "v92": 2,
+        "v67": 4
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        3
+      ],
+      "regime": {
+        "document_chars": 4603,
+        "target_chars": 116,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 51,
+        "sites": 2,
+        "distinct_identities": 2,
+        "recurrence": 1.0,
+        "max_occurrences_one_identity": 1,
+        "answer_occurrences": 1,
+        "depth": 3,
+        "lead": 2,
+        "options_deeper_in_context_types": [
+          "v67"
+        ],
+        "answer_max_depth_in_context_types": 4
+      }
+    },
+    {
+      "item_id": "MI_e1d7c9a33089",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v84",
+        "v91",
+        "v35",
+        "v37"
+      ],
+      "options_encoded": [
+        "bv84",
+        "bv91",
+        "bv35",
+        "bv37"
+      ],
+      "key_depth_by_option": {
+        "v84": 9,
+        "v91": 20,
+        "v35": 7,
+        "v37": 11
+      },
+      "rendered_depth_by_option": {
+        "v84": 10,
+        "v91": 21,
+        "v35": 8,
+        "v37": 12
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        20,
+        19,
+        18,
+        18,
+        17,
+        17,
+        17,
+        16,
+        16,
+        15,
+        15,
+        15,
+        15,
+        15,
+        14,
+        14,
+        14,
+        13,
+        12,
+        12,
+        12,
+        11,
+        11,
+        10,
+        10,
+        10,
+        8,
+        7
+      ],
+      "regime": {
+        "document_chars": 13434,
+        "target_chars": 2759,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 1102,
+        "sites": 36,
+        "distinct_identities": 4,
+        "recurrence": 9.0,
+        "max_occurrences_one_identity": 28,
+        "answer_occurrences": 28,
+        "depth": 20,
+        "lead": 9,
+        "options_deeper_in_context_types": [
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 20
+      }
+    },
+    {
+      "item_id": "MI_e96baec7a234",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v37",
+      "answer_encoded": "bv37",
+      "options": [
+        "v92",
+        "v35",
+        "v37"
+      ],
+      "options_encoded": [
+        "bv92",
+        "bv35",
+        "bv37"
+      ],
+      "key_depth_by_option": {
+        "v92": 1,
+        "v35": 2,
+        "v37": 3
+      },
+      "rendered_depth_by_option": {
+        "v92": 2,
+        "v35": 3,
+        "v37": 4
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        3
+      ],
+      "regime": {
+        "document_chars": 9568,
+        "target_chars": 98,
+        "target_copies_in_document": 4,
+        "paren_target_chars": 55,
+        "sites": 3,
+        "distinct_identities": 3,
+        "recurrence": 1.0,
+        "max_occurrences_one_identity": 1,
+        "answer_occurrences": 1,
+        "depth": 3,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v92",
+          "v35",
+          "v37"
+        ],
+        "answer_max_depth_in_context_types": 6
+      }
+    },
+    {
+      "item_id": "MI_eb62b3c0415b",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v56",
+      "answer_encoded": "bv56",
+      "options": [
+        "v56",
+        "v67",
+        "v92",
+        "v53"
+      ],
+      "options_encoded": [
+        "bv56",
+        "bv67",
+        "bv92",
+        "bv53"
+      ],
+      "key_depth_by_option": {
+        "v56": 12,
+        "v67": 3,
+        "v92": 11,
+        "v53": 5
+      },
+      "rendered_depth_by_option": {
+        "v56": 13,
+        "v67": 4,
+        "v92": 12,
+        "v53": 6
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        12,
+        11,
+        10,
+        9,
+        8,
+        7,
+        6,
+        5
+      ],
+      "regime": {
+        "document_chars": 12040,
+        "target_chars": 836,
+        "target_copies_in_document": 4,
+        "paren_target_chars": 335,
+        "sites": 24,
+        "distinct_identities": 8,
+        "recurrence": 3.0,
+        "max_occurrences_one_identity": 8,
+        "answer_occurrences": 8,
+        "depth": 12,
+        "lead": 1,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 8
+      }
+    },
+    {
+      "item_id": "MI_ee884e82e523",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v48",
+        "v53",
+        "v91",
+        "v27"
+      ],
+      "options_encoded": [
+        "bv48",
+        "bv53",
+        "bv91",
+        "bv27"
+      ],
+      "key_depth_by_option": {
+        "v48": 4,
+        "v53": 5,
+        "v91": 10,
+        "v27": 5
+      },
+      "rendered_depth_by_option": {
+        "v48": 5,
+        "v53": 6,
+        "v91": 11,
+        "v27": 6
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        10,
+        9,
+        9,
+        9,
+        8,
+        8,
+        8,
+        8,
+        8,
+        7,
+        7,
+        7,
+        7,
+        7,
+        6,
+        6,
+        6,
+        5,
+        3
+      ],
+      "regime": {
+        "document_chars": 8642,
+        "target_chars": 858,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 323,
+        "sites": 29,
+        "distinct_identities": 6,
+        "recurrence": 4.83,
+        "max_occurrences_one_identity": 19,
+        "answer_occurrences": 19,
+        "depth": 10,
+        "lead": 1,
+        "options_deeper_in_context_types": [
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 13
+      }
+    },
+    {
+      "item_id": "MI_f72f26b788b6",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v26",
+      "answer_encoded": "bv26",
+      "options": [
+        "v92",
+        "v26",
+        "v47",
+        "v88"
+      ],
+      "options_encoded": [
+        "bv92",
+        "bv26",
+        "bv47",
+        "bv88"
+      ],
+      "key_depth_by_option": {
+        "v92": 3,
+        "v26": 14,
+        "v47": 5,
+        "v88": 7
+      },
+      "rendered_depth_by_option": {
+        "v92": 4,
+        "v26": 15,
+        "v47": 6,
+        "v88": 8
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        14,
+        13,
+        13,
+        12,
+        12,
+        12,
+        12,
+        12,
+        11,
+        11,
+        11,
+        10,
+        10,
+        10,
+        10,
+        10,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        9,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        8,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        7,
+        6,
+        6,
+        6,
+        6,
+        5,
+        3
+      ],
+      "regime": {
+        "document_chars": 9903,
+        "target_chars": 2517,
+        "target_copies_in_document": 2,
+        "paren_target_chars": 1136,
+        "sites": 61,
+        "distinct_identities": 6,
+        "recurrence": 10.17,
+        "max_occurrences_one_identity": 45,
+        "answer_occurrences": 45,
+        "depth": 14,
+        "lead": 1,
+        "options_deeper_in_context_types": [],
+        "answer_max_depth_in_context_types": 6
+      }
+    },
+    {
+      "item_id": "MI_fd1405f97e84",
+      "used_in_certification": false,
+      "verdict": "VALID",
+      "reasons": [],
+      "answer": "v91",
+      "answer_encoded": "bv91",
+      "options": [
+        "v35",
+        "v91",
+        "v26"
+      ],
+      "options_encoded": [
+        "bv35",
+        "bv91",
+        "bv26"
+      ],
+      "key_depth_by_option": {
+        "v35": 5,
+        "v91": 8,
+        "v26": 5
+      },
+      "rendered_depth_by_option": {
+        "v35": 6,
+        "v91": 9,
+        "v26": 6
+      },
+      "rendered_minus_key_offset": [
+        1
+      ],
+      "answer_occurrence_depths": [
+        8,
+        8,
+        7,
+        7,
+        6,
+        3,
+        3
+      ],
+      "regime": {
+        "document_chars": 5276,
+        "target_chars": 541,
+        "target_copies_in_document": 4,
+        "paren_target_chars": 216,
+        "sites": 10,
+        "distinct_identities": 3,
+        "recurrence": 3.33,
+        "max_occurrences_one_identity": 7,
+        "answer_occurrences": 7,
+        "depth": 8,
+        "lead": 3,
+        "options_deeper_in_context_types": [
+          "v91"
+        ],
+        "answer_max_depth_in_context_types": 8
+      }
+    }
+  ]
+}

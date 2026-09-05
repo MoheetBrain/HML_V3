@@ -1,0 +1,215 @@
+{
+  "budgets": [
+    0,
+    400,
+    800,
+    1600,
+    3200,
+    6400
+  ],
+  "elapsed_seconds": 2255.3,
+  "fillers": {
+    "A_NEUTRAL_FILLER": {
+      "curve": {
+        "0": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 174
+        },
+        "1600": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 1859
+        },
+        "3200": {
+          "accuracy": 0.8333,
+          "items": 24,
+          "mean_characters": 3507
+        },
+        "400": {
+          "accuracy": 0.8333,
+          "items": 24,
+          "mean_characters": 643
+        },
+        "6400": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 6753
+        },
+        "800": {
+          "accuracy": 0.8333,
+          "items": 24,
+          "mean_characters": 1041
+        }
+      },
+      "drop": 0.0,
+      "top_vs_zero": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap +0.000 to +0.000)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "B_IRRELEVANT_DECLS": {
+      "curve": {
+        "0": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 174
+        },
+        "1600": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 1946
+        },
+        "3200": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 3754
+        },
+        "400": {
+          "accuracy": 0.7083,
+          "items": 24,
+          "mean_characters": 650
+        },
+        "6400": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 7380
+        },
+        "800": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 1082
+        }
+      },
+      "drop": 0.0,
+      "top_vs_zero": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap -0.125 to +0.125)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "C_COMPETING_EXPRS": {
+      "curve": {
+        "0": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 174
+        },
+        "1600": {
+          "accuracy": 0.7083,
+          "items": 24,
+          "mean_characters": 1868
+        },
+        "3200": {
+          "accuracy": 0.7083,
+          "items": 24,
+          "mean_characters": 3580
+        },
+        "400": {
+          "accuracy": 0.7083,
+          "items": 24,
+          "mean_characters": 667
+        },
+        "6400": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 6931
+        },
+        "800": {
+          "accuracy": 0.625,
+          "items": 24,
+          "mean_characters": 1053
+        }
+      },
+      "drop": 0.0417,
+      "top_vs_zero": {
+        "decisive": true,
+        "reason": "candidate differs by -0.042, inside the 0.10 parity margin (bootstrap -0.167 to +0.083)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "D_NONTARGET_MATH": {
+      "curve": {
+        "0": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 174
+        },
+        "1600": {
+          "accuracy": 0.5833,
+          "items": 24,
+          "mean_characters": 1865
+        },
+        "3200": {
+          "accuracy": 0.5833,
+          "items": 24,
+          "mean_characters": 3491
+        },
+        "400": {
+          "accuracy": 0.5833,
+          "items": 24,
+          "mean_characters": 608
+        },
+        "6400": {
+          "accuracy": 0.625,
+          "items": 24,
+          "mean_characters": 6759
+        },
+        "800": {
+          "accuracy": 0.5833,
+          "items": 24,
+          "mean_characters": 1026
+        }
+      },
+      "drop": 0.1667,
+      "top_vs_zero": {
+        "decisive": true,
+        "reason": "candidate trails by -0.167 (bootstrap -0.292 to -0.042)",
+        "status": "LANGUAGE_WEAKNESS"
+      }
+    },
+    "E_RELEVANT_LOCAL": {
+      "curve": {
+        "0": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 174
+        },
+        "1600": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 1866
+        },
+        "3200": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 3523
+        },
+        "400": {
+          "accuracy": 0.8333,
+          "items": 24,
+          "mean_characters": 621
+        },
+        "6400": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 6845
+        },
+        "800": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 1032
+        }
+      },
+      "drop": 0.0,
+      "top_vs_zero": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap -0.083 to +0.083)",
+        "status": "CONTROL_PARITY"
+      }
+    }
+  },
+  "items": 24,
+  "model": "qwen38-rvn:latest"
+}

@@ -1,0 +1,87 @@
+REAL_LEAN_GAP_V1
+
+REAL_TASK_VALID:
+    YES
+
+    REAL_ITEMS_AUDITED     45 (12 of them carried the 0.167)
+    AMBIGUOUS_ITEMS        0
+    INVALID_ITEMS          0
+    rendered-vs-key depth offset: [1] (one constant: no codec or parser mismatch)
+
+CORRECTED_REAL_ACCURACY:
+    0.167 — unchanged; no item was withdrawn, so the instrument is not the explanation
+
+    the regime those 12 items occupy:
+      sites                       median 19.5  (min 3, max 42)
+      distinct_identities         median 5.0  (min 3, max 8)
+      recurrence                  median 3.585  (min 1.0, max 9.33)
+      answer_occurrences          median 7.5  (min 1, max 32)
+      depth                       median 9.0  (min 3, max 21)
+      lead                        median 1.0  (min 1, max 12)
+      target_copies_in_document   median 2.0  (min 2, max 5)
+      document_chars              median 9441.5  (min 4234, max 13871)
+
+DENSE_TARGET_RESULT:
+    19/19 cells INSTRUMENT_VALID
+    normalised readability = (nested - negative) / (positive - negative); real Lean = 0.0909
+      d10_n5_r4_l1      sites  24  nested 0.250 [0.10,0.45]  pos 1.000  neg 0.208  norm  0.053  INSTRUMENT_VALID
+      d10_n5_r8_l1      sites  48  nested 0.292 [0.13,0.49]  pos 1.000  neg 0.250  norm  0.056  INSTRUMENT_VALID
+      d6_n5_r4_l1       sites  24  nested 0.292 [0.13,0.49]  pos 1.000  neg 0.417  norm -0.214  INSTRUMENT_VALID
+      d10_n5_r2_l1      sites  12  nested 0.333 [0.16,0.54]  pos 1.000  neg 0.208  norm  0.158  INSTRUMENT_VALID
+      d10_n3_r8_l1      sites  32  nested 0.375 [0.20,0.58]  pos 1.000  neg 0.167  norm  0.250  INSTRUMENT_VALID
+      d10_n5_r2_l2      sites  12  nested 0.375 [0.20,0.58]  pos 1.000  neg 0.333  norm  0.062  INSTRUMENT_VALID
+      d10_n5_r8_l2      sites  48  nested 0.375 [0.20,0.58]  pos 1.000  neg 0.292  norm  0.118  INSTRUMENT_VALID
+      d10_n3_r2_l2      sites   8  nested 0.458 [0.27,0.66]  pos 1.000  neg 0.167  norm  0.350  INSTRUMENT_VALID
+      d10_n3_r4_l2      sites  16  nested 0.458 [0.27,0.66]  pos 1.000  neg 0.167  norm  0.350  INSTRUMENT_VALID
+      d10_n5_r4_l2      sites  24  nested 0.458 [0.27,0.66]  pos 1.000  neg 0.333  norm  0.188  INSTRUMENT_VALID
+      d10_n3_r2_l1      sites   8  nested 0.500 [0.30,0.70]  pos 1.000  neg 0.167  norm  0.400  INSTRUMENT_VALID
+      d10_n3_r4_l1      sites  16  nested 0.500 [0.30,0.70]  pos 1.000  neg 0.167  norm  0.400  INSTRUMENT_VALID
+      d10_n5_r12_l1     sites  72  nested 0.500 [0.30,0.70]  pos 1.000  neg 0.208  norm  0.368  INSTRUMENT_VALID
+      d14_n5_r4_l1      sites  24  nested 0.500 [0.30,0.70]  pos 1.000  neg 0.292  norm  0.294  INSTRUMENT_VALID
+      d10_n3_r8_l2      sites  32  nested 0.542 [0.34,0.73]  pos 1.000  neg 0.167  norm  0.450  INSTRUMENT_VALID
+      d10_n5_r1_l1      sites   6  nested 0.792 [0.60,0.93]  pos 1.000  neg 0.083  norm  0.773  INSTRUMENT_VALID
+      d10_n5_r1_l2      sites   6  nested 0.792 [0.60,0.93]  pos 1.000  neg 0.167  norm  0.750  INSTRUMENT_VALID
+      d10_n3_r1_l2      sites   4  nested 0.875 [0.70,0.97]  pos 1.000  neg 0.167  norm  0.850  INSTRUMENT_VALID
+      d10_n3_r1_l1      sites   4  nested 0.917 [0.75,0.99]  pos 1.000  neg 0.167  norm  0.900  INSTRUMENT_VALID
+
+STRONGEST_DENSITY_FACTOR:
+    recurrence  1:0.844  2:0.417  4:0.417  8:0.396   spread 0.448
+    distinct    3:0.578  5:0.458   spread 0.120
+    lead        1:0.495  2:0.542   spread 0.047
+
+COLLAPSE_REPRODUCED:
+    YES — lowest valid cell d10_n5_r4_l1 at 0.250 [0.10,0.45]; real Lean 0.167, clean synthetic 0.933
+
+HARD_REGIME_V1 defined as:
+    depth 10, distinct identities 5, recurrence 4, lead 1, plus {'context_size': 16, 'deeper_in_context': 3, 'target_copies': 2}
+    EASY: recurrence 1, lead 2, no surrounding material
+    instrument EASY INSTRUMENT_VALID, HARD INSTRUMENT_VALID
+
+    views that render identically here: {'DEPTH_ADAPTIVE': ['DUAL_VIEW']}
+
+HARD_REGIME_RESULTS:
+    view                         EASY   HARD    DROP   vs NESTED in HARD
+    DEPTH_ADAPTIVE              0.917  0.208  +0.708   CONTROL_PARITY
+    DUAL_VIEW                   0.917  0.208  +0.708   CONTROL_PARITY
+    EXPLICIT_EDGE_LIST          0.875  0.083  +0.792   LANGUAGE_WEAKNESS
+    LOCAL_SUBTREE               0.833  0.333  +0.500   CONTROL_PARITY
+    NESTED_ONLY                 0.792  0.292  +0.500   CONTROL_PARITY
+    PATH_TO_ROOT                1.000  0.500  +0.500   ADVANTAGE
+    SELECTIVE_LOCAL_CONTEXT     0.667  0.250  +0.417   CONTROL_PARITY
+
+BEST_HARD_VIEW:
+    SELECTIVE_LOCAL_CONTEXT — drop +0.417, hard accuracy 0.250 (175 chars)
+
+DELTA_VS_NESTED:
+    -0.042 in the hard regime; NESTED_ONLY drop +0.500 vs +0.417
+
+MINIMUM_SUFFICIENT_CONTEXT:
+    FULL_STATE                0.292 [0.13,0.49]    1301 chars
+    PLUS_DECLARATIONS         0.208 [0.07,0.40]     297 chars
+    PLUS_REFERENCING_TYPES    0.250 [0.10,0.45]     552 chars
+    PLUS_STATE_COPIES         0.292 [0.13,0.49]     917 chars
+    TARGET_ONLY               0.250 [0.10,0.45]     175 chars
+
+FACTORIAL:
+    NOT_RUN
+

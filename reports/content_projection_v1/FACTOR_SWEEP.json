@@ -1,0 +1,405 @@
+{
+  "clean_baseline": 0.875,
+  "clutter_version": "clutter-v1.0.0",
+  "elapsed_seconds": 882.3,
+  "factors": {
+    "competing_expressions": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "1": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 252,
+          "skipped": 0
+        },
+        "16": {
+          "accuracy": 0.6667,
+          "items": 24,
+          "mean_characters": 989,
+          "skipped": 0
+        },
+        "2": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 299,
+          "skipped": 0
+        },
+        "4": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 394,
+          "skipped": 0
+        },
+        "8": {
+          "accuracy": 0.7083,
+          "items": 24,
+          "mean_characters": 586,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        1,
+        2,
+        4,
+        8,
+        16
+      ],
+      "max_drop": 0.2083,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate trails by -0.208 (bootstrap -0.333 to -0.042)",
+        "status": "LANGUAGE_WEAKNESS"
+      }
+    },
+    "context_size": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "16": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 492,
+          "skipped": 0
+        },
+        "32": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 796,
+          "skipped": 0
+        },
+        "4": {
+          "accuracy": 0.8333,
+          "items": 24,
+          "mean_characters": 264,
+          "skipped": 0
+        },
+        "64": {
+          "accuracy": 0.625,
+          "items": 24,
+          "mean_characters": 1404,
+          "skipped": 0
+        },
+        "8": {
+          "accuracy": 0.8333,
+          "items": 24,
+          "mean_characters": 340,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        4,
+        8,
+        16,
+        32,
+        64
+      ],
+      "max_drop": 0.25,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate trails by -0.250 (bootstrap -0.375 to -0.125)",
+        "status": "LANGUAGE_WEAKNESS"
+      }
+    },
+    "dependency_clutter": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "16": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 552,
+          "skipped": 0
+        },
+        "32": {
+          "accuracy": 0.75,
+          "items": 24,
+          "mean_characters": 890,
+          "skipped": 0
+        },
+        "4": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 296,
+          "skipped": 0
+        },
+        "8": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 381,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        4,
+        8,
+        16,
+        32
+      ],
+      "max_drop": 0.125,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate trails by -0.125 (bootstrap -0.208 to -0.042)",
+        "status": "LANGUAGE_WEAKNESS"
+      }
+    },
+    "goal_clutter": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "1": {
+          "accuracy": 0.8333,
+          "items": 24,
+          "mean_characters": 222,
+          "skipped": 0
+        },
+        "2": {
+          "accuracy": 0.8333,
+          "items": 24,
+          "mean_characters": 244,
+          "skipped": 0
+        },
+        "4": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 288,
+          "skipped": 0
+        },
+        "8": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 376,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        1,
+        2,
+        4,
+        8
+      ],
+      "max_drop": 0.0833,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate differs by -0.083, inside the 0.10 parity margin (bootstrap -0.167 to +0.000)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "identifier_confusability": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "1": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "2": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        1,
+        2
+      ],
+      "max_drop": 0.0,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap -0.083 to +0.083)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "repeated_symbols": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "1": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "2": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        1,
+        2
+      ],
+      "max_drop": 0.0,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate differs by +0.000, inside the 0.10 parity margin (bootstrap -0.083 to +0.083)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "scope_binder_clutter": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "2": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 278,
+          "skipped": 0
+        },
+        "4": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 356,
+          "skipped": 0
+        },
+        "8": {
+          "accuracy": 0.7917,
+          "items": 24,
+          "mean_characters": 512,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        2,
+        4,
+        8
+      ],
+      "max_drop": 0.0833,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate differs by -0.083, inside the 0.10 parity margin (bootstrap -0.208 to +0.042)",
+        "status": "CONTROL_PARITY"
+      }
+    },
+    "structural_distractors": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "16": {
+          "accuracy": 1.0,
+          "items": 24,
+          "mean_characters": 284,
+          "skipped": 0
+        },
+        "2": {
+          "accuracy": 1.0,
+          "items": 24,
+          "mean_characters": 200,
+          "skipped": 0
+        },
+        "4": {
+          "accuracy": 1.0,
+          "items": 24,
+          "mean_characters": 212,
+          "skipped": 0
+        },
+        "8": {
+          "accuracy": 1.0,
+          "items": 24,
+          "mean_characters": 236,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        2,
+        4,
+        8,
+        16
+      ],
+      "max_drop": 0.0,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate leads by +0.125 (bootstrap +0.042 to +0.208)",
+        "status": "ADVANTAGE"
+      }
+    },
+    "type_clutter": {
+      "curve": {
+        "0": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 188,
+          "skipped": 0
+        },
+        "1": {
+          "accuracy": 0.875,
+          "items": 24,
+          "mean_characters": 278,
+          "skipped": 0
+        },
+        "2": {
+          "accuracy": 0.9583,
+          "items": 24,
+          "mean_characters": 338,
+          "skipped": 0
+        },
+        "3": {
+          "accuracy": 0.9167,
+          "items": 24,
+          "mean_characters": 398,
+          "skipped": 0
+        }
+      },
+      "ladder": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "max_drop": 0.0,
+      "top_level_vs_clean": {
+        "decisive": true,
+        "reason": "candidate differs by +0.042, inside the 0.10 parity margin (bootstrap +0.000 to +0.083)",
+        "status": "CONTROL_PARITY"
+      }
+    }
+  },
+  "items": 24,
+  "model": "qwen38-rvn:latest",
+  "real_lean_accuracy": 0.167
+}
