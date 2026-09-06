@@ -1089,6 +1089,62 @@
       "note": "_candidates mapped each option to ONE node id by setdefault over the sorted node reference map. On the clean ladder every identity occurs exactly once so this is exact, but a dense target has an identity at depths 11, 9, 9 and 8, and the builder silently picked an arbitrary occurrence. LOCAL_SUBTREE and PATH_TO_ROOT would then have described a reference the question was not about, could not have answered it, and would have been reported as unreadable in the hard regime -- FM-051 a second time, with the defect in my builder rather than in the view. Caught before the comparison ran. The fix lists every occurrence of every option. The first attempt at the fix ordered rows by node id, which was worse than the bug: both generators build the answer's deepest occurrence first so it always holds n1, and sorting by node id would have put the answer in row one on every single item. The order is the option order, which is already a rotation keyed on the state id.",
       "requirement": "before comparing representations in a new regime, check that every builder can represent that regime; and check any ordering introduced by a fix for the leak the old ordering did not have",
       "blocked_traits": []
+    },
+    {
+      "id": "FM-056",
+      "title": "A second reader was about to be recorded as incapable because the harness could not hear it",
+      "disposition": "HARNESS_DEFECT_CAUGHT_BEFORE_VERDICT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "capability probe on the EXPLICIT_POSITIVE arm, 12 fresh HARD_REGIME_V1 items, before and after the fix",
+      "numbers": {
+        "gemma4_31b_positive_before": 0.0,
+        "gemma4_31b_positive_after": 1.0,
+        "gemma4_12b_positive_after": 0.0,
+        "items": 12,
+        "qwen38_rvn_positive": 1.0
+      },
+      "note": "THINKING_MARKERS covered qwen, deepseek-r1 and qwq. gemma4 also reasons into a separate 'thinking' channel and returns an EMPTY content string unless the think block is closed by an assistant prefill, so every gemma4 probe parsed as a wrong answer. The observable symptom was gemma4:31b scoring 0/8 on the arm that STATES the answer beside the question. Read naively that is 'this reader cannot do the task, so no cross-reader replication is possible' -- a conclusion that would have silently converted a harness bug into evidence about model capability, and in this case would have removed the only independent check on the project's last surviving positive result. After adding 'gemma4' to THINKING_MARKERS the same model scores 12/12 on the positive arm. gemma4:12b remains at 0.000 even after the fix and is a separate unresolved case; it is not used. No committed result changes, because every prior measurement used qwen38-rvn.",
+      "requirement": "before recording any reader as incapable, inspect the raw completion; a 0.000 on an arm that states the answer is a harness defect until proven otherwise, never a fact about the model",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-057",
+      "title": "The paired bootstrap had a degenerate RNG, and it manufactured the project's only positive result",
+      "disposition": "MEASUREMENT_INVALID",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "recomputation of every stored per-item outcome with a corrected resampler",
+      "numbers": {
+        "path_to_root_hard_regime_delta": 0.208,
+        "old_interval_lower": 0.0,
+        "old_verdict": "ADVANTAGE",
+        "new_interval_lower": 0.0,
+        "new_interval_upper": 0.417,
+        "new_verdict": "COMPARISON_UNSEPARATED",
+        "replication_n": 128,
+        "zero_width_interval_at_n_128": true,
+        "verdicts_changed": 1
+      },
+      "note": "paired_bootstrap advanced an LCG modulo 2**31 and used state % n as the resample index. The low k bits of such a generator have period 2**k, so at n a power of two the index sequence repeats with period n; because each resample draws exactly n indices, every one of the 10,000 resamples drew the IDENTICAL multiset and the interval had zero width. The n=128 replication printed [+0.570, +0.570], which is not an interval. At other n the low-bit correlation silently narrowed intervals instead of visibly collapsing them, which is the more dangerous failure. Recomputing every stored comparison with random.Random changed exactly one verdict, and it was the one that mattered: PATH_TO_ROOT in HARD_REGIME_V1 was reported as ADVANTAGE and is really COMPARISON_UNSEPARATED, +0.208 with an interval of [+0.000, +0.417] that contains zero. The single positive representation result the project ever produced was an artefact of the resampler, not of the representation. Point estimates were never affected, so no accuracy figure changes.",
+      "requirement": "a hand-rolled RNG used for inference must be tested for degeneracy at the sample sizes actually used, in particular at powers of two; a zero-width confidence interval is a defect signature and must never be reported as a result",
+      "blocked_traits": []
+    },
+    {
+      "id": "FM-058",
+      "title": "A negative arm read 0.000 because the reader emitted nothing parseable, not because the relation was gone",
+      "disposition": "PARTIAL_INSTRUMENT_DEFECT",
+      "evidence_status": "MEASURED_LOCAL_ARTIFACT",
+      "measured_by": "unparsed-completion counts per arm in the PATH_TO_ROOT replication, n=128 per reader",
+      "numbers": {
+        "reader_B_negative_unparsed": 128,
+        "reader_B_negative_n": 128,
+        "reader_B_negative_accuracy": 0.0,
+        "reader_B_nested_unparsed": 0,
+        "reader_B_path_unparsed": 0,
+        "reader_A_negative_unparsed": 2
+      },
+      "note": "gemma4:31b returned no parseable option on 128 of 128 ABLATED_NEGATIVE items, where the view is an unordered bag with parentage genuinely removed. The arm therefore scored 0.000 and the instrument passed its negative rule -- but for the wrong reason: the reader was not demonstrating that it cannot answer without structure, it was declining to answer at all. This inflates the dynamic range and makes normalised readability meaningless for that reader. It does NOT affect the primary comparison, because NESTED_ONLY and PATH_TO_ROOT both had zero unparsed completions for both readers. Recorded so the reader_B normalised-readability figure is never quoted.",
+      "requirement": "report unparsed-completion counts per arm; a negative arm at exactly 0.000 must be checked for refusal before it is credited as a floor",
+      "blocked_traits": []
     }
   ]
 }

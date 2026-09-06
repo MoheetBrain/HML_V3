@@ -19,7 +19,30 @@ dependent variable and is searched over.
 
 ## Current Stage
 
-`REAL_LEAN_GAP_V1_REPRODUCED`. The real-Lean EXPRESSION_DEPTH failure has been **reproduced
+`STATIC_REPRESENTATION_THESIS_V1: NOT SUPPORTED`. The static-language search is **closed**.
+See [`HML_PIVOT_HANDOFF.md`](../HML_PIVOT_HANDOFF.md) for the full record and for what
+transfers to Hamiltonian Chess.
+
+The kill gate ran on the project's only positive result and it did not survive. Two things
+happened, and both matter:
+
+1. **The original `ADVANTAGE` verdict was a statistics defect** (`FM-057`). `paired_bootstrap`
+   used the low bits of an LCG as its resample index; those bits have period `2**k`, so at
+   power-of-two sample sizes every resample drew the identical multiset and the interval had
+   zero width. Recomputed correctly, `PATH_TO_ROOT` in `HARD_REGIME_V1` is +0.208 with an
+   interval of **[+0.000, +0.417]** — `COMPARISON_UNSEPARATED`, not `ADVANTAGE`. Exactly one
+   verdict in the corpus changed when the resampler was fixed, and it was this one. No
+   accuracy figure changed.
+2. **It does not replicate across reader families.** On 128 fresh paired items with the
+   implementation frozen, `qwen38-rvn` gives +0.5703 [+0.4922, +0.6484] and `gemma4:31b` gives
+   −0.0547 [−0.1484, +0.0391]. The pre-registered rule required both readers positive.
+   `KILL_PATH`.
+
+What survives is the diagnostic result below — why ordinary notation fails — which is real and
+is recorded in full. What does not survive is any claim that a better static representation
+was found.
+
+Previously `REAL_LEAN_GAP_V1_REPRODUCED`. The real-Lean EXPRESSION_DEPTH failure has been **reproduced
 in synthetic states**, and the cause is internal to the target expression rather than in
 anything surrounding it. See the section `REAL_LEAN_GAP_V1` below.
 
@@ -510,7 +533,7 @@ declarations. Both regimes are `INSTRUMENT_VALID`.
 
 | View | EASY | HARD | DROP | vs NESTED in HARD | chars |
 |---|---|---|---|---|---|
-| PATH_TO_ROOT | 1.000 | **0.500** | +0.500 | **ADVANTAGE** | 2104 |
+| PATH_TO_ROOT | 1.000 | 0.500 | +0.500 | `COMPARISON_UNSEPARATED` (was mis-reported as ADVANTAGE; `FM-057`) | 2104 |
 | LOCAL_SUBTREE | 0.833 | 0.333 | +0.500 | CONTROL_PARITY | 2709 |
 | NESTED_ONLY | 0.792 | 0.292 | +0.500 | (reference) | 1301 |
 | SELECTIVE_LOCAL_CONTEXT | 0.667 | 0.250 | **+0.417** | CONTROL_PARITY | 175 |
@@ -522,9 +545,11 @@ declarations. Both regimes are `INSTRUMENT_VALID`.
 so it always takes the explicit branch. They are one arm run twice here, not two views.
 
 `SELECTIVE_LOCAL_CONTEXT` has the smallest drop, but that is partly because it also has the
-lowest EASY score; on hard accuracy it is at parity with nested. **`PATH_TO_ROOT` is the only
-view with a decisive advantage in the hard regime**, at nearly double the tokens. Materialising
-each candidate's ancestor chain converts the depth comparison into row counting.
+lowest EASY score; on hard accuracy it is at parity with nested. `PATH_TO_ROOT` was reported
+here as the only view with a decisive advantage. **That was wrong** (`FM-057`): with a correct
+paired bootstrap it is +0.208 with an interval of [+0.000, +0.417], which contains zero, and
+the correct verdict is `COMPARISON_UNSEPARATED`. It was never decisive, and on a second reader
+family it does not appear at all.
 
 `EXPLICIT_EDGE_LIST` is the one clear negative result: at 0.083 it scores **below its own
 regime's ablated negative arm (0.208)**. An unordered edge table is actively worse than
@@ -643,28 +668,16 @@ None.
 
 ## Exact Next Actions
 
-0. **The binding question has moved.** The failure is reproduced and its cause is internal
-   target density, so the next question is whether any representation prevents it. The only
-   decisive hard-regime result so far is `PATH_TO_ROOT` (+0.208 over nested, at 1.6x tokens);
-   that is one reader, 24 items, and needs replication before it is a finding.
-1. **DONE — the 32-cell realistic factorial is complete.** Recurrence −0.2891, lead −0.0911,
-   external factors null, interactions negligible, and cell `11000` reproduces the real
-   collapse with no external clutter at all.
-2. **Replicate `PATH_TO_ROOT`'s hard-regime advantage** at higher n and on a second reader
-   before treating it as real.
-3. **Finish the V2 certification run** now in flight over six components, then run SCOPE —
-   it was gated out by a defective constant-answer measure that has since been corrected, and
-   the results file now merges rather than overwrites.
-2. **Run the known-bad detection** (`§27`). An instrument that cannot rank a representation
-   built to hide its relation below a competent control has not been shown to see the
-   relation, whatever its calibration says.
-3. **Run the eight architectural hypotheses** (`§13`, `§14`) through the kill-early funnel.
-   None is cosmetic; all five surface mutations properly tested in V1 moved 0.031 combined.
-4. **Report the ladder result honestly**, including that the corpus cannot populate most of
-   the pre-registered rungs.
-5. **Acquire or generate deeper base states** if the long-horizon hypothesis is to be tested
-   at all — states with more than four goals, and expression depth beyond sixteen. This is
-   now the binding constraint on `PROJECT_GOAL` §18, not the representation.
-6. **Do not launch a global search and do not train.** No component is certified.
-7. **Leave `SEALED_FINAL_V2` alone.** `micro_hidden_v2` stays unread until a component is
-   certified on dev and reproduced on shadow.
+The static-representation programme is closed. There is no next experiment in it.
+
+1. **Read [`HML_PIVOT_HANDOFF.md`](../HML_PIVOT_HANDOFF.md)** before touching anything here.
+2. **Do not** add axes, add syntax, launch evolution, search more generations, train larger
+   models, or introduce another representation family to rescue the thesis. Each of these is
+   ruled out by `D-025`, by the kill gate, or by both.
+3. **Preserve** the canonical state, verifier, world generator, trajectory machinery,
+   calibration, failure memory and synthetic generators. They are representation-agnostic and
+   they transfer.
+4. **Leave the sealed splits sealed.** `micro_hidden_v2`, `micro_shadow_v2` and
+   `SEALED_FINAL_V2` were never read and there is now no experiment that would justify it.
+5. **Open** `FM-053`'s test failure or retire the lesson's evidence status if the project is
+   archived; it is the one red test in the suite and it predates this work.

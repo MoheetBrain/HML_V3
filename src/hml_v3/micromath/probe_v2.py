@@ -28,7 +28,13 @@ Identifiers are opaque tags with no meaning beyond the structure that relates th
 Answer with EXACTLY ONE of the options given, copied verbatim. No explanation, no
 punctuation, no other words."""
 
-THINKING_MARKERS = ("qwen", "deepseek-r1", "qwq")
+#: Models that reason into a separate channel and return EMPTY content unless the think block
+#: is closed for them. `FM-032` established this for Qwen; `FM-056` found that `gemma4` does
+#: the same and was NOT covered, so every Gemma-4 probe returned "" and scored as wrong. The
+#: visible symptom is a reader scoring 0.000 on the arm that STATES the answer, which reads as
+#: "this reader cannot do the task" when it is really "this harness cannot hear it".
+#: The marker is "gemma4", not "gemma", so `gemma3:4b` -- not a thinking model -- is untouched.
+THINKING_MARKERS = ("qwen", "deepseek-r1", "qwq", "gemma4")
 EMPTY_THINK_PREFILL = "<think>\n\n</think>\n\n"
 
 EXPLICIT_POSITIVE = "EXPLICIT_POSITIVE"

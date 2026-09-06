@@ -30,6 +30,7 @@ from __future__ import annotations
 
 from dataclasses import dataclass, asdict
 import math
+import random
 from typing import Any, Sequence
 
 # --------------------------------------------------------------------- pre-registered
@@ -142,20 +143,35 @@ def _invert(tail: float, successes: int, trials: int, upper: bool) -> float:
 
 def paired_bootstrap(candidate: Sequence[bool], control: Sequence[bool],
                      resamples: int = 10000, seed: int = 20260829) -> dict[str, float]:
-    """Bootstrap the paired difference. Deterministic: seeded LCG, no global RNG."""
+    """Bootstrap the paired difference. Deterministic: explicitly seeded, no global RNG.
+
+    `FM-057`. The first version advanced a linear congruential generator modulo ``2**31`` and
+    took ``state % n`` as the resample index. **The low bits of such a generator have period
+    ``2**k``**, so when ``n`` is a power of two the index sequence repeats with period ``n``
+    -- and since each resample draws exactly ``n`` indices, every resample drew the identical
+    multiset. All 10,000 draws collapsed to one value and the interval came out with zero
+    width. At n=128 the replication printed ``[+0.570, +0.570]``, which is not a confidence
+    interval at all. At other n the low-bit correlation still degrades the interval without
+    making the failure visible, which is worse.
+
+    ``random.Random`` is seeded explicitly, so determinism -- the property the LCG was there
+    to provide -- is preserved without the low-bit pathology.
+
+    The point estimate was never affected: ``observed`` is computed directly from the paired
+    differences and no verdict that turned on the point estimate changes.
+    """
 
     if len(candidate) != len(control) or not candidate:
         return {"difference": 0.0, "lower": 0.0, "upper": 0.0}
     n = len(candidate)
     differences = [float(a) - float(b) for a, b in zip(candidate, control)]
     observed = sum(differences) / n
-    state = seed & 0xFFFFFFFF
+    rng = random.Random(seed)
     draws: list[float] = []
     for _ in range(resamples):
         total = 0.0
         for _index in range(n):
-            state = (1103515245 * state + 12345) & 0x7FFFFFFF
-            total += differences[state % n]
+            total += differences[rng.randrange(n)]
         draws.append(total / n)
     draws.sort()
     tail = (1.0 - CONFIDENCE) / 2.0

@@ -1198,3 +1198,75 @@ in the hard regime, on a single reader and 24 items — which is what the kill g
 
 **Next intended step.** Replicate `PATH_TO_ROOT` on fresh items across two independent reader
 families under a pre-registered decision rule.
+
+---
+
+## 2026-09-06 — FINAL_HML_KILL_GATE: PATH_TO_ROOT does not replicate; the thesis is closed
+
+**Branch.** `codex/open-ended-search-v2`. **Stage.** `REAL_LEAN_GAP_V1_REPRODUCED` →
+`STATIC_REPRESENTATION_THESIS_V1: NOT SUPPORTED`.
+
+**Objective.** Decide, under a rule fixed before any number was read, whether there is enough
+replicated evidence that a machine-facing representation beats strong controls to justify
+continuing HML.
+
+**Files and systems changed.** New: `HML_PIVOT_HANDOFF.md`,
+`scripts/projection/run_path_replication.py`, `reports/content_projection_v1/PATH_REPLICATION.json`.
+Modified: `src/hml_v3/micromath/calibration_v2.py` (`paired_bootstrap`),
+`src/hml_v3/micromath/probe_v2.py` (`THINKING_MARKERS`),
+`research/representation_search/hml_failure_memory.json` (`FM-056`, `FM-057`, `FM-058`),
+`docs/PROJECT_STATUS.md`.
+
+**What was completed.** The replication of `PATH_TO_ROOT` on 128 fresh paired items per
+reader, across two model families, with the implementation frozen and hashed, plus two
+instrument repairs found in the process.
+
+**Results.**
+- reader_A `qwen38-rvn` (family qwen35): nested 0.3047, path 0.8750, delta **+0.5703**
+  [+0.4922, +0.6484], `ADVANTAGE`, instrument valid.
+- reader_B `gemma4:31b` (family gemma4): nested 0.3828, path 0.3281, delta **−0.0547**
+  [−0.1484, +0.0391], `CONTROL_PARITY`, instrument valid.
+- pooled: +0.2578 [+0.1875, +0.3242], but driven entirely by reader A; the readers disagree
+  in sign, so pooling measures the mixture and not the representation.
+- Pre-registered rule required both readers positive. **`KILL_PATH`.**
+
+**Decisions made and why.** The decision rule was written into
+`run_path_replication.py::DECISION_RULE` and into the output artefact before the run started.
+It was not revised afterwards. `INSTRUMENT_UNRESOLVED` was considered and rejected: two real
+defects were found, but neither makes the result uninterpretable — the primary comparison had
+zero unparsed completions on both arms for both readers, and the decision turns on point
+estimates the defects did not touch.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest -q` — **245 passed, 338 subtests passed, 1 failed**
+  (`FM-053`'s pre-existing `REASONING_ERROR` evidence status; unrelated to this work).
+- `run_path_replication.py --items 128` — 1,024 probes, 2,158 s, both instruments valid,
+  zero overlap with the original 24 items.
+- Bootstrap degeneracy demonstrated and fixed: at n=128, 64 and 24 the corrected resampler
+  produces intervals of width 0.141, 0.219 and 0.333 where the old one produced zero.
+- Every stored comparison recomputed with the corrected resampler; exactly one verdict changed.
+
+**Failures and unresolved uncertainty.**
+- `FM-057` — `paired_bootstrap` used the low bits of an LCG as its resample index. Those bits
+  have period `2**k`, so at power-of-two n every resample drew the identical multiset and the
+  interval had zero width. **This manufactured the project's only positive result**:
+  `PATH_TO_ROOT`'s `ADVANTAGE` in `HARD_REGIME_V1` is really `COMPARISON_UNSEPARATED`, +0.208
+  with an interval of [+0.000, +0.417]. Point estimates were unaffected; no accuracy changed.
+- `FM-056` — `gemma4` reasons into a separate channel and returns empty content without a
+  think prefill, so the second reader scored 0/8 on the arm that states the answer. Untreated,
+  this would have been recorded as "no independent reader exists" and the only check on the
+  project's last positive result would have quietly disappeared.
+- `FM-058` — reader_B's negative arm was 128/128 unparsed, so its 0.000 is refusal rather than
+  a measured floor. Its normalised readability must not be quoted. The primary comparison is
+  unaffected.
+- `gemma4:12b` returns 0.000 even after the prefill fix; unresolved, and unused.
+- Every figure remains two readers, one relation, one task family.
+
+**Effect on the overall project.** The static-representation thesis is closed. Across the
+project, defects found in my own instruments and generators outnumber findings about the
+language, and the single positive language result turned out to be one of those defects
+(`FM-043` through `FM-058`). The diagnostic result — recurrence causes the real Lean collapse
+— stands and is unaffected by any of this.
+
+**Next intended step.** None in this programme. `HML_PIVOT_HANDOFF.md` records what transfers
+to Hamiltonian Chess.
