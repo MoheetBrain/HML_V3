@@ -1143,3 +1143,58 @@ non-null result and it needs replication.
 
 **Next intended step.** Finish the realistic factorial, then replicate the `PATH_TO_ROOT`
 hard-regime advantage at higher n and on a second reader before treating it as a finding.
+
+---
+
+## 2026-09-06 — The factorial completes: recurrence is the cause, external clutter is null
+
+**Branch.** `codex/open-ended-search-v2`. **Stage.** `REAL_LEAN_GAP_V1_REPRODUCED`.
+
+**Objective.** Finish the 32-cell realistic factorial left running at the previous commit, and
+settle whether the real collapse needs the external realism factors or is internal alone.
+
+**Files and systems changed.** `reports/content_projection_v1/REALISTIC_FACTORIAL.json` (the
+completed run), `docs/PROJECT_STATUS.md`, `docs/PROJECT_LEDGER.md`.
+
+**What was completed.** All 32 cells, 24 items each, 2,521 s, 32 of 32 `INSTRUMENT_VALID`.
+Main effects: recurrence −0.2891, lead −0.0911, deeper_in_context −0.0495, target_copies
++0.0234, context_size +0.0287. Largest two-way interaction +0.0247.
+
+**Decisions made and why.** The causal claim is stated with its scope attached: recurrence is
+the **dominant tested factor**, not a monotonic law. Both recurrence and depth are
+non-monotonic — difficulty peaks at recurrence 4 and depth 10 and eases at 12 and 14 — so
+"denser is harder" is explicitly recorded as false as stated. This wording was chosen because
+the earlier withdrawn `DENSE_TARGET.json` had produced exactly the opposite monotonic story
+and the failure mode worth guarding against is a tidy dose-response claim the data do not
+support.
+
+**Tests and verification actually executed.**
+- `.venv/bin/python -m pytest -q` — **245 passed, 338 subtests passed, 1 failed**. The failure
+  is `FailureMemoryTests::test_every_lesson_declares_its_evidence_status`, on the pre-existing
+  `FM-053` `REASONING_ERROR` status. It predates this session and is documented in the Arena
+  repository's `docs/CURRENT_STATE.md`. `FM-054` and `FM-055` conform.
+- `run_realistic_factorial.py` — 32 cells x 3 arms x 24 items, 2,304 probes, 2,521.6 s.
+
+**Results.** Cell `11000` (lead 1, recurrence 4, and **all three external factors at zero**)
+scores 0.208 [0.074, 0.401] against a positive arm of 1.000 and a negative arm of 0.208 —
+**normalised readability exactly 0.000**. The real Lean task sits at 0.167 with normalised
+readability 0.091. The internal-only configuration therefore reproduces and slightly
+*overshoots* the real collapse. `target_copies` and `context_size` were mildly **positive**,
+so surrounding material was not harmful at all.
+
+**Failures and unresolved uncertainty.**
+- Twenty-four items per cell; one item is 4.2 percentage points.
+- One reader (`qwen38-rvn`) and one relation throughout.
+- A scope-failure mode is real but small: with `deeper_in_context = 3` the reader answered
+  about the deepest identity anywhere on the page on 114 of 384 items (29.7%), worth −0.0495.
+- Nothing here says anything about whether a *better* representation exists; it explains the
+  failure of one.
+
+**Effect on the overall project.** The clutter hypothesis family is closed: nine clutter
+factors, five iso-token fillers and now three external realism factors are all null or
+positive. The cause is internal to the target expression. This completes `REAL_LEAN_GAP_V1`
+and leaves exactly one live positive result in the whole project — `PATH_TO_ROOT`'s +0.208
+in the hard regime, on a single reader and 24 items — which is what the kill gate now tests.
+
+**Next intended step.** Replicate `PATH_TO_ROOT` on fresh items across two independent reader
+families under a pre-registered decision rule.

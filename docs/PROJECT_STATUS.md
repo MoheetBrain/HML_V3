@@ -454,6 +454,54 @@ times at four different depths, one wins by one level"* — a comparison of maxi
 multisets. That is a different operation and it is entirely internal to the expression, which
 is why 3,500 characters of neutral filler never mattered.
 
+### The factorial: external realism factors are null, and recurrence is the cause
+
+`REALISTIC_FACTORIAL.json` — 32 cells, full 2^5 factorial, 24 items per cell, 2,521 s,
+**32 of 32 `INSTRUMENT_VALID`**.
+
+| Factor | Low → high | Main effect on NESTED_ONLY accuracy |
+|---|---|---|
+| recurrence | 1 → 4 | **−0.2891** |
+| lead | 2 → 1 | −0.0911 |
+| deeper_in_context | 0 → 3 | −0.0495 |
+| target_copies | 0 → 2 | +0.0234 |
+| context_size | 0 → 16 | +0.0287 |
+
+Every two-way interaction is negligible: the largest is `recurrence x deeper_in_context` at
++0.0247, an order of magnitude below the recurrence main effect. **The collapse is a main
+effect, not an interaction**, which is what `§5` was written to detect and what it rules out.
+
+The decisive cell is `11000` — `lead=1, recurrence=4`, with **all three external factors at
+zero**:
+
+| | nested | 90% CI | positive | negative | normalised readability |
+|---|---|---|---|---|---|
+| cell `11000` | 0.208 | [0.074, 0.401] | 1.000 | 0.208 | **0.000** |
+| real Lean | 0.167 | — | 1.000 | 0.083 | 0.091 |
+
+Normalised readability of **exactly zero**: the nested rendering carries no information the
+reader can use over one whose parentage has been destroyed. That *overshoots* the real task,
+which still retains 0.091. **No external clutter is required to reproduce or exceed the real
+collapse.** `target_copies` and `context_size` came out mildly positive — surrounding material
+was, if anything, slightly helpful — which closes out the entire clutter hypothesis family.
+
+Where `deeper_in_context = 3`, the reader answered about the deepest identity *anywhere on the
+page* rather than in the goal target on **114 of 384 items (29.7%)**. That is a real scope
+failure and it is worth knowing, but at −0.0495 it is a minor contributor next to recurrence.
+
+### What "recurrence causes the collapse" does and does not mean
+
+It means: **recurrence is the dominant tested causal factor** among the five varied here, by a
+factor of 3.2 over the next largest, with negligible interactions and with the external
+factors null.
+
+It does **not** mean that monotonically increasing density always hurts. The dose-response is
+**non-monotonic in both density parameters**. Recurrence peaks in difficulty at 4 and eases
+back to 0.500 by recurrence 12; depth gives 0.292 / 0.250 / 0.500 at depths 6 / 10 / 14. There
+is a worst regime in the middle of the range, and the real corpus happens to sit in it (median
+recurrence 3.67, median depth 9). Any claim of the form "denser is harder" is false as stated
+and is not what these data support.
+
 ### HARD_REGIME_V1 and the view comparison
 
 `HARD_REGIME_V1` = depth 10, 5 distinct identities, recurrence 4, lead 1, plus 2 verbatim
@@ -599,8 +647,9 @@ None.
    target density, so the next question is whether any representation prevents it. The only
    decisive hard-regime result so far is `PATH_TO_ROOT` (+0.208 over nested, at 1.6x tokens);
    that is one reader, 24 items, and needs replication before it is a finding.
-1. **Finish the 32-cell realistic factorial** (`REALISTIC_FACTORIAL.json`, in flight) to
-   separate the internal factors from the realism factors and estimate interactions.
+1. **DONE — the 32-cell realistic factorial is complete.** Recurrence −0.2891, lead −0.0911,
+   external factors null, interactions negligible, and cell `11000` reproduces the real
+   collapse with no external clutter at all.
 2. **Replicate `PATH_TO_ROOT`'s hard-regime advantage** at higher n and on a second reader
    before treating it as real.
 3. **Finish the V2 certification run** now in flight over six components, then run SCOPE —
