@@ -1,1 +1,1 @@
-# HML_V3
+# HML_V3 HMLV3 is the third iteration of a mathematics-first language designed from the ground up to encode mathematical semantics directly into its representation. It explores whether richer symbolic structure, typed relations, and explicit mathematical meaning can improve reasoning, compositionality, and long-horizon problem solving in AI systems.
